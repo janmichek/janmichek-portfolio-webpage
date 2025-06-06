@@ -25,9 +25,15 @@
           <template #description>
             <ul class="projects__list">
               <li>
-                Blockchain explorer which is enabling users to dive into details of aeternity blockchain.
-                To educate our users there I added plenty of contextual hints which explains different
-                aspects of blockchain.
+                Led development of aeScan.io, an open-source blockchain explorer for the Aeternity network,
+                full autonomy over technical decisions.
+                Built comprehensive blockchain data visualization aggregating multiple sources.
+              </li>
+              <li>
+                Architected responsive user interfaces handling blockchain interactions, statistics
+                visualization,
+                and real-time data updates. Implemented contextual educational hints to help users understand
+                different aspects of blockchain technology.
               </li>
               <li>
                 <app-link
@@ -35,14 +41,13 @@
                   target="_blank">
                   Open source
                 </app-link>
-                , feature-rich blockchain explorer aggregating data from multiple sources.
-                Vast majority of the code is written by me so don't hesitate to explore it. I got a strong
-                responsibility and autonomy over decision about the app.
+                project where I collaborated with contract developers, designers, community users,
+                and stakeholders to continuously improve the platform and shape product vision.
               </li>
               <li>
                 Used tech:
                 <project-link
-                  label="Nuxt 3"
+                  label="Nuxt"
                   to="https://nuxt.com/"/>
                 <project-link
                   label="Typescript"
@@ -51,11 +56,14 @@
                   label="aepp SDK"
                   to="https://sdk.aeternity.io/latest/"/>
                 <project-link
+                  label="Docker"
+                  to="https://www.docker.com/"/>
+                <project-link
+                  label="Node.js"
+                  to="https://www.nodejs.org/"/>
+                <project-link
                   label="Cypress"
                   to="https://www.cypress.io/"/>
-                <project-link
-                  label="Postcss"
-                  to="https://postcss.org"/>
                 <project-link
                   label="Eslint"
                   to="https://eslint.org/"/>
@@ -76,14 +84,14 @@
 
         <app-post>
           <template #heading>
-            PWN
+            PWN Finance
           </template>
           <template #image>
             <app-link to="http://pwn.finance">
               <img
                 src="/pwn.webp"
                 :width="686"
-                alt="Chabot Builder">
+                alt="PWN Finance">
             </app-link>
             <app-link
               class="projects__preview"
@@ -99,13 +107,18 @@
           <template #description>
             <ul class="projects__list">
               <li>
-                The first web3 dapp I have been working on. Basically, it's a pawnshop for NFTs. The frontend part wraps
-                user interactions with wallet, contracts, and communication with backend.
+                Collaborated on frontend for PWN, the first web3 NFT pawnshop platform on Ethereum,
+                handling user interactions with wallets and smart contracts. Built a seamless web3 user
+                experience from scratch.
               </li>
               <li>
-                I was collaborating on designing visuals and UX as well as coding the result.
-                Building the app also required to be in close contact with community and adjust app
-                accordingly in turbulent crypto space.
+                Collaborated on visual design and UX architecture while engaging directly with the crypto
+                community during volatile market conditions. Rapidly iterated based on user feedback and
+                market demands as part of a small, agile startup team.
+              </li>
+              <li>
+                Contributed to product vision and working closely with all team members to shape
+                the platform's direction.
               </li>
               <li>
                 Used tech:
@@ -170,16 +183,20 @@
           <template #description>
             <ul class="projects__list">
               <li>
-                This is a complex frontend for building pre-LLM era AI based chatbot delivered to
+                Built the complete frontend for an innovative pre-LLM AI chatbot builder platform delivered to
                 <app-link to="https://www.nice.com/websites/cxone-next-gen-cx/">
-                  industry leader of telemarketing.
+                  a telemarketing industry leader
                 </app-link>
-                .
-                App offers an innovative approach to build conversations between user and bot.
+                . Developed complex conversation flow interfaces enabling intuitive bot creation.
               </li>
               <li>
-                My role was to code whole frontend, participate on creating user flows based and overall product vision.
-                Team-wise I was responsible to setting guidelines and lead junior dev aside the development.
+                Led frontend architecture decisions and established development guidelines while mentoring
+                junior developer. Collaborated closely with backend developers and designers to shape
+                overall product vision and user experience flows.
+              </li>
+              <li>
+                Implemented an innovative approach to building conversations tree and
+                creatied seamless user flows.
               </li>
               <li>
                 Used tech:
@@ -205,8 +222,8 @@
                   label="Adobe XD"
                   to="https://www.adobe.com/products/xd.html"/>
                 <project-link
-                  label=" CSS Variables"
-                  to="https://www.w3schools.com/css/css3_variables.as"/>
+                  label="CSS Variables"
+                  to="https://www.w3schools.com/css/css3_variables.asp"/>
                 <project-link
                   label="CSS Animations"
                   to="https://www.w3schools.com/css/css3_animations.asp"

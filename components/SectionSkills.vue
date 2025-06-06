@@ -6,28 +6,28 @@
       </title-section>
       <div class="skills__row">
         <div class="skills__name skills__name--web3">
-          Web3
+          web3
         </div>
         <p class="skills__description">
-          Let me translate overwhelming technical complexity into smooth and modern web app which is intuitive to use.
+          Let me translate complexity of DeFi into smooth and modern web app which is intuitive to use.
         </p>
       </div>
       <div class="skills__row">
         <div class="skills__name">
-          UI
+          JS
+        </div>
+        <p class="skills__description">
+          Vue is, effective and joy to code. The smoothest DX framework I had a chance to work with.
+          React is cool too!
+        </p>
+      </div>
+      <div class="skills__row">
+        <div class="skills__name">
+          UX
         </div>
         <p class="skills__description">
           I love to bridge computer code with human perception.
           “Don’t let users think” is my ultimate motto. I live on the front side of frontend.
-        </p>
-      </div>
-      <div class="skills__row">
-        <div class="skills__name">
-          Vue
-        </div>
-        <p class="skills__description">
-          Simple, effective and joy to code. The best JS framework I had an opportunity to work with.
-          I mean React is good, but Vue is cool.
         </p>
       </div>
     </div>

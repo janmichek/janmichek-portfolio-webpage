@@ -17,7 +17,7 @@
             Jan Michek
           </h1>
           <div class="h2 the-header__subheading">
-            frontend developer
+            web3 frontend engineer
           </div>
           <div class="h3 the-header__excerpt">
             Czechia / Prague / <span title="That is 34">1987</span>

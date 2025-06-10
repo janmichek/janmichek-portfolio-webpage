@@ -19,6 +19,7 @@
     "lint:js": "eslint .",
     "lint:style": "stylelint \"./**/*.vue\" \"**/*.css\"",
     "lint:st": "stylelint ./**/*.{vue}",
+    "typecheck": "nuxt typecheck",
     "deploy": "yarn generate && firebase deploy",
     "emulators": "yarn generate && firebase emulators:start",
     "cypress:open": "cypress open",

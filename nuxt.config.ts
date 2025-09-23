@@ -1,7 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
-  modules: ['@nuxt/eslint', '@nuxt/image', 'nuxt-vuefire', '@nuxt/fonts'],
+  modules: [
+    '@nuxt/eslint',
+    '@nuxt/image',
+    'nuxt-vuefire',
+    '@nuxt/fonts',
+    '@nuxtjs/stylelint-module'
+  ],
   ssr: false,
   css: ['~/assets/styles/main.css'],
   devServer: {
@@ -15,7 +21,7 @@ export default defineNuxtConfig({
         files: ['assets/styles/settings/_variables.css'],
       },
       'postcss-custom-media': {},
-      'postcss-import': {},
+      // 'postcss-import': {},
       'postcss-nested': {},
     },
   },
@@ -40,6 +46,55 @@ export default defineNuxtConfig({
       messagingSenderId: '478725404100',
       appId: '1:478725404100:web:ff57825fce289b365b2091',
       measurementId: 'G-NDPRQR7R6M',
+    },
+  },
+  stylelint: {
+    lintOnStart: false,
+    include: ['**/*.{css,scss,sass,html,vue}'],
+    exclude: ['node_modules/**', '.nuxt/**', 'dist/**'],
+    config: {
+      defaultSeverity: 'warning',
+      extends: [
+        'stylelint-config-standard',
+        'stylelint-config-recommended',
+        'stylelint-config-html/vue',
+        'stylelint-config-recommended-vue',
+      ],
+      rules: {
+        'declaration-block-no-duplicate-properties': true,
+        'selector-pseudo-element-colon-notation': 'single',
+        'comment-whitespace-inside': null,
+        'comment-empty-line-before': null,
+        'rule-empty-line-before': null,
+        'selector-class-pattern': null,
+        'declaration-block-no-redundant-longhand-properties': null,
+        'declaration-empty-line-before': [
+          'never',
+          {
+            ignore: [
+              'after-comment',
+              'after-declaration',
+            ],
+          },
+        ],
+        'max-nesting-depth': [
+          3,
+          {
+            ignore: [
+              'pseudo-classes',
+              'blockless-at-rules',
+            ],
+          },
+        ],
+        'property-no-unknown': [
+          true,
+          {
+            ignoreProperties: [
+              '/^lost-/',
+            ],
+          },
+        ],
+      },
     },
   },
 })

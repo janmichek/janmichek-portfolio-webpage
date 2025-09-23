@@ -1,48 +1,93 @@
-# Nuxt Minimal Starter
+# Jan Michek - Personal Portfolio
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A modern portfolio website built with Nuxt 4, showcasing skills, projects, and professional experience. The site
+features a clean, responsive design with custom CSS architecture and Firebase integration for dynamic content
+management.
 
-## Setup
+## Features
 
-Make sure to install dependencies:
+- **Modern Tech Stack**: Built with Nuxt 4 in SPA mode for optimal performance
+- **Responsive Design**: Custom CSS using ITCSS methodology with PostCSS
+- **Firebase Integration**: Real-time database and hosting via Firebase
+- **Visual Testing**: Automated visual regression testing with Percy
+- **Multi-language Ready**: Configured for Czech locale (cs-CZ)
+- **SEO Optimized**: Complete meta tags and social media integration
+
+## Development
+
+### Prerequisites
+
+- Node.js 18+
+- Bun package manager
+
+### Setup
+
+Install dependencies:
 
 ```bash
-# bun
 bun install
 ```
 
-## Development Server
+### Development Server
 
-Start the development server on `http://localhost:3000`:
+Start the development server on `http://localhost:8080`:
 
 ```bash
-# bun
-bun  dev
+bun dev
+```
+
+### Code Quality
+
+Run linting and formatting:
+
+```bash
+bun lint          # Run all linting (JS + CSS)
+bun lint:fix      # Auto-fix linting issues
+bun lint:js       # ESLint only
+bun lint:style    # Stylelint only
 ```
 
 ## Production
 
-Build the application for production:
+### Build
+
+Generate static site for production:
 
 ```bash
-
-bun run build
+bun generate
 ```
 
-Locally preview production build:
+### Preview
+
+Preview the production build locally:
 
 ```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+bun preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+### Deployment
+
+Deploy to Firebase Hosting on janmichek.cz domain
+
+```bash
+bun deploy
+```
+
+## Architecture
+
+The application follows modern Vue.js patterns with:
+
+- **Component Architecture**: Organized into App, Section, and utility components
+- **CSS Methodology**: ITCSS structure with custom properties and PostCSS
+- **State Management**: Firebase real-time database integration
+
+## Technologies
+
+- **Framework**: Nuxt 4 (Vue 3)
+- **Styling**: Custom CSS with PostCSS, Lost Grid System
+- **Backend**: Firebase (Database, Hosting)
+- **Tooling**: ESLint, Stylelint, bun
+
+## License
+
+Personal portfolio project - all rights reserved.

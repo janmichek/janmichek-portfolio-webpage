@@ -14,7 +14,7 @@
                 format="webp"
                 src="/aescan.webp"
                 :width="686"
-                alt="aescan" />
+                alt="aescan"/>
 
             </app-link>
             <app-link
@@ -92,7 +92,7 @@
               <nuxt-img
                 src="/pwn.webp"
                 :width="686"
-                alt="PWN Finance" />
+                alt="PWN Finance"/>
             </app-link>
             <app-link
               class="projects__preview"
@@ -168,7 +168,7 @@
               <nuxt-img
                 src="/chatbot.webp"
                 :width="686"
-                alt="Chabot Builder" />
+                alt="Chabot Builder"/>
             </app-link>
             <app-link
               class="projects__preview"

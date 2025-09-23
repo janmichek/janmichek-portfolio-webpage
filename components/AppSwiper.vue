@@ -11,7 +11,7 @@
       <nuxt-img
         format="webp"
         :src="slide.medium"
-        class="swiper__image" />
+        class="swiper__image"/>
       <div class="swiper__text">
         {{ slide.altText }}
       </div>

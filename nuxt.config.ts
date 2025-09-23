@@ -8,6 +8,12 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxtjs/stylelint-module',
   ],
+  fonts: {
+    providers: {
+      bunny: false,
+      google: true,
+    },
+  },
   ssr: false,
   css: ['~/assets/styles/main.css'],
   devServer: {

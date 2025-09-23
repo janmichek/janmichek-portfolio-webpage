@@ -22,17 +22,17 @@
   background: var(--ui-bg);
 
   &__content {
-    @apply u-center;
+    @apply .u-center;
     padding: var(--space-xxl) 0;
   }
 
   &__container {
-    @apply u-container;
-    @apply u-grid-12;
+    @apply .u-container;
+    @apply .u-grid-12;
   }
 
   &__main {
-    @apply u-2/3@tablet;
+    @apply .u-2/3-tablet;
   }
 
   &__footer {

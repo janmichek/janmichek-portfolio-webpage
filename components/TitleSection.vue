@@ -20,11 +20,11 @@ export default {
 
 <style scoped>
 [data-theme="primary"] {
-  --title-section-color: var(--text-color);
+  --title-section-color: var(--ui-text-secondary);
 }
 
 [data-theme="light"] {
-  --title-section-color: var(--text-primary);
+  --title-section-color: var(--ui-text-primary);
 }
 
 .title-section {

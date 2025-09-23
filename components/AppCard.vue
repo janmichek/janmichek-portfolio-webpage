@@ -42,6 +42,8 @@ defineProps({
 </template>
 
 <style scoped>
+@import url("../assets/styles/utilities/_stretched-link.css");
+
 .card {
   width: 100%;
   display: inline-block;
@@ -51,7 +53,7 @@ defineProps({
   position: relative;
 
   &__link {
-    @apply u-stretched-link;
+    @apply .u-stretched-link;
     text-decoration: none;
 
     &:hover {
@@ -69,7 +71,7 @@ defineProps({
 
   &__description {
     margin-top: var(--space-xs);
-    color: var(--text-color);
+    color: var(--ui-text-secondary);
   }
 }
 </style>

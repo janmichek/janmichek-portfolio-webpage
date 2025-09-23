@@ -74,14 +74,6 @@ export default defineNuxtConfig({
             ],
           },
         ],
-        'property-no-unknown': [
-          true,
-          {
-            ignoreProperties: [
-              '/^lost-/',
-            ],
-          },
-        ],
       },
     },
   },

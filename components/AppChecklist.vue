@@ -31,11 +31,11 @@ defineProps({
 
 <style scoped>
 .checklist__checkbox:checked {
-  color: var(--text-primary);
+  color: var(--ui-text-primary);
 }
 
 .checklist__checkbox:checked ~ .checklist__label {
   text-decoration: line-through;
-  color: var(--text-primary);
+  color: var(--ui-text-primary);
 }
 </style>

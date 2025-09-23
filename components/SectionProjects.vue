@@ -18,7 +18,6 @@
                 src="/aescan.webp"
                 :width="686"
                 alt="aescan"/>
-
             </app-link>
             <app-link
               class="projects__preview"

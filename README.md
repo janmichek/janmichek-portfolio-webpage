@@ -101,7 +101,7 @@ The application follows modern Vue.js patterns with:
 ## Technologies
 
 - **Framework**: Nuxt 4 (Vue 3)
-- **Styling**: Custom CSS with PostCSS, Lost Grid System
+- **Styling**: Custom CSS with PostCSS
 - **Backend**: Firebase (Database, Hosting)
 - **Tooling**: ESLint, Stylelint, bun
 

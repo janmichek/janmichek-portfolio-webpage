@@ -56,14 +56,15 @@ defineProps({
 <style scoped>
 [data-theme="primary"] {
   --footer-background: var(--ui-primary);
-  --footer-link: var(--text-secondary);
-  --footer-link-hover: var(--text-color);
+  --footer-link: var(--ui-text-secondary);
+  --footer-link-hover: var(--ui-text-primary);
 }
 
+toto not consistent naming
 [data-theme="secondary"] {
   --footer-background: var(--ui-secondary);
-  --footer-link: var(--text-primary);
-  --footer-link-hover: var(--text-color);
+  --footer-link: var(--ui-text-primary);
+  --footer-link-hover: var(--ui-text-primary);
 }
 
 .the-footer {
@@ -76,11 +77,11 @@ defineProps({
   }
 
   &__container {
-    @apply u-container;
+    @apply .u-container;
   }
 
   &__grid {
-    @apply u-grid-12;
+    @apply .u-grid-12;
   }
 
   &__link {
@@ -93,8 +94,8 @@ defineProps({
   }
 
   &__link-wrap {
-    @apply u-1/4@desktop;
-    @apply u-1/2@tablet;
+    @apply .u-1/4-desktop;
+    @apply .u-1/2-tablet;
     width: 100%;
     text-align: center;
     margin-bottom: var(--space-sm);

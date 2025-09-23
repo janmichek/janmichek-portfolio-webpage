@@ -26,24 +26,22 @@
   }
 
   &__body {
-    @apply u-grid-12;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+
+    @media (--tablet) {
+      grid-template-columns: 1fr 2fr;
+      gap: 32px;
+    }
   }
 
   &__image {
-    @apply u-1/3
-    @tablet;
+    /* Grid item - no width needed */
   }
 
   &__description {
-    @apply u-2/3
-    @tablet;
-    margin-left: 0;
-    margin-top: var(--space-sm);
-
-    @media (--tablet) {
-      margin-left: var(--space-lg);
-      margin-top: 0;
-    }
+    /* Grid item - no width needed */
   }
 }
 </style>

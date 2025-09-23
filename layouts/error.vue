@@ -32,7 +32,7 @@ defineProps({
 
 <style scoped>
 .error {
-  @apply u-container;
+  @apply .u-container;
   margin: var(--space-xl) 0;
 
   &__heading {

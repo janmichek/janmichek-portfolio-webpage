@@ -27,7 +27,7 @@ defineProps({
   margin-bottom: var(--space-xxl);
 
   &__title {
-    color: var(--text-primary);
+    color: var(--ui-text-primary);
     margin-bottom: var(--space);
     text-align: center;
 

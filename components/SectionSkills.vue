@@ -67,7 +67,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-secondary);
+    color: var(--ui-secondary);
     font-size: var(--text-4xl);
     text-align: center;
     min-width: 118px;

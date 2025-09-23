@@ -79,16 +79,16 @@ const images = ref([
   padding: var(--space-xxl) 0;
 
   &__content {
-    @apply u-center;
+    @apply .u-center;
   }
 
   &__container {
-    @apply u-container;
-    @apply u-grid-12;
+    @apply .u-container;
+    @apply .u-grid-12;
   }
 
   &__main {
-    @apply u-2/3
+    @apply .u-2/3
   }
 }
 </style>

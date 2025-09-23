@@ -1,6 +1,6 @@
 ::placeholder {
   opacity: 1;
-  color: var(--placeholder-color);
+  color: var(--ui-placeholder-color);
 }
 
 input[type="checkbox"],
@@ -31,13 +31,13 @@ label:after {
 
 label:before {
   content: " ";
-  border: 2px solid var(--text-color-secondary);
+  border: 2px solid var(--ui-text-secondary);
 }
 
 /* Checkbox */
 input[type="checkbox"] + label:after {
   content: "\2714";
-  color: var(--text-secondary);
+  color: var(--ui-text-secondary);
   line-height: 1.5;
   text-align: center;
 }
@@ -54,7 +54,7 @@ input[type="radio"] + label:after {
   width: 1em;
   height: 1em;
   background: var(--ui-primary);
-  border: .2em solid var(--text-secondary);
+  border: .2em solid var(--ui-border-color);
   border-radius: 50%;
 }
 

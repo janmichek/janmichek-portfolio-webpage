@@ -5,12 +5,12 @@ table {
 
 td {
   text-align: left;
-  border: 1px solid var(--ui-border);
+  border: 1px solid var(--ui-border-color);
   padding: var(--space-xs);
 }
 
 th {
   text-align: left;
-  border: 1px solid var(--text-color);
+  border: 1px solid var(--ui-text-primary);
   padding: var(--space-xs);
 }

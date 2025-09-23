@@ -5,7 +5,7 @@
 <template>
   <header class="the-header">
     <div class="the-header__container">
-      <div class="u-flex-row">
+      <div class="the-header__row">
         <!--        todo fix -->
         <div class="the-header__avatar">
           <app-link to="/">
@@ -25,7 +25,7 @@
             web3 frontend engineer
           </div>
           <div class="h3 the-header__excerpt">
-            Czechia / Prague / <span title="That is 34">1987</span>
+            Czechia / Prague / <span title="That is 38">1987</span>
           </div>
         </div>
       </div>
@@ -34,6 +34,8 @@
 </template>
 
 <style scoped>
+@import url("../assets/styles/utilities/_grid.css");
+
 .the-header {
   padding: var(--space-xl) var(--space-xl) var(--space-xxl);
   background: var(--ui-bg);
@@ -45,25 +47,31 @@
   }
 
   &__container {
-    @apply u-container;
+    @apply .u-container;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space);
+
+    @media (--tablet) {
+      grid-template-columns: 5fr 7fr;
+      gap: 32px;
+    }
   }
 
   &__avatar {
-    @apply u-5/12
-    width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: var(--space);
 
     @media (--tablet) {
       justify-content: flex-start;
-      margin-bottom: 0;
     }
   }
 
   &__content {
-    @apply u-7/12
-    width: 100%;
+    /* Grid item - no width needed */
   }
 
   &__heading {
@@ -80,9 +88,9 @@
   }
 
   &__subheading {
-    text-align: center;
-    color: var(--text-primary);
+    color: var(--ui-text-primary);
 
+    text-align: center;
     @media (--tablet) {
       white-space: nowrap;
     }
@@ -90,7 +98,7 @@
 
   &__excerpt {
     text-align: center;
-    color: var(--text-color-secondary);
+    color: var(--ui-text-muted);
     font-size: var(--text-3xl);
     margin-bottom: 0;
   }

@@ -3,7 +3,7 @@
     <h4 class="post__heading">
       <slot name="heading"/>
     </h4>
-    <div class="post__body u-flex-row">
+    <div class="post__body u-grid-12">
       <div class="post__image u-1/3@tablet">
         <slot name="image"/>
       </div>

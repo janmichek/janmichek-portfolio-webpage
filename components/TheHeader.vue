@@ -1,27 +1,25 @@
 <template>
   <header class="the-header">
-    <div class="u-container">
-      <div class="u-flex-row">
-        <div class="u-5/12@tablet the-header__avatar">
-          <app-link to="/">
-            <nuxt-img
-              format="webp"
-              class="the-header__image"
-              src="/janmichek.webp"
-              :width="230"
-              alt="Jan Michek's avatar" />
-          </app-link>
+    <div class="u-container u-grid-12">
+      <div class="u-5/12@tablet the-header__avatar">
+        <app-link to="/">
+          <nuxt-img
+            format="webp"
+            class="the-header__image"
+            src="/janmichek.webp"
+            :width="230"
+            alt="Jan Michek's avatar"/>
+        </app-link>
+      </div>
+      <div class="u-7/12@tablet the-header__content">
+        <h1 class="the-header__heading">
+          Jan Michek
+        </h1>
+        <div class="h2 the-header__subheading">
+          web3 frontend engineer
         </div>
-        <div class="u-7/12@tablet the-header__content">
-          <h1 class="the-header__heading">
-            Jan Michek
-          </h1>
-          <div class="h2 the-header__subheading">
-            web3 frontend engineer
-          </div>
-          <div class="h3 the-header__excerpt">
-            Czechia / Prague / <span title="That is 34">1987</span>
-          </div>
+        <div class="h3 the-header__excerpt">
+          Czechia / Prague / <span title="That is 34">1987</span>
         </div>
       </div>
     </div>

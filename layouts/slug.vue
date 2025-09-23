@@ -1,9 +1,9 @@
 <template>
   <div class="layout layout--default">
     <the-header/>
-    <main class="layout__content u-flex-row u-center">
-      <div class="u-2/3@tablet">
-        <div class="u-container">
+    <main class="layout__content u-center">
+      <div class="u-container u-grid-12">
+        <div class="u-2/3@tablet">
           <slot/>
         </div>
       </div>

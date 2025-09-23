@@ -26,4 +26,3 @@
 @custom-media --tablet (min-width: 768px);
 @custom-media --desktop (min-width: 992px);
 
-@lost flexbox flex;

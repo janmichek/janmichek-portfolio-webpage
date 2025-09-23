@@ -1,8 +1,8 @@
 <template>
   <article class="gallery">
-    <div class="layout__content u-flex-row u-center">
-      <div class="u-2/3@tablet">
-        <div class="u-container">
+    <div class="layout__content u-center">
+      <div class="u-container u-grid-12">
+        <div class="u-2/3@tablet">
           <section>
             <title-slug
               title="Photo Gallery"

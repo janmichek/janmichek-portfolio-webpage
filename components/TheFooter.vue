@@ -7,7 +7,7 @@
         Contact
       </title-section>
 
-      <div class="u-flex-row">
+      <div class="u-grid-12">
         <div class="u-1/4@desktop u-1/2@tablet the-footer__link-wrap">
           <app-link
             class="the-footer__link"

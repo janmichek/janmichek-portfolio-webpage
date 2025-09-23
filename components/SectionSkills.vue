@@ -38,12 +38,14 @@
   </section>
 </template>
 
-<style>
+<style scoped>
+@import url("../assets/styles/utilities/_grid.css");
+
 .skills {
   background: var(--ui-primary);
 
   &__container {
-    @apply u-container;
+    @apply .u-container;
   }
 
   &__row {

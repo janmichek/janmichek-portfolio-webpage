@@ -10,6 +10,7 @@ export default {
 </script>
 
 <template>
+  <!--  todo fix naming -->
   <h3
     class="title-section"
     :data-theme="theme">

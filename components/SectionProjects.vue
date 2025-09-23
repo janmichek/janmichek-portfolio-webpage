@@ -242,9 +242,11 @@
 </template>
 
 <style scoped>
+@import url("../assets/styles/utilities/_grid.css");
+
 .projects {
   &__container {
-    @apply u-container;
+    @apply .u-container;
   }
 
   &__content {

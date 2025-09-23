@@ -73,6 +73,8 @@ const images = ref([
 </template>
 
 <style scoped>
+@import url("../assets/styles/utilities/_grid.css");
+
 .gallery {
   padding: var(--space-xxl) 0;
 

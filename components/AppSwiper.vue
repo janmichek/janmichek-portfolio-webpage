@@ -35,7 +35,7 @@ const modules = [Navigation]
   </swiper>
 </template>
 
-<style>
+<style scoped>
 .swiper__image {
   margin: 0 auto;
   width: 85vw;

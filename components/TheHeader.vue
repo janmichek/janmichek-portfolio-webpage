@@ -5,25 +5,28 @@
 <template>
   <header class="the-header">
     <div class="the-header__container">
-      <div class="the-header__avatar">
-        <app-link to="/">
-          <nuxt-img
-            format="webp"
-            class="the-header__image"
-            src="/profile-pic-2022.png"
-            :width="230"
-            alt="Jan Michek's avatar"/>
-        </app-link>
-      </div>
-      <div class="the-header__content">
-        <h1 class="the-header__heading">
-          Jan Michek
-        </h1>
-        <div class="h2 the-header__subheading">
-          web3 frontend engineer
+      <div class="u-flex-row">
+        <!--        todo fix -->
+        <div class="the-header__avatar">
+          <app-link to="/">
+            <nuxt-img
+              format="webp"
+              class="the-header__image"
+              src="/profile-pic-2022.png"
+              :width="230"
+              alt="Jan Michek's avatar"/>
+          </app-link>
         </div>
-        <div class="h3 the-header__excerpt">
-          Czechia / Prague / <span title="That is 34">1987</span>
+        <div class="the-header__content">
+          <h1 class="the-header__heading">
+            Jan Michek
+          </h1>
+          <div class="h2 the-header__subheading">
+            web3 frontend engineer
+          </div>
+          <div class="h3 the-header__excerpt">
+            Czechia / Prague / <span title="That is 34">1987</span>
+          </div>
         </div>
       </div>
     </div>
@@ -43,12 +46,10 @@
 
   &__container {
     @apply u-container;
-    @apply u-grid-12;
   }
 
   &__avatar {
     @apply u-5/12
-    @tablet;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -62,7 +63,6 @@
 
   &__content {
     @apply u-7/12
-    @tablet;
     width: 100%;
   }
 

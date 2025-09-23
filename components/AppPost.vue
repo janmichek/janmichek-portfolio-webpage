@@ -1,3 +1,6 @@
+<script setup lang="ts">
+</script>
+
 <template>
   <div class="projects__project">
     <h4 class="post__heading">
@@ -14,7 +17,9 @@
   </div>
 </template>
 
-<style>
+<style scoped>
+@import url("../assets/styles/utilities/_grid.css");
+
 .post {
   &__heading {
     margin-bottom: var(--space-sm);
@@ -25,11 +30,13 @@
   }
 
   &__image {
-    @apply u-1/3@tablet;
+    @apply u-1/3
+    @tablet;
   }
 
   &__description {
-    @apply u-2/3@tablet;
+    @apply u-2/3
+    @tablet;
     margin-left: 0;
     margin-top: var(--space-sm);
 

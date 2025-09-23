@@ -90,16 +90,19 @@ const goodies = ref([
   </section>
 </template>
 
-<style scoped>
+<style>
+/*TODO INJECT*/
+@import url("../assets/styles/utilities/_grid.css");
+
 .goodies {
   background: var(--ui-primary);
 
   &__container {
-    @apply u-container;
+    @apply .u-container;
   }
 
   &__masonry {
-    @apply u-masonry;
+    @apply .u-masonry;
   }
 }
 </style>

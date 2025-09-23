@@ -1,3 +1,6 @@
+<script setup lang="ts">
+</script>
+
 <template>
   <section class="projects">
     <div class="u-container">
@@ -238,25 +241,22 @@
   </section>
 </template>
 
-<script setup lang="ts">
-</script>
-
 <style scoped>
 .projects {
   &__content {
-    margin: 0 var(--gutter-sm);
+    margin: 0 var(--space-sm);
   }
 
   &__project:not(:last-of-type) {
-    margin-bottom: var(--gutter-xxl);
+    margin-bottom: var(--space-xxl);
   }
 
   &__preview {
     display: inline-flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    margin-right: var(--gutter-xs);
-    font-size: 14px;
+    margin-right: var(--space-xs);
+    font-size: var(--text-sm);
   }
 }
 </style>

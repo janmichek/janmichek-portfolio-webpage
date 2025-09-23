@@ -1,16 +1,16 @@
 table {
-  margin: 0 auto var(--gutter) auto;
+  margin: 0 auto var(--space) auto;
   border-collapse: collapse;
 }
 
 td {
   text-align: left;
-  border: 1px solid var(--text-color);
-  padding: var(--gutter-xs);
+  border: 1px solid var(--ui-border);
+  padding: var(--space-xs);
 }
 
 th {
   text-align: left;
   border: 1px solid var(--text-color);
-  padding: var(--gutter-xs);
+  padding: var(--space-xs);
 }

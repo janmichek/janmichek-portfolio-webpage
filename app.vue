@@ -1,3 +1,6 @@
+<script setup lang="ts">
+</script>
+
 <template>
   <Html>
     <Head>
@@ -51,13 +54,10 @@
   <NuxtPage/>
 </template>
 
-<script setup lang="ts">
-</script>
-
 <style scoped>
 .page {
   &__section {
-    padding: var(--gutter-xxl) 0;
+    padding: var(--space-xxl) 0;
   }
 }
 </style>

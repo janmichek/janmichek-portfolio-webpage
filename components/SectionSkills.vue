@@ -1,3 +1,7 @@
+<script setup>
+
+</script>
+
 <template>
   <section class="skills">
     <div class="u-container">
@@ -34,13 +38,9 @@
   </section>
 </template>
 
-<script setup>
-
-</script>
-
 <style>
 .skills {
-  background: var(--brand-primary);
+  background: var(--color-mint);
 
   &__row {
     display: flex;
@@ -52,21 +52,21 @@
     }
 
     &:not(:last-of-type) {
-      margin-bottom: var(--gutter-lg);
+      margin-bottom: var(--space-lg);
     }
   }
 
   &__name {
-    font-family: var(--font-family-heading);
+    font-family: var(--font-serif);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--brand-secondary);
-    font-size: 40px;
+    color: var(--color-cream);
+    font-size: var(--text-4xl);
     text-align: center;
     min-width: 118px;
     line-height: 1;
-    margin-bottom: var(--gutter-sm);
+    margin-bottom: var(--space-sm);
 
     @media (--tablet) {
       margin-bottom: 0;
@@ -74,7 +74,7 @@
 
     &--web3 {
       @media (--tablet) {
-        font-size: 28px;
+        font-size: var(--text-xl);
       }
     }
   }

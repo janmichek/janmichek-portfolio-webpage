@@ -1,22 +1,3 @@
 :root {
-  --button-background: var(--brand-primary);
-  --button-background-primary: var(--brand-primary);
-  --button-background-secondary: var(--brand-secondary);
-  --button-background-success: var(--brand-success);
-  --button-background-warning: var(--brand-warning);
-  --button-background-error: var(--brand-error);
-  --button-background-info: var(--brand-info);
-  --button-background-default: var(--text-color);
-  --button-color: #fff;
-  --button-padding-x: 8px;
-  --button-padding-y: 4px;
-  --button-shadow: var(--drop-shadow);
-  --button-radius: 20px;
-  --button-font-size: 18px;
-  --button-font-family: var(--font-family);
-  --button-circle-size: 80px;
-  --button-circle-size-sm: 48px;
-  --button-circle-size-xs: 24px;
-  --link-color: var(--text-color);
-  --placeholder-color: var(--text-color)
+  /*todo move it here*/
 }

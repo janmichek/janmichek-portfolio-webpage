@@ -1,3 +1,6 @@
+<script setup lang="ts">
+</script>
+
 <template>
   <NuxtLayout name="slug">
     <article class="tech-links">
@@ -91,13 +94,10 @@
   </NuxtLayout>
 </template>
 
-<script setup lang="ts">
-</script>
-
 <style scoped>
 .tech-links {
   &__item {
-    margin-bottom: var(--gutter);
+    margin-bottom: var(--space);
   }
 }
 </style>

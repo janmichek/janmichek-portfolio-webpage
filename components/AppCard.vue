@@ -1,3 +1,20 @@
+<script setup>
+defineProps({
+  image: {
+    type: String,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+  link: {
+    type: String,
+    default: null,
+  },
+})
+</script>
+
 <template>
   <div class="card">
     <app-link
@@ -24,30 +41,13 @@
   </div>
 </template>
 
-<script setup>
-defineProps({
-  image: {
-    type: String,
-    required: true,
-  },
-  title: {
-    type: String,
-    required: true,
-  },
-  link: {
-    type: String,
-    default: null,
-  },
-})
-</script>
-
 <style scoped>
 .card {
   width: 100%;
   display: inline-block;
-  background: var(--brand-secondary);
-  padding: var(--gutter);
-  margin-bottom: var(--gutter-lg);
+  background: var(--color-cream);
+  padding: var(--space);
+  margin-bottom: var(--space-lg);
   position: relative;
 
   &__link {
@@ -63,11 +63,11 @@ defineProps({
   }
 
   &__image {
-    margin-bottom: var(--gutter-m);
+    margin-bottom: var(--space);
   }
 
   &__description {
-    margin-top: var(--gutter-xs);
+    margin-top: var(--space-xs);
     color: var(--text-color);
   }
 }

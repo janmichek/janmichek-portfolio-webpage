@@ -19,10 +19,10 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: var(--brand-secondary);
+  background: var(--color-cream);
 
   &__content {
-    padding: var(--gutter-xxl) 0;
+    padding: var(--space-xxl) 0;
   }
 
   &__footer {

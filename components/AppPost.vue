@@ -17,15 +17,15 @@
 <style>
 .post {
   &__heading {
-    margin-bottom: var(--gutter-sm);
+    margin-bottom: var(--space-sm);
   }
 
   &__description {
     margin-left: 0;
-    margin-top: var(--gutter-sm);
+    margin-top: var(--space-sm);
 
     @media (--tablet) {
-      margin-left: var(--gutter-lg);
+      margin-left: var(--space-lg);
       margin-top: 0;
     }
   }

@@ -1,8 +1,8 @@
 p {
-  margin: 0 0 var(--gutter-sm) 0;
+  margin: 0 0 var(--space-sm) 0;
 
   @media (--tablet) {
-    margin: 0 0 var(--gutter) 0;
+    margin: 0 0 var(--space) 0;
   }
 
   &:first-of-type {

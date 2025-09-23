@@ -1,3 +1,7 @@
+<script setup>
+
+</script>
+
 <template>
   <header class="the-header">
     <div class="u-container u-grid-12">
@@ -26,26 +30,22 @@
   </header>
 </template>
 
-<script setup>
-
-</script>
-
 <style scoped>
 .the-header {
-  padding: var(--gutter-xl) var(--gutter-xl) var(--gutter-xxl);
-  background: var(--brand-secondary);
+  padding: var(--space-xl) var(--space-xl) var(--space-xxl);
+  background: var(--color-cream);
   width: 100%;
   z-index: 900;
 
   @media (--tablet) {
-    padding: var(--gutter-xxl);
+    padding: var(--space-xxl);
   }
 
   &__avatar {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: var(--gutter);
+    margin-bottom: var(--space);
 
     @media (--tablet) {
       justify-content: flex-start;
@@ -59,20 +59,20 @@
 
   &__heading {
     text-align: center;
-    font-size: 56px;
+    font-size: var(--text-5xl);
 
     @media (--tablet) {
       white-space: nowrap;
     }
 
     @media (--mobile) {
-      font-size: 72px;
+      font-size: var(--text-6xl);
     }
   }
 
   &__subheading {
     text-align: center;
-    color: var(--brand-primary);
+    color: var(--color-mint);
 
     @media (--tablet) {
       white-space: nowrap;
@@ -82,7 +82,7 @@
   &__excerpt {
     text-align: center;
     color: var(--text-color-secondary);
-    font-size: 32px;
+    font-size: var(--text-3xl);
     margin-bottom: 0;
   }
 }

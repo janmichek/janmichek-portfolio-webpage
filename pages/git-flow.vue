@@ -1,38 +1,3 @@
-<template>
-  <NuxtLayout name="slug">
-    <article>
-      <slug-title
-        title="Git Flow"
-        description="
-      No worry if our company does not have solid workflow yet. After working for different companies, I can see what's
-       ultimately working now.
-      I wrote down these rules to make collaboration aligned, so we can iterate from here.
-      In the case of missing dev lead or to instruct junior developers, we may use these basics."/>
-
-      <title-section class="git-flow__title">
-        Issues
-      </title-section>
-      <app-checklist
-        :list="issue"
-        name="issue"/>
-
-      <title-section class="git-flow__title">
-        Pull Request
-      </title-section>
-      <app-checklist
-        :list="pullRequest"
-        name="pull-request"/>
-
-      <title-section class="git-flow__title">
-        Code Review
-      </title-section>
-      <app-checklist
-        :list="codeReview"
-        name="code-review"/>
-    </article>
-  </NuxtLayout>
-</template>
-
 <script setup>
 const issue = ref([
   'Use one of prepared Issue templates [Feature, Bug, Tech Debt]',
@@ -76,10 +41,45 @@ const codeReview = ref([
 ])
 </script>
 
+<template>
+  <NuxtLayout name="slug">
+    <article>
+      <slug-title
+        title="Git Flow"
+        description="
+      No worry if our company does not have solid workflow yet. After working for different companies, I can see what's
+       ultimately working now.
+      I wrote down these rules to make collaboration aligned, so we can iterate from here.
+      In the case of missing dev lead or to instruct junior developers, we may use these basics."/>
+
+      <title-section class="git-flow__title">
+        Issues
+      </title-section>
+      <app-checklist
+        :list="issue"
+        name="issue"/>
+
+      <title-section class="git-flow__title">
+        Pull Request
+      </title-section>
+      <app-checklist
+        :list="pullRequest"
+        name="pull-request"/>
+
+      <title-section class="git-flow__title">
+        Code Review
+      </title-section>
+      <app-checklist
+        :list="codeReview"
+        name="code-review"/>
+    </article>
+  </NuxtLayout>
+</template>
+
 <style scoped>
 .git-flow__title {
-  margin-top: var(--gutter-xl);
-  font-family: var(--font-family-heading);
-  font-size: 31px;
+  margin-top: var(--space-xl);
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
 }
 </style>

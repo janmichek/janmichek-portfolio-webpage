@@ -8,10 +8,10 @@
   </NuxtLayout>
 </template>
 
- <style scoped>
-  .page {
-    &__section {
-      padding: var(--gutter-xxl) 0;
-    }
+<style scoped>
+.page {
+  &__section {
+    padding: var(--space-xxl) 0;
   }
- </style>
+}
+</style>

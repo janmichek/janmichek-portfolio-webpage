@@ -1,13 +1,12 @@
 html {
   animation: fade-in ease-in 1;
   animation-fill-mode: forwards;
-  animation-duration: var(--slow);
+  animation-duration: var(--duration-slow);
 }
 
-/* Pages transition */
 .layout-enter-active,
 .layout-leave-active {
-  transition: all var(--fast);
+  transition: all var(--duration-fast);
 }
 
 .layout-enter,
@@ -15,19 +14,17 @@ html {
   opacity: 0;
 }
 
-/* Links */
 a {
   &:hover,
   &:focus {
-    transition: all var(--fast);
+    transition: all var(--duration-fast);
   }
 }
 
-/* Checkbox */
 label {
   &:before,
   &:after {
-    transition: var(--normal) all ease;
+    transition: var(--duration-slow) all ease;
   }
 }
 

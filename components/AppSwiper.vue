@@ -1,3 +1,19 @@
+<script setup>
+import { Navigation } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import 'swiper/css'
+import 'swiper/css/navigation'
+
+defineProps({
+  images: {
+    type: Array,
+    default: null,
+  },
+})
+
+const modules = [Navigation]
+</script>
+
 <template>
   <swiper
     v-if="images?.length"
@@ -19,22 +35,6 @@
   </swiper>
 </template>
 
-<script setup>
-import { Navigation } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import 'swiper/css'
-import 'swiper/css/navigation'
-
-defineProps({
-  images: {
-    type: Array,
-    default: null,
-  },
-})
-
-const modules = [Navigation]
-</script>
-
 <style>
 .swiper__image {
   margin: 0 auto;
@@ -51,10 +51,10 @@ const modules = [Navigation]
   height: 0;
   border-style: solid;
   border-width: 15px 30px 15px 0;
-  border-color: transparent var(--brand-primary) transparent transparent;
+  border-color: transparent var(--color-mint) transparent transparent;
 
   @media (--tablet) {
-    left: var(--gutter);
+    left: var(--space);
   }
 }
 
@@ -68,10 +68,10 @@ const modules = [Navigation]
   height: 0;
   border-style: solid;
   border-width: 15px 0 15px 30px;
-  border-color: transparent transparent transparent var(--brand-primary);
+  border-color: transparent transparent transparent var(--color-mint);
 
   @media (--tablet) {
-    right: var(--gutter);
+    right: var(--space);
   }
 }
 

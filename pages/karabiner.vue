@@ -307,7 +307,7 @@
 
 <style scoped>
 .karabiner__container {
-  width: calc(100vw - 2 * var(--gutter-sm));
+  width: calc(100vw - 2 * var(--space-sm));
   overflow-x: auto;
 
 }

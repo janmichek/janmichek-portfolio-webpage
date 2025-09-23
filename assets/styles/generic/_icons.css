@@ -1,6 +1,0 @@
-/* Use for fine tuning of svg image placement inside app-icon component */
-.icon {
-  &--arrow-left {
-    transform: translate(0%, 0%);
-  }
-}

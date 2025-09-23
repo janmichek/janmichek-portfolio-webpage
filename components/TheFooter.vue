@@ -1,3 +1,12 @@
+<script setup>
+defineProps({
+  theme: {
+    type: String,
+    default: 'secondary',
+  },
+})
+</script>
+
 <template>
   <footer
     class="the-footer"
@@ -44,31 +53,22 @@
   </footer>
 </template>
 
-<script setup>
-defineProps({
-  theme: {
-    type: String,
-    default: 'secondary',
-  },
-})
-</script>
-
 <style scoped>
 [data-theme="primary"] {
-  --footer-background: var(--brand-primary);
-  --footer-link: var(--brand-secondary);
+  --footer-background: var(--color-mint);
+  --footer-link: var(--color-cream);
   --footer-link-hover: var(--text-color);
 }
 
 [data-theme="secondary"] {
-  --footer-background: var(--brand-secondary);
-  --footer-link: var(--brand-primary);
+  --footer-background: var(--color-cream);
+  --footer-link: var(--color-mint);
   --footer-link-hover: var(--text-color);
 }
 
 .the-footer {
   background: var(--footer-background);
-  padding: var(--gutter-xl) 0;
+  padding: var(--space-xl) 0;
   text-align: center;
 
   @media (--mobile) {
@@ -76,7 +76,7 @@ defineProps({
   }
 
   &__link {
-    font-size: 22px;
+    font-size: var(--text-lg);
     color: var(--footer-link);
 
     &:hover {
@@ -87,7 +87,7 @@ defineProps({
   &__link-wrap {
     width: 100%;
     text-align: center;
-    margin-bottom: var(--gutter-sm);
+    margin-bottom: var(--space-sm);
   }
 }
 </style>

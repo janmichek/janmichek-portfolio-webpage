@@ -92,6 +92,6 @@ const goodies = ref([
 
 <style scoped>
 .goodies {
-  background: var(--brand-primary);
+  background: var(--color-mint);
 }
 </style>

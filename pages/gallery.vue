@@ -1,23 +1,3 @@
-<template>
-  <article class="gallery">
-    <div class="layout__content u-center">
-      <div class="u-container u-grid-12">
-        <div class="u-2/3@tablet">
-          <section>
-            <slug-title
-              title="Photo Gallery"
-              description="I like shooting photography too. Especially flowers. Here is a small presentation of my
-              esthetics skills. I am using them as placeholder images when building new app."/>
-          </section>
-        </div>
-      </div>
-    </div>
-    <section>
-      <app-swiper :images="images"/>
-    </section>
-  </article>
-</template>
-
 <script setup>
 const images = ref([
   {
@@ -71,8 +51,28 @@ const images = ref([
 ])
 </script>
 
+<template>
+  <article class="gallery">
+    <div class="layout__content u-center">
+      <div class="u-container u-grid-12">
+        <div class="u-2/3@tablet">
+          <section>
+            <slug-title
+              title="Photo Gallery"
+              description="I like shooting photography too. Especially flowers. Here is a small presentation of my
+              esthetics skills. I am using them as placeholder images when building new app."/>
+          </section>
+        </div>
+      </div>
+    </div>
+    <section>
+      <app-swiper :images="images"/>
+    </section>
+  </article>
+</template>
+
 <style scoped>
 .gallery {
-  padding: var(--gutter-xxl) 0;
+  padding: var(--space-xxl) 0;
 }
 </style>

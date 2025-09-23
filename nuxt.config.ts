@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
-  modules: ['@nuxt/eslint', '@nuxt/image', 'nuxt-vuefire'],
+  modules: ['@nuxt/eslint', '@nuxt/image', 'nuxt-vuefire', '@nuxt/fonts'],
   ssr: false,
   css: ['~/assets/styles/main.css'],
   devServer: {
@@ -17,7 +17,6 @@ export default defineNuxtConfig({
       'postcss-custom-media': {},
       'postcss-import': {},
       'postcss-nested': {},
-      'lost': {},
     },
   },
   eslint: {

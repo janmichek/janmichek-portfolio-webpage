@@ -1,10 +1,10 @@
 <template>
   <div class="preview">
     <nuxt-img
-      format="webp"
       v-if="imageLInk"
+      format="webp"
       :src="imageLInk"
-      alt="preview" />
+      alt="preview"/>
     <div
       v-else
       class="preview__loading">

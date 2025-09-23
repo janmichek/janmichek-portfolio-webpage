@@ -4,12 +4,9 @@
   --color-carbon: #082626;
   --color-gray: #808080;
   --color-cream: #fbfbfb;
-
   --font-sans: 'Play', 'Arial', serif;
   --font-serif: 'Roboto Slab', 'Times New Roman', sans-serif;
-
   --container-max-width: 1000px;
-
   --duration-fast: 0.1s;
   --duration-slow: 0.4s;
 
@@ -25,9 +22,7 @@
   --text-4xl: 2.5rem; /* 40px */
   --text-5xl: 3.5rem; /* 56px */
   --text-6xl: 4.5rem; /* 72px */
-
   --line-height: 1.5;
-
   --space-xs: 8px;
   --space-sm: 12px;
   --space: 20px;

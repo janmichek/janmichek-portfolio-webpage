@@ -1,7 +1,7 @@
 a {
   color: var(--ui-text-secondary);
   text-decoration: underline;
-  word-wrap: break-word;
+  overflow-wrap: break-word;
 
   &:visited {
     color: var(--ui-text-primary);

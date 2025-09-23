@@ -1,7 +1,7 @@
 <template>
   <NuxtLayout name="slug">
     <article>
-      <title-slug
+      <slug-title
         title="Git Flow"
         description="
       No worry if our company does not have solid workflow yet. After working for different companies, I can see what's

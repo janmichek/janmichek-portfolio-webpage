@@ -1,7 +1,7 @@
 <template>
   <NuxtLayout name="slug">
     <article>
-      <title-slug
+      <slug-title
         title="Karabiner Shortcuts"
         description="My personal way to tune ergonomics. I believe this is ultimate good, but it may serve as
          inspiration. At least this setting helped me to save tons of seconds today"/>

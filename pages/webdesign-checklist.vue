@@ -1,7 +1,7 @@
 <template>
   <NuxtLayout name="slug">
     <article>
-      <title-slug
+      <slug-title
         title="Webdesign checklist"
         description="
       Nothing great is created alone, so I created this to make collaboration better.

@@ -4,7 +4,7 @@
       <div class="u-container u-grid-12">
         <div class="u-2/3@tablet">
           <section>
-            <title-slug
+            <slug-title
               title="Photo Gallery"
               description="I like shooting photography too. Especially flowers. Here is a small presentation of my
               esthetics skills. I am using them as placeholder images when building new app."/>

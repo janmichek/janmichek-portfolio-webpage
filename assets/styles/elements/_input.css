@@ -53,7 +53,7 @@ input[type="radio"] + label:after {
   left: .25em;
   width: 1em;
   height: 1em;
-  background: var(--color-mint);
+  background: var(--color-sky);
   border: .2em solid var(--color-cream);
   border-radius: 50%;
 }
@@ -61,8 +61,8 @@ input[type="radio"] + label:after {
 /* :checked */
 input[type="checkbox"]:checked + label:before,
 input[type="radio"]:checked + label:before {
-  background: var(--color-mint);
-  border: .2em solid var(--color-mint);
+  background: var(--color-sky);
+  border: .2em solid var(--color-sky);
 }
 
 input[type="checkbox"] + label:after,

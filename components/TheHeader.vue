@@ -4,8 +4,8 @@
 
 <template>
   <header class="the-header">
-    <div class="u-container u-grid-12">
-      <div class="u-5/12@tablet the-header__avatar">
+    <div class="the-header__container">
+      <div class="the-header__avatar">
         <app-link to="/">
           <nuxt-img
             format="webp"
@@ -15,7 +15,7 @@
             alt="Jan Michek's avatar"/>
         </app-link>
       </div>
-      <div class="u-7/12@tablet the-header__content">
+      <div class="the-header__content">
         <h1 class="the-header__heading">
           Jan Michek
         </h1>
@@ -41,7 +41,13 @@
     padding: var(--space-xxl);
   }
 
+  &__container {
+    @apply u-container;
+    @apply u-grid-12;
+  }
+
   &__avatar {
+    @apply u-5/12@tablet;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -54,6 +60,7 @@
   }
 
   &__content {
+    @apply u-7/12@tablet;
     width: 100%;
   }
 
@@ -72,7 +79,7 @@
 
   &__subheading {
     text-align: center;
-    color: var(--color-mint);
+    color: var(--color-sky);
 
     @media (--tablet) {
       white-space: nowrap;

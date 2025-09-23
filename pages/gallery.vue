@@ -53,9 +53,9 @@ const images = ref([
 
 <template>
   <article class="gallery">
-    <div class="layout__content u-center">
-      <div class="u-container u-grid-12">
-        <div class="u-2/3@tablet">
+    <div class="layout__content gallery__content">
+      <div class="gallery__container">
+        <div class="gallery__main">
           <section>
             <slug-title
               title="Photo Gallery"
@@ -74,5 +74,18 @@ const images = ref([
 <style scoped>
 .gallery {
   padding: var(--space-xxl) 0;
+
+  &__content {
+    @apply u-center;
+  }
+
+  &__container {
+    @apply u-container;
+    @apply u-grid-12;
+  }
+
+  &__main {
+    @apply u-2/3@tablet;
+  }
 }
 </style>

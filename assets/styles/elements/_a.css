@@ -9,6 +9,6 @@ a {
 
   &:hover,
   &:focus {
-    color: var(--color-mint);
+    color: var(--color-sky);
   }
 }

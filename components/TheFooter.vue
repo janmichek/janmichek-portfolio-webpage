@@ -11,13 +11,13 @@ defineProps({
   <footer
     class="the-footer"
     :data-theme="theme">
-    <div class="u-container">
+    <div class="the-footer__container">
       <title-section theme="primary">
         Contact
       </title-section>
 
-      <div class="u-grid-12">
-        <div class="u-1/4@desktop u-1/2@tablet the-footer__link-wrap">
+      <div class="the-footer__grid">
+        <div class="the-footer__link-wrap">
           <app-link
             class="the-footer__link"
             to="mailto:jan@janmichek.cz">
@@ -25,7 +25,7 @@ defineProps({
           </app-link>
         </div>
 
-        <div class="u-1/4@desktop u-1/2@tablet the-footer__link-wrap">
+        <div class="the-footer__link-wrap">
           <app-link
             class="the-footer__link"
             to="https://cz.linkedin.com/in/jan-michek-aba913103">
@@ -33,7 +33,7 @@ defineProps({
           </app-link>
         </div>
 
-        <div class="u-1/4@desktop u-1/2@tablet the-footer__link-wrap">
+        <div class="the-footer__link-wrap">
           <app-link
             class="the-footer__link"
             to="https://github.com/janmichek/">
@@ -41,7 +41,7 @@ defineProps({
           </app-link>
         </div>
 
-        <div class="u-1/4@desktop u-1/2@tablet the-footer__link-wrap">
+        <div class="the-footer__link-wrap">
           <app-link
             class="the-footer__link"
             to="https://www.twitter.com/jan_michek">
@@ -55,14 +55,14 @@ defineProps({
 
 <style scoped>
 [data-theme="primary"] {
-  --footer-background: var(--color-mint);
+  --footer-background: var(--color-sky);
   --footer-link: var(--color-cream);
   --footer-link-hover: var(--text-color);
 }
 
 [data-theme="secondary"] {
   --footer-background: var(--color-cream);
-  --footer-link: var(--color-mint);
+  --footer-link: var(--color-sky);
   --footer-link-hover: var(--text-color);
 }
 
@@ -75,6 +75,14 @@ defineProps({
     text-align: left;
   }
 
+  &__container {
+    @apply u-container;
+  }
+
+  &__grid {
+    @apply u-grid-12;
+  }
+
   &__link {
     font-size: var(--text-lg);
     color: var(--footer-link);
@@ -85,6 +93,8 @@ defineProps({
   }
 
   &__link-wrap {
+    @apply u-1/4@desktop;
+    @apply u-1/2@tablet;
     width: 100%;
     text-align: center;
     margin-bottom: var(--space-sm);

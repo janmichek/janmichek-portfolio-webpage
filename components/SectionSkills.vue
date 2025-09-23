@@ -4,7 +4,7 @@
 
 <template>
   <section class="skills">
-    <div class="u-container">
+    <div class="skills__container">
       <title-section theme="primary">
         My skillset
       </title-section>
@@ -40,7 +40,11 @@
 
 <style>
 .skills {
-  background: var(--color-mint);
+  background: var(--color-sky);
+
+  &__container {
+    @apply u-container;
+  }
 
   &__row {
     display: flex;

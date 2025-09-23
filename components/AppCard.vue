@@ -19,7 +19,7 @@ defineProps({
   <div class="card">
     <app-link
       v-if="link"
-      class="card__link u-stretched-link"
+      class="card__link"
       :to="link">
       <h4 class="card__title">
         {{ title }}
@@ -51,6 +51,7 @@ defineProps({
   position: relative;
 
   &__link {
+    @apply u-stretched-link;
     text-decoration: none;
 
     &:hover {

@@ -1,9 +1,9 @@
 <template>
   <div class="layout layout--default">
     <the-header/>
-    <main class="layout__content u-center">
-      <div class="u-container u-grid-12">
-        <div class="u-2/3@tablet">
+    <main class="layout__content">
+      <div class="layout__container">
+        <div class="layout__main">
           <slot/>
         </div>
       </div>
@@ -22,7 +22,17 @@
   background: var(--color-cream);
 
   &__content {
+    @apply u-center;
     padding: var(--space-xxl) 0;
+  }
+
+  &__container {
+    @apply u-container;
+    @apply u-grid-12;
+  }
+
+  &__main {
+    @apply u-2/3@tablet;
   }
 
   &__footer {

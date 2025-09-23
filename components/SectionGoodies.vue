@@ -1,23 +1,3 @@
-<template>
-  <section class="goodies">
-    <div class="u-container">
-      <title-section theme="primary">
-        Goodies
-      </title-section>
-      <div class="u-masonry">
-        <app-card
-          v-for="(goodie, id) in goodies"
-          :key="id"
-          :image="goodie.image"
-          :title="goodie.title"
-          :link="goodie.link">
-          <div v-html="goodie.description"/>
-        </app-card>
-      </div>
-    </div>
-  </section>
-</template>
-
 <script setup>
 const goodies = ref([
   {
@@ -90,8 +70,36 @@ const goodies = ref([
 ])
 </script>
 
+<template>
+  <section class="goodies">
+    <div class="goodies__container">
+      <title-section theme="primary">
+        Goodies
+      </title-section>
+      <div class="goodies__masonry">
+        <app-card
+          v-for="(goodie, id) in goodies"
+          :key="id"
+          :image="goodie.image"
+          :title="goodie.title"
+          :link="goodie.link">
+          <div v-html="goodie.description"/>
+        </app-card>
+      </div>
+    </div>
+  </section>
+</template>
+
 <style scoped>
 .goodies {
-  background: var(--color-mint);
+  background: var(--color-sky);
+
+  &__container {
+    @apply u-container;
+  }
+
+  &__masonry {
+    @apply u-masonry;
+  }
 }
 </style>

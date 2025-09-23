@@ -37,6 +37,7 @@
     "@csstools/postcss-global-data": "^3.1.0",
     "@nuxtjs/stylelint-module": "^5.2.1",
     "postcss": "^8.5.6",
+    "postcss-apply-class": "^0.1.6",
     "postcss-custom-media": "^11.0.6",
     "postcss-nested": "^7.0.2",
     "stylelint": "^16.24.0",

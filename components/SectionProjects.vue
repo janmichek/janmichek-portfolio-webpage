@@ -3,7 +3,7 @@
 
 <template>
   <section class="projects">
-    <div class="u-container">
+    <div class="projects__container">
       <title-section>Recent projects</title-section>
 
       <div class="projects__content">
@@ -243,6 +243,10 @@
 
 <style scoped>
 .projects {
+  &__container {
+    @apply u-container;
+  }
+
   &__content {
     margin: 0 var(--space-sm);
   }

@@ -1,3 +1,16 @@
+<script setup>
+defineProps({
+  list: {
+    type: Array,
+    required: true,
+  },
+  name: {
+    type: String,
+    default: '',
+  },
+})
+</script>
+
 <template>
   <ul>
     <li
@@ -16,26 +29,13 @@
   </ul>
 </template>
 
-<script setup>
-defineProps({
-  list: {
-    type: Array,
-    required: true,
-  },
-  name: {
-    type: String,
-    default: '',
-  },
-})
-</script>
-
 <style scoped>
 .checklist__checkbox:checked {
-  color: var(--color-mint);
+  color: var(--color-sky);
 }
 
 .checklist__checkbox:checked ~ .checklist__label {
   text-decoration: line-through;
-  color: var(--color-mint);
+  color: var(--color-sky);
 }
 </style>

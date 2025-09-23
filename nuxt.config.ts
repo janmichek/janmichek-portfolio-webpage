@@ -21,6 +21,7 @@ export default defineNuxtConfig({
         files: ['assets/styles/settings/_variables.css'],
       },
       'postcss-custom-media': {},
+      'postcss-apply-class': {},
       // 'postcss-import': {},
       'postcss-nested': {},
     },

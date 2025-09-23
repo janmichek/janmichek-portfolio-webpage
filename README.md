@@ -47,6 +47,15 @@ bun lint:js       # ESLint only
 bun lint:style    # Stylelint only
 ```
 
+### Utilities
+
+Utility scripts for development:
+
+```bash
+bun reset         # Clean reinstall and start dev server
+bun reinstall     # Remove node_modules and reinstall
+```
+
 ## Production
 
 ### Build
@@ -67,10 +76,18 @@ bun preview
 
 ### Deployment
 
-Deploy to Firebase Hosting on janmichek.cz domain
+Deploy to Firebase Hosting on janmichek.cz domain:
 
 ```bash
 bun deploy
+```
+
+### Firebase Emulators
+
+Run Firebase emulators locally for development:
+
+```bash
+bun emulators
 ```
 
 ## Architecture

@@ -42,7 +42,7 @@ const codeReview = ref([
 </script>
 
 <template>
-  <NuxtLayout name="slug">
+  <nuxt-layout name="slug">
     <article>
       <slug-title
         title="Git Flow"
@@ -73,7 +73,7 @@ const codeReview = ref([
         :list="codeReview"
         name="code-review"/>
     </article>
-  </NuxtLayout>
+  </nuxt-layout>
 </template>
 
 <style scoped>

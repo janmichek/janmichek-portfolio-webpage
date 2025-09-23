@@ -40,7 +40,7 @@
 
 <style>
 .skills {
-  background: var(--color-sky);
+  background: var(--ui-primary);
 
   &__container {
     @apply u-container;
@@ -65,7 +65,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-cream);
+    color: var(--text-secondary);
     font-size: var(--text-4xl);
     text-align: center;
     min-width: 118px;

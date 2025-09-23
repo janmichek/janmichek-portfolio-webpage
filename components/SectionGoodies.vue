@@ -92,7 +92,7 @@ const goodies = ref([
 
 <style scoped>
 .goodies {
-  background: var(--color-sky);
+  background: var(--ui-primary);
 
   &__container {
     @apply u-container;

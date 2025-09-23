@@ -45,7 +45,7 @@ defineProps({
 .card {
   width: 100%;
   display: inline-block;
-  background: var(--color-cream);
+  background: var(--ui-secondary);
   padding: var(--space);
   margin-bottom: var(--space-lg);
   position: relative;

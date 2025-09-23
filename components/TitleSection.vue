@@ -23,7 +23,7 @@ export default {
 }
 
 [data-theme="light"] {
-  --title-section-color: var(--color-sky);
+  --title-section-color: var(--text-primary);
 }
 
 .title-section {

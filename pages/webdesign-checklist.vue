@@ -1,17 +1,3 @@
-<template>
-  <NuxtLayout name="slug">
-    <article>
-      <slug-title
-        title="Webdesign checklist"
-        description="
-      Nothing great is created alone, so I created this to make collaboration better.
-      These are frequent requests on design sketches that applies almost ultimately.
-      These requirements should be met before design sketches handoff."/>
-      <app-checklist :list="checklist"/>
-    </article>
-  </NuxtLayout>
-</template>
-
 <script setup>
 const checklist = [
   'hover state',
@@ -31,3 +17,17 @@ const checklist = [
   'Mobile first design (project specific, but mostly yes)',
 ]
 </script>
+
+<template>
+  <nuxt-layout name="slug">
+    <article>
+      <slug-title
+        title="Webdesign checklist"
+        description="
+      Nothing great is created alone, so I created this to make collaboration better.
+      These are frequent requests on design sketches that applies almost ultimately.
+      These requirements should be met before design sketches handoff."/>
+      <app-checklist :list="checklist"/>
+    </article>
+  </nuxt-layout>
+</template>

@@ -51,7 +51,7 @@ const modules = [Navigation]
   height: 0;
   border-style: solid;
   border-width: 15px 30px 15px 0;
-  border-color: transparent var(--color-sky) transparent transparent;
+  border-color: transparent var(--ui-primary) transparent transparent;
 
   @media (--tablet) {
     left: var(--space);
@@ -68,7 +68,7 @@ const modules = [Navigation]
   height: 0;
   border-style: solid;
   border-width: 15px 0 15px 30px;
-  border-color: transparent transparent transparent var(--color-sky);
+  border-color: transparent transparent transparent var(--ui-primary);
 
   @media (--tablet) {
     right: var(--space);

@@ -55,14 +55,14 @@ defineProps({
 
 <style scoped>
 [data-theme="primary"] {
-  --footer-background: var(--color-sky);
-  --footer-link: var(--color-cream);
+  --footer-background: var(--ui-primary);
+  --footer-link: var(--text-secondary);
   --footer-link-hover: var(--text-color);
 }
 
 [data-theme="secondary"] {
-  --footer-background: var(--color-cream);
-  --footer-link: var(--color-sky);
+  --footer-background: var(--ui-secondary);
+  --footer-link: var(--text-primary);
   --footer-link-hover: var(--text-color);
 }
 

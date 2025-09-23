@@ -1,5 +1,5 @@
 <template>
-  <NuxtLayout name="slug">
+  <nuxt-layout name="slug">
     <article>
       <slug-title
         title="Karabiner Shortcuts"
@@ -302,13 +302,12 @@
         </table>
       </div>
     </article>
-  </NuxtLayout>
+  </nuxt-layout>
 </template>
 
 <style scoped>
 .karabiner__container {
   width: calc(100vw - 2 * var(--space-sm));
   overflow-x: auto;
-
 }
 </style>

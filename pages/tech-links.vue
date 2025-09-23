@@ -2,8 +2,8 @@
 </script>
 
 <template>
-  <NuxtLayout name="slug">
-    <article class="tech-links">
+  <nuxt-layout name="slug">
+    <article>
       <slug-title
         title="Tech links"
         description="These are the main sources of my outer world contact. I do open them mostly on Sundays.
@@ -91,13 +91,11 @@
         </li>
       </ul>
     </article>
-  </NuxtLayout>
+  </nuxt-layout>
 </template>
 
 <style scoped>
-.tech-links {
-  &__item {
+.tech-links__item {
     margin-bottom: var(--space);
   }
-}
 </style>

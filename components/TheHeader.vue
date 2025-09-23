@@ -10,7 +10,7 @@
           <nuxt-img
             format="webp"
             class="the-header__image"
-            src="/janmichek.webp"
+            src="/profile-pic-2022.png"
             :width="230"
             alt="Jan Michek's avatar"/>
         </app-link>
@@ -33,7 +33,7 @@
 <style scoped>
 .the-header {
   padding: var(--space-xl) var(--space-xl) var(--space-xxl);
-  background: var(--color-cream);
+  background: var(--ui-bg);
   width: 100%;
   z-index: 900;
 
@@ -47,7 +47,8 @@
   }
 
   &__avatar {
-    @apply u-5/12@tablet;
+    @apply u-5/12
+    @tablet;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -60,7 +61,8 @@
   }
 
   &__content {
-    @apply u-7/12@tablet;
+    @apply u-7/12
+    @tablet;
     width: 100%;
   }
 
@@ -79,7 +81,7 @@
 
   &__subheading {
     text-align: center;
-    color: var(--color-sky);
+    color: var(--text-primary);
 
     @media (--tablet) {
       white-space: nowrap;

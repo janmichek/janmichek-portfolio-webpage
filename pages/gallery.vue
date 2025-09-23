@@ -53,6 +53,7 @@ const images = ref([
 
 <template>
   <article class="gallery">
+    <!--    todo is the class needed? -->
     <div class="layout__content gallery__content">
       <div class="gallery__container">
         <div class="gallery__main">
@@ -85,7 +86,7 @@ const images = ref([
   }
 
   &__main {
-    @apply u-2/3@tablet;
+    @apply u-2/3
   }
 }
 </style>

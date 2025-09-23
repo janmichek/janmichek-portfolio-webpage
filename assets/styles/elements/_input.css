@@ -37,7 +37,7 @@ label:before {
 /* Checkbox */
 input[type="checkbox"] + label:after {
   content: "\2714";
-  color: var(--color-cream);
+  color: var(--text-secondary);
   line-height: 1.5;
   text-align: center;
 }
@@ -53,16 +53,16 @@ input[type="radio"] + label:after {
   left: .25em;
   width: 1em;
   height: 1em;
-  background: var(--color-sky);
-  border: .2em solid var(--color-cream);
+  background: var(--ui-primary);
+  border: .2em solid var(--text-secondary);
   border-radius: 50%;
 }
 
 /* :checked */
 input[type="checkbox"]:checked + label:before,
 input[type="radio"]:checked + label:before {
-  background: var(--color-sky);
-  border: .2em solid var(--color-sky);
+  background: var(--ui-primary);
+  border: .2em solid var(--ui-primary);
 }
 
 input[type="checkbox"] + label:after,

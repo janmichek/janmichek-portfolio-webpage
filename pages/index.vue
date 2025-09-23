@@ -1,17 +1,16 @@
 <template>
-  <NuxtLayout name="default">
+  <nuxt-layout name="default">
     <article class="page">
       <section-skills class="page__section"/>
       <section-projects class="page__section"/>
       <section-goodies class="page__section"/>
     </article>
-  </NuxtLayout>
+  </nuxt-layout>
 </template>
 
 <style scoped>
-.page {
-  &__section {
-    padding: var(--space-xxl) 0;
-  }
+.page__section {
+  padding: var(--space-xxl) 0;
+  /*todo space section?*/
 }
 </style>

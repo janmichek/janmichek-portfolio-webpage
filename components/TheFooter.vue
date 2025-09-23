@@ -81,7 +81,17 @@ toto not consistent naming
   }
 
   &__grid {
-    @apply .u-grid-12;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space);
+
+    @media (--tablet) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (--desktop) {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 
   &__link {
@@ -94,11 +104,12 @@ toto not consistent naming
   }
 
   &__link-wrap {
-    @apply .u-1/4-desktop;
-    @apply .u-1/2-tablet;
-    width: 100%;
     text-align: center;
     margin-bottom: var(--space-sm);
+
+    @media (--tablet) {
+      margin-bottom: 0;
+    }
   }
 }
 </style>

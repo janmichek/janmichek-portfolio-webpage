@@ -8,7 +8,6 @@
         "@nuxt/fonts": "^0.11.4",
         "@nuxt/image": "^1.11.0",
         "firebase": "^12.3.0",
-        "lost": "^9.0.2",
         "nuxt": "^4.1.2",
         "nuxt-vuefire": "1.1.0",
         "swiper": "^12.0.2",
@@ -1404,8 +1403,6 @@
 
     "long": ["long@5.3.2", "", {}, "sha512-mNAgZ1GmyNhD7AuqnTG3/VQ26o760+ZYBPKjPvugO8+nLbYfX6TVpJPseBvopbdY+qpZ/lKUnmEc1LeZYS3QAA=="],
 
-    "lost": ["lost@9.0.2", "", { "dependencies": { "object-assign": "^4.1.1" }, "peerDependencies": { "postcss": "^8.4.14" } }, "sha512-uK4l6tKiXflvLXssQpuw6RaYhWWO9cq1PBZ/PumZe8uqhxVzNeMKlWyN4vtYDOY1ugL7aG9KgUUyL8owaMJBOQ=="],
-
     "lru-cache": ["lru-cache@10.4.3", "", {}, "sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ=="],
 
     "magic-regexp": ["magic-regexp@0.10.0", "", { "dependencies": { "estree-walker": "^3.0.3", "magic-string": "^0.30.12", "mlly": "^1.7.2", "regexp-tree": "^0.1.27", "type-level-regexp": "~0.1.17", "ufo": "^1.5.4", "unplugin": "^2.0.0" } }, "sha512-Uly1Bu4lO1hwHUW0CQeSWuRtzCMNO00CmXtS8N6fyvB3B979GOEEeAkiTUDsmbYLAbvpUS/Kt5c4ibosAzVyVg=="],
@@ -1505,8 +1502,6 @@
     "nuxt-vuefire": ["nuxt-vuefire@1.1.0", "", { "dependencies": { "@nuxt/kit": "^3.14.1592", "@posva/lru-cache": "^10.0.1", "lodash-es": "^4.17.21", "strip-json-comments": "^5.0.1" }, "peerDependencies": { "@firebase/app-types": ">=0.8.1", "firebase": "^9.0.0 || ^10.0.0 || ^11.1.0 || ^12.0.0", "firebase-admin": "^11.3.0 || ^12.2.0 || ^13.0.1", "firebase-functions": "^4.1.0 || ^5.0.0 || ^6.1.2", "vuefire": ">=3.2.2" }, "optionalPeers": ["@firebase/app-types", "firebase-admin", "firebase-functions"] }, "sha512-Sotrsw94+MvxyI5RQMAkgEbxlSIMUTJILEBOSgvNq/qFSCwzKPLA/Kx7PRCgbcReUffrRklbNbOtXZeSqrxoIg=="],
 
     "nypm": ["nypm@0.6.2", "", { "dependencies": { "citty": "^0.1.6", "consola": "^3.4.2", "pathe": "^2.0.3", "pkg-types": "^2.3.0", "tinyexec": "^1.0.1" }, "bin": { "nypm": "dist/cli.mjs" } }, "sha512-7eM+hpOtrKrBDCh7Ypu2lJ9Z7PNZBdi/8AT3AX8xoCj43BBVHD0hPSTEvMtkMpfs8FCqBGhxB+uToIQimA111g=="],
-
-    "object-assign": ["object-assign@4.1.1", "", {}, "sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg=="],
 
     "ofetch": ["ofetch@1.4.1", "", { "dependencies": { "destr": "^2.0.3", "node-fetch-native": "^1.6.4", "ufo": "^1.5.4" } }, "sha512-QZj2DfGplQAr2oj9KzceK9Hwz6Whxazmn85yYeVuS3u9XTMOGMRx0kO95MQ+vLsj/S/NwBDMMLU5hpxvI6Tklw=="],
 

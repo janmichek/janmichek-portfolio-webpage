@@ -79,16 +79,29 @@ const images = ref([
   padding: var(--space-xxl) 0;
 
   &__content {
-    @apply .u-center;
+    display: grid;
+    place-items: center;
   }
 
   &__container {
-    @apply .u-container;
-    @apply .u-grid-12;
+    max-width: var(--container-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+
+    @media (--desktop) {
+      padding-left: var(--space-xl);
+      padding-right: var(--space-xl);
+    }
   }
 
   &__main {
-    @apply .u-2/3
+    width: 100%;
+    max-width: 66.666667%; /* 2/3 */
   }
 }
 </style>

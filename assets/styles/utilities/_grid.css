@@ -1,6 +1,8 @@
 /* stylelint-disable no-duplicate-selectors */
 .u-container {
-  lost-center: var(--container-max-width) no-flex;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
   padding-left: var(--space-sm);
   padding-right: var(--space-sm);
 
@@ -10,9 +12,37 @@
   }
 }
 
+.u-grid {
+  display: grid;
+  gap: var(--space);
+}
+
+.u-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space);
+}
+
+.u-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space);
+}
+
+.u-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space);
+}
+
+.u-grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space);
+}
 
 .u-center {
-  lost-align: center;
+  place-items: center;
 }
 
 .u-masonry {

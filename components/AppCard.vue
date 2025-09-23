@@ -13,10 +13,11 @@
       class="card__title">
       {{ title }}
     </h4>
-    <img
+    <nuxt-img
+      format="webp"
       class="card__image"
       :src="`/${image}`"
-      :alt="title">
+      :alt="title" />
     <div class="card__description">
       <slot/>
     </div>

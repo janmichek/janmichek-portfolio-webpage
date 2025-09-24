@@ -21,14 +21,16 @@ export default {
 [data-variant="primary"] {
   --title-section-color: var(--ui-text-secondary);
   /*todo variable*/
-  @media (prefers-color-scheme: dark) {
+  @media (--dark) {
     --title-section-color: var(--ui-text-primary);
   }
 }
 
 [data-variant="secondary"] {
   --title-section-color: var(--ui-text-primary);
-
+  @media (--dark) {
+    --title-section-color: var(--ui-text-secondary);
+  }
 }
 
 .title-section {

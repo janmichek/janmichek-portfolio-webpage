@@ -27,24 +27,49 @@ leverages native tools and combines proven patterns into an optimal solution.
 
 [//]: # (So this is back to the roots. Le'ts use as most native tools as possible. Lets take from every past concept the best amc create best practivcses composite)
 
-## Key Architecture Principles
+## Principles
 
-2. (Variables) System**
-
-- Component-based naming (with [BEM methodology](https://getbem.com/) highly recommended but not mandatory)
-
+1. Component aproach React or Vue
+1. [ITCSS Structure](#1-itcss-inverted-triangle-css-structure)
+2. [CSS Variables System](#2-css-custom-properties-variables-system)
+3. [Semantic UI Mapping](#3-semantic-ui-mapping)
+4. [Automatic Theme Support](#4-automatic-theme-support)
 5. [Nested Syntax](#5-nested-syntax)
-   **Nested Syntax** to work around repeating BEM classes
-6. **Custom Media Queries**
-4. **Semantic Component Naming** taken from BEM
+6. [Custom Media Queries](#6-custom-media-queries)
+7. Apply class
 
-- Semantic HTML with elements ideally having single, meaningful classes
--
-    3. **Semantic UI Mapping** (taken from )
-- Semantic design tokens that express purpose, not appearance (taken from tailwind and bootstrap)
-- [ITCSS](https://itcss.io/) architecture for logical organization
-- Predictable naming conventions, smartly reuse naming, with full words over abbreviations
-- Utilities as a spark, not utility-first development
+[//]: # ()
+
+[//]: # (2. &#40;Variables&#41; System**)
+
+[//]: # ()
+
+[//]: # (- Component-based naming &#40;with [BEM methodology]&#40;https://getbem.com/&#41; highly recommended but not mandatory&#41;)
+
+
+[//]: # (5. [Nested Syntax]&#40;#5-nested-syntax&#41;)
+
+[//]: # (   **Nested Syntax** to work around repeating BEM classes)
+
+[//]: # (6. **Custom Media Queries**)
+
+[//]: # (4. **Semantic Component Naming** taken from BEM)
+
+[//]: # ()
+
+[//]: # (- Semantic HTML with elements ideally having single, meaningful classes)
+
+[//]: # (-)
+
+[//]: # (   3. **Semantic UI Mapping** &#40;taken from &#41;)
+
+[//]: # (- Semantic design tokens that express purpose, not appearance &#40;taken from tailwind and bootstrap&#41;)
+
+[//]: # (- [ITCSS]&#40;https://itcss.io/&#41; architecture for logical organization)
+
+[//]: # (- Predictable naming conventions, smartly reuse naming, with full words over abbreviations)
+
+[//]: # (- Utilities as a spark, not utility-first development)
 
 ## Overview
 
@@ -61,29 +86,82 @@ from [Bootstrap](https://getbootstrap.com/), [BEM](https://getbem.com/), and [IT
 ## Core Philosophy
 
 **Readability over brevity** - Following the principle from
-It's mainly about DX and Optimizing code for readability - we spend much more time looking at the code."
+the [Frontend Developer Manifesto](https://github.com/janmichek/frontend-developer-manifesto): "It's mainly about DX and
+Optimizing code for readability - we spend much more time looking at the code."
 
-Instead of memorizing hundreds of utility classes, this approach uses:
+Instead of memorizing hundreds of utility classes, this approach uses semantic design tokens that express purpose, not
+appearance. Component-based styling (with [BEM methodology](https://getbem.com/) highly recommended but not mandatory)
+provides [ITCSS](https://itcss.io/) architecture for logical organization. Predictable naming conventions with full
+words over abbreviations ensure semantic HTML with elements ideally having single, meaningful classes. Utilities serve
+as a spark, not utility-first development.
 
-- Semantic design tokens that express purpose, not appearance
-- Component-based styling (with [BEM methodology](https://getbem.com/) highly recommended but not mandatory)
-- [ITCSS](https://itcss.io/) architecture for logical organization
-- Predictable naming conventions with full words over abbreviations
-- Semantic HTML with elements ideally having single, meaningful classes
-- Utilities as a spark, not utility-first development
+## My Solution vs Tailwind: 4-Quadrant Comparison
+
+### ✅ My Solution Pros
+
+- **Separation of Concerns** - HTML focuses on structure, CSS on presentation
+- **Performance** - Smaller CSS bundle, better compression, faster builds
+- **No Memorization** - No need to memorize hundreds of utility classes
+- **Better IDE Support** - Cleaner autocomplete, readable templates
+- **Standards Compliance** - Uses standard CSS features, progressive enhancement
+- **Flexibility** - Easy complex layouts without arbitrary values
+- **Design Systems** - Better suited for component-based styling
+
+### ❌ My Solution Cons
+
+- **More Setup** - Requires understanding of ITCSS, BEM, PostCSS configuration
+- **Jumping Between Files** - Need to switch between template and style blocks
+- **Learning Curve** - Developers need to understand CSS fundamentals
+- **Not Trendy** - Goes against current utility-first movement
+
+### ✅ Tailwind Pros
+
+- **Unified Development** - Everything has its place, consistent approach
+- **Class Tokens** - Property and value at once, smart naming system
+- **Rapid Prototyping** - Once setup, development is fast and fun
+- **Less Jumping** - Styles directly in template, no switching files
+- **Popular** - Large community, lots of resources
+
+### ❌ Tailwind Cons
+
+- **Strange Class Names** - eg. `grid`, confusing abstractions
+- **Figma to Tailwind** - Design handoff complexity
+- **Class Hell** - So many classes (editor plugin needed to hide them)
+- **Responsive Classes** - Tragedy of responsive breakpoint classes
+- **CSS Inspector Hell** - Not as straightforward as CSS variables
+- **Mixing Concepts** - Style and template code mixed together
+- **Poor Code Orientation** - Hard to understand structure at glance
+- **Still Need CSS Knowledge** - Must understand specificity, flex, grid
+- **Setup Overhead** - Small projects suffer from configuration complexity
 
 ## PostCSS Configuration
 
 The build system uses several [PostCSS](https://postcss.org/) plugins for enhanced functionality:
 
-- [autoprefixer](https://github.com/postcss/autoprefixer) - Vendor prefixes
 - [@csstools/postcss-global-data](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-global-data) -
   Global variables
 - [postcss-custom-media](https://github.com/postcss/postcss-custom-media) - Custom breakpoints
 - [postcss-apply-class](https://github.com/pascalduez/postcss-apply) - @apply functionality
 - [postcss-nested](https://github.com/postcss/postcss-nested) - Nested CSS syntax
 
+```
+ postcss: {
+    plugins: {
+      '@csstools/postcss-global-data': {
+        files: ['assets/styles/settings/_theme.css'],
+      },
+      'postcss-custom-media': {},
+      'postcss-apply-class': {},
+      'postcss-nested': {},
+    },
+  },
+```
+
 ## Key Architecture Principles
+
+### 1. Component aproach React or Vue
+
+stles needs to be isolated as well as global stylesheet
 
 ### 1. ITCSS (Inverted Triangle CSS) Structure
 
@@ -101,32 +179,31 @@ The CSS is organized following ITCSS principles, from generic to specific:
 
 ### 2. [CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) (Variables) System
 
-Instead of hardcoded values scattered throughout utility classes, all design tokens are centralized:
+Instead of hardcoded values scattered throughout utility classes, all design tokens are centralized. This provides a
+consistent system where design decisions are made once and applied consistently across the entire project.
 
 ```
-/* Design tokens - expressing what they are, not what they look like */
+/* Design tokens - express look, not to to be use directly in temlates */
 --color-sky: #78c4e4;
 --color-teal: #6fbad8;
 --color-carbon: #082626;
 
 /* Typography scale (consistent sizing nomenclature: xs, sm, md, lg, xl) */
---text-xs: 0.75rem;   /* 12px */
---text-sm: 0.875rem;  /* 14px */
---text-base: 16px;    /* Base size */
---text-lg: 1.375rem;  /* 22px */
---text-xl: 1.75rem;   /* 28px */
+--text-sm: 0.875rem;
+--text-base: 16px;   
+--text-lg: 1.375rem; 
 
-/* Spacing system - avoid abbreviations, use full semantic names */
+/* Spacing system - exception from abbrevations */
 --space-xs: 8px;
---space-sm: 12px;
---space: 20px;        /* Base space unit */
+--space: 20px;      
 --space-lg: 32px;
 ```
 
 ### 3. Semantic UI Mapping
 
 Raw design tokens are mapped to semantic UI variables for better maintainability. Following the manifesto principle: "
-Classname should express what element is, not what it looks like":
+Classname should express what element is, not what it looks like", this creates a semantic layer that abstracts visual
+properties into meaningful, purpose-driven names.
 
 ```
 /* Semantic mapping layer - purpose over appearance */
@@ -138,46 +215,18 @@ Classname should express what element is, not what it looks like":
 --ui-text: var(--ui-text-secondary);   /* Default text */
 ```
 
-### 4. Automatic Theme Support
+### 5. Nested Syntax
 
-Dark mode is handled automatically
-through [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*), not by duplicating classes:
-
-```
-@media (prefers-color-scheme: dark) {
-  :root {
-    --ui-bg: var(--color-carbon);        /* Dark background */
-    --ui-text: var(--color-cream);       /* Light text for contrast */
-    --ui-text-primary: var(--color-cream); /* Consistent light text */
-    --ui-text-muted: var(--color-pale);  /* Muted text for dark theme */
-  }
-}
-```
-
-### 5 Nested Syntax
-
-Using [PostCSS nested](https://github.com/postcss/postcss-nested) syntax:
+Using [PostCSS nested](https://github.com/postcss/postcss-nested) syntax to work around repeating BEM classes while
+maintaining readable, hierarchical CSS structure.
+Due to using ideally single on element, there is no specificity fight
 
 ```
 .the-header {
-  /* Position & layout properties first */
-  display: block;
-  width: 100%;
-  z-index: 900;
-
-  /* Sizing next */
   padding: var(--space-xl) var(--space-xl) var(--space-xxl);
-
-  /* Cosmetic properties last */
-  background: var(--ui-bg);
 
   @media (--tablet) {
     padding: var(--space-xxl);
-  }
-
-  /* BEM naming - semantic and descriptive */
-  &__container {
-    @apply .u-container;
   }
 
   &__heading {
@@ -194,12 +243,10 @@ Using [PostCSS nested](https://github.com/postcss/postcss-nested) syntax:
 }
 ```
 
-`components/TheHeader.vue:39-88`
-
 ### 6. Custom Media Queries
 
 Consistent breakpoint system using [PostCSS custom media](https://github.com/postcss/postcss-custom-media) with semantic
-names:
+names that eliminate magic numbers and provide meaningful breakpoint references throughout the codebase.
 
 ```
 @custom-media --mobile (min-width: 480px);   /* Mobile-first approach */
@@ -207,14 +254,12 @@ names:
 @custom-media --desktop (min-width: 992px);  /* Desktop breakpoint */
 ```
 
-`assets/styles/settings/_theme.css:61-63`
-
 ## Semantic HTML
 
 Elements should ideally have **single, meaningful classes** that express their purpose:
 
 ```html
-<!-- Good: Single, semantic classes -->
+<!-- ✅ Good: Single, semantic classes -->
 <article class="blog-post">
   <header class="post-header">
     <h1 class="post-title">Article Title</h1>
@@ -225,12 +270,41 @@ Elements should ideally have **single, meaningful classes** that express their p
   </div>
 </article>
 
-<!-- Avoid: Multiple utility classes -->
+<!-- ❌ Bad: Multiple utility classes -->
 <article class="bg-white p-6 rounded shadow border">
   <header class="mb-4 border-b">
     <h1 class="text-2xl font-bold">Article Title</h1>
   </header>
 </article>
+```
+
+### 4. Automatic Theme Support
+
+Dark mode is handled automatically
+through [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*), not by duplicating classes. This
+approach eliminates the need for separate dark mode classes while maintaining full theme control.
+
+```
+
+@custom-media --dark (prefers-color-scheme: dark);
+
+
+@media (--dark) {
+  :root {
+    --ui-bg: var(--color-carbon);        /* Dark background */
+    --ui-text: var(--color-cream);       /* Light text for contrast */
+    --ui-text-primary: var(--color-cream); /* Consistent light text */
+    --ui-text-muted: var(--color-pale);  /* Muted text for dark theme */
+  }
+}
+```
+
+Use in template
+
+```
+    @media (--dark) {
+      color: var(--ui-text-primary);
+    }
 ```
 
 ## Naming Conventions
@@ -244,13 +318,13 @@ Consolidated naming practices for maintainable CSS:
 Every styled element needs a class name that expresses what it is, not how it looks:
 
 ```
-/* Good: Semantic naming that expresses purpose */
+/* ✅ Good: Semantic naming that expresses purpose */
 .preview-file__video { width: 100%; }  /* Clear purpose */
 .element--warning {}                   /* State, not appearance */
 .navigation-menu {}                    /* Full words, not abbreviated */
 .user__link {}                        /* Simple, not overly nested */
 
-/* Bad: Visual-based naming */
+/* ❌ Bad: Visual-based naming */
 .element--yellow {}                    /* Describes appearance */
 .btn-dbu {}                           /* Cryptic abbreviations */
 .user__list-item-link {}              /* Overly nested */
@@ -263,7 +337,7 @@ Every styled element needs a class name that expresses what it is, not how it lo
 Utilities should complement component-based styling, not replace it:
 
 ```
-/* Good: Utilities as helpers */
+/* ✅ Good: Utilities as helpers */
 .u-container        /* Layout utility - full word, not abbreviated */
 .u-grid-2          /* Grid utility with variant - predictable pattern */
 .u-center          /* Alignment utility - describes what it does */
@@ -273,53 +347,27 @@ Utilities should complement component-based styling, not replace it:
 #### 3. Element Class Naming ([Bootstrap](https://getbootstrap.com/) Pattern)
 
 ```
-/* Good: Reusable heading classes alongside native elements */
+/* ✅ Good: Reusable heading classes alongside native elements */
 h1, .h1 { font-size: var(--text-6xl); }  /* Largest heading */
 h2, .h2 { font-size: var(--text-4xl); }  /* Section heading */
 h3, .h3 { font-size: var(--text-4xl); }  /* Subsection heading */
 
-/* Allows semantic HTML with visual flexibility */
+/* ✅ Allows semantic HTML with visual flexibility */
+<!-- ✅ Semantic HTML with flexible styling -->
 <span class="h2">Visually looks like h2 but semantically appropriate</span>
 ```
 
-### Bad Examples (What to Avoid)
-
-#### 1. Arbitrary Tailwind Values
-
-```
-/* Bad: Arbitrary values destroy consistency and readability */
-.text-[14.5px] {}              /* Unpredictable sizing */
-.bg-[#1da1f2] {}               /* Magic numbers */
-.w-[calc(100%-2rem)] {}        /* Complex calculations in class names */
-```
-
-#### 2. Overly Specific Utility Classes
-
-```
-/* Bad: Too specific, not reusable or maintainable */
-.text-blue-427 {}                           /* Meaningless number */
-.mt-[17px] {}                               /* Arbitrary spacing */
-.grid-cols-[200px_minmax(900px,_1fr)_100px] {} /* Complex layout in class name */
-```
-
-#### 3. Non-Semantic Naming
-
-```
-/* Bad: Meaningless names that don't express purpose */
-.utility-1 {}        /* What does this do? */
-.helper-class-a {}   /* No indication of function */
-.temp-fix {}         /* Technical debt in naming */
-```
+### Antipatterns (What to Avoid)
 
 #### 4. Dependent Selectors
 
 ```
-/* Bad: Dependent selectors create fragile CSS */
+/* ❌ Bad: Dependent selectors create fragile CSS */
 .button .icon {}     /* Icon depends on being inside button */
 .card .title {}      /* Title depends on card context */
 .nav ul li a {}      /* Deep nesting creates dependencies */
 
-/* Good: Independent, reusable classes */
+/* ✅ Good: Independent, reusable classes */
 .button__icon {}     /* Self-contained icon class */
 .card__title {}      /* Independent title class */
 .nav__link {}        /* Standalone navigation link */
@@ -358,6 +406,10 @@ Components use scoped CSS for component-specific styles while leveraging global 
 
 `components/TheHeader.vue:36-51`
 
+### Layout??
+
+Use Grid, still, you cannot go aroun d grid even with TW
+
 ### Clean Template Markup
 
 Templates remain semantic and clean without utility class pollution:
@@ -378,39 +430,6 @@ Templates remain semantic and clean without utility class pollution:
 ```
 
 `components/TheHeader.vue:5-33`
-
-## Benefits Over Tailwind
-
-### 1. **Separation of Concerns**
-
-- HTML focuses on structure and semantics
-- CSS handles presentation in organized layers
-- JavaScript manages behavior without style conflicts
-- Clear boundaries between component logic and styling
-
-### 2. **Performance**
-
-- Smaller CSS bundle (no unused utility classes)
-- Better CSS compression due to repetition
-- Faster development builds
-
-### 3. **Developer Experience**
-
-- No need to memorize hundreds of classes
-- Better IDE support and autocomplete
-- Cleaner, more readable templates
-
-### 4. **Flexibility**
-
-- Easy to create complex layouts without arbitrary values
-- Component-based styling for complex UI patterns
-- Better suited for design systems
-
-### 5. **Standards Compliance**
-
-- Uses standard CSS features
-- Progressive enhancement friendly
-- Better accessibility support
 
 ## Implementation Examples
 
@@ -475,13 +494,13 @@ h1, .h1 {
 Every component should have **at least two words** to avoid conflicts and improve clarity:
 
 ```
-/* Good: Descriptive component names */
+/* ✅ Good: Descriptive component names */
 .the-header          /* Site header component */
 .project-link        /* Project link component */
 .app-card            /* Application card component */
 .title-section       /* Title section component */
 
-/* Bad: Single word components */
+/* ❌ Bad: Single word components */
 .header              /* Too generic */
 .link                /* Conflicts with element */
 .card                /* Not descriptive enough */
@@ -494,11 +513,11 @@ Every component should have **at least two words** to avoid conflicts and improv
 Use clear state indicators for component states:
 
 ```
-/* Good: Clear state indicators */
+/* ✅ Good: Clear state indicators */
 .is-loaded           /* Component has finished loading */
 .has-error           /* Component encountered an error */
 
-/* Bad: Present tense is ambiguous */
+/* ❌ Bad: Present tense is ambiguous */
 .loading             /* Is it loading or a loading indicator? */
 .error               /* Is this an error or error handling? */
 ```
@@ -510,12 +529,12 @@ Use clear state indicators for component states:
 Prioritize full words over abbreviations for better readability:
 
 ```
-/* Good: Full semantic words */
+/* ✅ Good: Full semantic words */
 .navigation-menu
 .container-max-width
 .button-primary
 
-/* Bad: Unclear abbreviations */
+/* ❌ Bad: Unclear abbreviations */
 .nav-menu            /* nav could mean navigate or navigation */
 .cont-max-w          /* Unclear what cont means */
 .btn-prim            /* Cryptic abbreviations */
@@ -526,7 +545,7 @@ Prioritize full words over abbreviations for better readability:
 Use predictable size naming across all utilities:
 
 ```
-/* Good: Consistent size scale */
+/* ✅ Good: Consistent size scale */
 --space-xs: 8px;
 --space-sm: 12px;
 --space: 20px;       /* Base size */
@@ -537,7 +556,7 @@ Use predictable size naming across all utilities:
 .u-grid-3           /* 3 columns */
 .u-grid-4           /* 4 columns */
 
-/* Bad: Inconsistent sizing */
+/* ❌ Bad: Inconsistent sizing */
 --space-tiny: 8px;
 --space-medium: 12px;
 --space-big: 32px;
@@ -545,32 +564,6 @@ Use predictable size naming across all utilities:
 .u-grid-double      /* Unclear size */
 .u-grid-triple      /* Not scalable */
 ```
-
-## Real-World Implementation Benefits
-
-### 1. **Development Speed**
-
-- Designers and developers speak the same language through semantic tokens
-- CSS variables enable rapid theme prototyping
-- Consistent patterns reduce decision fatigue
-
-### 2. **Maintenance**
-
-- Single source of truth for design tokens
-- Breaking changes are impossible due to semantic mapping
-- Easy to audit unused styles
-
-### 3. **Team Collaboration**
-
-- New team members understand code faster
-- Design system changes propagate automatically
-- Code reviews focus on logic, not style consistency
-
-### 4. **Performance**
-
-- Smaller CSS bundles (no utility class bloat)
-- Better compression due to repeated property names
-- Faster builds (no utility class generation)
 
 ## Conclusion
 
@@ -595,14 +588,14 @@ sense rather than forcing everything into a utility-first paradigm that prioriti
 Based on analysis of
 the [Aescan GitHub repository](https://github.com/aeternity/aescan/tree/69d26e48f7142cbf849ae68214e550fc91c76ad5/src),
 here's a comprehensive list of CSS classes that demonstrates excellent naming conventions and architecture principles:
-Blocks
 
-app
+Blocks (last word shoud be ideally UI-like, ideally something taken from HTML)
+
 default-layout
 header
-footer
 button
 panel
+card
 dashboard
 line-chart
 account-activities-panel
@@ -612,50 +605,311 @@ link
 
 Elements
 
-__footer
-__parallax
-__container
-__navigation
-__network-select
-__hamburger
-__icon
+- approach by purpose
+- aproach naming by ui part. Both are Valid, prioritize UI
+
+__controls (container for buttons or other controls)
+__body (container that comes with header and footer)
+__container (generic container x wrap/wrapper)
+__account-activities-table (inherited from used Vue component)
+__paragraph (inherited from html)
+__hamburger (inherited from know concepts)
+
+## Not Recommended Words for Naming
+
+Here are common mistakes when naming variables or functions and suggestions on how to fix them. These examples may be
+confusing, too general, quickly go into conflict, or express subjective evaluation. There may be cases where these would
+be valid of course:
+
+### ❌ Avoid → ✅ Use Instead
+
+**data** → **details**
+
+```css
+/* ❌ Too generic */
+.user__data {
+}
+
+/* ✅ More specific */
+.user__details {
+}
+
+.user__profile {
+}
+```
+
+**info** → **description**
+
+```css
+/* ❌ Vague purpose */
+.product__info {
+}
+
+/* ✅ Clear purpose */
+.product__description {
+}
+
+.product__specifications {
+}
+```
+
+**type** → **variant** / **[specific]Type**
+
+```css
+/* ❌ Conflicts easily */
+.button--type {
+}
+
+/* ✅ Clear meaning */
+.button--variant {
+}
+
+.button--primaryType {
+}
+```
+
+**item** → **[specific]** / **[specific]Item**
+
+```css
+/* ❌ Generic */
+.list__item {
+}
+
+/* ✅ Specific */
+.menu__link {
+}
+
+.product__card {
+}
+
+.todo__listItem {
+}
+```
+
+**value** → **formattedValue** / **[specific]Value**
+
+```css
+/* ❌ Too broad */
+.input__value {
+}
+
+/* ✅ More descriptive */
+.input__formattedValue {
+}
+
+.price__displayValue {
+}
+```
+
+**result** → **response** / **[specific]Result**
+
+```css
+/* ❌ Unclear */
+.search__result {
+}
+
+/* ✅ Clearer */
+.search__response {
+}
+
+.api__searchResult {
+}
+```
+
+**text** → **heading** / **paragraph** / **[specific]Text**
+
+```css
+/* ❌ Generic */
+.card__text {
+}
+
+/* ✅ Specific */
+.card__heading {
+}
+
+.card__paragraph {
+}
+
+.card__bodyText {
+}
+```
+
+**box** → **container** / **input** / **[specific]Box**
+
+```css
+/* ❌ Ambiguous */
+.form__box {
+}
+
+/* ✅ Clear purpose */
+.form__container {
+}
+
+.form__input {
+}
+
+.form__textBox {
+}
+```
+
+**pretty** → **formatted** / **[specific]Style**
+
+```css
+/* ❌ Subjective */
+.code--pretty {
+}
+
+/* ✅ Objective */
+.code--formatted {
+}
+
+.code--highlighted {
+}
+```
+
+## Component Whitespace Isolation
+
+For proper component isolation, component root element should be free of whitespacing. Spacing of component should be
+done on parent level. This should be done on styles level. No need to parametrize styles through props.
+
+### ❌ Bad: Props for spacing
+
+```vue
+
+<template>
+  <user-item>
+    <user-item>
+      <user-item :no-bottom-padding="true">
+</template>
+```
+
+### ✅ Good: Parent-level spacing
+
+```vue
+
+<template>
+  <user-item class="user-list__item">
+    <user-item class="user-list__item">
+      <user-item class="user-list__item">
+</template>
+
+<style>
+  .user-list__item {
+    margin: 16px;
+
+    &:last-of-type {
+      margin: 0;
+    }
+  }
+</style>
+```
+
+## Vue-Specific Best Practices
+
+### Keep Component Length Reasonable
+
+As for the method length, components easily grow larger. In most cases, there is no such thing as over-componentization.
+The opposite is true. Let's keep components on reasonable length. Personal preference: 150 lines of code.
+
+### Write Events in Past Tense
+
+Event represents action and bound method represents reaction. So the way that you read is: when something happened →
+then do this. This is a self-imposed rule, but it's nothing against Vue styleguide.
+
+#### ❌ Bad: Present tense events
+
+```vue
+
+<button @send-button-press="uploadImage()"/>
+```
+
+#### ✅ Good: Past tense events
+
+```vue
+
+<button @send-button-pressed="uploadImage()"/>
+```
+
+### Less Logic in the Template
+
+Keep the template part free from logic. A nice place to accommodate logic is in computed block. If the condition should
+be a composite of 2 or more conditions, extract them to computed. The new name of the computed condition should reflect
+what UI is doing.
+
+#### ❌ Bad: Complex template logic
+
+```vue
+
+<template>
+  <button v-if="!isLoading || userCount > 1 && isTraining">
+</template>
+```
+
+#### ✅ Good: Extract to computed
+
+```vue
+
+<template>
+  <button v-if="isButtonHidden"/>
+</template>
+
+<script>
+  computed: {
+    isButtonHidden()
+    {
+      return this.isLoading || this.userCount > 1 && this.isTraining
+    }
+  }
+</script>
+```
+
+### Components Naming
+
+Components are written in PascalCase, minimum 2 words. Component name should consist of Domain of the feature and
+Element type (preferably imitating known UI patterns). Component can also be named with the modifier state. Mostly when
+componentizing complex state behaviour.
+
+`dialogue__message--delivered` → `DialogueMessageDelivered.vue`
+
+#### ❌ Bad: Generic or unclear names
+
+```
+ComingSoon.vue
+LayoutLogin.vue
+```
+
+#### ✅ Good: Domain + Element pattern
+
+```
+LoginLayout.vue
+ChatForm.vue
+BotCard.vue
+DialogueActionMenu.vue
+TrainingButton.vue
+```
+
 __warning
-__body
-__column
-__logo-aescan
-__header
-__powered-by
-__logo-aeternity
-__paragraph
-__network
-__version
-__link-container
-__footer-list
-__divider
 __row
+__cell (X data)
+__logo
+__separator
 __heading
-__link
-__loader-panel
-__blank-state
-__account-activities-table
+__title
+__loader
+__blank (x Empty)
 
 Modifiers
-
---open
+--active
+--success (take from purpose)
+--disabled (take from html)
+--horizontal (take from UI concept)
+--muted (tailwind)
+--closed (X --open)
+--collapsed (X --expanded)
 --lg
---sm
 --primary
 --light
---link
---link-error
---secondary
---success
 --error
---dark
---text-link
---active
---exact-active
---horizontal
 
 Good Naming Examples from This Selection:
 
@@ -675,7 +929,7 @@ Descriptive Modifiers
 
 Consistent Size Scale
 
-- --sm, --lg - predictable sizing nomenclature
+- --sm, --lg, --2xl - predictable sizing nomenclature
 
 These examples demonstrate excellent BEM naming that expresses purpose rather than appearance.
 

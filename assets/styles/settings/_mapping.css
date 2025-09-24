@@ -1,6 +1,29 @@
 :root {
-  /*TO USE IN ELEMENTS, COMPONENTS AND PAGES*/
-  /*TODO MOVE HERE*/
+  /*USE DIRECTLY IN ELEMENTS, COMPONENTS AND PAGES*!*/
+  --ui-primary: var(--color-sky);
+  --ui-secondary: var(--color-cream);
+  --ui-text-primary: var(--color-teal);
+  --ui-text-secondary: var(--color-carbon);
+  --ui-text-tertiary: var(--color-cream);
+  --ui-border-color: var(--color-carbon);
+  --ui-text-muted: var(--color-gray);
+  --ui-placeholder-color: var(--ui-text-muted);
+  --ui-bg: var(--ui-secondary);
+  --ui-text: var(--ui-text-secondary);
+}
+
+@media (--dark) {
+  :root {
+    --ui-bg: var(--color-carbon);
+    --ui-text: var(--color-cream);
+    --ui-text-primary: var(--color-cream);
+    --ui-text-secondary: var(--color-teal);
+    --ui-text-tertiary: var(--color-carbon);
+    --ui-text-muted: var(--color-pale);
+    --ui-secondary: var(--color-carbon);
+    --ui-border-color: var(--color-cream);
+    --ui-placeholder-color: var(--ui-text-muted);
+  }
 }
 
 

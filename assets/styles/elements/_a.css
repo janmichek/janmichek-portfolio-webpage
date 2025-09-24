@@ -1,6 +1,6 @@
 a {
   color: var(--ui-text-primary);
-  @media (prefers-color-scheme: dark) {
+  @media (--dark) {
     color: var(--ui-text-secondary);
   }
   text-decoration: underline;
@@ -11,7 +11,7 @@ a {
   &:focus {
     color: var(--ui-text-secondary);
 
-    @media (prefers-color-scheme: dark) {
+    @media (--dark) {
       color: var(--ui-text-secondary);
     }
   }

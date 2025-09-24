@@ -198,13 +198,13 @@
                 . Developed complex conversation flow interfaces enabling intuitive bot creation.
               </li>
               <li>
-                Led frontend architecture decisions and established development guidelines while mentoring
+                I led frontend architecture decisions and established development guidelines while mentoring
                 junior developer. Collaborated closely with backend developers and designers to shape
                 overall product vision and user experience flows.
               </li>
               <li>
                 Implemented an innovative approach to building conversations tree and
-                creatied seamless user flows.
+                created seamless user flows.
               </li>
               <li>
                 Used tech:

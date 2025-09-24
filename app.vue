@@ -12,7 +12,7 @@
         rel="icon"
         type="image/png"
         sizes="32x32"
-        href="/janmichek.webp"/>
+        href="/janmichek-2.webp"/>
       <Meta
         name="description"
         content="Jan Michek's portfolio page"/>

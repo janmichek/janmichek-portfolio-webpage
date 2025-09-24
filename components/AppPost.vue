@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div class="projects__project">
+  <div class="post">
     <h4 class="post__heading">
       <slot name="heading"/>
     </h4>

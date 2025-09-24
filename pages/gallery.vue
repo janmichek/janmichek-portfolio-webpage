@@ -54,7 +54,7 @@ const images = ref([
 <template>
   <article class="gallery">
     <!--    todo is the class needed? -->
-    <div class="layout__content gallery__content">
+    <div class="gallery__content">
       <div class="gallery__container">
         <div class="gallery__main">
           <section>

@@ -24,7 +24,7 @@
   &__content {
     display: grid;
     place-items: center;
-    padding: var(--space-xxl) 0;
+    padding: var(--space-2xl) 0;
   }
 
   &__container {

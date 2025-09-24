@@ -24,7 +24,7 @@ defineProps({
 
 <style scoped>
 .slug-title {
-  margin-bottom: var(--space-xxl);
+  margin-bottom: var(--space-2xl);
 
   &__title {
     color: var(--ui-text-primary);

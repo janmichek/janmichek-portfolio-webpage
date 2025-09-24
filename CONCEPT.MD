@@ -223,10 +223,10 @@ Due to using ideally single on element, there is no specificity fight
 
 ```
 .the-header {
-  padding: var(--space-xl) var(--space-xl) var(--space-xxl);
+  padding: var(--space-xl) var(--space-xl) var(--space-2xl);
 
   @media (--tablet) {
-    padding: var(--space-xxl);
+    padding: var(--space-2xl);
   }
 
   &__heading {
@@ -391,7 +391,7 @@ Components use scoped CSS for component-specific styles while leveraging global 
     width: 100%;
 
     /* Spacing */
-    padding: var(--space-xl) var(--space-xl) var(--space-xxl);
+    padding: var(--space-xl) var(--space-xl) var(--space-2xl);
 
     /* Visual */
     background: var(--ui-bg);

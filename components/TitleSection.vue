@@ -20,7 +20,6 @@ export default {
 <style scoped>
 [data-variant="primary"] {
   --title-section-color: var(--ui-text-secondary);
-  /*todo variable*/
   @media (--dark) {
     --title-section-color: var(--ui-text-primary);
   }

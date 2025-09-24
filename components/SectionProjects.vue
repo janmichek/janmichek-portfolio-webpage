@@ -262,7 +262,7 @@
   }
 
   &__project:not(:last-of-type) {
-    margin-bottom: var(--space-xxl);
+    margin-bottom: var(--space-2xl);
   }
 
   &__preview {

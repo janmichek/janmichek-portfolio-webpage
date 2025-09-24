@@ -10,7 +10,6 @@
 
 <style scoped>
 .page__section {
-  padding: var(--space-xxl) 0;
-  /*todo space section?*/
+  padding: var(--space-2xl) 0;
 }
 </style>

@@ -26,8 +26,8 @@ export default defineNuxtConfig({
         },
         {
           rel: 'icon',
-          type: 'image/png',
-          href: '/profile-pic-2022.png',
+          type: 'image/webp',
+          href: '/profile-pic-2022.webp',
         },
       ],
     },

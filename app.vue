@@ -55,9 +55,7 @@
 </template>
 
 <style scoped>
-.page {
-  &__section {
-    padding: var(--space-xxl) 0;
-  }
+.page__section {
+  padding: var(--space-2xl) 0;
 }
 </style>

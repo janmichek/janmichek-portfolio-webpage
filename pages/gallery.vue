@@ -53,17 +53,14 @@ const images = ref([
 
 <template>
   <article class="gallery">
-    <!--    todo is the class needed? -->
-    <div class="gallery__content">
-      <div class="gallery__container">
-        <div class="gallery__main">
-          <section>
-            <slug-title
-              title="Photo Gallery"
-              description="I like shooting photography too. Especially flowers. Here is a small presentation of my
+    <div class="gallery__container">
+      <div class="gallery__main">
+        <section>
+          <slug-title
+            title="Photo Gallery"
+            description="I like shooting photography too. Especially flowers. Here is a small presentation of my
               esthetics skills. I am using them as placeholder images when building new app."/>
-          </section>
-        </div>
+        </section>
       </div>
     </div>
     <section>
@@ -73,10 +70,8 @@ const images = ref([
 </template>
 
 <style scoped>
-@import url("../assets/styles/utilities/_grid.css");
-
 .gallery {
-  padding: var(--space-xxl) 0;
+  padding: var(--space-2xl) 0;
 
   &__content {
     display: grid;
@@ -85,23 +80,21 @@ const images = ref([
 
   &__container {
     max-width: var(--container-max-width);
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: var(--space-sm);
-    padding-right: var(--space-sm);
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
 
+    margin: 0 auto;
+    padding: 0 var(--space-sm);
+
     @media (--desktop) {
-      padding-left: var(--space-xl);
-      padding-right: var(--space-xl);
+      padding: 0 var(--space-xl);
     }
   }
 
   &__main {
     width: 100%;
-    max-width: 66.666667%; /* 2/3 */
+    max-width: calc(2 / 3 * 100%);
   }
 }
 </style>

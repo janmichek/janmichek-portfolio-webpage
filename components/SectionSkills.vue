@@ -5,7 +5,7 @@
 <template>
   <section class="skills">
     <div class="skills__container">
-      <title-section theme="primary">
+      <title-section variant="primary">
         My skillset
       </title-section>
       <div class="skills__row">

@@ -81,6 +81,10 @@ defineProps({
   &__description {
     margin-top: var(--space-xs);
     color: var(--ui-text-secondary);
+
+    @media --dark {
+      --title-section-color: var(--ui-text-tertiary);
+    }
   }
 }
 </style>

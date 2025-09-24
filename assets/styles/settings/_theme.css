@@ -1,8 +1,9 @@
 :root {
   --color-sky: #78c4e4;
-  --color-teal: #6fbad8;
+  --color-teal: #61aecc;
   --color-carbon: #082626;
   --color-gray: #808080;
+  --color-pale: #b5b5b5;
   --color-cream: #fbfbfb;
   --font-sans: 'Play', 'Arial', serif;
   --font-serif: 'Roboto Slab', 'Times New Roman', sans-serif;
@@ -36,16 +37,31 @@
   --ui-secondary: var(--color-cream);
   --ui-text-primary: var(--color-teal);
   --ui-text-secondary: var(--color-carbon);
+  --ui-text-tertiary: var(--color-cream);
   --ui-border-color: var(--color-carbon);
   --ui-text-muted: var(--color-gray);
   --ui-placeholder-color: var(--ui-text-muted);
   --ui-bg: var(--ui-secondary);
   --ui-text: var(--ui-text-secondary);
-  /*UNUSED CLASSES*/
+}
+
+@media (--dark) {
+  :root {
+    --ui-bg: var(--color-carbon);
+    --ui-text: var(--color-cream);
+    --ui-text-primary: var(--color-cream);
+    --ui-text-secondary: var(--color-teal);
+    --ui-text-tertiary: var(--color-carbon);
+    --ui-text-muted: var(--color-pale);
+    --ui-secondary: var(--color-carbon);
+    --ui-border-color: var(--color-cream);
+    --ui-placeholder-color: var(--ui-text-muted);
+  }
 }
 
 /* stylelint-disable at-rule-no-unknown */
 @custom-media --mobile (min-width: 480px);
 @custom-media --tablet (min-width: 768px);
 @custom-media --desktop (min-width: 992px);
+@custom-media --dark (prefers-color-scheme: dark);
 

@@ -12,7 +12,7 @@ defineProps({
     class="the-footer"
     :data-theme="theme">
     <div class="the-footer__container">
-      <title-section theme="primary">
+      <title-section variant="primary">
         Contact
       </title-section>
 
@@ -54,13 +54,14 @@ defineProps({
 </template>
 
 <style scoped>
+@import url("../assets/styles/utilities/_grid.css");
+
 [data-theme="primary"] {
   --footer-background: var(--ui-primary);
   --footer-link: var(--ui-text-secondary);
   --footer-link-hover: var(--ui-text-primary);
 }
 
-toto not consistent naming
 [data-theme="secondary"] {
   --footer-background: var(--ui-secondary);
   --footer-link: var(--ui-text-primary);

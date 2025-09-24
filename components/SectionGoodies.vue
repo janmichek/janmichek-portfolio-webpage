@@ -42,12 +42,12 @@ const goodies = ref([
     description: 'I bet your CRUD does not have this! Intuitive, elegant copy-pasteble solution. That is my evergreen solution. Just hover around.',
     link: 'https://codepen.io/janmichek/pen/bGEoozW',
   },
-  {
-    title: 'Frontend Developer Manifesto',
-    image: 'janmichek.webp',
-    description: 'The set of evergreen rules, best practices, commonly mistaken concepts and personal preferences in a structured form.',
-    link: 'https://github.com/janmichek/frontend-developer-manifesto/blob/main/README.md',
-  },
+  // {
+  //   title: 'Frontend Developer Manifesto',
+  //   image: 'janmichek.webp',
+  //   description: 'The set of evergreen rules, best practices, commonly mistaken concepts and personal preferences in a structured form.',
+  //   link: 'https://github.com/janmichek/frontend-developer-manifesto/blob/main/README.md',
+  // },
   {
     title: 'Linter Settings',
     image: 'eslint.svg',
@@ -73,7 +73,7 @@ const goodies = ref([
 <template>
   <section class="goodies">
     <div class="goodies__container">
-      <title-section theme="primary">
+      <title-section variant="primary">
         Goodies
       </title-section>
       <div class="goodies__masonry">

@@ -1,14 +1,3 @@
-<template>
-  <div class="project-link">
-    <app-link :to="to">
-      <span>{{ label }}</span>
-    </app-link>
-    <template v-if="!isLast">
-      ,
-    </template>
-  </div>
-</template>
-
 <script setup>
 defineProps({
   to: {
@@ -26,10 +15,22 @@ defineProps({
 })
 </script>
 
+<template>
+  <div class="project-link">
+    <app-link :to="to">
+      <span>{{ label }}</span>
+    </app-link>
+    <template v-if="!isLast">
+      ,
+    </template>
+  </div>
+</template>
+
 <style scoped>
 .project-link {
   display: inline-flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  margin-right: 3px;
 }
 </style>

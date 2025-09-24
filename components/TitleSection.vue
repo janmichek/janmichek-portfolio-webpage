@@ -1,30 +1,34 @@
 <script>
 export default {
   props: {
-    theme: {
+    variant: {
       type: String,
-      default: 'light',
+      default: 'secondary',
     },
   },
 }
 </script>
 
 <template>
-  <!--  todo fix naming -->
   <h3
     class="title-section"
-    :data-theme="theme">
+    :data-variant="variant">
     <slot/>
   </h3>
 </template>
 
 <style scoped>
-[data-theme="primary"] {
+[data-variant="primary"] {
   --title-section-color: var(--ui-text-secondary);
+  /*todo variable*/
+  @media (prefers-color-scheme: dark) {
+    --title-section-color: var(--ui-text-primary);
+  }
 }
 
-[data-theme="light"] {
+[data-variant="secondary"] {
   --title-section-color: var(--ui-text-primary);
+
 }
 
 .title-section {

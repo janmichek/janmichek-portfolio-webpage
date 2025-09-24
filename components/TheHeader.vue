@@ -91,8 +91,13 @@
     color: var(--ui-text-primary);
 
     text-align: center;
+
     @media (--tablet) {
       white-space: nowrap;
+    }
+
+    @media (--dark) {
+      color: var(--ui-text-secondary);
     }
   }
 

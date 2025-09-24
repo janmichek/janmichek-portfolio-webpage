@@ -5,17 +5,32 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/image',
     'nuxt-vuefire',
-    '@nuxt/fonts',
     '@nuxtjs/stylelint-module',
   ],
-  fonts: {
-    providers: {
-      bunny: false,
-      google: true,
+  ssr: false,
+  app: {
+    head: {
+      link: [
+        {
+          rel: 'preconnect',
+          href: 'https://fonts.googleapis.com',
+        },
+        {
+          rel: 'preconnect',
+          href: 'https://fonts.gstatic.com',
+          crossorigin: '',
+        },
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Play:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap',
+        },
+      ],
     },
   },
-  ssr: false,
-  css: ['~/assets/styles/main.css'],
+  css: [
+    '~/assets/styles/main.css',
+    '~/assets/styles/utilities/_grid.css',
+  ],
   devServer: {
     port: 8080,
   },

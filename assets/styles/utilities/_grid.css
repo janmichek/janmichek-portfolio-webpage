@@ -6,10 +6,7 @@
   padding-left: var(--space-sm);
   padding-right: var(--space-sm);
 
-  @media (--desktop) {
-    padding-left: var(--space-xl);
-    padding-right: var(--space-xl);
-  }
+
 }
 
 .u-grid {

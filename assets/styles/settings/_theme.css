@@ -8,6 +8,7 @@
   --font-sans: 'Play', 'Arial', serif;
   --font-serif: 'Roboto Slab', 'Times New Roman', sans-serif;
   --container-max-width: 1000px;
+  --container-min-width: 300px;
   --duration-fast: 0.1s;
   --duration-slow: 0.4s;
   --text-xs: 0.75rem; /* 12px */
@@ -35,4 +36,5 @@
 @custom-media --tablet (min-width: 768px);
 @custom-media --desktop (min-width: 992px);
 @custom-media --dark (prefers-color-scheme: dark);
+
 

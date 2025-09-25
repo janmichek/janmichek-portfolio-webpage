@@ -46,19 +46,22 @@
 
   &__container {
     @apply .u-container;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space);
 
     @media (--tablet) {
+      display: grid;
       grid-template-columns: 5fr 7fr;
-      gap: 32px;
+      gap: 8px;
+      /*gap: var(--space);*/
     }
   }
 
   &__avatar {
     display: flex;
     justify-content: center;
+
+    @media (max-width: 750px) {
+      padding-bottom: 32px;
+    }
 
     @media (--tablet) {
       justify-content: flex-start;

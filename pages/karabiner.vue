@@ -11,7 +11,7 @@
 
       <br>
       <br>
-      <div class="karabiner__container">
+      <div>
         <table>
           <tbody>
             <tr>
@@ -304,10 +304,3 @@
     </article>
   </nuxt-layout>
 </template>
-
-<style scoped>
-.karabiner__container {
-  width: calc(100vw - 2 * var(--space-sm));
-  overflow-x: auto;
-}
-</style>

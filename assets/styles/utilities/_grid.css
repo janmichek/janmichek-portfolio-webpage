@@ -17,14 +17,3 @@
   gap: var(--space);
 }
 
-.u-masonry {
-  column-gap: 1.5em;
-
-  @media (--tablet) {
-    column-count: 2;
-  }
-
-  @media (--desktop) {
-    column-count: 3;
-  }
-}

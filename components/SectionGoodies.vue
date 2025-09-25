@@ -1,10 +1,16 @@
 <script setup>
 const goodies = ref([
   {
-    title: 'Git Flow',
-    image: 'checklist.png',
-    description: 'No worry if our team does not have solid workflow yet. We can iterate from here.',
-    link: '/git-flow',
+    title: 'aeScan Walkthrough',
+    image: 'aescan-video.png',
+    description: 'A video of me dive into my latest project and explaining details',
+    link: 'https://youtu.be/4jmVQlHASCY',
+  },
+  {
+    title: 'Claude Settings',
+    image: 'sourcecode.webp',
+    description: 'Personal configuration and settings for Claude Code CLI to enhance development workflow from different tutorials in one place.',
+    link: 'https://github.com/janmichek/claude-settings',
   },
   {
     title: 'Weekly News Feed',
@@ -20,7 +26,7 @@ const goodies = ref([
   },
   {
     title: 'Webdesign checklist',
-    image: 'checklist.png',
+    image: 'checklist.webp',
     description: 'When I am working with designers I want to make sure all formal requirements on design handoff are met.',
     link: '/webdesign-checklist',
   },
@@ -30,12 +36,6 @@ const goodies = ref([
     description: 'Source code of this personal page. This web is hosted on Firebase.',
     link: 'https://github.com/janmichek/janmichek',
   },
-  // {
-  //   title: 'Vue 2 File Template By Styleguide',
-  //   image: 'vue-logo.svg',
-  //   description: 'A template for new .vue file creation in IntelliJ family editors. This template creates new file according to official styleguide so we can save some time.',
-  //   link: 'https://gist.github.com/janmichek/9a40c8e481a1f8d3fa3a07fe79733e27',
-  // },
   {
     title: 'CRUD animations',
     image: 'crud_actions.webp',
@@ -62,18 +62,13 @@ const goodies = ref([
       + ' streams, and personal building of communities worldwide. Have a listen.',
     link: 'https://open.spotify.com/artist/52iWG2c2P0K6HmGrAAUyoP?si=SuOL9lY1QuyCI1FDBOzO9A',
   },
-  {
-    title: 'Claude Settings',
-    image: 'sourcecode.webp',
-    description: 'Personal configuration and settings for Claude Code CLI to enhance development workflow from different tutorials in one place.',
-    link: 'https://github.com/janmichek/claude-settings',
-  },
-  {
-    title: 'Tailwind Alternative',
-    image: 'sourcecode.webp',
-    description: 'Unpopular opinion, but I am not a fan of Tailwind. I like to use my own CSS framework. This is my attempt to create something similar.',
-    link: 'https://github.com/janmichek/claude-settings',
-  },
+
+  // {
+  //   title: 'Tailwind Alternative',
+  //   image: 'sourcecode.webp',
+  //   description: 'Unpopular opinion, but I am not a fan of Tailwind. I like to use my own CSS framework. This is my attempt to create something similar.',
+  //   link: 'https://github.com/janmichek/claude-settings',
+  // },
 ])
 </script>
 
@@ -98,7 +93,6 @@ const goodies = ref([
 </template>
 
 <style>
-/*TODO INJECT*/
 @import url("../assets/styles/utilities/_grid.css");
 
 .goodies {
@@ -106,10 +100,20 @@ const goodies = ref([
 
   &__container {
     @apply .u-container;
-  }
 
-  &__masonry {
-    @apply .u-masonry;
+    /*&__masonry {*/
+    /*  @apply .u-masonry;*/
+    /*}*/
+
+    column-gap: 1.5em;
+
+    @media (min-width: 768px) {
+      column-count: 2
+    }
+
+    @media (min-width: 992px) {
+      column-count: 3
+    }
   }
 }
 </style>

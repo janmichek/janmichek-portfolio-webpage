@@ -11,6 +11,6 @@ td {
 
 th {
   text-align: left;
-  border: 1px solid var(--ui-text-primary);
+  border: 1px solid var(--ui-border-color);
   padding: var(--space-xs);
 }

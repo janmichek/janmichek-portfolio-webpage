@@ -15,14 +15,14 @@
             alt="Jan Michek's avatar"/>
         </app-link>
       </div>
-      <div class="the-header__content">
+      <div>
         <h1 class="the-header__heading">
           Jan Michek
         </h1>
-        <div class="h2 the-header__subheading">
+        <div class="the-header__subheading">
           web3 frontend engineer
         </div>
-        <div class="h3 the-header__excerpt">
+        <div class="the-header__excerpt">
           Czechia / Prague / <span title="That is 38">1987</span>
         </div>
       </div>
@@ -32,6 +32,7 @@
 
 <style scoped>
 @import url("../assets/styles/utilities/_grid.css");
+@import url("../assets/styles/elements/_h.css");
 
 .the-header {
   padding: var(--space-xl) var(--space-xl) var(--space-2xl);
@@ -64,10 +65,6 @@
     }
   }
 
-  &__content {
-    /* Grid item - no width needed */
-  }
-
   &__heading {
     text-align: center;
     font-size: var(--text-5xl);
@@ -82,8 +79,8 @@
   }
 
   &__subheading {
+    @apply .h2;
     color: var(--ui-text-primary);
-
     text-align: center;
 
     @media (--tablet) {
@@ -98,8 +95,8 @@
   &__excerpt {
     text-align: center;
     color: var(--ui-text-muted);
-    font-size: var(--text-3xl);
     margin-bottom: 0;
+    font-size: 32px;
   }
 }
 </style>

@@ -60,12 +60,16 @@ defineProps({
   --footer-background: var(--ui-primary);
   --footer-link: var(--ui-text-secondary);
   --footer-link-hover: var(--ui-text-primary);
+  @media (--dark) {
+    --footer-link: var(--ui-text-tertiary);
+  }
 }
 
 [data-theme="secondary"] {
   --footer-background: var(--ui-secondary);
   --footer-link: var(--ui-text-primary);
   --footer-link-hover: var(--ui-text-primary);
+
 }
 
 .the-footer {

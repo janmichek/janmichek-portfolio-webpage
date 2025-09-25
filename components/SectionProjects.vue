@@ -7,7 +7,7 @@
       <title-section>Recent projects</title-section>
 
       <div class="projects__content">
-        <app-post>
+        <app-post class="projects__post">
           <template #heading>
             aeScan.io
           </template>
@@ -22,8 +22,8 @@
 
             <app-link
               class="projects__preview"
-              to="/preview/aescan">
-              Preview
+              to="https://youtu.be/4jmVQlHASCY">
+              Walktrhough Video
             </app-link>
           </template>
           <template #description>
@@ -90,7 +90,7 @@
           </template>
         </app-post>
 
-        <app-post>
+        <app-post class="projects__post">
           <template #heading>
             PWN Finance
           </template>
@@ -115,7 +115,11 @@
           <template #description>
             <ul class="projects__list">
               <li>
-                The first NFT pawnshop on Ethereum where I collaborated on frontend, handling user interactions with
+                The first NFT pawnshop on Ethereum
+                <app-link to="https://pwn.xyz">
+                  pwn.xyz
+                </app-link>
+                where I collaborated on frontend, handling user interactions with
                 wallets and smart contracts. Built a seamless web3 user experience from scratch.
               </li>
               <li>
@@ -165,7 +169,7 @@
           </template>
         </app-post>
 
-        <app-post>
+        <app-post class="projects__post">
           <template #heading>
             Chatbot Builder
           </template>
@@ -251,6 +255,10 @@
 .projects {
   &__container {
     @apply .u-container;
+  }
+
+  &__post {
+    margin-bottom: var(--space-2xl);
   }
 
   &__list {

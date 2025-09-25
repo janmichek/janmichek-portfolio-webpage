@@ -10,15 +10,13 @@
   --container-max-width: 1000px;
   --duration-fast: 0.1s;
   --duration-slow: 0.4s;
-
-  /*fz - font base 18*/
-  /* TODO Typography scale (Tailwind-inspired) */
   --text-xs: 0.75rem; /* 12px */
   --text-sm: 0.875rem; /* 14px */
-  --text-base: 16px; /* 18px */
+  --text-base: 18px;
   --text-lg: 1.375rem; /* 22px */
   --text-xl: 1.75rem; /* 28px */
   --text-2xl: 1.9375rem; /* 31px */
+
   --text-3xl: 2rem; /* 32px */
   --text-4xl: 2.5rem; /* 40px */
   --text-5xl: 3.5rem; /* 56px */

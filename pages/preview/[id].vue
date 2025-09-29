@@ -13,11 +13,10 @@ onMounted(() => {
 
 <template>
   <div class="preview">
-    <nuxt-img
+    <img
       v-if="imageLInk"
-      format="webp"
       :src="imageLInk"
-      alt="preview"/>
+      alt="preview">
     <div
       v-else
       class="preview__loading">

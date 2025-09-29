@@ -13,11 +13,10 @@
           </template>
           <template #image>
             <app-link to="https://aescan.io/">
-              <nuxt-img
-                format="webp"
+              <img
                 src="/aescan.webp"
-                :width="686"
-                alt="aescan"/>
+                width="686"
+                alt="aescan">
             </app-link>
 
             <app-link
@@ -96,10 +95,10 @@
           </template>
           <template #image>
             <app-link to="http://pwn.finance">
-              <nuxt-img
+              <img
                 src="/pwn.webp"
-                :width="686"
-                alt="PWN Finance"/>
+                width="686"
+                alt="PWN Finance">
             </app-link>
             <app-link
               class="projects__preview"
@@ -175,10 +174,10 @@
           </template>
           <template #image>
             <app-link to="https://www.nice.com/websites/cxone-next-gen-cx/">
-              <nuxt-img
+              <img
                 src="/chatbot.webp"
-                :width="686"
-                alt="Chabot Builder"/>
+                width="686"
+                alt="Chabot Builder">
             </app-link>
             <app-link
               class="projects__preview"

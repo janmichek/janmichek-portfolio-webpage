@@ -24,10 +24,10 @@ const modules = [Navigation]
     <swiper-slide
       v-for="(slide, index) in images"
       :key="index">
-      <nuxt-img
-        format="webp"
+      <img
         :src="slide.medium"
-        class="swiper__image"/>
+        class="swiper__image"
+        :alt="slide.altText">
       <div class="swiper__text">
         {{ slide.altText }}
       </div>

@@ -7,12 +7,11 @@
     <div class="the-header__container">
       <div class="the-header__avatar">
         <app-link to="/">
-          <nuxt-img
-            format="webp"
+          <img
             class="the-header__image"
             src="/profile-pic-2022.webp"
-            :width="230"
-            alt="Jan Michek's avatar"/>
+            width="230"
+            alt="Jan Michek's avatar">
         </app-link>
       </div>
       <div>

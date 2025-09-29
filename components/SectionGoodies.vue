@@ -101,7 +101,9 @@ const goodies = ref([
   &__container {
     @apply .u-container;
 
-    /*&__masonry {*/
+  }
+
+  &__masonry {
     /*  @apply .u-masonry;*/
     /*}*/
 

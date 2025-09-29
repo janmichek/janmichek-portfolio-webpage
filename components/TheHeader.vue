@@ -74,7 +74,7 @@
   }
 
   &__subheading {
-    font-size: 36px;
+    font-size: var(--text-2xl);
     color: var(--ui-text-primary);
     text-align: center;
 
@@ -91,7 +91,7 @@
     text-align: center;
     color: var(--ui-text-muted);
     margin-bottom: 0;
-    font-size: 28px;
+    font-size: var(--text-xl);
   }
 }
 </style>

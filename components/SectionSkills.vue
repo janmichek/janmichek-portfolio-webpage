@@ -20,6 +20,7 @@
           Let me translate complexity of DeFi into smooth and modern web app which is intuitive to use.
         </p>
       </div>
+
       <div
         class="skills__row"
         data-aos="fade-up">

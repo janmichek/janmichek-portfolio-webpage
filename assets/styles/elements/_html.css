@@ -1,3 +1,4 @@
 html {
   opacity: 0;
+  font-size: var(--text-base);
 }

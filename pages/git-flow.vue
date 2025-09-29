@@ -80,6 +80,6 @@ const codeReview = ref([
 .git-flow__title {
   margin-top: var(--space-xl);
   font-family: var(--font-serif);
-  font-size: var(--text-2xl);
+  font-size: var(--text-3xl);
 }
 </style>

@@ -17,7 +17,7 @@ defineProps({
       </title-section>
 
       <div class="the-footer__grid">
-        <div class="the-footer__link-wrap">
+        <div class="the-footer__container">
           <app-link
             class="the-footer__link"
             to="mailto:jan@janmichek.cz">
@@ -25,7 +25,7 @@ defineProps({
           </app-link>
         </div>
 
-        <div class="the-footer__link-wrap">
+        <div class="the-footer__container">
           <app-link
             class="the-footer__link"
             to="https://cz.linkedin.com/in/jan-michek-aba913103">
@@ -33,7 +33,7 @@ defineProps({
           </app-link>
         </div>
 
-        <div class="the-footer__link-wrap">
+        <div class="the-footer__container">
           <app-link
             class="the-footer__link"
             to="https://github.com/janmichek/">
@@ -41,7 +41,7 @@ defineProps({
           </app-link>
         </div>
 
-        <div class="the-footer__link-wrap">
+        <div class="the-footer__container">
           <app-link
             class="the-footer__link"
             to="https://www.twitter.com/jan_michek">
@@ -50,6 +50,7 @@ defineProps({
         </div>
       </div>
     </div>
+    §§
   </footer>
 </template>
 
@@ -67,7 +68,7 @@ defineProps({
   --footer-background: var(--ui-secondary);
   --footer-link: var(--ui-text-secondary);
   --footer-link-hover: var(--ui-text-primary);
-  @media (--Kdark) {
+  @media (--dark) {
     --footer-link: var(--ui-text-primary);
     --footer-link-hover: var(--ui-text-secondary);
   }
@@ -105,7 +106,7 @@ defineProps({
     }
   }
 
-  &__link-wrap {
+  &__container {
     text-align: center;
     margin-bottom: var(--space-sm);
 

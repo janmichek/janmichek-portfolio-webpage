@@ -51,6 +51,11 @@ export default defineNuxtConfig({
       'postcss-nested': {},
     },
   },
+  aos: {
+    offset: 20,
+    duration: 300,
+    once: true,
+  },
   eslint: {
     config: {
       stylistic: {

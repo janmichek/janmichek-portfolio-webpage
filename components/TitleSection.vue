@@ -18,7 +18,6 @@ export default {
 </template>
 
 <style scoped>
-@import url("../assets/styles/elements/_h.css");
 
 [data-variant="primary"] {
   --title-section-color: var(--ui-text-secondary);

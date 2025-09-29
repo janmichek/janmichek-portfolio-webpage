@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="error">
+  <div class="error u-container">
     <h1
       v-if="error.statusCode === 404"
       class="error__heading">
@@ -32,7 +32,6 @@ defineProps({
 
 <style scoped>
 .error {
-  @apply .u-container;
   margin: var(--space-xl) 0;
 
   &__heading {

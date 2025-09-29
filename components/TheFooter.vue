@@ -11,7 +11,7 @@ defineProps({
   <footer
     class="the-footer"
     :data-theme="theme">
-    <div class="the-footer__container">
+    <div class="the-footer__container u-container">
       <title-section variant="primary">
         Contact
       </title-section>
@@ -54,7 +54,6 @@ defineProps({
 </template>
 
 <style scoped>
-@import url("../assets/styles/utilities/_grid.css");
 
 [data-theme="primary"] {
   --footer-background: var(--ui-primary);
@@ -82,7 +81,6 @@ defineProps({
   }
 
   &__container {
-    @apply .u-container;
   }
 
   &__grid {

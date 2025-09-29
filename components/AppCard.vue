@@ -41,7 +41,6 @@ defineProps({
 </template>
 
 <style scoped>
-@import url("../assets/styles/utilities/_stretched-link.css");
 
 .card {
   width: 100%;

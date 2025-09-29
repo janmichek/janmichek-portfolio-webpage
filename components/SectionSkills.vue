@@ -4,7 +4,7 @@
 
 <template>
   <section class="skills">
-    <div class="skills__container">
+    <div class="skills__container u-container">
       <title-section variant="primary">
         My skillset
       </title-section>
@@ -39,13 +39,11 @@
 </template>
 
 <style scoped>
-@import url("../assets/styles/utilities/_grid.css");
 
 .skills {
   background: var(--ui-primary);
 
   &__container {
-    @apply .u-container;
   }
 
   &__row {

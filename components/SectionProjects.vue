@@ -3,7 +3,7 @@
 
 <template>
   <section class="projects">
-    <div class="projects__container">
+    <div class="projects__container u-container">
       <title-section>Recent projects</title-section>
 
       <div class="projects__content">
@@ -249,11 +249,9 @@
 </template>
 
 <style scoped>
-@import url("../assets/styles/utilities/_grid.css");
 
 .projects {
   &__container {
-    @apply .u-container;
   }
 
   &__post {

@@ -27,7 +27,7 @@ export default defineNuxtConfig({
         {
           rel: 'icon',
           type: 'image/webp',
-          href: '/profile-pic-2022.webp',
+          href: '/profile-pic.webp',
         },
       ],
     },
@@ -47,7 +47,6 @@ export default defineNuxtConfig({
         files: ['assets/styles/settings/_theme.css'],
       },
       'postcss-custom-media': {},
-      'postcss-apply-class': {},
       'postcss-nested': {},
     },
   },

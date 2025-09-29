@@ -18,7 +18,6 @@
 </template>
 
 <style scoped>
-@import url("../assets/styles/utilities/_grid.css");
 
 .post {
   &__heading {

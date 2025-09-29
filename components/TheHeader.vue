@@ -4,12 +4,12 @@
 
 <template>
   <header class="the-header">
-    <div class="the-header__container">
+    <div class="the-header__container u-container">
       <div class="the-header__avatar">
         <app-link to="/">
           <img
             class="the-header__image"
-            src="/profile-pic-2022.webp"
+            src="/profile-pic.webp"
             width="230"
             alt="Jan Michek's avatar">
         </app-link>
@@ -18,7 +18,7 @@
         <h1 class="the-header__heading">
           Jan Michek
         </h1>
-        <div class="the-header__subheading">
+        <div class="the-header__subheading h2">
           web3 frontend engineer
         </div>
         <div class="the-header__excerpt">
@@ -30,9 +30,6 @@
 </template>
 
 <style scoped>
-@import url("../assets/styles/utilities/_grid.css");
-@import url("../assets/styles/elements/_h.css");
-
 .the-header {
   padding: var(--space-xl) var(--space-xl) var(--space-2xl);
   background: var(--ui-bg);
@@ -44,8 +41,6 @@
   }
 
   &__container {
-    @apply .u-container;
-
     @media (--tablet) {
       display: grid;
       grid-template-columns: 5fr 7fr;
@@ -81,7 +76,6 @@
   }
 
   &__subheading {
-    @apply .h2;
     color: var(--ui-text-primary);
     text-align: center;
 

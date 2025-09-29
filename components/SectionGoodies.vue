@@ -57,12 +57,11 @@ const goodies = ref([
   },
   {
     title: 'Music Production',
-    image: 'profile-pic-2022.webp',
+    image: 'honeytcz.webp',
     description: 'I invest my free time into music production: creative organization proven by 5+ millions of'
       + ' streams, and personal building of communities worldwide. Have a listen.',
     link: 'https://open.spotify.com/artist/52iWG2c2P0K6HmGrAAUyoP?si=SuOL9lY1QuyCI1FDBOzO9A',
   },
-
   // {
   //   title: 'Tailwind Alternative',
   //   image: 'sourcecode.webp',
@@ -74,7 +73,7 @@ const goodies = ref([
 
 <template>
   <section class="goodies">
-    <div class="goodies__container">
+    <div class="goodies__container u-container">
       <title-section variant="primary">
         Goodies
       </title-section>
@@ -92,14 +91,11 @@ const goodies = ref([
   </section>
 </template>
 
-<style>
-@import url("../assets/styles/utilities/_grid.css");
-
+<style scoped>
 .goodies {
   background: var(--ui-primary);
 
   &__container {
-    @apply .u-container;
 
   }
 

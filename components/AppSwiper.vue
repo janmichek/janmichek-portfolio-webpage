@@ -50,7 +50,7 @@ const modules = [Navigation]
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 15px 30px 15px 0;
+  border-width: var(--space-md) 0 var(--space-md) var(--space-lg);
   border-color: transparent var(--ui-primary) transparent transparent;
 
   @media (--tablet) {
@@ -67,7 +67,7 @@ const modules = [Navigation]
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 15px 0 15px 30px;
+  border-width: var(--space-md) 0 var(--space-md) var(--space-lg);
   border-color: transparent transparent transparent var(--ui-primary);
 
   @media (--tablet) {
@@ -77,5 +77,6 @@ const modules = [Navigation]
 
 .swiper__text {
   text-align: center;
+  color: var(--ui-text-muted);
 }
 </style>

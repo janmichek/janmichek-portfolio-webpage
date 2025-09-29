@@ -4,7 +4,7 @@
 
 <template>
   <section class="skills">
-    <div class="skills__container u-container">
+    <div class="u-container">
       <title-section
         variant="primary"
         data-aos="fade-up">
@@ -50,9 +50,6 @@
 <style scoped>
 .skills {
   background: var(--ui-primary);
-
-  &__container {
-  }
 
   &__row {
     display: flex;

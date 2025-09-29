@@ -9,7 +9,7 @@
       </div>
     </main>
     <the-footer
-      theme="primary"
+      variant="primary"
       class="layout__footer"/>
   </div>
 </template>
@@ -47,7 +47,7 @@
     width: 100%;
 
     @media (--tablet) {
-      max-width: 66.666667%; /* 2/3 */
+      max-width: calc(100% * 2 / 3);
     }
   }
 

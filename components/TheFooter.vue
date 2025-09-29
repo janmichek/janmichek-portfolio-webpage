@@ -1,6 +1,6 @@
 <script setup>
 defineProps({
-  theme: {
+  variant: {
     type: String,
     default: 'secondary',
   },
@@ -10,11 +10,11 @@ defineProps({
 <template>
   <footer
     class="the-footer"
-    :data-theme="theme">
+    :data-variant="variant">
     <div
       class="u-container"
       data-aos="fade-up">
-      <title-section :variant="theme">
+      <title-section :variant="variant">
         Contact
       </title-section>
 
@@ -64,16 +64,16 @@ defineProps({
 </template>
 
 <style scoped>
-[data-theme="primary"] {
-  --footer-background: var(--ui-text-primary);
+[data-variant="primary"] {
+  --footer-background: var(--ui-secondary);
   --footer-link: var(--ui-text-secondary);
   --footer-link-hover: var(--ui-text-primary);
   @media (--dark) {
-    --footer-link: var(--ui-text-tertiary);
+    --footer-link: var(--ui-primary);
   }
 }
 
-[data-theme="secondary"] {
+[data-variant="secondary"] {
   --footer-background: var(--ui-secondary);
   --footer-link: var(--ui-text-secondary);
   --footer-link-hover: var(--ui-text-primary);

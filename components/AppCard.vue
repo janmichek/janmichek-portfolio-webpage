@@ -41,7 +41,6 @@ defineProps({
 </template>
 
 <style scoped>
-
 .card {
   width: 100%;
   display: inline-block;

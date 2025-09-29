@@ -3,7 +3,7 @@
 
 <template>
   <section class="projects">
-    <div class="projects__container u-container">
+    <div class="u-container">
       <title-section data-aos="fade-up">
         Recent projects
       </title-section>
@@ -258,9 +258,6 @@
 
 <style scoped>
 .projects {
-  &__container {
-  }
-
   &__post {
     margin-bottom: var(--space-2xl);
   }

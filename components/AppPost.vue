@@ -30,7 +30,7 @@
 
     @media (--tablet) {
       grid-template-columns: 1fr 2fr;
-      gap: 32px;
+      gap: var(--space-lg);
     }
   }
 }

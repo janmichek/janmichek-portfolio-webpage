@@ -11,7 +11,9 @@ defineProps({
   <footer
     class="the-footer"
     :data-theme="theme">
-    <div class="u-container">
+    <div
+      class="u-container"
+      data-aos="fade-up">
       <title-section :variant="theme">
         Contact
       </title-section>
@@ -84,11 +86,6 @@ defineProps({
 .the-footer {
   background: var(--footer-background);
   padding: var(--space-xl) 0;
-  text-align: left;
-
-  @media (max-width: 479px) {
-    text-align: center;
-  }
 
   &__grid {
     display: grid;

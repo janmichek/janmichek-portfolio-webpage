@@ -20,7 +20,7 @@ function isLocalLink(url) {
 <template>
   <nuxt-link
     v-if="isLocalLink(to)"
-    :to="to"
+    to
     class="link">
     <slot/>
   </nuxt-link>

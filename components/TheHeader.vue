@@ -43,7 +43,6 @@
     @media (--tablet) {
       display: grid;
       grid-template-columns: 5fr 7fr;
-      /*gap: 8px;*/
       gap: var(--space);
     }
   }
@@ -52,21 +51,15 @@
     display: flex;
     justify-content: center;
 
-    @media (max-width: 750px) {
-      padding-bottom: 32px;
-    }
-
     @media (--tablet) {
+      padding-bottom: var(--space-xl);
       justify-content: flex-start;
     }
   }
 
   &__heading {
     text-align: center;
-
-    @media (max-width: 479px) {
-      font-size: var(--text-5xl);
-    }
+    font-size: var(--text-5xl);
 
     @media (--tablet) {
       white-space: nowrap;

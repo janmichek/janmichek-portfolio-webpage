@@ -33,7 +33,6 @@ export default {
 }
 
 .title-section {
-
   color: var(--title-section-color);
   text-align: center;
 

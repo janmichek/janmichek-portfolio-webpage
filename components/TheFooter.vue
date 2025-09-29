@@ -48,9 +48,16 @@ defineProps({
             Twitter
           </app-link>
         </div>
+
+        <div class="the-footer__container">
+          <app-link
+            class="the-footer__link"
+            to="https://docs.google.com/document/d/1XFMI_FDOuxr730fCoGSwx0lhmWh8XfprfkIrnGxQUIU/edit?usp=drive_link">
+            CV
+          </app-link>
+        </div>
       </div>
     </div>
-    §§
   </footer>
 </template>
 
@@ -93,7 +100,7 @@ defineProps({
     }
 
     @media (--desktop) {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
     }
   }
 

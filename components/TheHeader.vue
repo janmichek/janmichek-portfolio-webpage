@@ -10,7 +10,6 @@
           <img
             class="the-header__image"
             src="/profile-pic.webp"
-            width="230"
             alt="Jan Michek's avatar">
         </app-link>
       </div>

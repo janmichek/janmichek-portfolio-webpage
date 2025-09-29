@@ -8,7 +8,7 @@ const goodies = ref([
   },
   {
     title: 'Claude Settings',
-    image: 'sourcecode.webp',
+    image: 'claude-ai-icon.svg',
     description: 'Personal configuration and settings for Claude Code CLI to enhance development workflow from different tutorials in one place.',
     link: 'https://github.com/janmichek/claude-settings',
   },

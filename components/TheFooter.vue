@@ -52,7 +52,7 @@ defineProps({
         <div class="the-footer__container">
           <app-link
             class="the-footer__link"
-            to="https://docs.google.com/document/d/1XFMI_FDOuxr730fCoGSwx0lhmWh8XfprfkIrnGxQUIU/edit?usp=drive_link">
+            to="https://drive.google.com/file/d/1zqSU7Gq8hmqqhy65obWP-801D2SX_ycy/view?usp=drive_link">
             CV
           </app-link>
         </div>

@@ -8,7 +8,7 @@
       <div class="the-header__avatar">
         <app-link to="/">
           <img
-            class="the-header__image"
+            width="230"
             src="/profile-pic.webp"
             alt="Jan Michek's avatar">
         </app-link>
@@ -63,7 +63,6 @@
 
   &__heading {
     text-align: center;
-    font-size: var(--text-6xl);
 
     @media (max-width: 479px) {
       font-size: var(--text-5xl);
@@ -75,6 +74,7 @@
   }
 
   &__subheading {
+    font-size: 36px;
     color: var(--ui-text-primary);
     text-align: center;
 
@@ -91,7 +91,7 @@
     text-align: center;
     color: var(--ui-text-muted);
     margin-bottom: 0;
-    font-size: 32px;
+    font-size: 28px;
   }
 }
 </style>

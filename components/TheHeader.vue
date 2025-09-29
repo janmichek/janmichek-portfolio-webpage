@@ -44,8 +44,8 @@
     @media (--tablet) {
       display: grid;
       grid-template-columns: 5fr 7fr;
-      gap: 8px;
-      /*gap: var(--space);*/
+      /*gap: 8px;*/
+      gap: var(--space);
     }
   }
 
@@ -64,14 +64,14 @@
 
   &__heading {
     text-align: center;
-    font-size: var(--text-5xl);
+    font-size: var(--text-6xl);
+
+    @media (max-width: 479px) {
+      font-size: var(--text-5xl);
+    }
 
     @media (--tablet) {
       white-space: nowrap;
-    }
-
-    @media (--mobile) {
-      font-size: var(--text-6xl);
     }
   }
 

@@ -5,8 +5,10 @@
   margin-right: auto;
   padding-left: var(--space-sm);
   padding-right: var(--space-sm);
-
-
+  @media (--desktop) {
+    padding-left: var(--space-xl);
+    padding-right: var(--space-xl);
+  }
 }
 
 .u-grid {
@@ -14,3 +16,14 @@
   gap: var(--space);
 }
 
+.u-masonry {
+  column-gap: 1.5em;
+
+  @media (min-width: 768px) {
+    column-count: 2
+  }
+
+  @media (min-width: 992px) {
+    column-count: 3
+  }
+}

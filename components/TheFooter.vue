@@ -11,8 +11,8 @@ defineProps({
   <footer
     class="the-footer"
     :data-theme="theme">
-    <div class="the-footer__container u-container">
-      <title-section variant="primary">
+    <div class="u-container">
+      <title-section variant="secondary">
         Contact
       </title-section>
 
@@ -54,11 +54,10 @@ defineProps({
 </template>
 
 <style scoped>
-
 [data-theme="primary"] {
   --footer-background: var(--ui-primary);
   --footer-link: var(--ui-text-secondary);
-  --footer-link-hover: var(--ui-text-primary);
+  --footer-link-hover: var(--ui-text-p rimary);
   @media (--dark) {
     --footer-link: var(--ui-text-tertiary);
   }
@@ -66,21 +65,17 @@ defineProps({
 
 [data-theme="secondary"] {
   --footer-background: var(--ui-secondary);
-  --footer-link: var(--ui-text-primary);
+  --footer-link: var(--ui-text-secondary);
   --footer-link-hover: var(--ui-text-primary);
-
 }
 
 .the-footer {
   background: var(--footer-background);
   padding: var(--space-xl) 0;
-  text-align: center;
+  text-align: left;
 
-  @media (--mobile) {
-    text-align: left;
-  }
-
-  &__container {
+  @media (max-width: 479px) {
+    text-align: center;
   }
 
   &__grid {

@@ -57,7 +57,7 @@ const goodies = ref([
   },
   {
     title: 'Music Production',
-    image: 'honeytcz.webp',
+    image: 'honey-t.webp',
     description: 'I invest my free time into music production: creative organization proven by 5+ millions of'
       + ' streams, and personal building of communities worldwide. Have a listen.',
     link: 'https://open.spotify.com/artist/52iWG2c2P0K6HmGrAAUyoP?si=SuOL9lY1QuyCI1FDBOzO9A',
@@ -73,11 +73,11 @@ const goodies = ref([
 
 <template>
   <section class="goodies">
-    <div class="goodies__container u-container">
+    <div class="u-container">
       <title-section variant="primary">
         Goodies
       </title-section>
-      <div class="goodies__masonry">
+      <div class="u-masonry">
         <app-card
           v-for="(goodie, id) in goodies"
           :key="id"
@@ -94,24 +94,5 @@ const goodies = ref([
 <style scoped>
 .goodies {
   background: var(--ui-primary);
-
-  &__container {
-
-  }
-
-  &__masonry {
-    /*  @apply .u-masonry;*/
-    /*}*/
-
-    column-gap: 1.5em;
-
-    @media (min-width: 768px) {
-      column-count: 2
-    }
-
-    @media (min-width: 992px) {
-      column-count: 3
-    }
-  }
 }
 </style>

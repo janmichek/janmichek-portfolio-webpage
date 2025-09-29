@@ -18,7 +18,6 @@ export default {
 </template>
 
 <style scoped>
-
 [data-variant="primary"] {
   --title-section-color: var(--ui-text-secondary);
   @media (--dark) {

@@ -74,16 +74,22 @@ const goodies = ref([
 <template>
   <section class="goodies">
     <div class="u-container">
-      <title-section variant="primary">
+      <title-section
+        variant="primary"
+        data-aos="fade-up">
         Goodies
       </title-section>
-      <div class="u-masonry">
+      <div
+        class="u-masonry"
+        data-aos="fade-up">
         <app-card
           v-for="(goodie, id) in goodies"
           :key="id"
           :image="goodie.image"
           :title="goodie.title"
-          :link="goodie.link">
+          :link="goodie.link"
+          data-aos="zoom-in"
+          :data-aos-delay="10 + (id * 15)">
           <div v-html="goodie.description"/>
         </app-card>
       </div>

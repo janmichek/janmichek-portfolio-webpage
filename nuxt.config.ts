@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     'nuxt-vuefire',
     '@nuxtjs/stylelint-module',
+    'nuxt-aos',
   ],
   ssr: false,
   app: {

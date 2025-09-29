@@ -4,10 +4,14 @@
 <template>
   <section class="projects">
     <div class="projects__container u-container">
-      <title-section>Recent projects</title-section>
+      <title-section data-aos="fade-up">
+        Recent projects
+      </title-section>
 
       <div class="projects__content">
-        <app-post class="projects__post">
+        <app-post
+          class="projects__post"
+          data-aos="fade-up">
           <template #heading>
             aeScan.io
           </template>
@@ -89,7 +93,9 @@
           </template>
         </app-post>
 
-        <app-post class="projects__post">
+        <app-post
+          class="projects__post"
+          data-aos="fade-up">
           <template #heading>
             PWN Finance
           </template>
@@ -168,7 +174,9 @@
           </template>
         </app-post>
 
-        <app-post class="projects__post">
+        <app-post
+          class="projects__post"
+          data-aos="fade-up">
           <template #heading>
             Chatbot Builder
           </template>
@@ -249,7 +257,6 @@
 </template>
 
 <style scoped>
-
 .projects {
   &__container {
   }

@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
-  modules: ['@nuxt/eslint', 'nuxt-vuefire'],
+  modules: ['@nuxt/eslint', '@nuxt/image', 'nuxt-vuefire'],
   ssr: false,
   css: ['~/assets/styles/main.css'],
   devServer: {

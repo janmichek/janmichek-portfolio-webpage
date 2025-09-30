@@ -8,9 +8,9 @@
     <swiper-slide
       v-for="(slide, index) in images"
       :key="index">
-      <img
+      <nuxt-img
         :src="slide.medium"
-        class="swiper__image">
+        class="swiper__image" />
       <div class="swiper__text">
         {{ slide.altText }}
       </div>

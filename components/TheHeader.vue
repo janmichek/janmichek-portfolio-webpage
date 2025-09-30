@@ -4,12 +4,12 @@
       <div class="u-flex-row">
         <div class="u-5/12@tablet the-header__avatar">
           <app-link to="/">
-            <img
+            <nuxt-img
               format="webp"
               class="the-header__image"
               src="/janmichek.webp"
               :width="230"
-              alt="Jan Michek's avatar">
+              alt="Jan Michek's avatar" />
           </app-link>
         </div>
         <div class="u-7/12@tablet the-header__content">

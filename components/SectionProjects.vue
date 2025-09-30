@@ -10,10 +10,10 @@
           </template>
           <template #image>
             <app-link to="https://aescan.io/">
-              <img
+              <nuxt-img
                 src="/aescan.webp"
                 :width="686"
-                alt="aescan">
+                alt="aescan" />
 
             </app-link>
             <app-link
@@ -88,10 +88,10 @@
           </template>
           <template #image>
             <app-link to="http://pwn.finance">
-              <img
+              <nuxt-img
                 src="/pwn.webp"
                 :width="686"
-                alt="PWN Finance">
+                alt="PWN Finance" />
             </app-link>
             <app-link
               class="projects__preview"
@@ -164,10 +164,10 @@
           </template>
           <template #image>
             <app-link to="https://www.nice.com/websites/cxone-next-gen-cx/">
-              <img
+              <nuxt-img
                 src="/chatbot.webp"
                 :width="686"
-                alt="Chabot Builder">
+                alt="Chabot Builder" />
             </app-link>
             <app-link
               class="projects__preview"

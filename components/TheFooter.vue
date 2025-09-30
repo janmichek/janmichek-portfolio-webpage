@@ -17,42 +17,42 @@ defineProps({
         Contact
       </title-section>
 
-      <div class="the-footer__grid">
-        <div class="the-footer__container">
+      <div class="footer__grid">
+        <div class="footer__container">
           <app-link
-            class="the-footer__link"
+            class="footer__link"
             to="mailto:jan@janmichek.cz">
             jan@janmichek.cz
           </app-link>
         </div>
 
-        <div class="the-footer__container">
+        <div class="footer__container">
           <app-link
-            class="the-footer__link"
+            class="footer__link"
             to="https://cz.linkedin.com/in/jan-michek-aba913103">
             Linked In
           </app-link>
         </div>
 
-        <div class="the-footer__container">
+        <div class="footer__container">
           <app-link
-            class="the-footer__link"
+            class="footer__link"
             to="https://github.com/janmichek/">
             Github
           </app-link>
         </div>
 
-        <div class="the-footer__container">
+        <div class="footer__container">
           <app-link
-            class="the-footer__link"
+            class="footer__link"
             to="https://www.twitter.com/jan_michek">
             Twitter
           </app-link>
         </div>
 
-        <div class="the-footer__container">
+        <div class="footer__container">
           <app-link
-            class="the-footer__link"
+            class="footer__link"
             to="https://drive.google.com/file/d/1zqSU7Gq8hmqqhy65obWP-801D2SX_ycy/view?usp=drive_link">
             CV
           </app-link>
@@ -63,7 +63,7 @@ defineProps({
 </template>
 
 <style scoped>
-.the-footer--primary {
+.footer--primary {
   --footer-background: var(--ui-secondary);
   --footer-link: var(--ui-text-primary);
   --footer-link-hover: var(--ui-text-primary);
@@ -72,7 +72,7 @@ defineProps({
   }
 }
 
-.the-footer--secondary {
+.footer--secondary {
   --footer-background: var(--ui-secondary);
   --footer-link: var(--ui-text-secondary);
   --footer-link-hover: var(--ui-text-primary);
@@ -82,7 +82,7 @@ defineProps({
   }
 }
 
-.the-footer {
+.footer {
   background: var(--footer-background);
   padding: var(--space-xl) 0;
 

@@ -3,9 +3,9 @@
 </script>
 
 <template>
-  <header class="the-header">
-    <div class="the-header__container u-container">
-      <div class="the-header__avatar">
+  <header class="header">
+    <div class="header__container u-container">
+      <div class="header__avatar">
         <app-link to="/">
           <img
             width="230"
@@ -14,10 +14,10 @@
         </app-link>
       </div>
       <div>
-        <h1 class="the-header__heading">
+        <h1 class="header__heading">
           Jan Michek
         </h1>
-        <div class="the-header__subheading h2">
+        <div class="header__subheading h2">
           web3 frontend engineer
         </div>
         <div class="h3 the-header__excerpt">
@@ -29,7 +29,7 @@
 </template>
 
 <style scoped>
-.the-header {
+.header {
   padding: var(--space-xl) var(--space-xl) var(--space-2xl);
   background: var(--ui-bg);
   width: 100%;

@@ -20,7 +20,7 @@
         <div class="the-header__subheading h2">
           web3 frontend engineer
         </div>
-        <div class="the-header__excerpt">
+        <div class="h3 the-header__excerpt">
           Czechia / Prague / <span title="That is 38">1987</span>
         </div>
       </div>
@@ -50,16 +50,16 @@
   &__avatar {
     display: flex;
     justify-content: center;
+    padding-bottom: var(--space-xl);
 
     @media (--tablet) {
-      padding-bottom: var(--space-xl);
+      padding-bottom: 0;
       justify-content: flex-start;
     }
   }
 
   &__heading {
     text-align: center;
-    font-size: var(--text-5xl);
 
     @media (--tablet) {
       white-space: nowrap;

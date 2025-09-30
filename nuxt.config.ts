@@ -52,8 +52,8 @@ export default defineNuxtConfig({
     },
   },
   aos: {
-    offset: 20,
     duration: 300,
+    offset: 10,
     once: true,
   },
   eslint: {

@@ -46,8 +46,12 @@ defineProps({
   display: inline-block;
   background: var(--ui-secondary);
   padding: var(--space);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-xl);
   position: relative;
+
+  &__title {
+    margin-bottom: var(--space);
+  }
 
   &__link {
     text-decoration: none;

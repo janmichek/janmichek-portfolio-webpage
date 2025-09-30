@@ -58,7 +58,8 @@ const images = ref([
           <section>
             <slug-title
               title="Photo Gallery"
-              description="Capturing beauty through my lens - especially the delicate world of flowers. These shots showcase my aesthetic eye and double as gorgeous placeholder images for your next project."/>
+              description="Capturing beauty through my lens - especially the delicate world of flowers.
+              These shots showcase my aesthetic eye and double as gorgeous placeholder images for your next project."/>
           </section>
         </div>
       </div>

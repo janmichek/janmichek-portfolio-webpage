@@ -36,6 +36,7 @@
     margin-right: auto;
     padding-left: var(--space-sm);
     padding-right: var(--space-sm);
+
     @media (--tablet) {
       max-width: calc(100% * 2 / 3);
     }

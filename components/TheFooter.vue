@@ -67,6 +67,7 @@ defineProps({
   --footer-background: var(--ui-secondary);
   --footer-link: var(--ui-text-primary);
   --footer-link-hover: var(--ui-text-primary);
+
   @media (--dark) {
     --footer-link: var(--ui-primary);
   }
@@ -76,6 +77,7 @@ defineProps({
   --footer-background: var(--ui-secondary);
   --footer-link: var(--ui-text-secondary);
   --footer-link-hover: var(--ui-text-primary);
+
   @media (--dark) {
     --footer-link: var(--ui-text-primary);
     --footer-link-hover: var(--ui-text-secondary);

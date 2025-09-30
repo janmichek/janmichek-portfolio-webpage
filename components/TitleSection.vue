@@ -19,6 +19,7 @@ export default {
 <style scoped>
 .title-section--primary {
   --title-section-color: var(--ui-text-secondary);
+
   @media (--dark) {
     --title-section-color: var(--ui-text-primary);
   }
@@ -26,6 +27,7 @@ export default {
 
 .title-section--secondary {
   --title-section-color: var(--ui-text-primary);
+
   @media (--dark) {
     --title-section-color: var(--ui-text-secondary);
   }

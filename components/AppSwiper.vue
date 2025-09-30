@@ -45,7 +45,6 @@ const modules = [Navigation]
   &:after {
     content: "";
   }
-
   left: 0;
   width: 0;
   height: 0;
@@ -58,7 +57,6 @@ const modules = [Navigation]
   &:after {
     content: "";
   }
-
   width: 0;
   height: 0;
   border-style: solid;

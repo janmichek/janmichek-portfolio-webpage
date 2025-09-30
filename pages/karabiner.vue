@@ -319,6 +319,7 @@
 <style scoped>
 .karabiner-table {
   color: var(--ui-text-secondary);
+
   @media (--dark) {
     color: var(--ui-text-tertiary);
   }
@@ -328,39 +329,63 @@
 }
 
 .karabiner-table th {
-  background: #999999;
+  background: #999;
   color: white;
-  padding: 12px;
+  padding: var(--space-sm);
   text-align: left;
   font-weight: 600;
 }
 
 .karabiner-table td {
-  padding: 10px 12px;
+  padding: var(--space-xs) var(--space-sm);
   border-bottom: 1px solid #e1e5e9;
 }
 
-/* Firefox Section - Blue Hue */
-.firefox:nth-of-type(odd) { background: #e3f2fd; }
-.firefox:nth-of-type(even) { background: #bbdefb; }
+.firefox:nth-of-type(odd) {
+  background: #e3f2fd;
+}
 
-/* WebStorm Section - Green Hue */
-.webstorm:nth-of-type(odd) { background: #e8f5e8; }
-.webstorm:nth-of-type(even) { background: #c8e6c9; }
+.firefox:nth-of-type(even) {
+  background: #bbdefb;
+}
 
-/* Finder Section - Orange Hue */
-.finder:nth-of-type(odd) { background: #fff3e0; }
-.finder:nth-of-type(even) { background: #ffe0b2; }
+.webstorm:nth-of-type(odd) {
+  background: #e8f5e8;
+}
 
-/* System Section - Purple Hue */
-.system:nth-of-type(odd) { background: #f3e5f5; }
-.system:nth-of-type(even) { background: #e1bee7; }
+.webstorm:nth-of-type(even) {
+  background: #c8e6c9;
+}
 
-/* Ableton Section - Red Hue */
-.ableton:nth-of-type(odd) { background: #ffebee; }
-.ableton:nth-of-type(even) { background: #ffcdd2; }
+.finder:nth-of-type(odd) {
+  background: #fff3e0;
+}
 
-/* Apps Section - Cyan Hue */
-.apps:nth-of-type(odd) { background: #e0f2f1; }
-.apps:nth-of-type(even) { background: #b2dfdb; }
+.finder:nth-of-type(even) {
+  background: #ffe0b2;
+}
+
+.system:nth-of-type(odd) {
+  background: #f3e5f5;
+}
+
+.system:nth-of-type(even) {
+  background: #e1bee7;
+}
+
+.ableton:nth-of-type(odd) {
+  background: #ffebee;
+}
+
+.ableton:nth-of-type(even) {
+  background: #ffcdd2;
+}
+
+.apps:nth-of-type(odd) {
+  background: #e0f2f1;
+}
+
+.apps:nth-of-type(even) {
+  background: #b2dfdb;
+}
 </style>

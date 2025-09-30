@@ -40,7 +40,7 @@
         </div>
         <p class="skills__description">
           I love to bridge computer code with human perception.
-          "Don't let users think" is my ultimate motto. I live on the front side of frontend.
+          "Don’t let users think" is my ultimate motto. I live on the front side of frontend.
         </p>
       </div>
     </div>

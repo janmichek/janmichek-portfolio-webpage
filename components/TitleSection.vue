@@ -11,21 +11,20 @@ export default {
 
 <template>
   <h3
-    class="title-section"
-    :data-variant="variant">
+    :class="['title-section', `title-section--${variant}`]">
     <slot/>
   </h3>
 </template>
 
 <style scoped>
-[data-variant="primary"] {
+.title-section--primary {
   --title-section-color: var(--ui-text-secondary);
   @media (--dark) {
     --title-section-color: var(--ui-text-primary);
   }
 }
 
-[data-variant="secondary"] {
+.title-section--secondary {
   --title-section-color: var(--ui-text-primary);
   @media (--dark) {
     --title-section-color: var(--ui-text-secondary);

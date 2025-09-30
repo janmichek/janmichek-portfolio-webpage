@@ -46,7 +46,7 @@ const goodies = ref([
   },
   {
     title: 'Photos Gallery',
-    image: 'k6.webp',
+    image: 'k3.webp',
     description: 'I like shooting photos too. Especially flowers. Here is a small presentation of my esthetics skills. Or they can be used as a nice placeholders images.',
     link: '/gallery',
   },

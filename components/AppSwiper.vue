@@ -38,7 +38,7 @@ const modules = [Navigation]
 <style>
 .swiper__image {
   margin: 0 auto;
-  width: 85vw;
+  width: 85%;
 }
 
 .swiper-button-prev {

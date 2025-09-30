@@ -12,291 +12,302 @@
       <br>
       <br>
       <div>
-        <table>
-          <tbody>
+        <table class="karabiner-table">
+          <thead>
             <tr>
               <th>Category</th>
               <th>Key Combo</th>
               <th>Function</th>
             </tr>
-            <tr>
-              <td>Firefox</td>
+          </thead>
+          <tbody>
+            <tr class="firefox">
+              <td><strong>Firefox</strong></td>
               <td>F1</td>
               <td>Switch to previous tab</td>
             </tr>
-            <tr>
-              <td>Firefox</td>
-              <td>F2</td>
-              <td>Close Tab</td>
+            <tr class="firefox">
+              <td><strong>Firefox</strong></td>
+              <td>F2 (tap)</td>
+              <td>Close tab</td>
             </tr>
-            <tr>
-              <td>Firefox</td>
+            <tr class="firefox">
+              <td><strong>Firefox</strong></td>
               <td>F2 (hold)</td>
-              <td>Reopen Tab</td>
+              <td>Reopen closed tab</td>
             </tr>
-            <tr>
-              <td>Firefox</td>
+            <tr class="firefox">
+              <td><strong>Firefox</strong></td>
               <td>F4</td>
-              <td>Open Downloads</td>
+              <td>Open downloads</td>
             </tr>
-            <tr>
-              <td>Firefox</td>
-              <td>F12</td>
-              <td>Open Developer Tools</td>
+            <tr class="firefox">
+              <td><strong>Firefox</strong></td>
+              <td>F12 (tap)</td>
+              <td>Developer tools</td>
             </tr>
-            <tr>
-              <td>Firefox</td>
+            <tr class="firefox">
+              <td><strong>Firefox</strong></td>
               <td>F12 (hold)</td>
-              <td>Open Inspector</td>
+              <td>Open inspector</td>
             </tr>
 
-            <tr>
-              <td>WebStorm</td>
+            <!-- WebStorm Section -->
+            <tr class="webstorm">
+              <td><strong>WebStorm</strong></td>
               <td>F1</td>
-              <td>Last Tab</td>
+              <td>Switch tabs</td>
             </tr>
-            <tr>
-              <td>WebStorm</td>
+            <tr class="webstorm">
+              <td><strong>WebStorm</strong></td>
               <td>F2</td>
-              <td>Reopen Closed tab</td>
+              <td>Search files</td>
             </tr>
-            <tr>
-              <td>WebStorm</td>
-              <td>F5</td>
-              <td>Rename</td>
-            </tr>
-            <tr>
-              <td>WebStorm</td>
+            <tr class="webstorm">
+              <td><strong>WebStorm</strong></td>
               <td>F6</td>
-              <td>Fetch</td>
+              <td>New file/Quick actions</td>
             </tr>
-            <tr>
-              <td>WebStorm</td>
+            <tr class="webstorm">
+              <td><strong>WebStorm</strong></td>
               <td>F7</td>
-              <td>Push</td>
+              <td>Quick actions</td>
             </tr>
-            <tr>
-              <td>WebStorm</td>
+            <tr class="webstorm">
+              <td><strong>WebStorm</strong></td>
               <td>F8</td>
-              <td>Stash</td>
+              <td>Stash changes</td>
             </tr>
-            <tr>
-              <td>WebStorm</td>
+            <tr class="webstorm">
+              <td><strong>WebStorm</strong></td>
               <td>F9</td>
-              <td>Unstash</td>
+              <td>Unstash changes</td>
             </tr>
-            <tr>
-              <td>WebStorm</td>
+            <tr class="webstorm">
+              <td><strong>WebStorm</strong></td>
               <td>F10</td>
-              <td>Show Usage</td>
+              <td>Show usage + Run</td>
             </tr>
-            <tr>
-              <td>WebStorm</td>
+            <tr class="webstorm">
+              <td><strong>WebStorm</strong></td>
               <td>F11</td>
-              <td>Full Screen</td>
+              <td>Find files</td>
             </tr>
-            <tr>
-              <td>WebStorm</td>
+            <tr class="webstorm">
+              <td><strong>WebStorm</strong></td>
               <td>F12</td>
               <td>Terminal</td>
             </tr>
 
-            <tr>
-              <td>Finder</td>
+            <!-- Finder Section -->
+            <tr class="finder">
+              <td><strong>Finder</strong></td>
               <td>Enter</td>
-              <td>Open</td>
+              <td>Open folder/file</td>
             </tr>
-            <tr>
-              <td>Finder</td>
-              <td>Backspace</td>
-              <td>Move to Trash</td>
+            <tr class="finder">
+              <td><strong>Finder</strong></td>
+              <td>Delete Forward</td>
+              <td>Move to trash</td>
+            </tr>
+            <tr class="finder">
+              <td><strong>Finder</strong></td>
+              <td>CMD+H</td>
+              <td>Toggle hidden files</td>
             </tr>
 
-            <tr>
-              <td>System</td>
+            <!-- System Functions Section -->
+            <tr class="system">
+              <td><strong>System</strong></td>
+              <td>~ (hold)</td>
+              <td>Hide/Show Dock</td>
+            </tr>
+            <tr class="system">
+              <td><strong>System</strong></td>
+              <td>Left CMD (tap)</td>
+              <td>Open Alfred</td>
+            </tr>
+            <tr class="system">
+              <td><strong>System</strong></td>
+              <td>Double ESC</td>
+              <td>Quit current app</td>
+            </tr>
+            <tr class="system">
+              <td><strong>System</strong></td>
               <td>CMD + F1</td>
-              <td>Brightenss -</td>
+              <td>Brightness down</td>
             </tr>
-            <tr>
-              <td>System</td>
+            <tr class="system">
+              <td><strong>System</strong></td>
               <td>CMD + F2</td>
-              <td>Brightnes+</td>
+              <td>Brightness up</td>
             </tr>
-            <tr>
-              <td>System</td>
+            <tr class="system">
+              <td><strong>System</strong></td>
               <td>CMD + F3</td>
-              <td>Backlight -</td>
+              <td>Keyboard backlight down</td>
             </tr>
-            <tr>
-              <td>System</td>
+            <tr class="system">
+              <td><strong>System</strong></td>
               <td>CMD + F4</td>
-              <td>Backlight +</td>
+              <td>Keyboard backlight up</td>
             </tr>
-            <tr>
-              <td>System</td>
+            <tr class="system">
+              <td><strong>System</strong></td>
               <td>CMD + F5</td>
-              <td>Screenshot</td>
+              <td>Screenshot area</td>
             </tr>
-            <tr>
-              <td>System</td>
+            <tr class="system">
+              <td><strong>System</strong></td>
+              <td>CMD + F6</td>
+              <td>Focus change</td>
+            </tr>
+            <tr class="system">
+              <td><strong>System</strong></td>
               <td>CMD + F7</td>
               <td>Previous track</td>
             </tr>
-            <tr>
-              <td>System</td>
+            <tr class="system">
+              <td><strong>System</strong></td>
               <td>CMD + F8</td>
-              <td>Play/Pause media</td>
+              <td>Play/Pause</td>
             </tr>
-            <tr>
-              <td>System</td>
+            <tr class="system">
+              <td><strong>System</strong></td>
               <td>CMD + F9</td>
               <td>Next track</td>
             </tr>
-            <tr>
-              <td>System</td>
+            <tr class="system">
+              <td><strong>System</strong></td>
               <td>CMD + F10</td>
               <td>Mute</td>
             </tr>
-            <tr>
-              <td>System</td>
+            <tr class="system">
+              <td><strong>System</strong></td>
               <td>CMD + F11</td>
-              <td>Volume +</td>
+              <td>Volume down</td>
             </tr>
-            <tr>
-              <td>System</td>
+            <tr class="system">
+              <td><strong>System</strong></td>
               <td>CMD + F12</td>
-              <td>Volume -</td>
+              <td>Volume up</td>
             </tr>
-
-            <tr>
-              <td>System</td>
-              <td>Tilda (hold)</td>
-              <td>Hide/Show Dock</td>
-            </tr>
-            <tr>
-              <td>System</td>
-              <td>CMD+Alfred</td>
-              <td>Alfred</td>
-            </tr>
-            <tr>
-              <td>System</td>
-              <td>CMD+Double ESC</td>
-              <td>Quit current application</td>
-            </tr>
-            <tr>
-              <td>System</td>
+            <tr class="system">
+              <td><strong>System</strong></td>
               <td>End key</td>
               <td>Cursor to end of line</td>
             </tr>
-            <tr>
-              <td>System</td>
+            <tr class="system">
+              <td><strong>System</strong></td>
               <td>Home key</td>
               <td>Cursor to beginning of line</td>
             </tr>
-            <tr>
-              <td>Ableton</td>
+            <!-- Ableton Section -->
+            <tr class="ableton">
+              <td><strong>Ableton</strong></td>
               <td>F1</td>
-              <td>Fold</td>
+              <td>Fold tracks</td>
             </tr>
-            <tr>
-              <td>Ableton</td>
+            <tr class="ableton">
+              <td><strong>Ableton</strong></td>
               <td>F2 (tap)</td>
-              <td>Fade</td>
+              <td>Fade tool</td>
             </tr>
-            <tr>
-              <td>Ableton</td>
+            <tr class="ableton">
+              <td><strong>Ableton</strong></td>
               <td>F2 (hold)</td>
-              <td>Show Automations</td>
+              <td>Show automation</td>
             </tr>
-            <tr>
-              <td>Ableton</td>
+            <tr class="ableton">
+              <td><strong>Ableton</strong></td>
               <td>F3</td>
-              <td>Slice</td>
+              <td>Split clips</td>
             </tr>
-            <tr>
-              <td>Ableton</td>
+            <tr class="ableton">
+              <td><strong>Ableton</strong></td>
               <td>F4</td>
-              <td>Glue</td>
+              <td>Glue clips</td>
             </tr>
-            <tr>
-              <td>Ableton</td>
+            <tr class="ableton">
+              <td><strong>Ableton</strong></td>
               <td>F5</td>
-              <td>Trim</td>
+              <td>Trim clips</td>
             </tr>
-            <tr>
-              <td>Ableton</td>
+            <tr class="ableton">
+              <td><strong>Ableton</strong></td>
               <td>F6</td>
               <td>Quantize</td>
             </tr>
-            <tr>
-              <td>Apps</td>
-              <td>Capslock+A</td>
-              <td>Ableton</td>
+            <!-- Apps Launcher Section -->
+            <tr class="apps">
+              <td><strong>Apps</strong></td>
+              <td>Caps Lock + A (hold)</td>
+              <td>Open Ableton Live 12</td>
             </tr>
-            <tr>
-              <td>Apps</td>
-              <td>Capslock+B</td>
-              <td>Beeper</td>
+            <tr class="apps">
+              <td><strong>Apps</strong></td>
+              <td>Caps Lock + B (hold)</td>
+              <td>Open Beeper Desktop</td>
             </tr>
-            <tr>
-              <td>Apps</td>
-              <td>Capslock+C</td>
-              <td>Calendar</td>
+            <tr class="apps">
+              <td><strong>Apps</strong></td>
+              <td>Caps Lock + C (hold)</td>
+              <td>Open Calendar</td>
             </tr>
-            <tr>
-              <td>Apps</td>
-              <td>Capslock+D</td>
-              <td>Firefox Developer</td>
+            <tr class="apps">
+              <td><strong>Apps</strong></td>
+              <td>Caps Lock + D (hold)</td>
+              <td>Open Firefox Developer Edition</td>
             </tr>
-            <tr>
-              <td>Apps</td>
-              <td>Capslock+E</td>
-              <td>FInder</td>
+            <tr class="apps">
+              <td><strong>Apps</strong></td>
+              <td>Caps Lock + E (hold)</td>
+              <td>Open Finder</td>
             </tr>
-            <tr>
-              <td>Apps</td>
-              <td>Capslock+F</td>
-              <td>Firefox</td>
+            <tr class="apps">
+              <td><strong>Apps</strong></td>
+              <td>Caps Lock + F (hold)</td>
+              <td>Open Firefox</td>
             </tr>
-            <tr>
-              <td>Apps</td>
-              <td>Capslock+K</td>
-              <td>Keep</td>
+            <tr class="apps">
+              <td><strong>Apps</strong></td>
+              <td>Caps Lock + K (hold)</td>
+              <td>Open Keep</td>
             </tr>
-            <tr>
-              <td>Apps</td>
-              <td>Capslock+M</td>
-              <td>Gmail</td>
+            <tr class="apps">
+              <td><strong>Apps</strong></td>
+              <td>Caps Lock + M (hold)</td>
+              <td>Open Gmail</td>
             </tr>
-            <tr>
-              <td>Apps</td>
-              <td>Capslock+N</td>
-              <td>MEGAsync</td>
+            <tr class="apps">
+              <td><strong>Apps</strong></td>
+              <td>Caps Lock + N (hold)</td>
+              <td>Open MEGAsync</td>
             </tr>
-            <tr>
-              <td>Apps</td>
-              <td>Capslock+V</td>
-              <td>Surfshark</td>
+            <tr class="apps">
+              <td><strong>Apps</strong></td>
+              <td>Caps Lock + V (hold)</td>
+              <td>Open Surfshark</td>
             </tr>
-            <tr>
-              <td>Apps</td>
-              <td>Capslock+W</td>
-              <td>Webstorm</td>
+            <tr class="apps">
+              <td><strong>Apps</strong></td>
+              <td>Caps Lock + W (hold)</td>
+              <td>Open WebStorm</td>
             </tr>
-            <tr>
-              <td>Apps</td>
-              <td>Capslock+I</td>
-              <td>Instagram</td>
+            <tr class="apps">
+              <td><strong>Apps</strong></td>
+              <td>Caps Lock + I (hold)</td>
+              <td>Open Instagram in Firefox</td>
             </tr>
-            <tr>
-              <td>Apps</td>
-              <td>Capslock+P</td>
-              <td>Photopea</td>
+            <tr class="apps">
+              <td><strong>Apps</strong></td>
+              <td>Caps Lock + P (hold)</td>
+              <td>Open Photopea</td>
             </tr>
-            <tr>
-              <td>Apps</td>
-              <td>Capslock+Y</td>
-              <td>Youtube</td>
+            <tr class="apps">
+              <td><strong>Apps</strong></td>
+              <td>Caps Lock + Y (hold)</td>
+              <td>Open YouTube in Firefox</td>
             </tr>
           </tbody>
         </table>
@@ -304,3 +315,52 @@
     </article>
   </nuxt-layout>
 </template>
+
+<style scoped>
+.karabiner-table {
+  color: var(--ui-text-secondary);
+  @media (--dark) {
+    color: var(--ui-text-tertiary);
+  }
+  border-collapse: collapse;
+  width: 100%;
+
+}
+
+.karabiner-table th {
+  background: #999999;
+  color: white;
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.karabiner-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e1e5e9;
+}
+
+/* Firefox Section - Blue Hue */
+.firefox:nth-of-type(odd) { background: #e3f2fd; }
+.firefox:nth-of-type(even) { background: #bbdefb; }
+
+/* WebStorm Section - Green Hue */
+.webstorm:nth-of-type(odd) { background: #e8f5e8; }
+.webstorm:nth-of-type(even) { background: #c8e6c9; }
+
+/* Finder Section - Orange Hue */
+.finder:nth-of-type(odd) { background: #fff3e0; }
+.finder:nth-of-type(even) { background: #ffe0b2; }
+
+/* System Section - Purple Hue */
+.system:nth-of-type(odd) { background: #f3e5f5; }
+.system:nth-of-type(even) { background: #e1bee7; }
+
+/* Ableton Section - Red Hue */
+.ableton:nth-of-type(odd) { background: #ffebee; }
+.ableton:nth-of-type(even) { background: #ffcdd2; }
+
+/* Apps Section - Cyan Hue */
+.apps:nth-of-type(odd) { background: #e0f2f1; }
+.apps:nth-of-type(even) { background: #b2dfdb; }
+</style>

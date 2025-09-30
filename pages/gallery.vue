@@ -5,48 +5,47 @@ const images = ref([
     altText: 'Galanthus nivalis - Žižkov',
   },
   {
-    medium: 'k2.webp',
-    altText: 'Philadelphus indorus - Křivoklátsko',
-  },
-  {
-    medium: 'k3.webp',
-    altText: 'Canna indica - Puerto de la Cruz',
-  },
-  {
-    medium: 'k4.webp',
-    altText: 'Prunus mahaleb - Žižkov',
-  },
-  {
-    medium: 'k5.webp',
-    altText: 'Pelargonium graveolens - Las Playitas',
-  },
-  {
-    medium: 'k6.webp',
-    altText: 'Nerium oleander - Monopoli',
-  },
-  {
     medium: 'k7.webp',
     altText: 'Bougainvillea spectabilis - Puerto de la Cruz',
-  },
-  {
-    medium: 'k8.webp',
-    altText: 'Prunus spinosa - Žižkov',
   },
   {
     medium: 'k9.webp',
     altText: 'Pancratium maritimum - Praia da Comporta',
   },
   {
-    medium: 'k10.webp',
-    altText: 'Delosperma cooperi - Žižkov',
-  },
-  {
     medium: 'k11.webp',
     altText: 'Myrtus communis - Monopoli',
   },
   {
+    medium: 'k2.webp',
+    altText: 'Philadelphus indorus - Křivoklátsko',
+  },
+  {
+    medium: 'k10.webp',
+    altText: 'Delosperma cooperi - Žižkov',
+  },
+  {
+    medium: 'k5.webp',
+    altText: 'Pelargonium graveolens - Las Playitas',
+  },
+  {
+    medium: 'k4.webp',
+    altText: 'Prunus mahaleb - Žižkov',
+  },
+  {
+    medium: 'k6.webp',
+    altText: 'Nerium oleander - Monopoli',
+  }, {
+    medium: 'k8.webp',
+    altText: 'Prunus spinosa - Žižkov',
+  },
+  {
     medium: 'k12.webp',
     altText: 'Pelargonium graveolens - Albertov',
+  },
+  {
+    medium: 'k3.webp',
+    altText: 'Canna indica - Puerto de la Cruz',
   },
 ])
 </script>
@@ -59,8 +58,7 @@ const images = ref([
           <section>
             <slug-title
               title="Photo Gallery"
-              description="I like shooting photography too. Especially flowers. Here is a small presentation of my
-              esthetics skills. I am using them as placeholder images when building new app."/>
+              description="Capturing beauty through my lens - especially the delicate world of flowers. These shots showcase my aesthetic eye and double as gorgeous placeholder images for your next project."/>
           </section>
         </div>
       </div>

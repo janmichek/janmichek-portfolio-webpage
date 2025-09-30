@@ -9,8 +9,7 @@ defineProps({
 
 <template>
   <footer
-    class="the-footer"
-    :data-variant="variant">
+    :class="['the-footer', `the-footer--${variant}`]">
     <div
       class="u-container"
       data-aos="fade-up">
@@ -64,7 +63,7 @@ defineProps({
 </template>
 
 <style scoped>
-[data-variant="primary"] {
+.the-footer--primary {
   --footer-background: var(--ui-secondary);
   --footer-link: var(--ui-text-primary);
   --footer-link-hover: var(--ui-text-primary);
@@ -73,7 +72,7 @@ defineProps({
   }
 }
 
-[data-variant="secondary"] {
+.the-footer--secondary {
   --footer-background: var(--ui-secondary);
   --footer-link: var(--ui-text-secondary);
   --footer-link-hover: var(--ui-text-primary);

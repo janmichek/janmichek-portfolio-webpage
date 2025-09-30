@@ -36,7 +36,7 @@
   z-index: 900;
 
   @media (--tablet) {
-    padding: var(--space-2xl);
+    padding: var(--space-2xl) var(--space-lg);
   }
 
   &__container {

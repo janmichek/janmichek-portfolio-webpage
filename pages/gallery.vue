@@ -52,31 +52,28 @@ const images = ref([
 </script>
 
 <template>
-  <article class="gallery">
-    <div class="gallery__container">
-      <div class="gallery__main">
-        <section>
-          <slug-title
-            title="Photo Gallery"
-            description="I like shooting photography too. Especially flowers. Here is a small presentation of my
+  <nuxt-layout name="blank">
+    <article class="gallery">
+      <div class="gallery__container">
+        <div class="gallery__main">
+          <section>
+            <slug-title
+              title="Photo Gallery"
+              description="I like shooting photography too. Especially flowers. Here is a small presentation of my
               esthetics skills. I am using them as placeholder images when building new app."/>
-        </section>
+          </section>
+        </div>
       </div>
-    </div>
-    <section>
-      <app-swiper :images="images"/>
-    </section>
-  </article>
+      <section>
+        <app-swiper :images="images"/>
+      </section>
+    </article>
+  </nuxt-layout>
 </template>
 
 <style scoped>
 .gallery {
   padding: var(--space-2xl) 0;
-
-  &__content {
-    display: grid;
-    place-items: center;
-  }
 
   &__container {
     max-width: var(--container-max-width);

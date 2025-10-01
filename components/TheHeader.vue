@@ -20,7 +20,7 @@
         <div class="header__subheading h2">
           web3 frontend engineer
         </div>
-        <div class="h3 the-header__excerpt">
+        <div class="h3 header__excerpt">
           Czechia / Prague / <span title="That is 38">1987</span>
         </div>
       </div>

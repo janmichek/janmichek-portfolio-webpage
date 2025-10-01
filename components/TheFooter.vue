@@ -9,7 +9,7 @@ defineProps({
 
 <template>
   <footer
-    :class="['the-footer', `the-footer--${variant}`]">
+    :class="['footer', `footer--${variant}`]">
     <div
       class="u-container"
       data-aos="fade-up">

@@ -3,7 +3,6 @@
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
-    '@nuxt/image',
     'nuxt-vuefire',
     '@nuxtjs/stylelint-module',
     'nuxt-aos',

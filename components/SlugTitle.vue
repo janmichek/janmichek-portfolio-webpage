@@ -28,7 +28,7 @@ defineProps({
 
   &__title {
     color: var(--ui-text-primary);
-    margin-bottom: var(--space);
+    margin-bottom: var(--space-md);
     text-align: center;
 
     @media (--tablet) {

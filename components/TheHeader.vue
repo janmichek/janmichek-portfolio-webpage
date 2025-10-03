@@ -1,6 +1,4 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
   <header class="header">
@@ -30,7 +28,7 @@
 
 <style scoped>
 .header {
-  padding: var(--space-xl) var(--space-xl) var(--space-2xl);
+  padding: var(--space-xl) var(--space-sm) var(--space-2xl);
   background: var(--ui-bg);
   width: 100%;
   z-index: 900;
@@ -43,7 +41,7 @@
     @media (--tablet) {
       display: grid;
       grid-template-columns: 5fr 7fr;
-      gap: var(--space);
+      gap: var(--space-md);
     }
   }
 

@@ -53,9 +53,3 @@
   </Html>
   <NuxtPage/>
 </template>
-
-<style scoped>
-.page__section {
-  padding: var(--space-2xl) 0;
-}
-</style>

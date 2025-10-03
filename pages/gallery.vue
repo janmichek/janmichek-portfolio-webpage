@@ -2,50 +2,51 @@
 const images = ref([
   {
     medium: 'k1.webp',
-    altText: 'Galanthus nivalis - Žižkov',
+    description: 'Galanthus nivalis - Žižkov',
   },
   {
     medium: 'k7.webp',
-    altText: 'Bougainvillea spectabilis - Puerto de la Cruz',
+    description: 'Bougainvillea spectabilis - Puerto de la Cruz',
   },
   {
     medium: 'k9.webp',
-    altText: 'Pancratium maritimum - Praia da Comporta',
+    description: 'Pancratium maritimum - Praia da Comporta',
   },
   {
     medium: 'k11.webp',
-    altText: 'Myrtus communis - Monopoli',
+    description: 'Prunus mahaleb - Žižkov',
   },
   {
     medium: 'k2.webp',
-    altText: 'Philadelphus indorus - Křivoklátsko',
+    description: 'Canna indica - Puerto de la Cruz',
   },
   {
     medium: 'k10.webp',
-    altText: 'Delosperma cooperi - Žižkov',
+    description: 'Delosperma cooperi - Žižkov',
   },
   {
     medium: 'k5.webp',
-    altText: 'Pelargonium graveolens - Las Playitas',
+    description: 'Pelargonium graveolens - Las Playitas',
   },
   {
     medium: 'k4.webp',
-    altText: 'Prunus mahaleb - Žižkov',
+    description: 'Philadelphus indorus - Křivoklátsko',
   },
   {
     medium: 'k6.webp',
-    altText: 'Nerium oleander - Monopoli',
-  }, {
+    description: 'Prunus spinosa - Žižkov',
+  },
+  {
     medium: 'k8.webp',
-    altText: 'Prunus spinosa - Žižkov',
+    description: 'Nerium oleander - Monopoli',
   },
   {
     medium: 'k12.webp',
-    altText: 'Pelargonium graveolens - Albertov',
+    description: 'Pelargonium graveolens - Albertov',
   },
   {
     medium: 'k3.webp',
-    altText: 'Canna indica - Puerto de la Cruz',
+    description: 'Myrtus communis - Monopoli',
   },
 ])
 </script>

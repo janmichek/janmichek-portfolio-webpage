@@ -1,6 +1,6 @@
 <template>
   <nuxt-layout name="default">
-    <article class="page">
+    <article>
       <section-skills class="page__section"/>
       <section-projects class="page__section"/>
       <section-goodies class="page__section"/>

@@ -1,6 +1,12 @@
 table {
-  margin: 0 auto var(--space) auto;
+  margin: 0 auto var(--space-md) auto;
   border-collapse: collapse;
+  width: 100%;
+  color: var(--ui-text-secondary);
+
+  @media (--dark) {
+    color: var(--ui-text-tertiary);
+  }
 }
 
 td {
@@ -13,4 +19,5 @@ th {
   text-align: left;
   border: 1px solid var(--ui-border-color);
   padding: var(--space-xs);
+  font-weight: bold;
 }

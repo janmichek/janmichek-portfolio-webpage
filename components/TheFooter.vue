@@ -3,6 +3,7 @@ defineProps({
   variant: {
     type: String,
     default: 'secondary',
+    validator: value => ['primary', 'secondary'].includes(value),
   },
 })
 </script>
@@ -91,7 +92,7 @@ defineProps({
   &__grid {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    gap: var(--space);
+    gap: var(--space-md);
 
     @media (--tablet) {
       grid-template-columns: repeat(2, 1fr);

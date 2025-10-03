@@ -65,14 +65,6 @@ const goodies = ref([
       + ' streams, and personal building of communities worldwide. Have a listen.',
     link: 'https://open.spotify.com/artist/52iWG2c2P0K6HmGrAAUyoP?si=SuOL9lY1QuyCI1FDBOzO9A',
   },
-  // {
-  //   title: 'Tailwind Alternative',
-  //   image: 'sourcecode.webp',
-
-  //   description: 'Unpopular opinion, but I am not a fan of Tailwind. I like to use my own CSS framework. ' +
-  //     'This is my attempt to create something similar.',
-  //   link: 'https://github.com/janmichek/claude-settings',
-  // },
 ])
 </script>
 

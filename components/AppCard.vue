@@ -45,12 +45,12 @@ defineProps({
   width: 100%;
   display: inline-block;
   background: var(--ui-secondary);
-  padding: var(--space);
+  padding: var(--space-md);
   margin-bottom: var(--space-xl);
   position: relative;
 
   &__title {
-    margin-bottom: var(--space);
+    margin-bottom: var(--space-md);
   }
 
   &__link {
@@ -76,7 +76,7 @@ defineProps({
   }
 
   &__image {
-    margin-bottom: var(--space);
+    margin-bottom: var(--space-md);
   }
 
   &__description {

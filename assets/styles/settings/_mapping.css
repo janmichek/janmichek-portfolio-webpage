@@ -5,7 +5,7 @@
   --ui-text-primary: var(--color-teal);
   --ui-text-secondary: var(--color-carbon);
   --ui-text-tertiary: var(--color-cream);
-  --ui-border-color: var(--color-carbon);
+  --ui-border-color: var(--color-pale);
   --ui-text-muted: var(--color-gray);
   --ui-placeholder-color: var(--ui-text-muted);
   --ui-bg: var(--ui-secondary);
@@ -21,7 +21,7 @@
     --ui-text-tertiary: var(--color-carbon);
     --ui-text-muted: var(--color-pale);
     --ui-secondary: var(--color-carbon);
-    --ui-border-color: var(--color-cream);
+    --ui-border-color: var(--color-pale);
     --ui-placeholder-color: var(--ui-text-muted);
   }
 }

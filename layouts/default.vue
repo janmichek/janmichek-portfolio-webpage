@@ -1,7 +1,7 @@
 <template>
-  <div class="layout layout--default">
+  <div class="layout">
     <the-header/>
-    <main class="layout__content">
+    <main>
       <slot/>
     </main>
     <the-footer class="layout__footer"/>

@@ -270,10 +270,6 @@
     margin: 0 var(--space-sm);
   }
 
-  &__project:not(:last-of-type) {
-    margin-bottom: var(--space-2xl);
-  }
-
   &__preview {
     display: inline-flex;
     flex-direction: row;

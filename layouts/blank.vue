@@ -1,5 +1,5 @@
 <template>
-  <div class="layout layout--default">
+  <div class="layout">
     <the-header/>
     <div class="layout__main">
       <slot/>
@@ -14,22 +14,6 @@
   min-height: 100vh;
   background: var(--ui-bg);
 
-  &__container {
-    max-width: var(--container-max-width);
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: var(--space-sm);
-    padding-right: var(--space-sm);
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
-
-    @media (--desktop) {
-      padding-left: var(--space-xl);
-      padding-right: var(--space-xl);
-    }
-  }
-
   &__main {
     width: 100%;
     margin-left: auto;
@@ -40,10 +24,6 @@
     @media (--tablet) {
       max-width: calc(100% * 2 / 3);
     }
-  }
-
-  &__footer {
-    margin-top: auto;
   }
 }
 </style>

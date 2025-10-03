@@ -317,30 +317,6 @@
 </template>
 
 <style scoped>
-.karabiner-table {
-  color: var(--ui-text-secondary);
-
-  @media (--dark) {
-    color: var(--ui-text-tertiary);
-  }
-  border-collapse: collapse;
-  width: 100%;
-
-}
-
-.karabiner-table th {
-  background: #999;
-  color: white;
-  padding: var(--space-sm);
-  text-align: left;
-  font-weight: 600;
-}
-
-.karabiner-table td {
-  padding: var(--space-xs) var(--space-sm);
-  border-bottom: 1px solid #e1e5e9;
-}
-
 .firefox:nth-of-type(odd) {
   background: #e3f2fd;
 }

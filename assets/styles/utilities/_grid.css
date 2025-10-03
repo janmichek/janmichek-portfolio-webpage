@@ -13,7 +13,7 @@
 
 .u-grid {
   display: grid;
-  gap: var(--space);
+  gap: var(--space-md);
 }
 
 .u-masonry {

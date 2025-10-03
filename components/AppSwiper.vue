@@ -27,45 +27,51 @@ const modules = [Navigation]
       <img
         :src="slide.medium"
         class="swiper__image"
-        :alt="slide.altText">
+        :alt="slide.description">
       <div class="swiper__text">
-        {{ slide.altText }}
+        {{ slide.description }}
       </div>
     </swiper-slide>
   </swiper>
 </template>
 
+<style scoped>
+.swiper {
+  &__image {
+    margin: 0 auto;
+    width: 85%;
+  }
+
+  &__text {
+    text-align: center;
+    color: var(--ui-text-muted);
+  }
+}
+</style>
+
 <style>
-.swiper__image {
-  margin: 0 auto;
-  width: 85%;
-}
-
-.swiper-button-prev {
-  &:after {
-    content: "";
+.swiper {
+  &-button-prev {
+    &:after {
+      content: "";
+    }
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: var(--space-sm) var(--space-lg) var(--space-sm) 0;
+    border-color: transparent var(--ui-primary) transparent transparent;
   }
-  left: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: var(--space-md) var(--space-lg) var(--space-md) 0;
-  border-color: transparent var(--ui-primary) transparent transparent;
-}
 
-.swiper-button-next {
-  &:after {
-    content: "";
+  &-button-next {
+    &:after {
+      content: "";
+    }
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: var(--space-sm) 0 var(--space-sm) var(--space-lg);
+    border-color: transparent transparent transparent var(--ui-primary);
   }
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: var(--space-md) 0 var(--space-md) var(--space-lg);
-  border-color: transparent transparent transparent var(--ui-primary);
-}
-
-.swiper__text {
-  text-align: center;
-  color: var(--ui-text-muted);
 }
 </style>

@@ -95,7 +95,8 @@
 </template>
 
 <style scoped>
+/*TODO reduce markup change for grid instead of ul-li*/
 .tech-links__item {
-    margin-bottom: var(--space);
-  }
+  margin-bottom: var(--space-md);
+}
 </style>

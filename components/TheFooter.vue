@@ -31,7 +31,7 @@ defineProps({
           <app-link
             class="footer__link"
             to="https://cz.linkedin.com/in/jan-michek-aba913103">
-            Linked In
+            LinkedIn
           </app-link>
         </div>
 
@@ -39,7 +39,7 @@ defineProps({
           <app-link
             class="footer__link"
             to="https://github.com/janmichek/">
-            Github
+            GitHub
           </app-link>
         </div>
 

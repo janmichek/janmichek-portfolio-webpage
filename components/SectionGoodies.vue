@@ -1,6 +1,12 @@
 <script setup>
 const goodies = ref([
   {
+    title: 'CV',
+    image: 'book.webp',
+    description: 'Download my curriculum vitae — experience, projects, and skills in one place.',
+    link: 'https://drive.google.com/file/d/1JKoO3XYsx_8BGriNa9rMlt0nwgQajE3v/view?usp=drive_link',
+  },
+  {
     title: 'aeScan Walkthrough',
     image: 'aescan-video.png',
     description: 'A video of me dive into my latest project and explaining details',
@@ -25,12 +31,6 @@ const goodies = ref([
     link: 'https://youtu.be/f7LlZRMdKm4',
   },
   {
-    title: 'Webdesign checklist',
-    image: 'checklist.webp',
-    description: 'When I am working with designers I want to make sure all formal requirements on design handoff are met.',
-    link: '/webdesign-checklist',
-  },
-  {
     title: 'Claude Settings',
     image: 'claude-ai-icon.svg',
     description: 'Personal configuration and settings for Claude Code CLI to enhance development workflow from different tutorials in one place.',
@@ -41,12 +41,6 @@ const goodies = ref([
     image: 'sourcecode.webp',
     description: 'Source code of this personal page. This web is hosted on Firebase.',
     link: 'https://github.com/janmichek/janmichek',
-  },
-  {
-    title: 'CRUD animations',
-    image: 'crud_actions.webp',
-    description: 'I bet your CRUD does not have this! Intuitive, elegant copy-pasteble solution. That is my evergreen solution. Just hover around.',
-    link: 'https://codepen.io/janmichek/pen/bGEoozW',
   },
   {
     title: 'Photos Gallery',

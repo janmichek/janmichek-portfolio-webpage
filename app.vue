@@ -18,7 +18,7 @@
         content="Jan Michek's portfolio page"/>
       <Meta
         name="keywords"
-        content="portfolio, Jan Michek, frontend, engineer, developer"/>
+        content="portfolio, Jan Michek, Web3, Solidity, frontend, fullstack, engineer, developer"/>
       <Meta
         property="og:type"
         content="website"/>

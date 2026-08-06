@@ -101,58 +101,6 @@
         class="projects__post"
         data-aos="fade-up">
         <template #heading>
-          OpenAssets
-        </template>
-        <template #image>
-          <img
-            src="/openassets.webp"
-            width="686"
-            alt="OpenAssets — asset management SaaS for equipment tracking and maintenance planning">
-        </template>
-        <template #description>
-          <ul class="projects__list">
-            <li>
-              Lead developer of an asset management SaaS for equipment tracking, maintenance planning, and reporting
-              incidents.
-            </li>
-            <li>
-              Collaborated on the implementation and UX design of a highly dynamic environment, generated from
-              previous users' interactions, complex generic entity system and user roles. User interaction are
-              enriched with diagrams, maps, calendars or galleries.
-            </li>
-            <li>
-              Used tech:
-              <project-link
-                label="Typescript"
-                to="https://www.typescriptlang.org/"/>
-              <project-link
-                label="Vue.js"
-                to="https://vuejs.org/"/>
-              <project-link
-                label="TanStack"
-                to="https://tanstack.com/"/>
-              <project-link
-                label="Quasar"
-                to="https://quasar.dev/"/>
-              <project-link
-                label="Claude"
-                to="https://www.anthropic.com/claude"/>
-              <project-link
-                label="Cursor"
-                to="https://cursor.com/"/>
-              <project-link
-                label="MongoDB"
-                to="https://www.mongodb.com/"
-                is-last/>
-            </li>
-          </ul>
-        </template>
-      </app-post>
-
-      <app-post
-        class="projects__post"
-        data-aos="fade-up">
-        <template #heading>
           aeScan.io
         </template>
         <template #image>

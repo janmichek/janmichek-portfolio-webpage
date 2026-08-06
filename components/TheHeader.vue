@@ -16,7 +16,7 @@
           Jan Michek
         </h1>
         <div class="header__subheading h2">
-          frontend engineer
+          Web3 full-stack engineer
         </div>
         <div class="h3 header__excerpt">
           Czechia / Prague / <span title="That is 38">1987</span>

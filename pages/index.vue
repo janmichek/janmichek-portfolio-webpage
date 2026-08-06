@@ -1,7 +1,7 @@
 <template>
   <nuxt-layout name="default">
     <article>
-      <section-skills class="page__section"/>
+      <section-summary class="page__section"/>
       <section-projects class="page__section"/>
       <section-goodies class="page__section"/>
     </article>

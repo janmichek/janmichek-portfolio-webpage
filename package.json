@@ -22,29 +22,29 @@
     "emulators": "bun generate && firebase emulators:start"
   },
   "dependencies": {
-    "@nuxt/eslint": "1.9.0",
-    "@nuxt/fonts": "0.11.4",
-    "firebase": "12.3.0",
-    "nuxt": "4.1.2",
-    "nuxt-aos": "^1.2.5",
-    "nuxt-vuefire": "1.1.0",
-    "swiper": "12.0.2",
-    "vue": "3.5.21",
-    "vue-router": "4.5.1",
-    "vuefire": "3.2.2"
+    "@nuxt/eslint": "1.17.0",
+    "@nuxt/fonts": "0.14.0",
+    "firebase": "12.17.1",
+    "nuxt": "4.5.2",
+    "nuxt-aos": "^1.2.6",
+    "nuxt-vuefire": "1.1.2",
+    "swiper": "14.0.7",
+    "vue": "3.5.41",
+    "vue-router": "5.2.0",
+    "vuefire": "3.2.3"
   },
   "devDependencies": {
-    "@csstools/postcss-global-data": "3.1.0",
+    "@csstools/postcss-global-data": "4.0.0",
     "@nuxtjs/stylelint-module": "5.2.1",
-    "postcss": "8.5.6",
+    "postcss": "8.5.25",
     "postcss-apply-class": "0.1.6",
-    "postcss-custom-media": "11.0.6",
-    "postcss-nested": "7.0.2",
-    "stylelint": "16.24.0",
-    "stylelint-config-html": "1.1.0",
-    "stylelint-config-recommended": "17.0.0",
-    "stylelint-config-recommended-vue": "1.6.1",
-    "stylelint-config-standard": "39.0.0"
+    "postcss-custom-media": "12.0.1",
+    "postcss-nested": "8.0.1",
+    "stylelint": "17.14.1",
+    "stylelint-config-html": "2.0.0",
+    "stylelint-config-recommended": "18.0.0",
+    "stylelint-config-recommended-vue": "2.0.0",
+    "stylelint-config-standard": "40.0.0"
   },
   "simple-git-hooks": {
     "commit-msg": "bun lint:fix"

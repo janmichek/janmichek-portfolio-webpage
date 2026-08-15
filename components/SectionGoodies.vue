@@ -40,7 +40,7 @@ const goodies = ref([
     title: 'Source Code',
     image: 'sourcecode.webp',
     description: 'Source code of this personal page. This web is hosted on Firebase.',
-    link: 'https://github.com/janmichek/janmichek',
+    link: 'https://github.com/janmichek/janmichek-portfolio-webpage',
   },
   {
     title: 'Photos Gallery',
@@ -51,7 +51,7 @@ const goodies = ref([
   {
     title: 'Music Production',
     image: 'honey-t.webp',
-    description: 'I invest my free time into music production: creative organization proven by 5+ millions of'
+    description: 'I invest my free time into music production: creative organization proven by 12+ millions of'
       + ' streams, and personal building of communities worldwide. Have a listen.',
     link: 'https://open.spotify.com/artist/52iWG2c2P0K6HmGrAAUyoP?si=SuOL9lY1QuyCI1FDBOzO9A',
   },

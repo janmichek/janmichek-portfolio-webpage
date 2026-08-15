@@ -8,6 +8,8 @@
         Recent projects
       </title-section>
 
+
+
       <app-post
         class="projects__post"
         data-aos="fade-up">
@@ -15,8 +17,10 @@
           Melodot — Polkadot Hackathon Winner
         </template>
         <template #image>
-          <app-link to="https://melodot.vercel.app/">
+          <app-link
+            to="https://melodot.vercel.app/">
             <img
+              class="projects__image"
               src="/melodot.webp"
               width="686"
               alt="MeloDot - decentralized music discovery and donation dApp">
@@ -106,6 +110,7 @@
         <template #image>
           <app-link to="https://aescan.io/">
             <img
+              class="projects__image"
               src="/aescan.webp"
               width="686"
               alt="aescan">
@@ -194,16 +199,6 @@
               width="686"
               alt="PWN Finance">
           </app-link>
-          <app-link
-            class="projects__preview"
-            to="/preview/pwn1">
-            Preview 1
-          </app-link>
-          <app-link
-            class="projects__preview"
-            to="/preview/pwn2">
-            Preview 2
-          </app-link>
         </template>
         <template #description>
           <ul class="projects__list">
@@ -261,6 +256,84 @@
           </ul>
         </template>
       </app-post>
+
+      <app-post
+        class="projects__post"
+        data-aos="fade-up">
+        <template #heading>
+          EngineBox
+        </template>
+        <template #image>
+          <app-link to="https://engine-box.vercel.app/">
+            <img
+              class="projects__image"
+              src="/enginebox.webp"
+              width="686"
+              alt="EngineBox — Engine OS to Rekordbox playlist converter">
+          </app-link>
+          <app-link
+            class="projects__preview"
+            to="https://github.com/janmichek/EngineBox">
+            Source code
+          </app-link>
+          <app-link
+            class="projects__preview"
+            to="https://github.com/janmichek/EngineBox/releases/latest">
+            macOS app
+          </app-link>
+        </template>
+        <template #description>
+          <ul class="projects__list">
+            <li>
+              Music-related passion project —
+              <app-link to="https://engine-box.vercel.app/">
+                EngineBox
+              </app-link>
+              converts Engine OS playlists to Rekordbox. I was overpaying a $10/month
+              subscription for a tool that converts playlists across platforms.
+            </li>
+            <li>
+              One weekend with no gigs, I set up a plan for an AI agent to crack the
+              conversion script using AI loops engineering. And it worked.
+            </li>
+            <li>
+              Now it's free for everyone to convert — either as a macOS standalone
+              Electron app or a live web version.
+            </li>
+            <li>
+              Used tech:
+              <project-link
+                label="React"
+                to="https://react.dev/"/>
+              <project-link
+                label="Electron"
+                to="https://www.electronjs.org/"/>
+              <project-link
+                label="Vite"
+                to="https://vite.dev/"/>
+              <project-link
+                label="Node.js"
+                to="https://www.nodejs.org/"/>
+              <project-link
+                label="SQLite"
+                to="https://www.sqlite.org/"/>
+              <project-link
+                label="Pico CSS"
+                to="https://picocss.com/"/>
+              <project-link
+                label="Playwright"
+                to="https://playwright.dev/"/>
+              <project-link
+                label="Vitest"
+                to="https://vitest.dev/"/>
+              <project-link
+                label="Vercel"
+                to="https://vercel.com/"
+                is-last/>
+            </li>
+          </ul>
+        </template>
+      </app-post>
     </div>
   </section>
 </template>
@@ -273,6 +346,7 @@
 
   &__list {
     margin-top: 0;
+    padding-left: 0;
   }
 
   &__preview {

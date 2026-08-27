@@ -19,7 +19,8 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    '/': { prerender: true },
+    '/': { prerender: true, headers: { 'Vary': 'Accept' } },
+    '/**': { headers: { 'Vary': 'Accept' } },
   },
   sitemap: {
     zeroRuntime: true,

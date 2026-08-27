@@ -1,0 +1,21 @@
+{
+  "apis": [
+    {
+      "name": "Jan Michek Portfolio",
+      "url": "https://janmichek.cz",
+      "description": "Portfolio site API catalog",
+      "links": [
+        {
+          "rel": "service-doc",
+          "href": "https://janmichek.cz",
+          "type": "text/html"
+        },
+        {
+          "rel": "describedby",
+          "href": "https://janmichek.cz/sitemap.xml",
+          "type": "application/xml"
+        }
+      ]
+    }
+  ]
+}

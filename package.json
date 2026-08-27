@@ -18,23 +18,21 @@
     "lint:style": "stylelint \"**/*.{css,scss,sass,vue}\"",
     "lint": "bun lint:js && bun lint:style",
     "lint:fix": "bun lint:js --fix && bun lint:style --fix",
-    "deploy": "bun generate && firebase deploy",
-    "emulators": "bun generate && firebase emulators:start"
+    "deploy": "bun generate",
+    "emulators": "bun generate"
   },
   "dependencies": {
     "@nuxt/eslint": "1.17.0",
     "@nuxt/fonts": "0.14.0",
-    "firebase": "12.17.1",
     "nuxt": "4.5.2",
     "nuxt-aos": "^1.2.6",
-    "nuxt-vuefire": "1.1.2",
     "swiper": "14.0.7",
     "vue": "3.5.41",
-    "vue-router": "5.2.0",
-    "vuefire": "3.2.3"
+    "vue-router": "5.2.0"
   },
   "devDependencies": {
     "@csstools/postcss-global-data": "4.0.0",
+    "@nuxtjs/sitemap": "^8.5.0",
     "@nuxtjs/stylelint-module": "5.2.1",
     "postcss": "8.5.25",
     "postcss-apply-class": "0.1.6",

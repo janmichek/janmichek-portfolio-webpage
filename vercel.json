@@ -5,7 +5,7 @@
       "headers": [
         {
           "key": "Link",
-          "value": "</.well-known/api-catalog>; rel=\"api-catalog\", </sitemap.xml>; rel=\"describedby\"; type=\"application/xml\", </robots.txt>; rel=\"describedby\"; type=\"text/plain\""
+          "value": "</.well-known/api-catalog>; rel=\"api-catalog\", </.well-known/service-desc>; rel=\"service-desc\"; type=\"application/json\", </docs/api>; rel=\"service-doc\"; type=\"text/html\", </sitemap.xml>; rel=\"describedby\"; type=\"application/xml\""
         }
       ]
     },
@@ -14,7 +14,7 @@
       "headers": [
         {
           "key": "Link",
-          "value": "</.well-known/api-catalog>; rel=\"api-catalog\", </sitemap.xml>; rel=\"describedby\"; type=\"application/xml\", </robots.txt>; rel=\"describedby\"; type=\"text/plain\""
+          "value": "</.well-known/api-catalog>; rel=\"api-catalog\", </.well-known/service-desc>; rel=\"service-desc\"; type=\"application/json\", </docs/api>; rel=\"service-doc\"; type=\"text/html\", </sitemap.xml>; rel=\"describedby\"; type=\"application/xml\""
         }
       ]
     },
@@ -28,6 +28,28 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/.well-known/service-desc",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/docs/api",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
         }
       ]
     }

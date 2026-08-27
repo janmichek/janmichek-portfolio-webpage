@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><title>API Documentation — Jan Michek</title></head>
+<body>
+<h1>API Documentation</h1>
+<p>Portfolio API docs at <a href="https://janmichek.cz">https://janmichek.cz</a></p>
+<ul>
+<li><a href="/sitemap.xml">Sitemap</a></li>
+<li><a href="/.well-known/api-catalog">API Catalog</a></li>
+<li><a href="/.well-known/service-desc">Service Description</a></li>
+</ul>
+</body>
+</html>

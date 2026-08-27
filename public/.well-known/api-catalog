@@ -6,14 +6,24 @@
       "description": "Portfolio site API catalog",
       "links": [
         {
+          "rel": "service-desc",
+          "href": "https://janmichek.cz/.well-known/service-desc",
+          "type": "application/json"
+        },
+        {
           "rel": "service-doc",
-          "href": "https://janmichek.cz",
+          "href": "https://janmichek.cz/docs/api",
           "type": "text/html"
         },
         {
           "rel": "describedby",
           "href": "https://janmichek.cz/sitemap.xml",
           "type": "application/xml"
+        },
+        {
+          "rel": "api-catalog",
+          "href": "https://janmichek.cz/.well-known/api-catalog",
+          "type": "application/json"
         }
       ]
     }

@@ -1,0 +1,14 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Jan Michek Portfolio",
+    "version": "1.0.0",
+    "description": "Service description for Jan Michek portfolio"
+  },
+  "servers": [
+    {
+      "url": "https://janmichek.cz"
+    }
+  ],
+  "paths": {}
+}

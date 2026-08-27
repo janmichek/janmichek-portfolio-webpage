@@ -7,10 +7,19 @@ export default defineNuxtConfig({
     'nuxt-aos',
     '@nuxtjs/sitemap',
   ],
-  ssr: false,
+  ssr: true,
   site: {
     url: 'https://janmichek.cz',
     name: 'Jan Michek',
+  },
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ['/'],
+    },
+  },
+  routeRules: {
+    '/': { prerender: true },
   },
   sitemap: {
     zeroRuntime: true,
@@ -31,7 +40,9 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
+      htmlAttrs: { lang: 'en' },
       link: [
+        { rel: 'canonical', href: 'https://janmichek.cz/' },
         {
           rel: 'preconnect',
           href: 'https://fonts.googleapis.com',

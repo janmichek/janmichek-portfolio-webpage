@@ -8,37 +8,6 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
   ],
   ssr: true,
-  site: {
-    url: 'https://janmichek.cz',
-    name: 'Jan Michek',
-  },
-  nitro: {
-    prerender: {
-      crawlLinks: true,
-      routes: ['/'],
-    },
-  },
-  routeRules: {
-    '/': { prerender: true, headers: { 'Vary': 'Accept' } },
-    '/**': { headers: { 'Vary': 'Accept' } },
-  },
-  sitemap: {
-    zeroRuntime: true,
-    exclude: ['/preview/**'],
-    defaults: {
-      changefreq: 'monthly',
-      priority: 0.8,
-      lastmod: new Date().toISOString(),
-    },
-    // Ensure homepage has higher priority; merged with auto-discovered routes
-    urls: [
-      {
-        loc: '/',
-        priority: 1,
-        changefreq: 'monthly',
-      },
-    ],
-  },
   app: {
     head: {
       htmlAttrs: { lang: 'en' },
@@ -69,10 +38,28 @@ export default defineNuxtConfig({
     '~/assets/styles/main.css',
     '~/assets/styles/utilities/_grid.css',
   ],
+  site: {
+    url: 'https://janmichek.cz',
+    name: 'Jan Michek',
+  },
+  routeRules: {
+    '/': { prerender: true, headers: { Vary: 'Accept' } },
+    '/gallery': { headers: { Vary: 'Accept' } },
+    '/git-flow': { headers: { Vary: 'Accept' } },
+    '/karabiner': { headers: { Vary: 'Accept' } },
+    '/tech-links': { headers: { Vary: 'Accept' } },
+    '/webdesign-checklist': { headers: { Vary: 'Accept' } },
+  },
   devServer: {
     port: 8080,
   },
   compatibilityDate: '2024-11-01',
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ['/'],
+    },
+  },
   postcss: {
     plugins: {
       'autoprefixer': {},
@@ -98,6 +85,23 @@ export default defineNuxtConfig({
         braceStyle: '1tbs',
       },
     },
+  },
+  sitemap: {
+    zeroRuntime: true,
+    exclude: ['/preview/**'],
+    defaults: {
+      changefreq: 'monthly',
+      priority: 0.8,
+      lastmod: new Date().toISOString(),
+    },
+    // Ensure homepage has higher priority; merged with auto-discovered routes
+    urls: [
+      {
+        loc: '/',
+        priority: 1,
+        changefreq: 'monthly',
+      },
+    ],
   },
   stylelint: {
     lintOnStart: false,

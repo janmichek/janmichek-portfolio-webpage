@@ -8,8 +8,6 @@
         Recent projects
       </title-section>
 
-
-
       <app-post
         class="projects__post"
         data-aos="fade-up">

@@ -135,7 +135,7 @@ function isHttp(url: string) {
         :href="`mailto:${chatProfile.email}`">{{ chatProfile.email }}</a>
       <div class="cl">
         <a
-          v-for="link in chatContact"
+          v-for="link in chatContact.filter(l => !l.iconOnly)"
           :key="link.url"
           class="btn sm"
           :href="link.url"

@@ -6,6 +6,7 @@ export interface ChatLink {
   text?: string
   file?: string
   icon?: 'github' | 'linkedin' | 'x' | 'spotify' | 'cv' | 'link'
+  iconOnly?: boolean
 }
 
 export interface ChatProject {
@@ -178,6 +179,15 @@ export const chatContact: ChatLink[] = [
     title: 'Jan Michek',
     text: '@jan_michek',
     icon: 'x',
+  },
+  {
+    label: 'Spotify',
+    url: 'https://open.spotify.com/artist/52iWG2c2P0K6HmGrAAUyoP?si=SuOL9lY1QuyCI1FDBOzO9A',
+    host: 'spotify.com',
+    title: 'Jan Michek',
+    text: 'Music on Spotify',
+    icon: 'spotify',
+    iconOnly: true,
   },
   {
     label: 'CV',

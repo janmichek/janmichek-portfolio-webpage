@@ -104,18 +104,26 @@ const navItems = [
   --deep: #2f7fa3;
   --tint: #eef6f9;
   --mute: #5b6b6b;
+  --lead: #1d3b3b;
   background: var(--white);
   color: var(--ink);
-  color-scheme: light;
+  color-scheme: light dark;
   font-family: var(--font-sans);
   font-size: 17px;
   font-weight: 300;
   line-height: 1.6;
 }
 
-body:has(.gallery-page) {
-  background: #fbfbfb;
-  color: #082626;
+@media (--dark) {
+  .gallery-page {
+    --white: var(--color-carbon);
+    --ink: var(--color-cream);
+    --deep: var(--color-sky);
+    --tint: #0f3434;
+    --mute: var(--color-pale);
+    --lead: #d6e6e6;
+    color-scheme: dark;
+  }
 }
 
 .gallery-page a {
@@ -259,7 +267,7 @@ body:has(.gallery-page) {
   max-width: 34em;
   font-size: 18px;
   line-height: 1.65;
-  color: #1d3b3b;
+  color: var(--lead);
 }
 
 .gallery-page .grid {

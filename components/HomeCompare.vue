@@ -117,21 +117,32 @@ function go(event: MouseEvent, id: string) {
   --deep: #2f7fa3;
   --tint: #eef6f9;
   --mute: #5b6b6b;
+  --lead: #1d3b3b;
   --g1: #e8eded;
   --g2: #c7d2d2;
   --g3: #889a9a;
   background: var(--white);
   color: var(--ink);
-  color-scheme: light;
+  color-scheme: light dark;
   font-family: var(--font-sans);
   font-size: 17px;
   font-weight: 300;
   line-height: 1.6;
 }
 
-body:has(.home) {
-  background: #fbfbfb;
-  color: #082626;
+@media (--dark) {
+  .home {
+    --white: var(--color-carbon);
+    --ink: var(--color-cream);
+    --deep: var(--color-sky);
+    --tint: #0f3434;
+    --mute: var(--color-pale);
+    --lead: #d6e6e6;
+    --g1: #163c3c;
+    --g2: #2b4f4f;
+    --g3: #6f8a8a;
+    color-scheme: dark;
+  }
 }
 
 .home a {
@@ -195,7 +206,7 @@ body:has(.home) {
   margin-top: 14px;
   font-size: 18px;
   line-height: 1.6;
-  color: #1d3b3b;
+  color: var(--lead);
 }
 
 .home .nav {

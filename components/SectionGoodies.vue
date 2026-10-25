@@ -21,7 +21,7 @@ const goodies = ref([
   {
     title: 'Melodot Walkthrough',
     image: 'melodot-walkthrough.webp',
-    description: 'Walkthrough of MeloDot — decentralized music discovery and donation dApp from the Polkadot Builder hackathon.',
+    description: 'Walkthrough of MeloDot - decentralized music discovery and donation dApp from the Polkadot Builder hackathon.',
     link: 'https://youtu.be/f7LlZRMdKm4',
   },
   {

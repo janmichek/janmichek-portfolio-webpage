@@ -37,15 +37,15 @@ export default defineEventHandler(event => {
   const routes: Record<string, string> = {
     '/': `# Jan Michek
 
-Personal portfolio of Jan Michek — Web3, Solidity, frontend & fullstack engineer.
+Personal portfolio of Jan Michek - Web3, Solidity, frontend & fullstack engineer.
 
 ## Pages
 
-- [Gallery](/gallery) — Visual projects
-- [Git Flow](/git-flow) — Git workflow guide
-- [Karabiner](/karabiner) — Karabiner config
-- [Tech Links](/tech-links) — Curated tech resources
-- [Webdesign Checklist](/webdesign-checklist) — Webdesign checklist
+- [Gallery](/gallery) - Visual projects
+- [Git Flow](/git-flow) - Git workflow guide
+- [Karabiner](/karabiner) - Karabiner config
+- [Tech Links](/tech-links) - Curated tech resources
+- [Webdesign Checklist](/webdesign-checklist) - Webdesign checklist
 
 ## Contact
 

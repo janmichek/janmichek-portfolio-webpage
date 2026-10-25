@@ -67,8 +67,6 @@ defineProps({
 .footer--primary {
   --footer-background: #2f7fa3;
   --footer-link: var(--color-cream);
-  --footer-link-hover: var(--color-sky);
-
 }
 
 .footer--primary .title-section {
@@ -78,11 +76,9 @@ defineProps({
 .footer--secondary {
   --footer-background: var(--ui-secondary);
   --footer-link: var(--ui-text-secondary);
-  --footer-link-hover: var(--ui-text-primary);
 
   @media (--dark) {
     --footer-link: var(--ui-text-primary);
-    --footer-link-hover: var(--ui-text-secondary);
   }
 }
 
@@ -105,11 +101,16 @@ defineProps({
   }
 
   &__link {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
     font-size: var(--text-sm);
     color: var(--footer-link);
+    transition: background var(--duration-fast), color var(--duration-fast);
 
     &:hover {
-      color: var(--footer-link-hover);
+      background: #fff;
+      color: var(--color-carbon);
     }
   }
 

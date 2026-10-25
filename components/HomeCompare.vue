@@ -72,7 +72,8 @@ function go(event: MouseEvent, id: string) {
           </p>
           <p class="lead">
             <span class="t">
-              I design and build with Agents, Web3 and UX to the product that is joy to use.
+              I design and build with Agents, Web3 and UX<br>
+              to the product that is joy to use.
             </span>
           </p>
           <nav class="nav">
@@ -192,7 +193,7 @@ body:has(.home) {
 .home .lead {
   max-width: 26em;
   margin-top: 14px;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.6;
 }
 
@@ -340,7 +341,7 @@ body:has(.home) {
 }
 
 .home .pj p {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.6;
 }
 
@@ -407,7 +408,7 @@ body:has(.home) {
 .home .rt .t {
   display: block;
   min-height: 4.5em;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.5;
   color: var(--mute);
 }
@@ -421,7 +422,7 @@ body:has(.home) {
   padding: 64px 48px 80px;
   border-top: 0;
   color: var(--white);
-  background: var(--ink);
+  background: #0c3a54;
 }
 
 .home .sec-contact h2 {

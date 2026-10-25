@@ -1,15 +1,5 @@
 <template>
   <nuxt-layout name="default">
-    <article>
-      <section-summary class="page__section"/>
-      <section-projects class="page__section"/>
-      <section-goodies class="page__section"/>
-    </article>
+    <home-compare/>
   </nuxt-layout>
 </template>
-
-<style scoped>
-.page__section {
-  padding: var(--space-2xl) 0;
-}
-</style>

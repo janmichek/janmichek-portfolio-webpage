@@ -96,7 +96,7 @@ defineProps({
   }
 
   &__link {
-    font-size: var(--text-lg);
+    font-size: var(--text-sm);
     color: var(--footer-link);
 
     &:hover {

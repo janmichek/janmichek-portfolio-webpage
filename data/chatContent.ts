@@ -5,6 +5,7 @@ export interface ChatLink {
   title?: string
   text?: string
   file?: string
+  icon?: 'github' | 'cv' | 'link'
 }
 
 export interface ChatProject {
@@ -22,6 +23,7 @@ export interface ChatGoodie {
   image: string
   text: string
   url: string
+  dark?: boolean
 }
 
 export interface ChatSkill {
@@ -114,6 +116,7 @@ export const chatGoodies: ChatGoodie[] = [
     image: '/agent-chat.webp',
     text: 'Web3 chat UI to talk to trustless agents: contract calls, funds, feedback.',
     url: 'https://8004-web3-agent-chat.vercel.app/',
+    dark: true,
   },
   {
     title: 'CoinLine',
@@ -136,7 +139,7 @@ export const chatGoodies: ChatGoodie[] = [
   {
     title: 'Karabiner shortcuts',
     image: '/karabiner.webp',
-    text: 'My personal way to tune ergonomics. Maybe an inspiration.',
+    text: 'And I am UX freak. All my setup is heavily customized!',
     url: '/karabiner',
   },
   {
@@ -166,6 +169,7 @@ export const chatContact: ChatLink[] = [
     host: 'linkedin.com',
     title: 'Jan Michek',
     text: 'Web3 full-stack engineer, Prague',
+    icon: 'cv',
   },
   {
     label: 'GitHub',
@@ -173,12 +177,14 @@ export const chatContact: ChatLink[] = [
     host: 'github.com',
     title: 'janmichek',
     text: 'Profile and repositories',
+    icon: 'github',
   },
   {
-    label: 'Download CV',
+    label: 'CV',
     url: 'https://drive.google.com/file/d/1JKoO3XYsx_8BGriNa9rMlt0nwgQajE3v/view?usp=drive_link',
     title: 'CV.pdf',
     text: 'PDF · Download',
     file: 'PDF',
+    icon: 'cv',
   },
 ]

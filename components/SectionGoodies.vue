@@ -1,12 +1,6 @@
 <script setup>
 const goodies = ref([
   {
-    title: 'CV',
-    image: 'book.webp',
-    description: 'Download my curriculum vitae — experience, projects, and skills in one place.',
-    link: 'https://drive.google.com/file/d/1JKoO3XYsx_8BGriNa9rMlt0nwgQajE3v/view?usp=drive_link',
-  },
-  {
     title: 'aeScan Walkthrough',
     image: 'aescan-video.png',
     description: 'A video of me dive into my latest project and explaining details',
@@ -31,16 +25,10 @@ const goodies = ref([
     link: 'https://youtu.be/f7LlZRMdKm4',
   },
   {
-    title: 'Claude Settings',
-    image: 'claude-ai-icon.svg',
-    description: 'Personal configuration and settings for Claude Code CLI to enhance development workflow from different tutorials in one place.',
-    link: 'https://github.com/janmichek/claude-settings',
-  },
-  {
-    title: 'Source Code',
-    image: 'sourcecode.webp',
-    description: 'Source code of this personal page. This web is hosted on Firebase.',
-    link: 'https://github.com/janmichek/janmichek-portfolio-webpage',
+    title: 'Snap the screenshot on deployment',
+    image: 'agent-chat.webp',
+    description: 'Capture a screenshot of the deployed agent chat UI. Open-source Web3 agent chat.',
+    link: 'https://github.com/janmichek/8004-web3-agent-chat',
   },
   {
     title: 'Photos Gallery',

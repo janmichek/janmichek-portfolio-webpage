@@ -180,14 +180,6 @@ export const chatContact: ChatLink[] = [
     icon: 'x',
   },
   {
-    label: 'Spotify',
-    url: 'https://open.spotify.com/artist/52iWG2c2P0K6HmGrAAUyoP?si=SuOL9lY1QuyCI1FDBOzO9A',
-    host: 'open.spotify.com',
-    title: 'Jan Michek',
-    text: 'Artist profile · music',
-    icon: 'spotify',
-  },
-  {
     label: 'CV',
     url: 'https://drive.google.com/file/d/1JKoO3XYsx_8BGriNa9rMlt0nwgQajE3v/view?usp=drive_link',
     title: 'CV.pdf',

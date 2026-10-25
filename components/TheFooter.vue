@@ -79,7 +79,7 @@ defineProps({
 
 .footer {
   background: var(--footer-background);
-  padding: var(--space-xl) 0;
+  padding: var(--space-xl) 0 var(--space-md);
 
   &__grid {
     display: grid;

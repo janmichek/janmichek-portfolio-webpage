@@ -5,7 +5,7 @@ export interface ChatLink {
   title?: string
   text?: string
   file?: string
-  icon?: 'github' | 'cv' | 'link'
+  icon?: 'github' | 'linkedin' | 'x' | 'cv' | 'link'
 }
 
 export interface ChatProject {
@@ -40,6 +40,7 @@ export const chatProfile = {
 
 export const chatSummary = [
   'Senior engineer with 14 years of experience, including 5+ years of building Web3 experiences on smart contracts. I combine full-stack expertise in JS frameworks with Solidity to build dApps that are a joy to use.',
+  'In addition to the Web3 +AI +UX combo, I have an overlap to Product design, graphic design and backend engineering as well.',
   'My background includes leading the development of blockchain explorer aescan.io, crafting smooth Web3 UX flows for an NFT lending platform at PWN. I am proud of winning an award at the Polkadot Hackathon.',
 ]
 
@@ -96,27 +97,24 @@ export const chatProjects: ChatProject[] = [
     ],
   },
   {
-    id: 'enginebox',
-    title: 'EngineBox',
-    tag: 'Weekend side project',
-    url: 'https://engine-box.vercel.app/',
-    image: '/enginebox.webp',
-    lead: 'Converts Engine OS playlists to Rekordbox. I was overpaying $10/month for it — so one gig-free weekend an AI agent loop cracked it.',
+    id: 'agent-chat',
+    title: 'Agent chat',
+    tag: 'Web3 chat UI',
+    url: 'https://8004-web3-agent-chat.vercel.app/',
+    image: '/agent-chat.webp',
+    lead: 'Web3 chat UI to talk to trustless agents: contract calls, funds, feedback.',
     links: [
-      { label: 'Web app', url: 'https://engine-box.vercel.app/' },
-      { label: 'Source', url: 'https://github.com/janmichek/EngineBox' },
-      { label: 'macOS app', url: 'https://github.com/janmichek/EngineBox/releases/latest' },
+      { label: 'Live app', url: 'https://8004-web3-agent-chat.vercel.app/' },
     ],
   },
 ]
 
 export const chatGoodies: ChatGoodie[] = [
   {
-    title: 'Agent chat',
-    image: '/agent-chat.webp',
-    text: 'Web3 chat UI to talk to trustless agents: contract calls, funds, feedback.',
-    url: 'https://8004-web3-agent-chat.vercel.app/',
-    dark: true,
+    title: 'EngineBox',
+    image: '/enginebox.webp',
+    text: 'Converts Engine OS playlists to Rekordbox. Web app and macOS app, free.',
+    url: 'https://engine-box.vercel.app/',
   },
   {
     title: 'CoinLine',
@@ -169,7 +167,7 @@ export const chatContact: ChatLink[] = [
     host: 'linkedin.com',
     title: 'Jan Michek',
     text: 'Web3 full-stack engineer, Prague',
-    icon: 'cv',
+    icon: 'linkedin',
   },
   {
     label: 'GitHub',
@@ -178,6 +176,14 @@ export const chatContact: ChatLink[] = [
     title: 'janmichek',
     text: 'Profile and repositories',
     icon: 'github',
+  },
+  {
+    label: 'X',
+    url: 'https://x.com/jan_michek',
+    host: 'x.com',
+    title: 'Jan Michek',
+    text: '@jan_michek',
+    icon: 'x',
   },
   {
     label: 'CV',

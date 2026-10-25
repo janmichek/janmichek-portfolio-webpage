@@ -68,12 +68,11 @@ function go(event: MouseEvent, id: string) {
             Jan Michek
           </h1>
           <p class="role">
-            Web3 full-stack engineer in Prague
+            Web3 full-stack engineer
           </p>
           <p class="lead">
             <span class="t">
-              I design and build dApps you don’t have to think about.
-              Fourteen years of shipping, five of them on smart contracts.
+              I design and build with Agents, Web3 and UX to the product that is joy to use.
             </span>
           </p>
           <nav class="nav">
@@ -255,11 +254,11 @@ body:has(.home) {
 }
 
 .home .sec {
-  padding: 110px 48px;
+  padding: 64px 48px;
 }
 
 .home .main .sec:first-child {
-  padding-top: 80px;
+  padding-top: 200px;
 }
 
 .home h2 {
@@ -419,7 +418,7 @@ body:has(.home) {
 
 .home .sec-contact {
   margin: 0;
-  padding: 110px 48px 130px;
+  padding: 64px 48px 80px;
   border-top: 0;
   color: var(--white);
   background: var(--ink);
@@ -501,15 +500,15 @@ body:has(.home) {
   }
 
   .home .sec {
-    padding: 80px 24px;
+    padding: 48px 24px;
   }
 
   .home .main .sec:first-child {
-    padding-top: 56px;
+    padding-top: 120px;
   }
 
   .home .sec-contact {
-    padding: 80px 24px 100px;
+    padding: 48px 24px 64px;
   }
 }
 </style>

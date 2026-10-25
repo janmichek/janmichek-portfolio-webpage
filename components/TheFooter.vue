@@ -22,6 +22,14 @@ defineProps({
         <div class="footer__container">
           <app-link
             class="footer__link"
+            to="https://open.spotify.com/artist/52iWG2c2P0K6HmGrAAUyoP?si=SuOL9lY1QuyCI1FDBOzO9A">
+            Spotify
+          </app-link>
+        </div>
+
+        <div class="footer__container">
+          <app-link
+            class="footer__link"
             to="mailto:jan@janmichek.cz">
             jan@janmichek.cz
           </app-link>
@@ -78,6 +86,8 @@ defineProps({
 }
 
 .footer {
+  --deep: #2f7fa3;
+
   background: var(--footer-background);
   padding: var(--space-xl) 0 var(--space-md);
 
@@ -97,7 +107,7 @@ defineProps({
 
   &__link {
     font-size: var(--text-sm);
-    color: var(--footer-link);
+    color: var(--deep);
 
     &:hover {
       color: var(--footer-link-hover);

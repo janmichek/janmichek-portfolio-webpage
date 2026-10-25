@@ -195,6 +195,7 @@ body:has(.home) {
   margin-top: 14px;
   font-size: 18px;
   line-height: 1.6;
+  color: #1d3b3b;
 }
 
 .home .nav {
@@ -422,7 +423,7 @@ body:has(.home) {
   padding: 64px 48px 80px;
   border-top: 0;
   color: var(--white);
-  background: #0c3a54;
+  background: var(--deep);
 }
 
 .home .sec-contact h2 {
@@ -467,9 +468,9 @@ body:has(.home) {
 }
 
 .home a.btn:hover {
-  background: var(--sky);
-  color: var(--ink);
-  border-color: var(--sky);
+  background: #fff;
+  color: var(--deep);
+  border-color: #fff;
 }
 
 .home a:focus-visible {

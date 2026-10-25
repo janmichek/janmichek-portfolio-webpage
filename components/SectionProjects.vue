@@ -12,7 +12,7 @@
         class="projects__post"
         data-aos="fade-up">
         <template #heading>
-          Melodot — Polkadot Hackathon Winner
+          Melodot - Polkadot Hackathon Winner
         </template>
         <template #image>
           <app-link
@@ -267,7 +267,7 @@
               class="projects__image"
               src="/enginebox.webp"
               width="686"
-              alt="EngineBox — Engine OS to Rekordbox playlist converter">
+              alt="EngineBox - Engine OS to Rekordbox playlist converter">
           </app-link>
           <app-link
             class="projects__preview"
@@ -283,7 +283,7 @@
         <template #description>
           <ul class="projects__list">
             <li>
-              Music-related passion project —
+              Music-related passion project -
               <app-link to="https://engine-box.vercel.app/">
                 EngineBox
               </app-link>
@@ -295,7 +295,7 @@
               conversion script using AI loops engineering. And it worked.
             </li>
             <li>
-              Now it's free for everyone to convert — either as a macOS standalone
+              Now it's free for everyone to convert - either as a macOS standalone
               Electron app or a live web version.
             </li>
             <li>

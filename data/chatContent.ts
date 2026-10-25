@@ -146,12 +146,6 @@ export const chatGoodies: ChatGoodie[] = [
     url: 'https://youtu.be/f7LlZRMdKm4',
   },
   {
-    title: 'Snap the screenshot on deployment',
-    image: '/agent-chat.webp',
-    text: 'Capture a screenshot of the deployed agent chat UI. Open-source Web3 agent chat.',
-    url: 'https://github.com/janmichek/8004-web3-agent-chat',
-  },
-  {
     title: 'Photo gallery',
     image: '/k3.webp',
     text: 'I like shooting photos too. Especially flowers.',

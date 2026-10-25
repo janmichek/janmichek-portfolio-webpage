@@ -364,4 +364,18 @@
 .apps:nth-of-type(even) {
   background: #b2dfdb;
 }
+@media (--dark) {
+  .firefox:nth-of-type(odd) { background: #0e2a3a; }
+  .firefox:nth-of-type(even) { background: #12364a; }
+  .webstorm:nth-of-type(odd) { background: #14301a; }
+  .webstorm:nth-of-type(even) { background: #1a3d22; }
+  .finder:nth-of-type(odd) { background: #3a2a12; }
+  .finder:nth-of-type(even) { background: #4a3516; }
+  .system:nth-of-type(odd) { background: #2c1a36; }
+  .system:nth-of-type(even) { background: #3a2247; }
+  .ableton:nth-of-type(odd) { background: #3a1a1e; }
+  .ableton:nth-of-type(even) { background: #4a2228; }
+  .apps:nth-of-type(odd) { background: #123332; }
+  .apps:nth-of-type(even) { background: #174242; }
+}
 </style>

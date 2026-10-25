@@ -5,7 +5,7 @@ export interface ChatLink {
   title?: string
   text?: string
   file?: string
-  icon?: 'github' | 'linkedin' | 'x' | 'cv' | 'link'
+  icon?: 'github' | 'linkedin' | 'x' | 'spotify' | 'cv' | 'link'
 }
 
 export interface ChatProject {
@@ -61,12 +61,23 @@ export const chatSkills: ChatSkill[] = [
 
 export const chatProjects: ChatProject[] = [
   {
+    id: 'agent-chat',
+    title: 'Agent chat',
+    tag: 'Web3 chat UI',
+    url: 'https://8004-web3-agent-chat.vercel.app/',
+    image: '/agent-chat.webp',
+    lead: 'Web3 chat UI to talk to trustless agents: contract calls, funds, feedback. Each on-chain action shows up right in the conversation so users can follow what happened.',
+    links: [
+      { label: 'Live app', url: 'https://8004-web3-agent-chat.vercel.app/' },
+    ],
+  },
+  {
     id: 'melodot',
     title: 'Melodot',
     tag: 'Polkadot Hackathon winner',
     url: 'https://melodot.vercel.app/',
     image: '/melodot.webp',
-    lead: 'Decentralized music discovery and donation dApp — placed among winners at the Polkadot Builder Party.',
+    lead: 'Decentralized music discovery and donation dApp — placed among winners at the Polkadot Builder Party. Listeners find new music and tip the artists directly on-chain.',
     links: [
       { label: 'Live app', url: 'https://melodot.vercel.app/' },
       { label: 'Walkthrough video', url: 'https://youtu.be/f7LlZRMdKm4' },
@@ -78,7 +89,7 @@ export const chatProjects: ChatProject[] = [
     tag: 'Blockchain explorer',
     url: 'https://aescan.io/',
     image: '/aescan.webp',
-    lead: 'Open-source blockchain explorer for the Aeternity network. Led the frontend with full autonomy over technical decisions.',
+    lead: 'Open-source blockchain explorer for the Aeternity network. Led the frontend with full autonomy over technical decisions. It makes blocks, transactions and contracts easy to browse.',
     links: [
       { label: 'aescan.io', url: 'https://aescan.io/' },
       { label: 'Walkthrough video', url: 'https://youtu.be/4jmVQlHASCY' },
@@ -91,20 +102,9 @@ export const chatProjects: ChatProject[] = [
     tag: 'NFT lending',
     url: 'https://pwn.xyz',
     image: '/pwn.webp',
-    lead: 'The first NFT pawnshop on Ethereum. Built a seamless web3 user experience from scratch.',
+    lead: 'The first NFT pawnshop on Ethereum. Built a seamless web3 user experience from scratch. Borrowers get liquidity against their NFTs without giving up the asset for good.',
     links: [
       { label: 'pwn.xyz', url: 'https://pwn.xyz' },
-    ],
-  },
-  {
-    id: 'agent-chat',
-    title: 'Agent chat',
-    tag: 'Web3 chat UI',
-    url: 'https://8004-web3-agent-chat.vercel.app/',
-    image: '/agent-chat.webp',
-    lead: 'Web3 chat UI to talk to trustless agents: contract calls, funds, feedback.',
-    links: [
-      { label: 'Live app', url: 'https://8004-web3-agent-chat.vercel.app/' },
     ],
   },
 ]
@@ -119,7 +119,7 @@ export const chatGoodies: ChatGoodie[] = [
   {
     title: 'CoinLine',
     image: '/coinline.webp',
-    text: 'Highlight a number on any page, convert it to crypto or fiat inline.',
+    text: 'Chrome Store and FF browser extension. Highlight a number on any page, convert it to crypto or fiat inline.',
     url: 'https://chromewebstore.google.com/detail/coinline/dafllilkihbickomgiohcjhabcdfeckf',
   },
   {
@@ -178,6 +178,14 @@ export const chatContact: ChatLink[] = [
     title: 'Jan Michek',
     text: '@jan_michek',
     icon: 'x',
+  },
+  {
+    label: 'Spotify',
+    url: 'https://open.spotify.com/artist/52iWG2c2P0K6HmGrAAUyoP?si=SuOL9lY1QuyCI1FDBOzO9A',
+    host: 'open.spotify.com',
+    title: 'Jan Michek',
+    text: 'Artist profile · music',
+    icon: 'spotify',
   },
   {
     label: 'CV',

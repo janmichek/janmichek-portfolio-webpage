@@ -129,10 +129,10 @@ export const chatGoodies: ChatGoodie[] = [
     url: 'https://youtu.be/4jmVQlHASCY',
   },
   {
-    title: 'Weekly news feed',
-    image: '/news.webp',
-    text: 'Tech, frontend & crypto links I go through every Sunday.',
-    url: '/tech-links',
+    title: 'Music production',
+    image: '/honey-t.webp',
+    text: '12+ million streams and communities built worldwide. Have a listen.',
+    url: 'https://open.spotify.com/artist/52iWG2c2P0K6HmGrAAUyoP?si=SuOL9lY1QuyCI1FDBOzO9A',
   },
   {
     title: 'Karabiner shortcuts',
@@ -151,12 +151,6 @@ export const chatGoodies: ChatGoodie[] = [
     image: '/k3.webp',
     text: 'I like shooting photos too. Especially flowers.',
     url: '/gallery',
-  },
-  {
-    title: 'Music production',
-    image: '/honey-t.webp',
-    text: '12+ million streams and communities built worldwide. Have a listen.',
-    url: 'https://open.spotify.com/artist/52iWG2c2P0K6HmGrAAUyoP?si=SuOL9lY1QuyCI1FDBOzO9A',
   },
 ]
 

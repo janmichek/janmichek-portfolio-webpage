@@ -158,7 +158,7 @@ export const chatGoodies: ChatGoodie[] = [
 export const chatContact: ChatLink[] = [
   {
     label: 'LinkedIn',
-    url: 'https://cz.linkedin.com/in/jan-michek-aba913103',
+    url: 'https://www.linkedin.com/in/jan-michek-web3/',
     host: 'linkedin.com',
     title: 'Jan Michek',
     text: 'Web3 full-stack engineer, Prague',

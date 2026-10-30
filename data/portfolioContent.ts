@@ -2,14 +2,14 @@ import type { ChatGoodie, ChatLink, ChatProject, ChatSkill } from './chatContent
 
 export const chatProfile = {
   name: 'Jan Michek',
-  role: 'Full-stack engineer & frontend specialist, Prague',
+  role: 'Frontend developer',
   email: 'jan@janmichek.cz',
   avatar: '/profile-pic.webp',
 }
 
 export const chatSummary = [
-  'Senior full-stack engineer with 14 years of experience building web products end to end. I combine a strong frontend craft with practical backend skills to ship interfaces that are fast, accessible and easy to use.',
-  'My work sits where design, engineering and product meet: I care about the details, the people using the product and the codebase that has to live on after launch.',
+  'Senior frontend developer with 14 years of experience building web products end to end. I focus on the part people actually touch: interfaces that are fast, accessible and easy to use.',
+  'My work sits where design and engineering meet. I care about the details, the people using the product and the codebase that has to live on after launch.',
   'I have led frontend development on data-heavy applications, built design systems and helped teams turn rough ideas into shipped features. I also enjoy the occasional side project, from browser extensions to music apps.',
 ]
 
@@ -32,10 +32,10 @@ export const chatProjects: ChatProject[] = [
   {
     id: 'agent-chat',
     title: 'Agent chat',
-    tag: 'AI product UI',
+    tag: 'Web3 chat UI',
     url: 'https://8004-web3-agent-chat.vercel.app/',
     image: '/agent-chat.webp',
-    lead: 'A conversational interface for creating and managing AI agents. Built the chat experience, tool controls and feedback flows in one focused workspace.',
+    lead: 'Web3 chat UI to talk to trustless agents. The app can create ERC-8004 compliant agent and  prompt it to send funds, call contracts, managing ENS names and receiveing feedback.',
     links: [
       { label: 'Live app', url: 'https://8004-web3-agent-chat.vercel.app/' },
     ],
@@ -43,10 +43,10 @@ export const chatProjects: ChatProject[] = [
   {
     id: 'melodot',
     title: 'Melodot',
-    tag: 'Hackathon winner',
+    tag: 'Polkadot Hackathon winner',
     url: 'https://melodot.vercel.app/',
     image: '/melodot.webp',
-    lead: 'Music discovery and donation app that placed among the winners at the Polkadot Builder Party. Built the listening experience and a straightforward flow for supporting artists, including payouts and verification.',
+    lead: 'Music discovery and donation dApp - placed among winners at the Polkadot Builder Party. Listeners find new music and tip the artists directly on-chain. Earnings withdrawal through a verification flow.',
     links: [
       { label: 'Live app', url: 'https://melodot.vercel.app/' },
       { label: 'Walkthrough video', url: 'https://youtu.be/f7LlZRMdKm4' },
@@ -55,10 +55,10 @@ export const chatProjects: ChatProject[] = [
   {
     id: 'aescan',
     title: 'aeScan',
-    tag: 'Data-heavy web app',
+    tag: 'Blockchain explorer',
     url: 'https://aescan.io/',
     image: '/aescan.webp',
-    lead: 'Open-source network explorer. Led the frontend with full autonomy over technical decisions, making large sets of records, transactions and accounts easy to browse.',
+    lead: 'Open-source blockchain explorer for the Aeternity network. Led the frontend with full autonomy over technical decisions. It makes blocks, transactions and contracts easy to browse.',
     links: [
       { label: 'aescan.io', url: 'https://aescan.io/' },
       { label: 'Walkthrough video', url: 'https://youtu.be/4jmVQlHASCY' },
@@ -68,10 +68,10 @@ export const chatProjects: ChatProject[] = [
   {
     id: 'pwn',
     title: 'PWN Finance',
-    tag: 'Fintech product',
+    tag: 'NFT lending',
     url: 'https://pwn.xyz',
     image: '/pwn.webp',
-    lead: 'A peer-to-peer lending product on Ethereum. Built a clear, trustworthy experience around asset management, wallet connections and transaction flows.',
+    lead: 'The first NFT pawnshop on Ethereum. Borrowers get liquidity against their NFTs without giving up the asset. Built a seamless web3 user experience using wallet and smart contract interaction.',
     links: [
       { label: 'pwn.xyz', url: 'https://pwn.xyz' },
     ],
@@ -88,13 +88,13 @@ export const chatGoodies: ChatGoodie[] = [
   {
     title: 'CoinLine',
     image: '/coinline.webp',
-    text: 'Chrome and Firefox extension. Highlight a number on any page and convert it to another currency inline.',
+    text: 'Chrome Store and FF browser extension. Highlight a number on any page, convert it to crypto or fiat inline.',
     url: 'https://chromewebstore.google.com/detail/coinline/dafllilkihbickomgiohcjhabcdfeckf',
   },
   {
     title: 'aeScan walkthrough',
     image: '/aescan-video.png',
-    text: 'A video walkthrough where I explain the product and the technical decisions behind it.',
+    text: 'A video of me diving into the project and explaining the details.',
     url: 'https://youtu.be/4jmVQlHASCY',
   },
   {
@@ -112,7 +112,7 @@ export const chatGoodies: ChatGoodie[] = [
   {
     title: 'Melodot walkthrough',
     image: '/melodot-walkthrough.webp',
-    text: 'A short walkthrough of the music discovery and donation app from the hackathon.',
+    text: 'Music discovery & donation dApp from the Polkadot Builder hackathon.',
     url: 'https://youtu.be/f7LlZRMdKm4',
   },
   {
@@ -129,7 +129,7 @@ export const chatContact: ChatLink[] = [
     url: 'https://www.linkedin.com/in/jan-michek-web3/',
     host: 'linkedin.com',
     title: 'Jan Michek',
-    text: 'Full-stack engineer, Prague',
+    text: 'Frontend developer, Prague',
     icon: 'linkedin',
   },
   {

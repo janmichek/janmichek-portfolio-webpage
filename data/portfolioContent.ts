@@ -2,13 +2,13 @@ import type { ChatGoodie, ChatLink, ChatProject, ChatSkill } from './chatContent
 
 export const chatProfile = {
   name: 'Jan Michek',
-  role: 'Frontend developer',
+  role: 'Frontend engineer',
   email: 'jan@janmichek.cz',
   avatar: '/profile-pic.webp',
 }
 
 export const chatSummary = [
-  'Senior frontend developer with 14 years of experience building web products end to end. I focus on the part people actually touch: interfaces that are fast, accessible and easy to use.',
+  'Senior frontend engineer with 14 years of experience building web products end to end. I focus on the part people actually touch: interfaces that are fast, accessible and easy to use.',
   'My work sits where design and engineering meet. I care about the details, the people using the product and the codebase that has to live on after launch.',
   'I have led frontend development on data-heavy applications, built design systems and helped teams turn rough ideas into shipped features. I also enjoy the occasional side project, from browser extensions to music apps.',
 ]
@@ -129,7 +129,7 @@ export const chatContact: ChatLink[] = [
     url: 'https://www.linkedin.com/in/jan-michek-web3/',
     host: 'linkedin.com',
     title: 'Jan Michek',
-    text: 'Frontend developer, Prague',
+    text: 'Frontend engineer, Prague',
     icon: 'linkedin',
   },
   {

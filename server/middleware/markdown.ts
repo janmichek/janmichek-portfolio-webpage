@@ -45,7 +45,7 @@ export default defineEventHandler(event => {
     '/': `# Jan Michek
 
 ${meta.variant === 'portfolio'
-  ? 'Personal portfolio of Jan Michek - senior frontend developer focused on UI, UX and product.'
+  ? 'Personal portfolio of Jan Michek - senior frontend engineer focused on UI, UX and product.'
   : 'Personal portfolio of Jan Michek - Web3, Solidity, frontend & fullstack engineer.'}
 
 ## Pages

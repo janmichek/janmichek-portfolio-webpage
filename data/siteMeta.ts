@@ -28,14 +28,14 @@ export const siteMeta: Record<SiteVariant, SiteMeta> = {
   portfolio: {
     variant: 'portfolio',
     url: 'https://portfolio.janmichek.cz',
-    title: 'Jan Michek - Frontend Developer | Portfolio',
-    description: 'Senior frontend developer with 14 years of experience building fast, accessible and thoughtful web products.',
-    role: 'Frontend developer',
+    title: 'Jan Michek - Frontend Engineer | Portfolio',
+    description: 'Senior frontend engineer with 14 years of experience building fast, accessible and thoughtful web products.',
+    role: 'Frontend engineer',
     lead: [
       'I turn complex products into clear, fast',
       'and friendly web interfaces.',
     ],
-    keywords: 'Jan Michek, frontend developer, frontend engineer, web developer, UI, UX, Vue, Nuxt, TypeScript, design systems, portfolio',
-    jobTitle: 'Frontend Developer',
+    keywords: 'Jan Michek, frontend engineer, frontend developer, web developer, UI, UX, Vue, Nuxt, TypeScript, design systems, portfolio',
+    jobTitle: 'Frontend Engineer',
   },
 }

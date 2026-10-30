@@ -1,48 +1,72 @@
 <script setup>
-import { Keyboard, Navigation } from 'swiper/modules'
+import { computed, useId } from 'vue'
+import { A11y, Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
 import 'swiper/css/navigation'
 
-defineProps({
+const props = defineProps({
   images: {
     type: Array,
     default: null,
   },
 })
 
-const modules = [Navigation, Keyboard]
+const modules = [A11y, Navigation]
+const uid = useId()
+const imageCount = computed(() => props.images?.length ?? 0)
+const hasImages = computed(() => imageCount.value > 0)
+const hasMultiple = computed(() => imageCount.value > 1)
+const navigation = computed(() => (hasMultiple.value
+  ? { prevEl: `#${uid}-prev`, nextEl: `#${uid}-next` }
+  : false))
 </script>
 
 <template>
-  <swiper
-    v-if="images?.length"
-    class="gallery-swiper"
-    :modules="modules"
-    :loop="images.length > 1"
-    :navigation="true"
-    :keyboard="{enabled: true, onlyInViewport: true}"
-    :grab-cursor="true"
-    :space-between="24">
-    <swiper-slide
-      v-for="(slide, index) in images"
-      :key="index">
-      <figure class="slide">
-        <img
-          :src="slide.medium"
-          class="slide__image"
-          :alt="slide.description"
-          loading="lazy">
-        <figcaption class="slide__text">
-          {{ slide.description }}
-        </figcaption>
-      </figure>
-    </swiper-slide>
-  </swiper>
+  <div
+    v-if="hasImages"
+    class="gallery-swiper">
+    <template v-if="hasMultiple">
+      <button
+        :id="`${uid}-prev`"
+        type="button"
+        class="gallery-swiper__prev swiper-button-prev"
+        aria-label="Previous image"/>
+      <button
+        :id="`${uid}-next`"
+        type="button"
+        class="gallery-swiper__next swiper-button-next"
+        aria-label="Next image"/>
+    </template>
+    <swiper
+      class="gallery-swiper__track"
+      :modules="modules"
+      :loop="hasMultiple"
+      :navigation="navigation"
+      :grab-cursor="true"
+      :space-between="24">
+      <swiper-slide
+        v-for="(slide, index) in images"
+        :key="index">
+        <figure class="slide">
+          <img
+            :src="slide.medium"
+            class="slide__image"
+            alt=""
+            loading="lazy">
+          <figcaption class="slide__text">
+            {{ slide.description }}
+          </figcaption>
+        </figure>
+      </swiper-slide>
+    </swiper>
+  </div>
 </template>
 
 <style scoped>
 .gallery-swiper {
+  position: relative;
+  overflow: hidden;
   width: 100%;
 }
 
@@ -77,42 +101,55 @@ const modules = [Navigation, Keyboard]
 <style>
 .gallery-swiper {
   --swiper-navigation-color: var(--deep, var(--ui-primary));
-  --swiper-navigation-size: 44px;
-  --nav-top: 50%;
-  --nav-bottom: auto;
-  --nav-margin-top: -18px;
-  --nav-left: 8px;
-  --nav-right: 8px;
+  --nav-size: 200px;
+  --caption-offset: 19px;
+  --nav-arrow-pad: calc(var(--nav-size) * 0.075 - 3px);
+  --nav-shift: -0.85;
 }
 
 .gallery-swiper .swiper-button-prev,
 .gallery-swiper .swiper-button-next {
-  display: grid;
-  place-items: center;
-  top: var(--nav-top);
-  bottom: var(--nav-bottom);
-  width: 36px;
-  height: 36px;
-  margin-top: var(--nav-margin-top);
+  display: flex;
+  align-items: center;
+  top: 50%;
+  width: var(--nav-size);
+  height: var(--nav-size);
+  margin-top: calc(-1 * var(--nav-size) / 2 - var(--caption-offset));
+  padding: 0;
+  border: 0;
   border-radius: 50%;
+  opacity: 0;
   background: var(--white, var(--color-cream));
   box-shadow: 0 2px 12px rgb(8 38 38 / 12%);
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: opacity 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.gallery-swiper .swiper-button-prev {
+  left: calc(var(--nav-size) * var(--nav-shift));
+  justify-content: flex-end;
+  padding-right: var(--nav-arrow-pad);
+}
+
+.gallery-swiper .swiper-button-next {
+  right: calc(var(--nav-size) * var(--nav-shift));
+  justify-content: flex-start;
+  padding-left: var(--nav-arrow-pad);
 }
 
 .gallery-swiper .swiper-button-prev svg,
 .gallery-swiper .swiper-button-next svg {
-  width: 10px;
-  height: 18px;
+  width: 12px;
+  height: 22px;
   fill: currentcolor;
 }
 
-.gallery-swiper .swiper-button-prev {
-  left: var(--nav-left);
-}
-
-.gallery-swiper .swiper-button-next {
-  right: var(--nav-right);
+.gallery-swiper:hover .swiper-button-prev,
+.gallery-swiper:hover .swiper-button-next,
+.gallery-swiper .swiper-button-prev:hover,
+.gallery-swiper .swiper-button-next:hover,
+.gallery-swiper .swiper-button-prev:focus-visible,
+.gallery-swiper .swiper-button-next:focus-visible {
+  opacity: 1;
 }
 
 .gallery-swiper .swiper-button-prev:hover,
@@ -121,14 +158,53 @@ const modules = [Navigation, Keyboard]
   color: var(--white, var(--color-cream));
 }
 
+.gallery-swiper .swiper-button-prev:focus-visible,
+.gallery-swiper .swiper-button-next:focus-visible {
+  outline: 3px solid var(--deep, var(--ui-primary));
+  outline-offset: -3px;
+}
+
+@media (hover: none) {
+  .gallery-swiper .swiper-button-prev,
+  .gallery-swiper .swiper-button-next {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-swiper .swiper-button-prev,
+  .gallery-swiper .swiper-button-next {
+    transition: none;
+  }
+}
+
 @media (width <= 560px) {
   .gallery-swiper {
-    --nav-top: auto;
-    --nav-bottom: 0;
-    --nav-margin-top: 0;
-    --nav-left: calc(50% - 44px);
-    --nav-right: calc(50% - 44px);
-    padding: 0 0 48px;
+    --nav-size: 48px;
+    --nav-arrow-pad: 0px;
+    padding-bottom: 64px;
+  }
+
+  .gallery-swiper .swiper-button-prev,
+  .gallery-swiper .swiper-button-next {
+    top: auto;
+    bottom: 8px;
+    margin-top: 0;
+    justify-content: center;
+  }
+
+  .gallery-swiper .swiper-button-prev {
+    left: 8px;
+  }
+
+  .gallery-swiper .swiper-button-next {
+    right: 8px;
+  }
+
+  .gallery-swiper .swiper-button-prev svg,
+  .gallery-swiper .swiper-button-next svg {
+    width: 10px;
+    height: 18px;
   }
 }
 </style>

@@ -8,247 +8,33 @@ const navItems = [
   { id: 'contact', label: 'Contact' },
 ]
 
-const active = ref(navItems[0].id)
-
-// Last section whose top has crossed a line 40% down the viewport wins.
-// At the very bottom of the page the last section is forced active,
-// since short final sections may never reach that line.
-function updateActive() {
-  const line = window.innerHeight * 0.4
-  const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2
-  let current = navItems[0].id
-  for (const { id } of navItems) {
-    const el = document.getElementById(id)
-    if (el && el.getBoundingClientRect().top <= line) current = id
-  }
-  active.value = atBottom ? navItems[navItems.length - 1].id : current
-}
-
-let frame = 0
-function onScroll() {
-  if (frame) return
-  frame = requestAnimationFrame(() => {
-    frame = 0
-    updateActive()
-  })
-}
-
-onMounted(() => {
-  updateActive()
-  window.addEventListener('scroll', onScroll, { passive: true })
-  window.addEventListener('resize', onScroll)
-})
-
-onBeforeUnmount(() => {
-  window.removeEventListener('scroll', onScroll)
-  window.removeEventListener('resize', onScroll)
-  if (frame) cancelAnimationFrame(frame)
-})
-
-function go(event: MouseEvent, id: string) {
-  event.preventDefault()
-  active.value = id
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  document.getElementById(id)?.scrollIntoView({
-    behavior: reduce ? 'auto' : 'smooth',
-  })
-}
+const { active, jumping, go } = useScrollSpy(navItems.map(item => item.id))
 </script>
 
 <template>
-  <div class="home">
+  <div class="home site-theme">
     <div class="page">
-      <aside class="side">
-        <div>
-          <img
-            class="ph"
-            :src="chatProfile.avatar"
-            alt="Jan Michek">
-          <h1 class="name h">
-            Jan Michek
-          </h1>
-          <p class="role">
-            {{ siteMeta.role }}
-          </p>
-          <p class="lead">
-            <span class="t">
-              <template
-                v-for="(line, index) in siteMeta.lead"
-                :key="line">
-                {{ line }}<br v-if="index < siteMeta.lead.length - 1">
-              </template>
-            </span>
-          </p>
-          <nav class="nav">
-            <a
-              v-for="item in navItems"
-              :key="item.id"
-              :href="`#${item.id}`"
-              :class="{'is-active': active === item.id}"
-              :aria-current="active === item.id ? 'true' : undefined"
-              @click="go($event, item.id)">
-              <span class="bar"/>{{ item.label }}
-            </a>
-          </nav>
-        </div>
-        <nav
-          class="side-foot"
-          aria-label="Contact">
-          <a
-            v-for="link in chatContact"
-            :key="link.url"
-            class="ci"
-            :href="link.url"
-            :title="link.label"
-            :aria-label="link.label"
-            target="_blank"
-            rel="noopener noreferrer">
-            <home-icon :name="link.icon"/>
-          </a>
-        </nav>
-      </aside>
+      <site-sidebar
+        :name="chatProfile.name"
+        :role="siteMeta.role"
+        :avatar="chatProfile.avatar"
+        :contact="chatContact"
+        :lead="siteMeta.lead"
+        :items="navItems"
+        nav-label="Sections"
+        :active-id="active"
+        :jumping="jumping"
+        @select="go"/>
       <home-bands/>
     </div>
   </div>
 </template>
 
 <style>
-.home {
-  --white: var(--color-cream);
-  --ink: var(--color-carbon);
-  --sky: var(--color-sky);
-  --deep: #2f7fa3;
-  --tint: #eef6f9;
-  --mute: #5b6b6b;
-  --lead: #1d3b3b;
-  --g1: #e8eded;
-  --g2: #c7d2d2;
-  --g3: #889a9a;
-  background: var(--white);
-  color: var(--ink);
-  color-scheme: light dark;
-  font-family: var(--font-sans);
-  font-size: 17px;
-  font-weight: 300;
-  line-height: 1.6;
-}
-
-@media (--dark) {
-  .home {
-    --white: var(--color-carbon);
-    --ink: var(--color-cream);
-    --deep: var(--color-sky);
-    --tint: #0f3434;
-    --mute: var(--color-pale);
-    --lead: #d6e6e6;
-    --g1: #163c3c;
-    --g2: #2b4f4f;
-    --g3: #6f8a8a;
-    color-scheme: dark;
-  }
-}
-
-.home a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.home p {
-  margin: 0;
-}
-
-.home h1,
-.home h2,
-.home h3 {
-  margin: 0;
-  font-family: var(--font-sans);
-  font-weight: 700;
-  line-height: 1;
-}
-
-.home .page {
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-  max-width: 1240px;
-  margin: 0 auto;
-}
-
-.home .side {
-  position: sticky;
-  top: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
-  padding: 80px 36px 72px 32px;
-}
-
-.home .ph {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  object-fit: cover;
-  background: var(--sky);
-}
-
-.home .name {
-  margin-top: 24px;
-  font-size: clamp(38px, 4.3vw, 58px);
-  line-height: 0.95;
-  letter-spacing: -0.045em;
-}
-
-.home .role {
-  margin-top: 12px;
-  font-size: 18px;
-  font-weight: 500;
-}
-
-.home .lead {
-  max-width: 26em;
-  margin-top: 14px;
-  font-size: 18px;
-  line-height: 1.6;
-  color: var(--lead);
-}
-
-.home .nav {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 40px;
-}
-
-.home .nav a {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.home .nav .bar {
-  width: 28px;
-  height: 2px;
-  background: var(--ink);
-  transition: width 0.2s ease;
-}
-
-.home .nav a:hover .bar,
-.home .nav a.is-active .bar {
-  width: 56px;
-  background: var(--deep);
-}
-
-.home .nav a.is-active {
-  color: var(--deep);
-}
-
 .home .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   height: 50px;
   padding: 0 24px;
   border: 2px solid var(--ink);
@@ -277,7 +63,7 @@ function go(event: MouseEvent, id: string) {
   padding-top: 200px;
 }
 
-.home h2 {
+.home.site-theme h2 {
   margin-bottom: 36px;
   font-size: clamp(38px, 4.6vw, 60px);
   letter-spacing: -0.035em;
@@ -291,26 +77,10 @@ function go(event: MouseEvent, id: string) {
   line-height: 1.65;
 }
 
-.home .skills {
-  display: grid;
-  gap: 16px;
-  margin-top: 40px;
-}
-
 .home .card {
   padding: 24px;
   border-radius: 10px;
   background: var(--tint);
-}
-
-.home .sk h3 {
-  margin-bottom: 8px;
-  font-size: 24px;
-}
-
-.home .sk p {
-  font-size: 15px;
-  line-height: 1.6;
 }
 
 .home .grid {
@@ -466,21 +236,6 @@ function go(event: MouseEvent, id: string) {
   border-color: var(--white);
 }
 
-.home .side-foot {
-  display: flex;
-  gap: 24px;
-}
-
-.home .ci {
-  display: inline-flex;
-  color: var(--g3);
-  transition: color 0.2s ease;
-}
-
-.home .ci:hover {
-  color: var(--deep);
-}
-
 .home a.btn:hover {
   background: #fff;
   color: var(--deep);
@@ -493,26 +248,8 @@ function go(event: MouseEvent, id: string) {
 }
 
 @media (width <= 900px) {
-  .home .page {
+  .home.site-theme .page {
     grid-template-columns: 1fr;
-  }
-
-  .home .side {
-    position: static;
-    height: auto;
-    padding: 80px 24px 64px;
-    gap: 32px;
-  }
-
-  .home .nav {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 12px 24px;
-    margin-top: 32px;
-  }
-
-  .home .nav .bar {
-    display: none;
   }
 
   .home .sec {

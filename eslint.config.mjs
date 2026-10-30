@@ -1,7 +1,7 @@
 import withNuxt from './.nuxt/eslint.config.mjs'
 
 export default withNuxt({
-  ignores: ['**/dist', '**/.nuxt', '**/.output'],
+  ignores: ['**/dist', '**/.nuxt', '**/.output', '**/coverage'],
   rules: {
     '@stylistic/semi': ['error', 'never'],
     '@stylistic/quotes': ['error', 'single'],

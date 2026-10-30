@@ -1,4 +1,17 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { writeFileSync } from 'node:fs'
+import { join } from 'node:path'
+
+const siteVariant = process.env.NUXT_PUBLIC_SITE_VARIANT === 'portfolio' ? 'portfolio' : 'web3'
+const siteUrl = siteVariant === 'portfolio' ? 'https://portfolio.janmichek.cz' : 'https://janmichek.cz'
+
+const robots = `User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+Sitemap: ${siteUrl}/sitemap.xml
+`
 
 export default defineNuxtConfig({
   modules: [
@@ -13,7 +26,6 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: { lang: 'en' },
       link: [
-        { rel: 'canonical', href: 'https://janmichek.cz/' },
         {
           rel: 'preconnect',
           href: 'https://fonts.googleapis.com',
@@ -40,8 +52,14 @@ export default defineNuxtConfig({
     '~/assets/styles/utilities/_grid.css',
   ],
   site: {
-    url: 'https://janmichek.cz',
+    url: siteUrl,
     name: 'Jan Michek',
+  },
+  runtimeConfig: {
+    public: {
+      siteVariant,
+      siteUrl,
+    },
   },
   routeRules: {
     '/': { prerender: true, headers: { Vary: 'Accept' } },
@@ -69,6 +87,13 @@ export default defineNuxtConfig({
       },
       'postcss-custom-media': {},
       'postcss-nested': {},
+    },
+  },
+  hooks: {
+    'nitro:build:before': nitro => {
+      nitro.hooks.hook('prerender:done', () => {
+        writeFileSync(join(nitro.options.output.publicDir, 'robots.txt'), robots)
+      })
     },
   },
   aos: {

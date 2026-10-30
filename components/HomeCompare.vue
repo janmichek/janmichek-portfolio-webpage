@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { chatContact, chatProfile } from '~/data/chatContent'
+const { chatContact, chatProfile, siteMeta } = useSiteContent()
 
 const navItems = [
   { id: 'about', label: 'About' },
@@ -68,12 +68,15 @@ function go(event: MouseEvent, id: string) {
             Jan Michek
           </h1>
           <p class="role">
-            Web3 full-stack engineer
+            {{ siteMeta.role }}
           </p>
           <p class="lead">
             <span class="t">
-              I design and build with Agents, Web3 and UX<br>
-              to the product that is joy to use.
+              <template
+                v-for="(line, index) in siteMeta.lead"
+                :key="line">
+                {{ line }}<br v-if="index < siteMeta.lead.length - 1">
+              </template>
             </span>
           </p>
           <nav class="nav">

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { chatContact, chatProfile } from '~/data/chatContent'
+const { chatContact, chatProfile, siteMeta } = useSiteContent()
 
 const images = [
   { medium: 'k1.webp', description: 'Galanthus nivalis - Žižkov' },
@@ -35,7 +35,7 @@ const navItems = [
             Jan Michek
           </h1>
           <p class="role">
-            Web3 full-stack engineer
+            {{ siteMeta.role }}
           </p>
           <nav
             class="nav"

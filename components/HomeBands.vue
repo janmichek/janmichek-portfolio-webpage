@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import {
+const {
   chatContact,
   chatGoodies,
   chatProfile,
   chatProjects,
   chatSummary,
-} from '~/data/chatContent'
+} = useSiteContent()
 
 function isHttp(url: string) {
   return url.startsWith('http')

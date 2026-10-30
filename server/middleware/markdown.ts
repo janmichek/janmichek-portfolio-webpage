@@ -1,3 +1,5 @@
+import { siteMeta } from '~/data/siteMeta'
+
 export default defineEventHandler(event => {
   const url = getRequestURL(event)
   const pathname = url.pathname
@@ -33,24 +35,31 @@ export default defineEventHandler(event => {
     return
   }
 
+  const config = useRuntimeConfig()
+  const host = getHeader(event, 'host') || ''
+  const variant = host.startsWith('portfolio.') ? 'portfolio' : config.public.siteVariant === 'portfolio' ? 'portfolio' : 'web3'
+  const meta = siteMeta[variant]
+
   // Simple markdown generation for known routes
   const routes: Record<string, string> = {
     '/': `# Jan Michek
 
-Personal portfolio of Jan Michek - Web3, Solidity, frontend & fullstack engineer.
+${meta.variant === 'portfolio'
+  ? 'Personal portfolio of Jan Michek - full-stack engineer focused on frontend, product and UX.'
+  : 'Personal portfolio of Jan Michek - Web3, Solidity, frontend & fullstack engineer.'}
 
 ## Pages
 
-- [Gallery](/gallery) - Visual projects
-- [Git Flow](/git-flow) - Git workflow guide
-- [Karabiner](/karabiner) - Karabiner config
-- [Tech Links](/tech-links) - Curated tech resources
-- [Webdesign Checklist](/webdesign-checklist) - Webdesign checklist
+- [Gallery](${meta.url}/gallery) - Visual projects
+- [Git Flow](${meta.url}/git-flow) - Git workflow guide
+- [Karabiner](${meta.url}/karabiner) - Karabiner config
+- [Tech Links](${meta.url}/tech-links) - Curated tech resources
+- [Webdesign Checklist](${meta.url}/webdesign-checklist) - Webdesign checklist
 
 ## Contact
 
 - Email: jan@janmichek.cz
-- Website: https://janmichek.cz
+- Website: ${meta.url}
 
 > Served as markdown via content negotiation (Accept: text/markdown).
 `,
@@ -58,31 +67,31 @@ Personal portfolio of Jan Michek - Web3, Solidity, frontend & fullstack engineer
 
 Visual projects and screenshots.
 
-See more at https://janmichek.cz/gallery
+See more at ${meta.url}/gallery
 `,
     '/git-flow': `# Git Flow
 
 Git workflow guide.
 
-https://janmichek.cz/git-flow
+${meta.url}/git-flow
 `,
     '/karabiner': `# Karabiner
 
 Karabiner configuration.
 
-https://janmichek.cz/karabiner
+${meta.url}/karabiner
 `,
     '/tech-links': `# Tech Links
 
 Curated tech resources.
 
-https://janmichek.cz/tech-links
+${meta.url}/tech-links
 `,
     '/webdesign-checklist': `# Webdesign Checklist
 
 Checklist for webdesign.
 
-https://janmichek.cz/webdesign-checklist
+${meta.url}/webdesign-checklist
 `,
   }
 

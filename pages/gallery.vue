@@ -69,26 +69,14 @@ const navItems = [
 
       <main class="main">
         <section class="sec">
-          <p class="eyebrow">
-            Gallery
-          </p>
           <h2>Photo Gallery</h2>
           <p class="intro">
             Capturing beauty through my lens - especially the delicate world of flowers.
             These shots showcase my aesthetic eye and double as gorgeous placeholder images for your next project.
           </p>
 
-          <div class="grid">
-            <figure
-              v-for="image in images"
-              :key="image.medium"
-              class="tile">
-              <img
-                :src="image.medium"
-                :alt="image.description"
-                loading="lazy">
-              <figcaption>{{ image.description }}</figcaption>
-            </figure>
+          <div class="slider">
+            <app-swiper :images="images"/>
           </div>
         </section>
       </main>
@@ -105,6 +93,8 @@ const navItems = [
   --tint: #eef6f9;
   --mute: #5b6b6b;
   --lead: #1d3b3b;
+  --g3: #889a9a;
+  --sec-pad: 48px;
   background: var(--white);
   color: var(--ink);
   color-scheme: light dark;
@@ -122,6 +112,7 @@ const navItems = [
     --tint: #0f3434;
     --mute: var(--color-pale);
     --lead: #d6e6e6;
+    --g3: #6f8a8a;
     color-scheme: dark;
   }
 }
@@ -218,21 +209,17 @@ const navItems = [
 
 .gallery-page .side-foot {
   display: flex;
-  gap: 12px;
+  gap: 24px;
 }
 
 .gallery-page .ci {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border: 1.5px solid var(--ink);
-  border-radius: 50%;
+  display: inline-flex;
+  color: var(--g3);
+  transition: color 0.2s ease;
 }
 
 .gallery-page .ci:hover {
-  background: var(--ink);
-  color: var(--white);
+  color: var(--deep);
 }
 
 .gallery-page .ci .icon {
@@ -245,20 +232,15 @@ const navItems = [
 }
 
 .gallery-page .sec {
-  padding: 200px 48px 80px;
+  padding: 64px var(--sec-pad);
 }
 
-.gallery-page .eyebrow {
-  margin-bottom: 16px;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--deep);
+.gallery-page .main .sec:first-child {
+  padding-top: 200px;
 }
 
 .gallery-page h2 {
-  margin-bottom: 28px;
+  margin-bottom: 36px;
   font-size: clamp(38px, 4.6vw, 60px);
   letter-spacing: -0.035em;
 }
@@ -270,32 +252,8 @@ const navItems = [
   color: var(--lead);
 }
 
-.gallery-page .grid {
-  columns: 2;
-  column-gap: 20px;
-  margin-top: 56px;
-}
-
-.gallery-page .tile {
-  break-inside: avoid;
-  margin-bottom: 28px;
-  padding: 12px;
-  border-radius: 10px;
-  background: var(--tint);
-}
-
-.gallery-page .tile img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-}
-
-.gallery-page .tile figcaption {
-  margin-top: 12px;
-  font-size: 15px;
-  line-height: 1.5;
-  color: var(--mute);
+.gallery-page .slider {
+  margin: 40px calc(-1 * var(--sec-pad)) 0;
 }
 
 .gallery-page a:focus-visible {
@@ -304,6 +262,10 @@ const navItems = [
 }
 
 @media (width <= 900px) {
+  .gallery-page {
+    --sec-pad: 24px;
+  }
+
   .gallery-page .page {
     grid-template-columns: 1fr;
   }
@@ -327,13 +289,15 @@ const navItems = [
   }
 
   .gallery-page .sec {
-    padding: 120px 24px 64px;
+    padding: 48px var(--sec-pad);
   }
-}
 
-@media (width <= 560px) {
-  .gallery-page .grid {
-    columns: 1;
+  .gallery-page .main .sec:first-child {
+    padding-top: 120px;
+  }
+
+  .gallery-page .slider {
+    margin-top: 32px;
   }
 }
 </style>

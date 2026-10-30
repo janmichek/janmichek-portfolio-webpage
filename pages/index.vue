@@ -1,5 +1,3 @@
 <template>
-  <nuxt-layout name="default">
-    <home-compare/>
-  </nuxt-layout>
+  <home-compare/>
 </template>

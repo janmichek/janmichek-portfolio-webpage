@@ -1,4 +1,6 @@
 <script setup>
+definePageMeta({ layout: 'slug' })
+
 const issue = ref([
   'Use one of prepared Issue templates [Feature, Bug, Tech Debt]',
   'Better skip template fields, but don\'t delete them. We can fill them later before implementation',
@@ -42,38 +44,36 @@ const codeReview = ref([
 </script>
 
 <template>
-  <nuxt-layout name="slug">
-    <article>
-      <slug-title
-        title="Git Flow"
-        description="
-      No worry if our company does not have solid workflow yet. After working for different companies, I can see what's
-       ultimately working now.
-      I wrote down these rules to make collaboration aligned, so we can iterate from here.
-      In the case of missing dev lead or to instruct junior developers, we may use these basics."/>
+  <article>
+    <slug-title
+      title="Git Flow"
+      description="
+    No worry if our company does not have solid workflow yet. After working for different companies, I can see what's
+     ultimately working now.
+    I wrote down these rules to make collaboration aligned, so we can iterate from here.
+    In the case of missing dev lead or to instruct junior developers, we may use these basics."/>
 
-      <title-section class="git-flow__title">
-        Issues
-      </title-section>
-      <app-checklist
-        :list="issue"
-        name="issue"/>
+    <title-section class="git-flow__title">
+      Issues
+    </title-section>
+    <app-checklist
+      :list="issue"
+      name="issue"/>
 
-      <title-section class="git-flow__title">
-        Pull Request
-      </title-section>
-      <app-checklist
-        :list="pullRequest"
-        name="pull-request"/>
+    <title-section class="git-flow__title">
+      Pull Request
+    </title-section>
+    <app-checklist
+      :list="pullRequest"
+      name="pull-request"/>
 
-      <title-section class="git-flow__title">
-        Code Review
-      </title-section>
-      <app-checklist
-        :list="codeReview"
-        name="code-review"/>
-    </article>
-  </nuxt-layout>
+    <title-section class="git-flow__title">
+      Code Review
+    </title-section>
+    <app-checklist
+      :list="codeReview"
+      name="code-review"/>
+  </article>
 </template>
 
 <style scoped>

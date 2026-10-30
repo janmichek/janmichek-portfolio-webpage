@@ -1,4 +1,6 @@
 <script setup>
+definePageMeta({ layout: 'slug' })
+
 const checklist = [
   'hover state',
   'active / selected state',
@@ -19,15 +21,13 @@ const checklist = [
 </script>
 
 <template>
-  <nuxt-layout name="slug">
-    <article>
-      <slug-title
-        title="Webdesign checklist"
-        description="
-      Nothing great is created alone, so I created this to make collaboration better.
-      These are frequent requests on design sketches that applies almost ultimately.
-      A set of nice recommendations for handovers and future projects."/>
-      <app-checklist :list="checklist"/>
-    </article>
-  </nuxt-layout>
+  <article>
+    <slug-title
+      title="Webdesign checklist"
+      description="
+    Nothing great is created alone, so I created this to make collaboration better.
+    These are frequent requests on design sketches that applies almost ultimately.
+    A set of nice recommendations for handovers and future projects."/>
+    <app-checklist :list="checklist"/>
+  </article>
 </template>

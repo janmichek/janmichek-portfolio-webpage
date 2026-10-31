@@ -53,7 +53,7 @@ describe('shared content', () => {
   it.each(variants)('derives the %s contact copy from the profile role', (_, content) => {
     const linkedIn = content.chatContact.find(link => link.label === 'LinkedIn')
     expect(linkedIn?.text).toBe(`${content.chatProfile.role}, Prague`)
-    expect(linkedIn?.text.match(/Prague/g)).toHaveLength(1)
+    expect(linkedIn?.text?.match(/Prague/g)).toHaveLength(1)
   })
 
   it.each(variants)('has complete project, goodie and contact records for %s', (_, content, meta) => {

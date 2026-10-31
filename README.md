@@ -43,8 +43,8 @@ Run linting and formatting:
 ```bash
 bun lint          # Run all linting (JS + CSS)
 bun lint:fix      # Auto-fix linting issues
-bun lint:js       # ESLint only
-bun lint:style    # Stylelint only
+bun lint:js       # oxlint only
+bun lint:style    # Biome (CSS) only
 ```
 
 ### Utilities
@@ -103,7 +103,7 @@ The application follows modern Vue.js patterns with:
 - **Framework**: Nuxt 4 (Vue 3)
 - **Styling**: Custom CSS with PostCSS
 - **Backend**: Firebase (Database, Hosting)
-- **Tooling**: ESLint, Stylelint, bun
+- **Tooling**: oxlint, Biome, bun
 
 ## License
 

@@ -33,7 +33,6 @@
   --space-4xl: 100px;
 }
 
-/* stylelint-disable at-rule-no-unknown */
 @custom-media --tablet (min-width: 768px);
 @custom-media --desktop (min-width: 992px);
 @custom-media --dark (prefers-color-scheme: dark);

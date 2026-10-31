@@ -21,7 +21,7 @@ export default defineConfig({
         'composables/useSiteContent.ts',
         'data/**/*.ts',
         'components/AppSwiper.vue',
-        'components/SiteSidebar.vue',
+        'components/TheSidebar.vue',
       ],
       exclude: ['data/contentTypes.ts'],
       thresholds: {

@@ -25,7 +25,7 @@ const navItems = [
 <template>
   <div class="gallery-page site-theme">
     <div class="page">
-      <site-sidebar
+      <the-sidebar
         :name="chatProfile.name"
         :role="siteMeta.role"
         :avatar="chatProfile.avatar"
@@ -72,7 +72,6 @@ const navItems = [
   margin-bottom: 36px;
   font-size: clamp(38px, 4.6vw, 60px);
   letter-spacing: -0.035em;
-  color: var(--deep);
 }
 
 .gallery-page .intro {

@@ -1,3 +1,4 @@
+// fallow-ignore-file duplicate-export -- intentional: site variants, consumed via namespace imports in composables/useSiteContent.ts
 import { baseProfile, chatGoodies, chatProjects, createChatContact } from './sharedContent'
 
 export { chatGoodies, chatProjects }

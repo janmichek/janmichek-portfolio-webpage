@@ -111,6 +111,11 @@ defineProps({
     &:hover {
       background: #fff;
       color: var(--color-carbon);
+
+      @media (--dark) {
+        background: var(--color-carbon);
+        color: var(--color-sky);
+      }
     }
   }
 

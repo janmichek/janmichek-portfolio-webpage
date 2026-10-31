@@ -1,0 +1,90 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["eslint", "oxc", "typescript", "unicorn", "import", "vue"],
+  "ignorePatterns": ["**/dist", "**/.nuxt", "**/.output", "**/coverage"],
+  "options": {
+    "typeAware": true,
+    "typeCheck": true,
+    "reportUnusedDisableDirectives": "error",
+    "denyWarnings": true
+  },
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error"
+  },
+  "rules": {
+    // TYPESCRIPT
+
+    "typescript/no-explicit-any": "error",
+    "typescript/ban-ts-comment": [
+      "error",
+      {
+        "ts-expect-error": "allow-with-description",
+        "ts-ignore": true,
+        "ts-nocheck": true
+      }
+    ],
+    "typescript/consistent-type-assertions": [
+      "error",
+      {
+        "assertionStyle": "never"
+      }
+    ],
+    "typescript/no-non-null-assertion": "error",
+    // No ANY leaking through
+    "typescript/no-unsafe-assignment": "error",
+    "typescript/no-unsafe-argument": "error",
+    "typescript/no-unsafe-call": "error",
+    "typescript/no-unsafe-member-access": "error",
+    "typescript/no-unsafe-return": "error",
+    // Async and control-flow mistakes
+    "typescript/no-floating-promises": "error",
+    "typescript/no-misused-promises": "error",
+    "typescript/await-thenable": "error",
+    "typescript/switch-exhaustiveness-check": "error",
+    "typescript/no-unnecessary-condition": "error",
+
+    // JS
+    // Anti-bloat prevention. Mainly for AI
+    "max-lines": [
+      "error",
+      {
+        "max": 250
+      }
+    ],
+    "max-lines-per-function": [
+      "error",
+      {
+        "max": 80,
+        "skipBlankLines": true,
+        "skipComments": true
+      }
+    ],
+    "complexity": [
+      "error",
+      {
+        "max": 10
+      }
+    ],
+    "max-depth": ["error", 3],
+    "max-params": ["error", 4],
+    "no-nested-ternary": "error",
+    "no-unused-vars": "error",
+    "import/no-unassigned-import": "off",
+    "import/no-cycle": [
+      "error",
+      {
+        "ignoreExternal": true
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["**/*.test.ts", "**/*.spec.ts"],
+      "rules": {
+        "max-lines": "off",
+        "max-lines-per-function": "off"
+      }
+    }
+  ]
+}

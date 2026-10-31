@@ -104,12 +104,12 @@ ${meta.url}/webdesign-checklist
 export default defineEventHandler(event => {
   const pathname = getRequestURL(event).pathname.replace(/\/+$/, '') || '/'
 
-  if (isAssetPath(pathname)) return
+  if (isAssetPath(pathname)) return undefined
 
   const accept = getHeader(event, 'accept') || ''
   if (!prefersMarkdown(accept)) {
     addVary(event)
-    return
+    return undefined
   }
 
   const config = useRuntimeConfig()

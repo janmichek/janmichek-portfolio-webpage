@@ -204,7 +204,7 @@ const { active, jumping, go } = useScrollSpy(navItems.map(item => item.id))
 
 .home .sec-contact {
   margin: 0;
-  padding: 64px 48px 80px;
+  padding: 64px 48px;
   border-top: 0;
   color: var(--white);
   background: var(--deep);
@@ -242,6 +242,14 @@ const { active, jumping, go } = useScrollSpy(navItems.map(item => item.id))
   border-color: #fff;
 }
 
+@media (--dark) {
+  .home a.btn:hover {
+    background: var(--color-carbon);
+    color: var(--color-sky);
+    border-color: var(--color-carbon);
+  }
+}
+
 .home a:focus-visible {
   outline: 3px solid var(--deep);
   outline-offset: 3px;
@@ -261,7 +269,7 @@ const { active, jumping, go } = useScrollSpy(navItems.map(item => item.id))
   }
 
   .home .sec-contact {
-    padding: 48px 24px 64px;
+    padding: 48px 24px;
   }
 }
 </style>

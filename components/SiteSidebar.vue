@@ -121,6 +121,7 @@ function onSelect(event: MouseEvent, item: SidebarNavItem) {
 
 .name {
   margin: 24px 0 0;
+  color: var(--deep);
   font-family: var(--font-sans);
   font-size: clamp(38px, 4.3vw, 58px);
   font-weight: 700;
@@ -153,7 +154,6 @@ function onSelect(event: MouseEvent, item: SidebarNavItem) {
   display: flex;
   align-items: center;
   gap: 12px;
-  min-height: 32px;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.08em;

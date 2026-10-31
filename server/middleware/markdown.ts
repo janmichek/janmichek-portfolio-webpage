@@ -1,48 +1,46 @@
-import { siteMeta } from '~/data/siteMeta'
+import type { H3Event } from 'h3'
+import { siteMeta, type SiteMeta } from '~/data/siteMeta'
+import { resolveSiteVariant } from '~/data/siteVariant'
 
-export default defineEventHandler(event => {
-  const url = getRequestURL(event)
-  const pathname = url.pathname
+function isAssetPath(pathname: string) {
+  return pathname.startsWith('/_nuxt/')
+    || pathname.startsWith('/api/')
+    || pathname.startsWith('/.well-known/')
+    || pathname.startsWith('/docs/')
+    || /\.[a-z0-9]+$/i.test(pathname)
+}
 
-  // Only handle page routes (not assets, api, well-known, sitemap, etc.)
-  const isAsset
-    = pathname.startsWith('/_nuxt/')
-      || pathname.startsWith('/api/')
-      || pathname.startsWith('/.well-known/')
-      || pathname.endsWith('.xml')
-      || pathname.endsWith('.txt')
-      || pathname.endsWith('.webp')
-      || pathname.endsWith('.png')
-      || pathname.endsWith('.svg')
-      || pathname.endsWith('.json')
-      || pathname.endsWith('.css')
-      || pathname.endsWith('.js')
-      || pathname.endsWith('.ico')
-
-  if (isAsset) {
-    return
+function quality(accept: string, type: string) {
+  let best = 0
+  for (const part of accept.split(',')) {
+    const [mediaType, ...params] = part.trim().toLowerCase().split(';')
+    if (mediaType !== type) continue
+    const q = params.map(param => param.trim()).find(param => param.startsWith('q='))
+    const value = q ? Number.parseFloat(q.slice(2)) : 1
+    best = Math.max(best, Number.isFinite(value) ? value : 0)
   }
+  return best
+}
 
-  const accept = getHeader(event, 'accept') || ''
+function prefersMarkdown(accept: string) {
+  const markdown = quality(accept, 'text/markdown')
+  if (markdown <= 0) return false
+  return markdown >= quality(accept, 'text/html')
+}
 
-  // Ensure HTML responses also carry Vary so CDN caches markdown/html separately.
-  // routeRules sets this for known pages, this is a safety net for any page route.
-  if (!accept.includes('text/markdown')) {
-    // Only set Vary for page-like routes (no file extension)
-    if (!pathname.includes('.')) {
-      setHeader(event, 'Vary', 'Accept')
-    }
-    return
+function addVary(event: H3Event) {
+  const existing = getHeader(event, 'vary')
+  if (!existing) {
+    setHeader(event, 'Vary', 'Accept')
+  } else if (!/\baccept\b/i.test(existing)) {
+    setHeader(event, 'Vary', `${existing}, Accept`)
   }
+}
 
-  const config = useRuntimeConfig()
-  const host = getHeader(event, 'host') || ''
-  const variant = host.startsWith('portfolio.') ? 'portfolio' : config.public.siteVariant === 'portfolio' ? 'portfolio' : 'web3'
-  const meta = siteMeta[variant]
-
-  // Simple markdown generation for known routes
-  const routes: Record<string, string> = {
-    '/': `# Jan Michek
+function renderMarkdown(pathname: string, meta: SiteMeta) {
+  switch (pathname) {
+    case '/':
+      return `# Jan Michek
 
 ${meta.variant === 'portfolio'
   ? 'Personal portfolio of Jan Michek - senior frontend engineer focused on UI, UX and product.'
@@ -62,48 +60,70 @@ ${meta.variant === 'portfolio'
 - Website: ${meta.url}
 
 > Served as markdown via content negotiation (Accept: text/markdown).
-`,
-    '/gallery': `# Gallery
+`
+    case '/gallery':
+      return `# Gallery
 
 Visual projects and screenshots.
 
 See more at ${meta.url}/gallery
-`,
-    '/git-flow': `# Git Flow
+`
+    case '/git-flow':
+      return `# Git Flow
 
 Git workflow guide.
 
 ${meta.url}/git-flow
-`,
-    '/karabiner': `# Karabiner
+`
+    case '/karabiner':
+      return `# Karabiner
 
 Karabiner configuration.
 
 ${meta.url}/karabiner
-`,
-    '/tech-links': `# Tech Links
+`
+    case '/tech-links':
+      return `# Tech Links
 
 Curated tech resources.
 
 ${meta.url}/tech-links
-`,
-    '/webdesign-checklist': `# Webdesign Checklist
+`
+    case '/webdesign-checklist':
+      return `# Webdesign Checklist
 
 Checklist for webdesign.
 
 ${meta.url}/webdesign-checklist
-`,
+`
+    default:
+      return null
+  }
+}
+
+export default defineEventHandler(event => {
+  const pathname = getRequestURL(event).pathname.replace(/\/+$/, '') || '/'
+
+  if (isAssetPath(pathname)) return
+
+  const accept = getHeader(event, 'accept') || ''
+  if (!prefersMarkdown(accept)) {
+    addVary(event)
+    return
   }
 
-  const markdown = routes[pathname] || routes['/'] + `\n\n> Requested: ${pathname}\n`
+  const config = useRuntimeConfig()
+  const markdown = renderMarkdown(pathname, siteMeta[resolveSiteVariant(config.public.siteVariant)])
 
-  const tokens = Math.ceil(markdown.length / 4).toString()
-
+  addVary(event)
   setHeader(event, 'Content-Type', 'text/markdown; charset=utf-8')
-  setHeader(event, 'x-markdown-tokens', tokens)
-  setHeader(event, 'Vary', 'Accept')
-  // Cache separately for markdown vs html
   setHeader(event, 'Cache-Control', 'public, max-age=0, must-revalidate')
 
+  if (!markdown) {
+    setResponseStatus(event, 404)
+    return '# Not found\n'
+  }
+
+  setHeader(event, 'x-markdown-tokens', Math.ceil(markdown.length / 4).toString())
   return markdown
 })

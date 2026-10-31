@@ -366,6 +366,7 @@ definePageMeta({ layout: 'slug' })
 .apps:nth-of-type(even) {
   background: #b2dfdb;
 }
+
 @media (--dark) {
   .firefox:nth-of-type(odd) { background: #0e2a3a; }
   .firefox:nth-of-type(even) { background: #12364a; }

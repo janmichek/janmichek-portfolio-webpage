@@ -12,8 +12,9 @@ const props = defineProps({
 
 const isOpenedInNewTab = computed(() => props.target === '_blank')
 
-function isLocalLink(url) {
-  return url.charAt(0) === '/'
+function isLocalLink(to) {
+  if (typeof to === 'object' && to !== null) return true
+  return typeof to === 'string' && to.startsWith('/') && !to.startsWith('//')
 }
 </script>
 

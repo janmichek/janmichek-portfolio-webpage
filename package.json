@@ -18,6 +18,9 @@
     "lint:style": "stylelint \"**/*.{css,scss,sass,vue}\"",
     "lint": "bun lint:js && bun lint:style",
     "lint:fix": "bun lint:js --fix && bun lint:style --fix",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
     "deploy": "bun generate",
     "emulators": "bun generate"
   },
@@ -34,6 +37,9 @@
     "@csstools/postcss-global-data": "4.0.0",
     "@nuxtjs/sitemap": "^8.5.0",
     "@nuxtjs/stylelint-module": "5.2.1",
+    "@vitest/coverage-v8": "5.0.5",
+    "@vue/test-utils": "2.5.1",
+    "happy-dom": "21.0.4",
     "postcss": "8.5.25",
     "postcss-apply-class": "0.1.6",
     "postcss-custom-media": "12.0.1",
@@ -42,7 +48,8 @@
     "stylelint-config-html": "2.0.0",
     "stylelint-config-recommended": "18.0.0",
     "stylelint-config-recommended-vue": "2.0.0",
-    "stylelint-config-standard": "40.0.0"
+    "stylelint-config-standard": "40.0.0",
+    "vitest": "5.0.5"
   },
   "simple-git-hooks": {
     "commit-msg": "bun lint:fix"

@@ -16,9 +16,9 @@ defineProps({
     <h2 class="h3 slug-title__title">
       {{ title }}
     </h2>
-    <p
-      class="slug-title__description"
-      v-html="description"/>
+    <p class="slug-title__description">
+      {{ description }}
+    </p>
   </div>
 </template>
 

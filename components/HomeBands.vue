@@ -8,7 +8,7 @@ const {
 } = useSiteContent()
 
 function isHttp(url: string) {
-  return url.startsWith('http')
+  return url.startsWith('http://') || url.startsWith('https://')
 }
 </script>
 

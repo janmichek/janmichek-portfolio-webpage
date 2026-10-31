@@ -1,26 +1,26 @@
-<script setup>
-import { useRoute } from 'vue-router'
-
+<script setup lang="ts">
 const route = useRoute()
-const imageLInk = ref('')
 
-onMounted(() => {
-  nextTick(() => {
-    imageLInk.value = `/screencaptures/preview-${route.params.id}.gif`
-  })
+const previewId = computed(() => {
+  const raw = Array.isArray(route.params.id) ? route.params.id[0] : route.params.id
+  return typeof raw === 'string' && /^[a-z0-9-]+$/i.test(raw) ? raw : ''
 })
+
+const imageLink = computed(() => previewId.value
+  ? `/screencaptures/preview-${encodeURIComponent(previewId.value)}.gif`
+  : '')
 </script>
 
 <template>
   <div class="preview">
     <img
-      v-if="imageLInk"
-      :src="imageLInk"
+      v-if="imageLink"
+      :src="imageLink"
       alt="preview">
     <div
       v-else
       class="preview__loading">
-      Loading preview
+      Preview not found
     </div>
   </div>
 </template>

@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup lang="ts">
+const { chatProfile, siteMeta } = useSiteContent()
+</script>
 
 <template>
   <header class="header">
@@ -13,10 +15,10 @@
       </div>
       <div>
         <h1 class="header__heading">
-          Jan Michek
+          {{ chatProfile.name }}
         </h1>
         <div class="header__subheading h2">
-          Web3 full-stack engineer
+          {{ siteMeta.role }}
         </div>
         <div class="h3 header__excerpt">
           Czechia / Prague / <span title="That is 38">1987</span>

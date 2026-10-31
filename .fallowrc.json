@@ -1,5 +1,18 @@
 {
   "$schema": "https://fallow.tools/schema.json",
   "ignorePatterns": ["tests/**", "**/*.spec.ts"],
-  "ignoreDependencies": ["@vue/test-utils"]
+  "ignoreDependencies": ["@vue/test-utils"],
+  "health": {
+    "maxCyclomatic": 10,
+    "maxUnitSize": 90,
+    "maxFileLines": 250,
+    "thresholdOverrides": [
+      {
+        "files": ["**/*.vue"],
+        "functions": ["<template>"],
+        "maxUnitSize": 250,
+        "reason": "fallow reports the whole SFC length for <template> units; oxlint max-lines governs file length"
+      }
+    ]
+  }
 }

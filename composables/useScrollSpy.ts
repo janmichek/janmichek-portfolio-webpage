@@ -18,22 +18,31 @@ interface WindowHandlers {
 
 const SETTLE_KEYS = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' ']
 
+const MODIFIER_KEYS = ['metaKey', 'ctrlKey', 'shiftKey', 'altKey'] as const
+
+function isAtBottom(doc: Document, win: Window) {
+  return win.innerHeight + win.scrollY >= doc.documentElement.scrollHeight - 2
+}
+
+function isAboveLine(id: string, doc: Document, line: number) {
+  const el = doc.getElementById(id)
+  return !!el && el.getBoundingClientRect().top <= line
+}
+
+function lastId(itemIds: string[], fallback: string) {
+  return itemIds[itemIds.length - 1] ?? fallback
+}
+
 function resolveActiveId(itemIds: string[], doc: Document, win: Window, lineRatio: number): string {
   const firstId = itemIds[0] ?? ''
-  const line = win.innerHeight * lineRatio
-  const atBottom = win.innerHeight + win.scrollY >= doc.documentElement.scrollHeight - 2
-  if (atBottom) return itemIds[itemIds.length - 1] ?? firstId
+  if (isAtBottom(doc, win)) return lastId(itemIds, firstId)
 
-  let current = firstId
-  for (const id of itemIds) {
-    const el = doc.getElementById(id)
-    if (el && el.getBoundingClientRect().top <= line) current = id
-  }
-  return current
+  const line = win.innerHeight * lineRatio
+  return itemIds.reduce((current, id) => (isAboveLine(id, doc, line) ? id : current), firstId)
 }
 
 function isPlainPrimaryClick(event: MouseEvent) {
-  return event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey
+  return event.button === 0 && !MODIFIER_KEYS.some(key => event[key])
 }
 
 function prefersReducedMotion(win: Window) {
@@ -93,12 +102,28 @@ function createTimers(getWin: () => Window) {
   return { clearSettle, armSettle, scheduleFrame, cancelFrame }
 }
 
+function withDefaults(options: ScrollSpyOptions) {
+  return {
+    lineRatio: options.lineRatio ?? 0.4,
+    settleDelay: options.settleDelay ?? 150,
+    fallbackDelay: options.fallbackDelay ?? 2000,
+  }
+}
+
+function scrollBehavior(win: Window) {
+  return prefersReducedMotion(win) ? 'auto' : 'smooth'
+}
+
+function getTarget(event: MouseEvent, id: string, itemIds: string[], doc: Document) {
+  if (event.defaultPrevented || !isPlainPrimaryClick(event)) return null
+  if (itemIds.indexOf(id) === -1) return null
+  return doc.getElementById(id)
+}
+
 export function createScrollSpy(options: ScrollSpyOptions) {
   const { itemIds } = options
   const firstId = itemIds[0] ?? ''
-  const lineRatio = options.lineRatio ?? 0.4
-  const settleDelay = options.settleDelay ?? 150
-  const fallbackDelay = options.fallbackDelay ?? 2000
+  const { lineRatio, settleDelay, fallbackDelay } = withDefaults(options)
 
   const active = ref(firstId)
   const jumping = ref(false)
@@ -136,16 +161,16 @@ export function createScrollSpy(options: ScrollSpyOptions) {
   }
 
   function go(event: MouseEvent, id: string) {
-    if (event.defaultPrevented || !isPlainPrimaryClick(event)) return
-    const to = itemIds.indexOf(id)
-    const el = getDoc().getElementById(id)
-    if (to === -1 || !el) return
+    const doc = getDoc()
+    const el = getTarget(event, id, itemIds, doc)
+    if (!el) return
 
     event.preventDefault()
     const win = getWin()
+    const to = itemIds.indexOf(id)
+    const from = itemIds.indexOf(active.value)
     const targetY = el.getBoundingClientRect().top + win.scrollY
     const willMove = Math.abs(targetY - win.scrollY) > 2
-    const from = itemIds.indexOf(active.value)
 
     active.value = id
     jumping.value = willMove && Math.abs(to - from) > 1
@@ -157,7 +182,7 @@ export function createScrollSpy(options: ScrollSpyOptions) {
       pendingId = null
     }
 
-    el.scrollIntoView({ behavior: prefersReducedMotion(win) ? 'auto' : 'smooth' })
+    el.scrollIntoView({ behavior: scrollBehavior(win) })
     win.history.replaceState(null, '', `#${id}`)
   }
 

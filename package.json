@@ -23,7 +23,7 @@
     "test:coverage": "vitest run --coverage",
     "deploy": "bun generate",
     "emulators": "bun generate",
-    "check": "fallow dead-code"
+    "check": "bun run lint && bun run test && fallow"
   },
   "dependencies": {
     "nuxt": "4.5.2",

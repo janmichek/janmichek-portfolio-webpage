@@ -1,4 +1,6 @@
 <script setup>
+import { computed } from 'vue'
+
 const props = defineProps({
   to: {
     type: [String, Object],
@@ -12,9 +14,17 @@ const props = defineProps({
 
 const isOpenedInNewTab = computed(() => props.target === '_blank')
 
-function isLocalLink(to) {
-  if (typeof to === 'object' && to !== null) return true
+function isObjectLink(to) {
+  return typeof to === 'object' && to !== null
+}
+
+function isLocalPath(to) {
   return typeof to === 'string' && to.startsWith('/') && !to.startsWith('//')
+}
+
+function isLocalLink(to) {
+  if (isObjectLink(to)) return true
+  return isLocalPath(to)
 }
 </script>
 

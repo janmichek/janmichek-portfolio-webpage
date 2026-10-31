@@ -37,28 +37,28 @@ const goodies = chatGoodies.map(toGoodie)
 <template>
   <section
     id="goods"
-    class="the-content__section"
+    class="app-goodies-section"
     data-wf="goodies">
-    <h2 class="the-content__heading">
+    <h2 class="app-goodies-section__heading">
       Goodies
     </h2>
-    <div class="the-content__goodies">
+    <div class="app-goodies-section__list">
       <app-link
         v-for="goodie in goodies"
         :key="goodie.url"
-        class="the-content__goodie"
+        class="app-goodies-section__goodie"
         :to="goodie.to ?? goodie.href"
         :target="goodie.target">
         <span
-          class="the-content__goodie-thumbnail"
-          :class="{'the-content__goodie-thumbnail--dark': goodie.dark}">
+          class="app-goodies-section__thumbnail"
+          :class="{'app-goodies-section__thumbnail--dark': goodie.dark}">
           <img
             :src="goodie.image"
             alt="">
         </span>
-        <span class="the-content__goodie-body">
-          <b class="the-content__goodie-title">{{ goodie.title }}</b>
-          <span class="the-content__goodie-text">{{ goodie.text }}</span>
+        <span class="app-goodies-section__body">
+          <b class="app-goodies-section__title">{{ goodie.title }}</b>
+          <span class="app-goodies-section__text">{{ goodie.text }}</span>
         </span>
       </app-link>
     </div>
@@ -66,8 +66,16 @@ const goodies = chatGoodies.map(toGoodie)
 </template>
 
 <style scoped>
-.the-content {
-  &__goodies {
+.app-goodies-section {
+  padding: 64px 48px;
+
+  &__heading {
+    margin-bottom: 36px;
+    font-size: clamp(38px, 4.6vw, 60px);
+    letter-spacing: -0.035em;
+  }
+
+  &__list {
     display: grid;
     gap: 8px 28px;
   }
@@ -79,12 +87,17 @@ const goodies = chatGoodies.map(toGoodie)
     align-items: start;
     padding: 12px 0;
 
-    &:hover .the-content__goodie-title {
+    &:hover .app-goodies-section__title {
       color: var(--deep);
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--deep);
+      outline-offset: 3px;
     }
   }
 
-  &__goodie-thumbnail {
+  &__thumbnail {
     display: block;
     width: 104px;
     height: 104px;
@@ -102,24 +115,30 @@ const goodies = chatGoodies.map(toGoodie)
     }
   }
 
-  &__goodie-thumbnail img {
+  &__thumbnail img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 
-  &__goodie-title {
+  &__title {
     display: block;
     font-size: 19px;
     font-weight: 700;
   }
 
-  &__goodie-text {
+  &__text {
     display: block;
     min-height: 4.5em;
     font-size: 18px;
     line-height: 1.5;
     color: var(--mute);
+  }
+}
+
+@media (width <= 900px) {
+  .app-goodies-section {
+    padding: 48px 24px;
   }
 }
 </style>

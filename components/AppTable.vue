@@ -9,37 +9,37 @@ defineProps<{
 <template>
   <section
     :id="group.id"
-    class="sec">
-    <div class="group-head">
+    class="app-table">
+    <div class="app-table__head">
       <h2>{{ group.title }}</h2>
     </div>
 
-    <table class="table">
+    <table class="app-table__table">
       <tbody>
         <tr
           v-for="row in group.rows"
           :key="`${row.keys.join('-')}-${row.hint ?? ''}-${row.action}`">
           <td
-            class="table__keys"
+            class="app-table__keys"
             data-label="Key combo">
             <span
               v-for="(key, i) in row.keys"
               :key="i"
-              class="table__key">
-              <kbd class="kbd">{{ key }}</kbd>
+              class="app-table__key">
+              <kbd class="app-table__kbd">{{ key }}</kbd>
               <span
                 v-if="i < row.keys.length - 1"
-                class="table__plus"
+                class="app-table__plus"
                 aria-hidden="true">+</span>
             </span>
             <span
               v-if="row.hint"
-              class="hint">
+              class="app-table__hint">
               {{ row.hint }}
             </span>
           </td>
           <td
-            class="table__action"
+            class="app-table__action"
             data-label="Function">
             {{ row.action }}
           </td>
@@ -50,59 +50,63 @@ defineProps<{
 </template>
 
 <style>
-.karabiner-page .group-head {
+.karabiner-page .app-table {
+  padding: 64px var(--sec-pad);
+}
+
+.karabiner-page .app-table__head {
   margin-bottom: 20px;
 }
 
-.karabiner-page .group-head h2 {
+.karabiner-page .app-table__head h2 {
   margin-bottom: 0;
 }
 
-.karabiner-page .table {
+.karabiner-page .app-table__table {
   width: 100%;
   border-collapse: collapse;
   font-size: 15px;
 }
 
-.karabiner-page .table th,
-.karabiner-page .table td {
+.karabiner-page .app-table__table th,
+.karabiner-page .app-table__table td {
   border: 0;
 }
 
-.karabiner-page .table tbody td {
+.karabiner-page .app-table__table tbody td {
   padding: 8px 0;
   vertical-align: middle;
   border-bottom: 1px solid color-mix(in srgb, var(--g3) 22%, transparent);
 }
 
-.karabiner-page .table tbody tr:last-child td {
+.karabiner-page .app-table__table tbody tr:last-child td {
   border-bottom: 0;
 }
 
-.karabiner-page .table tbody td + td {
+.karabiner-page .app-table__table tbody td + td {
   padding-left: 32px;
 }
 
-.karabiner-page .table__keys {
+.karabiner-page .app-table__keys {
   white-space: nowrap;
 }
 
-.karabiner-page .table__key {
+.karabiner-page .app-table__key {
   display: inline-flex;
   align-items: center;
 }
 
-.karabiner-page .table__plus {
+.karabiner-page .app-table__plus {
   margin: 0 6px;
   color: var(--mute);
   font-size: 12px;
 }
 
-.karabiner-page .table__action {
+.karabiner-page .app-table__action {
   color: var(--lead);
 }
 
-.karabiner-page .kbd {
+.karabiner-page .app-table__kbd {
   display: inline-block;
   min-width: 1.9em;
   padding: 2px 6px;
@@ -115,23 +119,29 @@ defineProps<{
   color: var(--ink);
 }
 
-.karabiner-page .hint {
+.karabiner-page .app-table__hint {
   display: inline-block;
   margin-left: 10px;
   font-size: 12px;
   color: var(--mute);
 }
 
+@media (width <= 900px) {
+  .karabiner-page .app-table {
+    padding: 48px var(--sec-pad);
+  }
+}
+
 @media (width <= 560px) {
-  .karabiner-page .table,
-  .karabiner-page .table tbody,
-  .karabiner-page .table tr,
-  .karabiner-page .table td {
+  .karabiner-page .app-table__table,
+  .karabiner-page .app-table__table tbody,
+  .karabiner-page .app-table__table tr,
+  .karabiner-page .app-table__table td {
     display: block;
     width: 100%;
   }
 
-  .karabiner-page .table tbody tr {
+  .karabiner-page .app-table__table tbody tr {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
     gap: 4px 12px;
@@ -139,17 +149,17 @@ defineProps<{
     border-bottom: 1px solid color-mix(in srgb, var(--g3) 35%, transparent);
   }
 
-  .karabiner-page .table tbody tr:last-child {
+  .karabiner-page .app-table__table tbody tr:last-child {
     border-bottom: 0;
   }
 
-  .karabiner-page .table tbody td,
-  .karabiner-page .table tbody td + td {
+  .karabiner-page .app-table__table tbody td,
+  .karabiner-page .app-table__table tbody td + td {
     padding: 0;
     border: 0;
   }
 
-  .karabiner-page .table__keys {
+  .karabiner-page .app-table__keys {
     white-space: normal;
   }
 }

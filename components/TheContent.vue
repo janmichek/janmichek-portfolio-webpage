@@ -45,29 +45,29 @@ const { chatContact, chatProfile, chatSummary } = useSiteContent()
 
 <style scoped>
 .the-content {
-  :deep(.the-content__section) {
+  &__section {
     padding: 64px 48px;
+
+    &--contact {
+      margin: 0;
+      padding: 64px 48px;
+      border-top: 0;
+      color: var(--white);
+      background: var(--deep);
+    }
+
+    &:first-child {
+      padding-top: 200px;
+    }
   }
 
-  :deep(.the-content__section--contact) {
-    margin: 0;
-    padding: 64px 48px;
-    border-top: 0;
-    color: var(--white);
-    background: var(--deep);
-  }
-
-  :deep(.the-content__section:first-child) {
-    padding-top: 200px;
-  }
-
-  :deep(.the-content__heading) {
+  &__heading {
     margin-bottom: 36px;
     font-size: clamp(38px, 4.6vw, 60px);
     letter-spacing: -0.035em;
   }
 
-  :deep(.the-content__section--contact .the-content__heading) {
+  &__section--contact &__heading {
     margin-bottom: 20px;
     color: var(--white);
     font-size: clamp(24px, 2.8vw, 36px);
@@ -134,29 +134,27 @@ const { chatContact, chatProfile, chatSummary } = useSiteContent()
     }
   }
 
-  :deep(.the-content__link:focus-visible),
-  :deep(.the-content__mail:focus-visible),
-  :deep(.the-content__goodie:focus-visible),
-  :deep(.the-content__button:focus-visible) {
+  &__mail:focus-visible,
+  &__button:focus-visible {
     outline: 3px solid var(--deep);
     outline-offset: 3px;
   }
 
-  :deep(.the-content__section--contact .the-content__button) {
+  &__section--contact &__button {
     border-color: var(--white);
   }
 }
 
 @media (width <= 900px) {
-  .the-content :deep(.the-content__section) {
+  .the-content__section {
     padding: 48px 24px;
   }
 
-  .the-content :deep(.the-content__section:first-child) {
+  .the-content__section:first-child {
     padding-top: 120px;
   }
 
-  .the-content :deep(.the-content__section--contact) {
+  .the-content__section--contact {
     padding: 48px 24px;
   }
 }

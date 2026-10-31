@@ -5,18 +5,18 @@ const { chatProjects } = useSiteContent()
 <template>
   <section
     id="projects"
-    class="the-content__section"
+    class="app-projects-section"
     data-wf="projects">
-    <h2 class="the-content__heading">
+    <h2 class="app-projects-section__heading">
       Projects
     </h2>
-    <div class="the-content__grid">
+    <div class="app-projects-section__grid">
       <article
         v-for="project in chatProjects"
         :key="project.id"
-        class="the-content__card">
+        class="app-projects-section__card">
         <a
-          class="the-content__card-media"
+          class="app-projects-section__card-media"
           :href="project.url"
           target="_blank"
           rel="noopener noreferrer">
@@ -24,21 +24,21 @@ const { chatProjects } = useSiteContent()
             :src="project.image"
             :alt="project.title">
         </a>
-        <div class="the-content__card-body">
-          <p class="the-content__card-tag">
+        <div class="app-projects-section__card-body">
+          <p class="app-projects-section__card-tag">
             {{ project.tag }}
           </p>
-          <h3 class="the-content__card-title">
+          <h3 class="app-projects-section__card-title">
             {{ project.title }}
           </h3>
-          <p class="the-content__text">
+          <p class="app-projects-section__text">
             {{ project.lead }}
           </p>
-          <div class="the-content__links">
+          <div class="app-projects-section__links">
             <a
               v-for="link in project.links"
               :key="link.url"
-              class="the-content__link"
+              class="app-projects-section__link"
               :href="link.url"
               target="_blank"
               rel="noopener noreferrer">
@@ -52,7 +52,15 @@ const { chatProjects } = useSiteContent()
 </template>
 
 <style scoped>
-.the-content {
+.app-projects-section {
+  padding: 64px 48px;
+
+  &__heading {
+    margin-bottom: 36px;
+    font-size: clamp(38px, 4.6vw, 60px);
+    letter-spacing: -0.035em;
+  }
+
   &__text {
     font-size: 18px;
     line-height: 1.6;
@@ -127,6 +135,17 @@ const { chatProjects } = useSiteContent()
         color: var(--deep);
       }
     }
+
+    &:focus-visible {
+      outline: 3px solid var(--deep);
+      outline-offset: 3px;
+    }
+  }
+}
+
+@media (width <= 900px) {
+  .app-projects-section {
+    padding: 48px 24px;
   }
 }
 </style>

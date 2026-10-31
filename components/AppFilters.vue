@@ -13,13 +13,13 @@ const emit = defineEmits<{
 
 <template>
   <div
-    class="filters"
+    class="app-filters"
     role="group"
     aria-label="Filter by app">
     <button
       type="button"
-      class="filter"
-      :class="{'filter--active': modelValue === 'all'}"
+      class="app-filters__button"
+      :class="{'app-filters__button--active': modelValue === 'all'}"
       :aria-pressed="modelValue === 'all'"
       @click="emit('update:modelValue', 'all')">
       All
@@ -28,8 +28,8 @@ const emit = defineEmits<{
       v-for="group in groups"
       :key="group.id"
       type="button"
-      class="filter"
-      :class="{'filter--active': modelValue === group.id}"
+      class="app-filters__button"
+      :class="{'app-filters__button--active': modelValue === group.id}"
       :aria-pressed="modelValue === group.id"
       @click="emit('update:modelValue', group.id)">
       {{ group.title }}
@@ -38,14 +38,14 @@ const emit = defineEmits<{
 </template>
 
 <style>
-.karabiner-page .filters {
+.karabiner-page .app-filters {
   display: flex;
   flex-wrap: wrap;
   gap: 4px 24px;
   margin-top: 28px;
 }
 
-.karabiner-page .filter {
+.karabiner-page .app-filters__button {
   padding: 0 0 2px;
   border: 0;
   border-bottom: 1px solid transparent;
@@ -57,11 +57,11 @@ const emit = defineEmits<{
   transition: color var(--duration-fast) ease, border-color var(--duration-fast) ease;
 }
 
-.karabiner-page .filter:hover {
+.karabiner-page .app-filters__button:hover {
   color: var(--ink);
 }
 
-.karabiner-page .filter--active {
+.karabiner-page .app-filters__button--active {
   border-bottom-color: currentcolor;
   color: var(--ink);
 }

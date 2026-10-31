@@ -150,7 +150,7 @@ function onSelect(event: MouseEvent, item: SidebarNavItem) {
     gap: 10px;
     margin-top: 40px;
 
-    &--jumping .sidebar__link-bar {
+    &--jumping .sidebar__link--active .sidebar__link-bar {
       transition: none;
     }
   }

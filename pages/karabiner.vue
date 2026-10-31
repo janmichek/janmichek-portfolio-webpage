@@ -32,7 +32,7 @@ const groups: Group[] = [
     id: 'firefox',
     title: 'Firefox',
     rows: [
-      { keys: ['F1'], action: 'Switch to previous tab' },
+      { keys: ['F1'], action: 'Switch to next tab' },
       { keys: ['F2'], hint: 'tap', action: 'Close tab' },
       { keys: ['F2'], hint: 'hold', action: 'Reopen closed tab' },
       { keys: ['F4'], action: 'Open downloads' },
@@ -85,6 +85,7 @@ const groups: Group[] = [
       { keys: ['~'], hint: 'hold', action: 'Hide / show Dock' },
       { keys: ['Left Cmd'], hint: 'tap', action: 'Open Alfred' },
       { keys: ['Esc', 'Esc'], action: 'Quit current app' },
+      { keys: ['Shift', 'Shift', 'Shift'], action: 'Screenshot selection to clipboard' },
       { keys: ['Cmd', 'F1'], action: 'Brightness down' },
       { keys: ['Cmd', 'F2'], action: 'Brightness up' },
       { keys: ['Cmd', 'F3'], action: 'Keyboard backlight down' },
@@ -132,8 +133,6 @@ const activeId = ref('all')
 const visibleGroups = computed(() =>
   activeId.value === 'all' ? groups : groups.filter(g => g.id === activeId.value),
 )
-
-const totalBindings = groups.reduce((sum, g) => sum + g.rows.length, 0)
 </script>
 
 <template>
@@ -157,9 +156,6 @@ const totalBindings = groups.reduce((sum, g) => sum + g.rows.length, 0)
           </p>
 
           <div class="meta">
-            <p class="meta__count">
-              {{ totalBindings }} bindings in {{ groups.length }} groups
-            </p>
             <a
               class="meta__link"
               :href="SETTINGS_URL"
@@ -202,20 +198,9 @@ const totalBindings = groups.reduce((sum, g) => sum + g.rows.length, 0)
           class="sec">
           <div class="group-head">
             <h2>{{ group.title }}</h2>
-            <span class="group-head__count">{{ group.rows.length }}</span>
           </div>
 
           <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">
-                  Key combo
-                </th>
-                <th scope="col">
-                  Function
-                </th>
-              </tr>
-            </thead>
             <tbody>
               <tr
                 v-for="row in group.rows"
@@ -292,14 +277,8 @@ const totalBindings = groups.reduce((sum, g) => sum + g.rows.length, 0)
   margin-top: 32px;
 }
 
-.karabiner-page .meta__count {
-  font-size: 14px;
-  color: var(--mute);
-}
-
 .karabiner-page .meta__link {
   font-size: 14px;
-  font-weight: 600;
   color: var(--deep);
   border-bottom: 1px solid currentcolor;
 }
@@ -307,48 +286,37 @@ const totalBindings = groups.reduce((sum, g) => sum + g.rows.length, 0)
 .karabiner-page .filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 24px;
+  gap: 4px 24px;
+  margin-top: 28px;
 }
 
 .karabiner-page .filter {
-  padding: 6px 14px;
-  border: 1px solid var(--g3);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--lead);
+  padding: 0 0 2px;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  background: none;
+  color: var(--mute);
   font: inherit;
   font-size: 14px;
   cursor: pointer;
-  transition: background var(--duration-fast) ease, color var(--duration-fast) ease;
+  transition: color var(--duration-fast) ease, border-color var(--duration-fast) ease;
 }
 
 .karabiner-page .filter:hover {
-  border-color: var(--deep);
-  color: var(--deep);
+  color: var(--ink);
 }
 
-.karabiner-page .filter--active,
-.karabiner-page .filter--active:hover {
-  border-color: var(--deep);
-  background: var(--deep);
-  color: var(--white);
+.karabiner-page .filter--active {
+  border-bottom-color: currentcolor;
+  color: var(--ink);
 }
 
 .karabiner-page .group-head {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .karabiner-page .group-head h2 {
   margin-bottom: 0;
-}
-
-.karabiner-page .group-head__count {
-  font-size: 14px;
-  color: var(--g3);
 }
 
 .karabiner-page .table {
@@ -357,29 +325,23 @@ const totalBindings = groups.reduce((sum, g) => sum + g.rows.length, 0)
   font-size: 15px;
 }
 
-.karabiner-page .table thead th {
-  padding: 0 16px 10px;
-  text-align: left;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--g3);
-  border-bottom: 1px solid var(--g3);
+.karabiner-page .table th,
+.karabiner-page .table td {
+  border: 0;
 }
 
 .karabiner-page .table tbody td {
-  padding: 12px 16px;
+  padding: 8px 0;
   vertical-align: middle;
-  border-bottom: 1px solid color-mix(in srgb, var(--g3) 35%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--g3) 22%, transparent);
 }
 
-.karabiner-page .table tbody tr {
-  transition: background var(--duration-fast) ease;
+.karabiner-page .table tbody tr:last-child td {
+  border-bottom: 0;
 }
 
-.karabiner-page .table tbody tr:hover {
-  background: var(--tint);
+.karabiner-page .table tbody td + td {
+  padding-left: 32px;
 }
 
 .karabiner-page .table__keys {
@@ -393,7 +355,7 @@ const totalBindings = groups.reduce((sum, g) => sum + g.rows.length, 0)
 
 .karabiner-page .table__plus {
   margin: 0 6px;
-  color: var(--g3);
+  color: var(--mute);
   font-size: 12px;
 }
 
@@ -404,14 +366,11 @@ const totalBindings = groups.reduce((sum, g) => sum + g.rows.length, 0)
 .karabiner-page .kbd {
   display: inline-block;
   min-width: 1.9em;
-  padding: 3px 8px;
-  border: 1px solid var(--g3);
-  border-bottom-width: 2px;
-  border-radius: 6px;
-  background: var(--white);
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--g3) 18%, transparent);
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 12px;
-  font-weight: 600;
   line-height: 1.4;
   text-align: center;
   color: var(--ink);
@@ -420,14 +379,8 @@ const totalBindings = groups.reduce((sum, g) => sum + g.rows.length, 0)
 .karabiner-page .hint {
   display: inline-block;
   margin-left: 10px;
-  padding: 1px 8px;
-  border-radius: 4px;
-  background: var(--sky);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--color-carbon);
+  font-size: 12px;
+  color: var(--mute);
 }
 
 .karabiner-page a:focus-visible {
@@ -454,10 +407,6 @@ const totalBindings = groups.reduce((sum, g) => sum + g.rows.length, 0)
 }
 
 @media (width <= 560px) {
-  .karabiner-page .table thead {
-    display: none;
-  }
-
   .karabiner-page .table,
   .karabiner-page .table tbody,
   .karabiner-page .table tr,
@@ -469,12 +418,17 @@ const totalBindings = groups.reduce((sum, g) => sum + g.rows.length, 0)
   .karabiner-page .table tbody tr {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-    gap: 6px 12px;
-    padding: 12px 0;
+    gap: 4px 12px;
+    padding: 8px 0;
     border-bottom: 1px solid color-mix(in srgb, var(--g3) 35%, transparent);
   }
 
-  .karabiner-page .table tbody td {
+  .karabiner-page .table tbody tr:last-child {
+    border-bottom: 0;
+  }
+
+  .karabiner-page .table tbody td,
+  .karabiner-page .table tbody td + td {
     padding: 0;
     border: 0;
   }

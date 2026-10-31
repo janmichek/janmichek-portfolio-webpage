@@ -118,22 +118,23 @@ const navigation = computed(() => (hasMultiple.value
   padding: 0;
   border: 0;
   border-radius: 50%;
-  opacity: 0;
   background: var(--white, var(--color-cream));
   box-shadow: 0 2px 12px rgb(8 38 38 / 12%);
-  transition: opacity 0.2s ease, background 0.2s ease, color 0.2s ease;
+  transition: transform 0.35s ease, background 0.2s ease, color 0.2s ease;
 }
 
 .gallery-swiper .swiper-button-prev {
   left: calc(var(--nav-size) * var(--nav-shift));
   justify-content: flex-end;
   padding-right: var(--nav-arrow-pad);
+  transform: translateX(-100%);
 }
 
 .gallery-swiper .swiper-button-next {
   right: calc(var(--nav-size) * var(--nav-shift));
   justify-content: flex-start;
   padding-left: var(--nav-arrow-pad);
+  transform: translateX(100%);
 }
 
 .gallery-swiper .swiper-button-prev svg,
@@ -141,6 +142,7 @@ const navigation = computed(() => (hasMultiple.value
   width: 12px;
   height: 22px;
   fill: currentcolor;
+  transition: translate 0.2s ease;
 }
 
 .gallery-swiper:hover .swiper-button-prev,
@@ -149,13 +151,15 @@ const navigation = computed(() => (hasMultiple.value
 .gallery-swiper .swiper-button-next:hover,
 .gallery-swiper .swiper-button-prev:focus-visible,
 .gallery-swiper .swiper-button-next:focus-visible {
-  opacity: 1;
+  transform: translateX(0);
 }
 
-.gallery-swiper .swiper-button-prev:hover,
-.gallery-swiper .swiper-button-next:hover {
-  background: var(--deep, var(--ui-primary));
-  color: var(--white, var(--color-cream));
+.gallery-swiper .swiper-button-prev:hover svg {
+  translate: -3px 0;
+}
+
+.gallery-swiper .swiper-button-next:hover svg {
+  translate: 3px 0;
 }
 
 .gallery-swiper .swiper-button-prev:focus-visible,
@@ -167,13 +171,15 @@ const navigation = computed(() => (hasMultiple.value
 @media (hover: none) {
   .gallery-swiper .swiper-button-prev,
   .gallery-swiper .swiper-button-next {
-    opacity: 1;
+    transform: translateX(0);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .gallery-swiper .swiper-button-prev,
-  .gallery-swiper .swiper-button-next {
+  .gallery-swiper .swiper-button-next,
+  .gallery-swiper .swiper-button-prev svg,
+  .gallery-swiper .swiper-button-next svg {
     transition: none;
   }
 }

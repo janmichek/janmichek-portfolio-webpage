@@ -249,10 +249,15 @@ function isHttp(url: string) {
       width: 14px;
       height: 14px;
       color: var(--g3);
+      transition: color 0.2s ease;
     }
 
     &:hover {
       color: var(--deep);
+
+      svg {
+        color: var(--deep);
+      }
     }
   }
 
@@ -312,6 +317,12 @@ function isHttp(url: string) {
     line-height: 1.1;
     letter-spacing: -0.035em;
     word-break: break-all;
+    color: inherit;
+
+    &:hover {
+      color: inherit;
+      text-decoration: underline;
+    }
   }
 
   &__contacts {

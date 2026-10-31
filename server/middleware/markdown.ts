@@ -2,24 +2,25 @@ import type { H3Event } from 'h3'
 import { siteMeta, type SiteMeta } from '~/data/siteMeta'
 import { resolveSiteVariant } from '~/data/siteVariant'
 
+const ASSET_PREFIXES = ['/_nuxt/', '/api/', '/.well-known/', '/docs/']
+
 function isAssetPath(pathname: string) {
-  return pathname.startsWith('/_nuxt/')
-    || pathname.startsWith('/api/')
-    || pathname.startsWith('/.well-known/')
-    || pathname.startsWith('/docs/')
+  return ASSET_PREFIXES.some(prefix => pathname.startsWith(prefix))
     || /\.[a-z0-9]+$/i.test(pathname)
 }
 
+function parseQuality(params: string[]) {
+  const q = params.map(param => param.trim()).find(param => param.startsWith('q='))
+  if (!q) return 1
+  const value = Number.parseFloat(q.slice(2))
+  return Number.isFinite(value) ? value : 0
+}
+
 function quality(accept: string, type: string) {
-  let best = 0
-  for (const part of accept.split(',')) {
+  return accept.split(',').reduce((best, part) => {
     const [mediaType, ...params] = part.trim().toLowerCase().split(';')
-    if (mediaType !== type) continue
-    const q = params.map(param => param.trim()).find(param => param.startsWith('q='))
-    const value = q ? Number.parseFloat(q.slice(2)) : 1
-    best = Math.max(best, Number.isFinite(value) ? value : 0)
-  }
-  return best
+    return mediaType === type ? Math.max(best, parseQuality(params)) : best
+  }, 0)
 }
 
 function prefersMarkdown(accept: string) {
@@ -37,10 +38,10 @@ function addVary(event: H3Event) {
   }
 }
 
-function renderMarkdown(pathname: string, meta: SiteMeta) {
-  switch (pathname) {
-    case '/':
-      return `# Jan Michek
+type MarkdownPage = (meta: SiteMeta) => string
+
+const markdownPages: Record<string, MarkdownPage> = {
+  '/': meta => `# Jan Michek
 
 ${meta.variant === 'portfolio'
   ? 'Personal portfolio of Jan Michek - senior frontend engineer focused on UI, UX and product.'
@@ -60,54 +61,58 @@ ${meta.variant === 'portfolio'
 - Website: ${meta.url}
 
 > Served as markdown via content negotiation (Accept: text/markdown).
-`
-    case '/gallery':
-      return `# Gallery
+`,
+  '/gallery': meta => `# Gallery
 
 Visual projects and screenshots.
 
 See more at ${meta.url}/gallery
-`
-    case '/git-flow':
-      return `# Git Flow
+`,
+  '/git-flow': meta => `# Git Flow
 
 Git workflow guide.
 
 ${meta.url}/git-flow
-`
-    case '/karabiner':
-      return `# Karabiner
+`,
+  '/karabiner': meta => `# Karabiner
 
 Karabiner configuration.
 
 ${meta.url}/karabiner
-`
-    case '/tech-links':
-      return `# Tech Links
+`,
+  '/tech-links': meta => `# Tech Links
 
 Curated tech resources.
 
 ${meta.url}/tech-links
-`
-    case '/webdesign-checklist':
-      return `# Webdesign Checklist
+`,
+  '/webdesign-checklist': meta => `# Webdesign Checklist
 
 Checklist for webdesign.
 
 ${meta.url}/webdesign-checklist
-`
-    default:
-      return null
-  }
+`,
+}
+
+function renderMarkdown(pathname: string, meta: SiteMeta) {
+  const page = markdownPages[pathname]
+  return page ? page(meta) : null
+}
+
+function getPathname(event: H3Event) {
+  return getRequestURL(event).pathname.replace(/\/+$/, '') || '/'
+}
+
+function wantsMarkdown(event: H3Event) {
+  return prefersMarkdown(getHeader(event, 'accept') || '')
 }
 
 export default defineEventHandler(event => {
-  const pathname = getRequestURL(event).pathname.replace(/\/+$/, '') || '/'
+  const pathname = getPathname(event)
 
   if (isAssetPath(pathname)) return undefined
 
-  const accept = getHeader(event, 'accept') || ''
-  if (!prefersMarkdown(accept)) {
+  if (!wantsMarkdown(event)) {
     addVary(event)
     return undefined
   }

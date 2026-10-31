@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import type { ChatLink } from '~/data/contentTypes'
 
 interface SidebarNavItem {
@@ -27,6 +28,24 @@ const emit = defineEmits<{
 function isActive(item: SidebarNavItem) {
   return item.id ? item.id === props.activeId : item.to === props.activeTo
 }
+
+function ariaCurrentFor(item: SidebarNavItem, active: boolean) {
+  if (!active) return undefined
+  return item.id ? 'location' : 'page'
+}
+
+function toNavItem(item: SidebarNavItem) {
+  const active = isActive(item)
+  return {
+    ...item,
+    key: item.to || item.id || item.label,
+    href: item.id ? `#${item.id}` : undefined,
+    active,
+    ariaCurrent: ariaCurrentFor(item, active),
+  }
+}
+
+const navItems = computed(() => props.items.map(toNavItem))
 
 function onSelect(event: MouseEvent, item: SidebarNavItem) {
   if (item.id) emit('select', event, item.id)
@@ -61,43 +80,31 @@ function onSelect(event: MouseEvent, item: SidebarNavItem) {
         class="sidebar__nav"
         :class="{'sidebar__nav--jumping': jumping}"
         :aria-label="navLabel">
-        <template
-          v-for="item in items"
-          :key="item.to ?? item.id ?? item.label">
-          <nuxt-link
-            v-if="item.to"
-            :to="item.to"
-            class="sidebar__link"
-            :class="{'sidebar__link--active': isActive(item)}"
-            :aria-current="isActive(item) ? 'page' : undefined">
-            <span class="sidebar__link-bar"/>{{ item.label }}
-          </nuxt-link>
-          <a
-            v-else
-            :href="`#${item.id}`"
-            class="sidebar__link"
-            :class="{'sidebar__link--active': isActive(item)}"
-            :aria-current="isActive(item) ? 'location' : undefined"
-            @click="onSelect($event, item)">
-            <span class="sidebar__link-bar"/>{{ item.label }}
-          </a>
-        </template>
+        <app-link
+          v-for="item in navItems"
+          :key="item.key"
+          :to="item.to ?? item.href"
+          target="_self"
+          class="sidebar__link"
+          :class="{'sidebar__link--active': item.active}"
+          :aria-current="item.ariaCurrent"
+          @click="onSelect($event, item)">
+          <span class="sidebar__link-bar"/>{{ item.label }}
+        </app-link>
       </nav>
     </div>
     <nav
       class="sidebar__footer"
       aria-label="Contact">
-      <a
+      <app-link
         v-for="link in contact"
         :key="link.url"
         class="sidebar__contact"
-        :href="link.url"
+        :to="link.url"
         :title="link.label"
-        :aria-label="link.label"
-        target="_blank"
-        rel="noopener noreferrer">
+        :aria-label="link.label">
         <app-icon :name="link.icon"/>
-      </a>
+      </app-link>
     </nav>
   </aside>
 </template>

@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
+import AppLink from '~/components/AppLink.vue'
 import TheSidebar from '~/components/TheSidebar.vue'
 
 function at<T>(items: T[], index: number): T {
@@ -64,7 +65,7 @@ function mountSidebar(overrides: Partial<SidebarProps> = {}) {
       activeTo: '/gallery',
       ...overrides,
     },
-    global: { stubs },
+    global: { stubs, components: { AppLink } },
   })
 }
 

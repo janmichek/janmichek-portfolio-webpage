@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
-import SiteSidebar from '~/components/SiteSidebar.vue'
+import TheSidebar from '~/components/TheSidebar.vue'
 
 const contact = [
   {
@@ -25,7 +25,7 @@ const stubs = {
     props: ['to'],
     template: '<a :href="to"><slot/></a>',
   },
-  HomeIcon: true,
+  AppIcon: true,
 }
 
 type SidebarProps = {
@@ -42,7 +42,7 @@ type SidebarProps = {
 }
 
 function mountSidebar(overrides: Partial<SidebarProps> = {}) {
-  return mount(SiteSidebar, {
+  return mount(TheSidebar, {
     props: {
       name: 'Jan Michek',
       role: 'Engineer',
@@ -62,14 +62,14 @@ function mountSidebar(overrides: Partial<SidebarProps> = {}) {
   })
 }
 
-describe('SiteSidebar', () => {
+describe('TheSidebar', () => {
   it('renders profile, lead and section links', () => {
     const wrapper = mountSidebar()
     expect(wrapper.find('img').attributes('src')).toBe('/profile-pic.webp')
     expect(wrapper.find('img').attributes('alt')).toBe('Jan Michek')
-    expect(wrapper.find('.role').text()).toBe('Engineer')
-    expect(wrapper.find('.lead').text()).toContain('First line')
-    expect(wrapper.findAll('.lead br')).toHaveLength(1)
+    expect(wrapper.find('.sidebar__role').text()).toBe('Engineer')
+    expect(wrapper.find('.sidebar__lead').text()).toContain('First line')
+    expect(wrapper.findAll('.sidebar__lead br')).toHaveLength(1)
     expect(wrapper.find('nav[aria-label="Sections"]').exists()).toBe(true)
   })
 
@@ -77,16 +77,16 @@ describe('SiteSidebar', () => {
     const wrapper = mountSidebar()
     const links = wrapper.findAll('nav[aria-label="Sections"] a')
     expect(links).toHaveLength(2)
-    expect(links[0].classes()).toContain('is-active')
+    expect(links[0].classes()).toContain('sidebar__link--active')
     expect(links[0].attributes('aria-current')).toBe('location')
-    expect(links[1].classes()).toContain('is-active')
+    expect(links[1].classes()).toContain('sidebar__link--active')
     expect(links[1].attributes('aria-current')).toBe('page')
   })
 
   it('omits active markers when nothing is active', () => {
     const wrapper = mountSidebar({ activeId: undefined, activeTo: '/elsewhere' })
     const links = wrapper.findAll('nav[aria-label="Sections"] a')
-    expect(links[0].classes()).not.toContain('is-active')
+    expect(links[0].classes()).not.toContain('sidebar__link--active')
     expect(links[0].attributes('aria-current')).toBeUndefined()
     expect(links[1].attributes('aria-current')).toBeUndefined()
   })
@@ -109,12 +109,12 @@ describe('SiteSidebar', () => {
 
   it('applies the jump class', () => {
     const wrapper = mountSidebar({ jumping: true })
-    expect(wrapper.find('nav[aria-label="Sections"]').classes()).toContain('is-jump')
+    expect(wrapper.find('nav[aria-label="Sections"]').classes()).toContain('sidebar__nav--jumping')
   })
 
   it('renders safe contact links', () => {
     const wrapper = mountSidebar()
-    const links = wrapper.findAll('.ci')
+    const links = wrapper.findAll('.sidebar__contact')
     expect(links).toHaveLength(2)
     for (const link of links) {
       expect(link.attributes('target')).toBe('_blank')
@@ -125,6 +125,6 @@ describe('SiteSidebar', () => {
 
   it('omits the lead when none is provided', () => {
     const wrapper = mountSidebar({ lead: undefined })
-    expect(wrapper.find('.lead').exists()).toBe(false)
+    expect(wrapper.find('.sidebar__lead').exists()).toBe(false)
   })
 })

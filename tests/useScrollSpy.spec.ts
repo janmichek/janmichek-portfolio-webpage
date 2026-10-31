@@ -1,405 +1,402 @@
 import { mount } from '@vue/test-utils'
 import { defineComponent, h } from 'vue'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi, type MockInstance } from 'vitest'
 import { createScrollSpy, useScrollSpy } from '~/composables/useScrollSpy'
 
-type Handler = (event?: unknown) => void
+type Spy = ReturnType<typeof createScrollSpy>
 
-function createEnv() {
-  const listeners = new Map<string, Set<Handler>>()
-  const elements = new Map<string, {
-    getBoundingClientRect: () => { top: number }
-    scrollIntoView: ReturnType<typeof vi.fn>
-  }>()
-  let rafCallbacks = new Map<number, FrameRequestCallback>()
-  let nextRafId = 1
+const originalMatchMedia = window.matchMedia.bind(window)
+const created: Spy[] = []
+const scrollIntoViewSpies = new Map<string, MockInstance<HTMLElement['scrollIntoView']>>()
 
-  const win = {
-    innerHeight: 1000,
-    scrollY: 0,
-    history: { replaceState: vi.fn() },
-    matchMedia: vi.fn(() => ({ matches: false })),
-    addEventListener: vi.fn((type: string, handler: Handler) => {
-      if (!listeners.has(type)) listeners.set(type, new Set())
-      listeners.get(type)!.add(handler)
-    }),
-    removeEventListener: vi.fn((type: string, handler: Handler) => {
-      listeners.get(type)?.delete(handler)
-    }),
-    requestAnimationFrame: vi.fn((callback: FrameRequestCallback) => {
-      const id = nextRafId++
-      rafCallbacks.set(id, callback)
-      return id
-    }),
-    cancelAnimationFrame: vi.fn((id: number) => {
-      rafCallbacks.delete(id)
-    }),
-    setTimeout: ((callback: TimerHandler, delay?: number) => globalThis.setTimeout(callback, delay)) as unknown as Window['setTimeout'],
-    clearTimeout: vi.fn((id?: number) => globalThis.clearTimeout(id)) as unknown as Window['clearTimeout'],
-  }
+let rafQueue = new Map<number, FrameRequestCallback>()
+let nextRafId = 1
+let rafSpy: MockInstance<typeof window.requestAnimationFrame>
+let addSpy: MockInstance<typeof window.addEventListener>
+let removeSpy: MockInstance<typeof window.removeEventListener>
+let cancelRafSpy: MockInstance<typeof window.cancelAnimationFrame>
+let clearTimeoutSpy: MockInstance<typeof window.clearTimeout>
+let scrollYSpy: MockInstance<() => number>
+let innerHeightSpy: MockInstance<() => number>
+let replaceStateSpy: MockInstance<typeof window.history.replaceState>
+let matchMediaSpy: MockInstance<typeof window.matchMedia>
 
-  const doc = {
-    documentElement: { scrollHeight: 2000 },
-    getElementById: (id: string) => elements.get(id) ?? null,
-  }
-
-  function flushAnimationFrame() {
-    const callbacks = [...rafCallbacks.values()]
-    rafCallbacks = new Map()
-    for (const callback of callbacks) callback(0)
-  }
-
-  function emit(type: string, event: unknown = {}) {
-    for (const handler of listeners.get(type) ?? []) handler(event)
-  }
-
-  function section(id: string, top: number) {
-    const element = {
-      getBoundingClientRect: () => ({ top }),
-      scrollIntoView: vi.fn(),
-    }
-    elements.set(id, element)
-    return element
-  }
-
-  return {
-    win: win as unknown as Window,
-    doc: doc as unknown as Document,
-    elements,
-    section,
-    flushAnimationFrame,
-    emit,
-    listeners,
-    setScrollY(value: number) {
-      win.scrollY = value
-    },
-    setScrollHeight(value: number) {
-      doc.documentElement.scrollHeight = value
-    },
-    setInnerHeight(value: number) {
-      win.innerHeight = value
-    },
-    setReducedMotion(value: boolean) {
-      win.matchMedia.mockImplementation(() => ({ matches: value }))
-    },
-    removeMatchMedia() {
-      (win as { matchMedia?: unknown }).matchMedia = undefined
-    },
-  }
+function track(options: Parameters<typeof createScrollSpy>[0]): Spy {
+  const spy = createScrollSpy(options)
+  created.push(spy)
+  return spy
 }
 
-function mouseEvent(overrides: Partial<MouseEvent> = {}) {
-  return {
-    button: 0,
-    metaKey: false,
-    ctrlKey: false,
-    shiftKey: false,
-    altKey: false,
-    defaultPrevented: false,
-    preventDefault: vi.fn(),
-    ...overrides,
-  } as unknown as MouseEvent
+function flushAnimationFrame() {
+  const callbacks = [...rafQueue.values()]
+  rafQueue = new Map()
+  for (const callback of callbacks) callback(0)
+}
+
+function rect(top: number): DOMRect {
+  return { x: 0, y: top, width: 0, height: 0, top, right: 0, bottom: top, left: 0, toJSON: () => ({}) }
+}
+
+function section(id: string, top: number) {
+  document.getElementById(id)?.remove()
+  const element = document.createElement('section')
+  element.id = id
+  vi.spyOn(element, 'getBoundingClientRect').mockReturnValue(rect(top))
+  scrollIntoViewSpies.set(id, vi.spyOn(element, 'scrollIntoView').mockImplementation(() => {}))
+  document.body.append(element)
+}
+
+function scrollSpyFor(id: string) {
+  const spy = scrollIntoViewSpies.get(id)
+  if (!spy) throw new Error(`No section "${id}"`)
+  return spy
+}
+
+function setScrollY(value: number) {
+  scrollYSpy.mockReturnValue(value)
+}
+
+function setInnerHeight(value: number) {
+  innerHeightSpy.mockReturnValue(value)
+}
+
+function setReducedMotion(value: boolean) {
+  matchMediaSpy.mockImplementation((query) => {
+    const mediaQueryList = originalMatchMedia(query)
+    Object.defineProperty(mediaQueryList, 'matches', { value, configurable: true })
+    return mediaQueryList
+  })
+}
+
+function emit(type: string) {
+  window.dispatchEvent(new Event(type))
+}
+
+function pressKey(key: string) {
+  window.dispatchEvent(new KeyboardEvent('keydown', { key }))
+}
+
+function addedTypes(): unknown[] {
+  return addSpy.mock.calls.map(([type]) => type)
+}
+
+function removedTypes(): unknown[] {
+  return removeSpy.mock.calls.map(([type]) => type)
+}
+
+function click(init: MouseEventInit = {}) {
+  return new MouseEvent('click', { button: 0, cancelable: true, ...init })
 }
 
 function setup() {
-  const env = createEnv()
-  env.section('about', 0)
-  env.section('projects', 300)
-  env.section('goods', 700)
-  env.section('contact', 1200)
-  const spy = createScrollSpy({
-    itemIds: ['about', 'projects', 'goods', 'contact'],
-    doc: env.doc,
-    win: env.win,
-  })
-  return { env, spy }
+  section('about', 0)
+  section('projects', 300)
+  section('goods', 700)
+  section('contact', 1200)
+  return track({ itemIds: ['about', 'projects', 'goods', 'contact'] })
 }
 
 describe('createScrollSpy', () => {
   beforeEach(() => {
     vi.useFakeTimers()
+    rafQueue = new Map()
+    nextRafId = 1
+    rafSpy = vi.spyOn(window, 'requestAnimationFrame').mockImplementation((callback) => {
+      const id = nextRafId++
+      rafQueue.set(id, callback)
+      return id
+    })
+    cancelRafSpy = vi.spyOn(window, 'cancelAnimationFrame').mockImplementation((id) => {
+      rafQueue.delete(id)
+    })
+    addSpy = vi.spyOn(window, 'addEventListener')
+    removeSpy = vi.spyOn(window, 'removeEventListener')
+    clearTimeoutSpy = vi.spyOn(window, 'clearTimeout')
+    replaceStateSpy = vi.spyOn(window.history, 'replaceState').mockImplementation(() => {})
+    scrollYSpy = vi.spyOn(window, 'scrollY', 'get').mockReturnValue(0)
+    innerHeightSpy = vi.spyOn(window, 'innerHeight', 'get').mockReturnValue(1000)
+    vi.spyOn(document.documentElement, 'scrollHeight', 'get').mockReturnValue(2000)
+    matchMediaSpy = vi.spyOn(window, 'matchMedia')
+    setReducedMotion(false)
   })
 
   afterEach(() => {
+    for (const spy of created.splice(0)) spy.destroy()
+    scrollIntoViewSpies.clear()
+    document.body.innerHTML = ''
     vi.useRealTimers()
     vi.restoreAllMocks()
   })
 
   it('resolves the last section above the 40% line on start', () => {
-    const { env, spy } = setup()
+    const spy = setup()
     spy.start()
     expect(spy.active.value).toBe('projects')
-    expect(env.win.addEventListener).toHaveBeenCalledWith('scroll', expect.any(Function), { passive: true })
+    expect(addSpy).toHaveBeenCalledWith('scroll', expect.any(Function), { passive: true })
   })
 
   it('allows a custom line ratio', () => {
-    const env = createEnv()
-    env.section('about', 50)
-    env.section('projects', 150)
-    const spy = createScrollSpy({
-      itemIds: ['about', 'projects'],
-      doc: env.doc,
-      win: env.win,
-      lineRatio: 0.1,
-    })
+    section('about', 50)
+    section('projects', 150)
+    const spy = track({ itemIds: ['about', 'projects'], lineRatio: 0.1 })
     spy.start()
     expect(spy.active.value).toBe('about')
   })
 
   it('forces the last section at the bottom of the page', () => {
-    const { env, spy } = setup()
-    env.setScrollY(1000)
+    const spy = setup()
+    setScrollY(1000)
     spy.start()
     expect(spy.active.value).toBe('contact')
   })
 
   it('handles an empty item list', () => {
-    const env = createEnv()
-    const spy = createScrollSpy({ itemIds: [], doc: env.doc, win: env.win })
+    const spy = track({ itemIds: [] })
     spy.start()
     expect(spy.active.value).toBe('')
   })
 
   it('falls back to an empty id at the bottom with no sections', () => {
-    const env = createEnv()
-    env.setScrollY(1000)
-    const spy = createScrollSpy({ itemIds: [], doc: env.doc, win: env.win })
+    setScrollY(1000)
+    const spy = track({ itemIds: [] })
     spy.start()
     expect(spy.active.value).toBe('')
   })
 
   it('coalesces scroll updates into one animation frame', () => {
-    const { env, spy } = setup()
+    const spy = setup()
     spy.start()
-    env.emit('scroll')
-    env.emit('scroll')
-    expect(env.win.requestAnimationFrame).toHaveBeenCalledTimes(1)
-    env.flushAnimationFrame()
+    emit('scroll')
+    emit('scroll')
+    expect(rafSpy).toHaveBeenCalledTimes(1)
+    flushAnimationFrame()
   })
 
   it('skips item ids without a matching section', () => {
-    const env = createEnv()
-    env.section('about', 0)
-    const spy = createScrollSpy({ itemIds: ['about', 'missing'], doc: env.doc, win: env.win })
+    section('about', 0)
+    const spy = track({ itemIds: ['about', 'missing'] })
     spy.start()
     expect(spy.active.value).toBe('about')
   })
 
   it('ignores keys when no navigation is pending', () => {
-    const { env, spy } = setup()
+    const spy = setup()
     spy.start()
-    env.emit('keydown', { key: 'ArrowDown' })
+    pressKey('ArrowDown')
     expect(spy.active.value).toBe('projects')
   })
 
   it('updates active on resize', () => {
-    const { env, spy } = setup()
+    const spy = setup()
     spy.start()
     expect(spy.active.value).toBe('projects')
-    env.setInnerHeight(3000)
-    env.emit('resize')
-    env.flushAnimationFrame()
+    setInnerHeight(3000)
+    emit('resize')
+    flushAnimationFrame()
     expect(spy.active.value).toBe('contact')
   })
 
   it('navigates to an adjacent section without a jump', () => {
-    const { env, spy } = setup()
+    const spy = setup()
     spy.start()
-    const event = mouseEvent()
+    const event = click()
     spy.go(event, 'goods')
-    expect(event.preventDefault).toHaveBeenCalled()
+    expect(event.defaultPrevented).toBe(true)
     expect(spy.active.value).toBe('goods')
     expect(spy.jumping.value).toBe(false)
-    expect(env.elements.get('goods')!.scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' })
-    expect(env.win.history.replaceState).toHaveBeenCalledWith(null, '', '#goods')
+    expect(scrollSpyFor('goods')).toHaveBeenCalledWith({ behavior: 'smooth' })
+    expect(replaceStateSpy).toHaveBeenCalledWith(null, '', '#goods')
   })
 
   it('marks distant navigation as a jump', () => {
-    const { spy } = setup()
+    const spy = setup()
     spy.start()
-    spy.go(mouseEvent(), 'contact')
+    spy.go(click(), 'contact')
     expect(spy.jumping.value).toBe(true)
   })
 
   it('ignores modified and non-primary clicks', () => {
-    const { env, spy } = setup()
+    const spy = setup()
     spy.start()
+    const prevented = click()
+    prevented.preventDefault()
     const events = [
-      mouseEvent({ metaKey: true }),
-      mouseEvent({ ctrlKey: true }),
-      mouseEvent({ shiftKey: true }),
-      mouseEvent({ altKey: true }),
-      mouseEvent({ button: 2 }),
-      mouseEvent({ defaultPrevented: true }),
+      click({ metaKey: true }),
+      click({ ctrlKey: true }),
+      click({ shiftKey: true }),
+      click({ altKey: true }),
+      click({ button: 2 }),
+      prevented,
     ]
     for (const event of events) {
       spy.go(event, 'contact')
-      expect(event.preventDefault).not.toHaveBeenCalled()
     }
-    expect(env.elements.get('contact')!.scrollIntoView).not.toHaveBeenCalled()
+    expect(events.slice(0, 5).every(event => !event.defaultPrevented)).toBe(true)
+    expect(scrollSpyFor('contact')).not.toHaveBeenCalled()
   })
 
   it('ignores unknown item ids and missing elements', () => {
-    const { env, spy } = setup()
+    const spy = setup()
     spy.start()
-    env.section('unknown', 500)
-    const unknownEvent = mouseEvent()
+    section('unknown', 500)
+    const unknownEvent = click()
     spy.go(unknownEvent, 'unknown')
-    expect(unknownEvent.preventDefault).not.toHaveBeenCalled()
+    expect(unknownEvent.defaultPrevented).toBe(false)
 
-    const missingEvent = mouseEvent()
+    const missingEvent = click()
     spy.go(missingEvent, 'deleted')
-    expect(missingEvent.preventDefault).not.toHaveBeenCalled()
+    expect(missingEvent.defaultPrevented).toBe(false)
   })
 
   it('does not lock the spy when the target would not move', () => {
-    const { env, spy } = setup()
+    const spy = setup()
     spy.start()
-    spy.go(mouseEvent(), 'about')
+    spy.go(click(), 'about')
     expect(spy.active.value).toBe('about')
-    expect(env.elements.get('about')!.scrollIntoView).toHaveBeenCalled()
+    expect(scrollSpyFor('about')).toHaveBeenCalled()
 
-    env.section('about', 500)
-    env.section('projects', 300)
+    section('about', 500)
+    section('projects', 300)
     spy.updateActive()
     expect(spy.active.value).toBe('projects')
   })
 
   it('honours prefers-reduced-motion', () => {
-    const { env, spy } = setup()
-    env.setReducedMotion(true)
+    const spy = setup()
+    setReducedMotion(true)
     spy.start()
-    spy.go(mouseEvent(), 'contact')
-    expect(env.elements.get('contact')!.scrollIntoView).toHaveBeenCalledWith({ behavior: 'auto' })
+    spy.go(click(), 'contact')
+    expect(scrollSpyFor('contact')).toHaveBeenCalledWith({ behavior: 'auto' })
   })
 
   it('falls back to smooth scrolling without matchMedia', () => {
-    const { env, spy } = setup()
-    env.removeMatchMedia()
+    const spy = setup()
+    vi.stubGlobal('matchMedia', undefined)
     spy.start()
-    spy.go(mouseEvent(), 'contact')
-    expect(env.elements.get('contact')!.scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' })
+    spy.go(click(), 'contact')
+    expect(scrollSpyFor('contact')).toHaveBeenCalledWith({ behavior: 'smooth' })
+    vi.unstubAllGlobals()
   })
 
   it('pauses updates while a navigation scroll is pending', () => {
-    const { env, spy } = setup()
+    const spy = setup()
     spy.start()
-    spy.go(mouseEvent(), 'contact')
-    env.section('about', 500)
-    env.section('projects', 100)
+    spy.go(click(), 'contact')
+    section('about', 500)
+    section('projects', 100)
     spy.updateActive()
     expect(spy.active.value).toBe('contact')
   })
 
   it('ignores user interrupts while idle', () => {
-    const { env, spy } = setup()
+    const spy = setup()
     spy.start()
-    env.emit('wheel')
-    env.emit('touchstart')
-    env.emit('scrollend')
-    expect(env.win.requestAnimationFrame).not.toHaveBeenCalled()
+    emit('wheel')
+    emit('touchstart')
+    emit('scrollend')
+    expect(rafSpy).not.toHaveBeenCalled()
     expect(spy.active.value).toBe('projects')
   })
 
   it('settles when the user interrupts with the wheel', () => {
-    const { env, spy } = setup()
+    const spy = setup()
     spy.start()
-    spy.go(mouseEvent(), 'contact')
-    env.emit('wheel')
-    env.flushAnimationFrame()
+    spy.go(click(), 'contact')
+    emit('wheel')
+    flushAnimationFrame()
     expect(spy.active.value).toBe('projects')
     expect(spy.jumping.value).toBe(false)
   })
 
   it('settles when the user interrupts with touch', () => {
-    const { env, spy } = setup()
+    const spy = setup()
     spy.start()
-    spy.go(mouseEvent(), 'contact')
-    env.emit('touchstart')
-    env.flushAnimationFrame()
+    spy.go(click(), 'contact')
+    emit('touchstart')
+    flushAnimationFrame()
     expect(spy.active.value).toBe('projects')
   })
 
   it('settles when the user interrupts with a navigation key', () => {
-    const { env, spy } = setup()
+    const spy = setup()
     spy.start()
-    spy.go(mouseEvent(), 'contact')
-    env.emit('keydown', { key: 'PageDown' })
-    env.flushAnimationFrame()
+    spy.go(click(), 'contact')
+    pressKey('PageDown')
+    flushAnimationFrame()
     expect(spy.active.value).toBe('projects')
   })
 
   it('ignores unrelated keys while pending', () => {
-    const { env, spy } = setup()
+    const spy = setup()
     spy.start()
-    spy.go(mouseEvent(), 'contact')
-    env.emit('keydown', { key: 'a' })
-    env.flushAnimationFrame()
+    spy.go(click(), 'contact')
+    pressKey('a')
+    flushAnimationFrame()
     expect(spy.active.value).toBe('contact')
   })
 
   it('settles on scrollend', () => {
-    const { env, spy } = setup()
+    const spy = setup()
     spy.start()
-    spy.go(mouseEvent(), 'contact')
-    env.emit('scrollend')
-    env.flushAnimationFrame()
+    spy.go(click(), 'contact')
+    emit('scrollend')
+    flushAnimationFrame()
     expect(spy.active.value).toBe('projects')
   })
 
   it('settles after the fallback timeout without scroll events', () => {
-    const { env, spy } = setup()
+    const spy = setup()
     spy.start()
-    spy.go(mouseEvent(), 'contact')
+    spy.go(click(), 'contact')
     vi.advanceTimersByTime(1999)
-    env.flushAnimationFrame()
+    flushAnimationFrame()
     expect(spy.active.value).toBe('contact')
     vi.advanceTimersByTime(1)
-    env.flushAnimationFrame()
+    flushAnimationFrame()
     expect(spy.active.value).toBe('projects')
   })
 
   it('re-arms the settle timer on scroll events', () => {
-    const { env, spy } = setup()
+    const spy = setup()
     spy.start()
-    spy.go(mouseEvent(), 'contact')
+    spy.go(click(), 'contact')
     vi.advanceTimersByTime(1000)
-    env.emit('scroll')
-    env.flushAnimationFrame()
+    emit('scroll')
+    flushAnimationFrame()
     vi.advanceTimersByTime(149)
-    env.flushAnimationFrame()
+    flushAnimationFrame()
     expect(spy.active.value).toBe('contact')
     vi.advanceTimersByTime(1)
-    env.flushAnimationFrame()
+    flushAnimationFrame()
     expect(spy.active.value).toBe('projects')
   })
 
   it('is safe to start twice and destroy twice', () => {
-    const { env, spy } = setup()
+    const spy = setup()
     spy.start()
     spy.start()
-    expect(env.listeners.get('scroll')!.size).toBe(1)
+    expect(addedTypes().filter(type => type === 'scroll')).toHaveLength(1)
     spy.destroy()
     spy.destroy()
-    expect(env.listeners.get('scroll')!.size).toBe(0)
+    expect(removedTypes().filter(type => type === 'scroll')).toHaveLength(1)
   })
 
   it('is safe to destroy before starting', () => {
-    const { env, spy } = setup()
+    const spy = setup()
     spy.destroy()
-    expect(env.win.removeEventListener).not.toHaveBeenCalled()
+    expect(removeSpy).not.toHaveBeenCalled()
   })
 
   it('cleans up pending timers and frames on destroy', () => {
-    const { env, spy } = setup()
+    const spy = setup()
     spy.start()
-    spy.go(mouseEvent(), 'contact')
-    env.emit('scroll')
+    spy.go(click(), 'contact')
+    emit('scroll')
     spy.destroy()
-    expect(env.win.clearTimeout).toHaveBeenCalled()
-    expect(env.win.cancelAnimationFrame).toHaveBeenCalled()
+    expect(clearTimeoutSpy).toHaveBeenCalled()
+    expect(cancelRafSpy).toHaveBeenCalled()
     expect(spy.jumping.value).toBe(false)
-    env.flushAnimationFrame()
+    flushAnimationFrame()
     expect(spy.active.value).toBe('contact')
 
     spy.start()
@@ -407,24 +404,17 @@ describe('createScrollSpy', () => {
   })
 
   it('accepts custom settle delays', () => {
-    const env = createEnv()
-    env.section('about', 0)
-    env.section('projects', 300)
-    const spy = createScrollSpy({
-      itemIds: ['about', 'projects'],
-      doc: env.doc,
-      win: env.win,
-      settleDelay: 50,
-      fallbackDelay: 500,
-    })
+    section('about', 0)
+    section('projects', 300)
+    const spy = track({ itemIds: ['about', 'projects'], settleDelay: 50, fallbackDelay: 500 })
     spy.start()
-    spy.go(mouseEvent(), 'projects')
-    env.section('projects', 500)
+    spy.go(click(), 'projects')
+    section('projects', 500)
     vi.advanceTimersByTime(499)
-    env.flushAnimationFrame()
+    flushAnimationFrame()
     expect(spy.active.value).toBe('projects')
     vi.advanceTimersByTime(1)
-    env.flushAnimationFrame()
+    flushAnimationFrame()
     expect(spy.active.value).toBe('about')
   })
 })

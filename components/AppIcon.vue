@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const icons = import.meta.glob('~/assets/icons/*.svg', {
+const icons: Record<string, string> = import.meta.glob('~/assets/icons/*.svg', {
   query: '?raw',
   import: 'default',
   eager: true,
-}) as Record<string, string>
+})
 
 const props = defineProps<{
   name: 'github' | 'linkedin' | 'x' | 'spotify' | 'cv' | 'link'

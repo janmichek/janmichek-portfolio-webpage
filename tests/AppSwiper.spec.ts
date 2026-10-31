@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, it, vi } from 'vitest'
+import type { SetupContext } from 'vue'
 import AppSwiper from '~/components/AppSwiper.vue'
 
 vi.mock('swiper/modules', () => ({
@@ -13,14 +14,14 @@ vi.mock('swiper/vue', async () => {
     Swiper: {
       name: 'Swiper',
       props: ['modules', 'loop', 'navigation', 'grabCursor', 'spaceBetween'],
-      setup(_props: unknown, { slots }: { slots: { default?: () => unknown } }) {
-        return () => h('div', { class: 'swiper-mock' }, slots.default?.() as never)
+      setup(_props: unknown, { slots }: SetupContext) {
+        return () => h('div', { class: 'swiper-mock' }, slots.default?.())
       },
     },
     SwiperSlide: {
       name: 'SwiperSlide',
-      setup(_props: unknown, { slots }: { slots: { default?: () => unknown } }) {
-        return () => h('div', { class: 'swiper-slide-mock' }, slots.default?.() as never)
+      setup(_props: unknown, { slots }: SetupContext) {
+        return () => h('div', { class: 'swiper-slide-mock' }, slots.default?.())
       },
     },
   }

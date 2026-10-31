@@ -9,6 +9,90 @@ export interface ScrollSpyOptions {
   fallbackDelay?: number
 }
 
+interface WindowHandlers {
+  onScroll: () => void
+  settle: () => void
+  onUserInterrupt: () => void
+  onKeyDown: (event: KeyboardEvent) => void
+}
+
+const SETTLE_KEYS = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' ']
+
+function resolveActiveId(itemIds: string[], doc: Document, win: Window, lineRatio: number): string {
+  const firstId = itemIds[0] ?? ''
+  const line = win.innerHeight * lineRatio
+  const atBottom = win.innerHeight + win.scrollY >= doc.documentElement.scrollHeight - 2
+  if (atBottom) return itemIds[itemIds.length - 1] ?? firstId
+
+  let current = firstId
+  for (const id of itemIds) {
+    const el = doc.getElementById(id)
+    if (el && el.getBoundingClientRect().top <= line) current = id
+  }
+  return current
+}
+
+function isPlainPrimaryClick(event: MouseEvent) {
+  return event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey
+}
+
+function prefersReducedMotion(win: Window) {
+  return typeof win.matchMedia === 'function'
+    && win.matchMedia('(prefers-reduced-motion: reduce)').matches
+}
+
+function attachListeners(win: Window, handlers: WindowHandlers) {
+  win.addEventListener('scroll', handlers.onScroll, { passive: true })
+  win.addEventListener('scrollend', handlers.settle)
+  win.addEventListener('resize', handlers.onScroll)
+  win.addEventListener('wheel', handlers.onUserInterrupt, { passive: true })
+  win.addEventListener('touchstart', handlers.onUserInterrupt, { passive: true })
+  win.addEventListener('keydown', handlers.onKeyDown)
+}
+
+function detachListeners(win: Window, handlers: WindowHandlers) {
+  win.removeEventListener('scroll', handlers.onScroll)
+  win.removeEventListener('scrollend', handlers.settle)
+  win.removeEventListener('resize', handlers.onScroll)
+  win.removeEventListener('wheel', handlers.onUserInterrupt)
+  win.removeEventListener('touchstart', handlers.onUserInterrupt)
+  win.removeEventListener('keydown', handlers.onKeyDown)
+}
+
+function createTimers(getWin: () => Window) {
+  let settleTimer: number | undefined
+  let frame = 0
+
+  function clearSettle() {
+    if (settleTimer !== undefined) {
+      getWin().clearTimeout(settleTimer)
+      settleTimer = undefined
+    }
+  }
+
+  function armSettle(delay: number, callback: () => void) {
+    clearSettle()
+    settleTimer = getWin().setTimeout(callback, delay)
+  }
+
+  function scheduleFrame(callback: () => void) {
+    if (frame) return
+    frame = getWin().requestAnimationFrame(() => {
+      frame = 0
+      callback()
+    })
+  }
+
+  function cancelFrame() {
+    if (frame) {
+      getWin().cancelAnimationFrame(frame)
+      frame = 0
+    }
+  }
+
+  return { clearSettle, armSettle, scheduleFrame, cancelFrame }
+}
+
 export function createScrollSpy(options: ScrollSpyOptions) {
   const { itemIds } = options
   const firstId = itemIds[0] ?? ''
@@ -18,64 +102,29 @@ export function createScrollSpy(options: ScrollSpyOptions) {
 
   const active = ref(firstId)
   const jumping = ref(false)
-
   let pendingId: string | null = null
-  let settleTimer: ReturnType<typeof setTimeout> | undefined
-  let frame = 0
   let started = false
 
   const getDoc = () => options.doc ?? document
   const getWin = () => options.win ?? window
-
-  function resolveActive() {
-    const win = getWin()
-    const doc = getDoc()
-    const line = win.innerHeight * lineRatio
-    const atBottom = win.innerHeight + win.scrollY >= doc.documentElement.scrollHeight - 2
-    let current = firstId
-    for (const id of itemIds) {
-      const el = doc.getElementById(id)
-      if (el && el.getBoundingClientRect().top <= line) current = id
-    }
-    return atBottom ? itemIds[itemIds.length - 1] ?? firstId : current
-  }
+  const timers = createTimers(getWin)
 
   function updateActive() {
     if (pendingId) return
-    active.value = resolveActive()
-  }
-
-  function scheduleUpdate() {
-    if (frame) return
-    frame = getWin().requestAnimationFrame(() => {
-      frame = 0
-      updateActive()
-    })
-  }
-
-  function clearSettle() {
-    if (settleTimer !== undefined) {
-      getWin().clearTimeout(settleTimer)
-      settleTimer = undefined
-    }
-  }
-
-  function armSettle(delay: number) {
-    clearSettle()
-    settleTimer = getWin().setTimeout(settle, delay)
+    active.value = resolveActiveId(itemIds, getDoc(), getWin(), lineRatio)
   }
 
   function settle() {
     const hadPending = pendingId !== null
     pendingId = null
     jumping.value = false
-    clearSettle()
-    if (hadPending) scheduleUpdate()
+    timers.clearSettle()
+    if (hadPending) timers.scheduleFrame(updateActive)
   }
 
   function onScroll() {
-    if (pendingId) armSettle(settleDelay)
-    scheduleUpdate()
+    if (pendingId) timers.armSettle(settleDelay, settle)
+    timers.scheduleFrame(updateActive)
   }
 
   function onUserInterrupt() {
@@ -83,15 +132,11 @@ export function createScrollSpy(options: ScrollSpyOptions) {
   }
 
   function onKeyDown(event: KeyboardEvent) {
-    if (!pendingId) return
-    if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(event.key)) {
-      settle()
-    }
+    if (pendingId && SETTLE_KEYS.includes(event.key)) settle()
   }
 
   function go(event: MouseEvent, id: string) {
-    if (event.defaultPrevented) return
-    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
+    if (event.defaultPrevented || !isPlainPrimaryClick(event)) return
     const to = itemIds.indexOf(id)
     const el = getDoc().getElementById(id)
     if (to === -1 || !el) return
@@ -107,28 +152,22 @@ export function createScrollSpy(options: ScrollSpyOptions) {
 
     if (willMove) {
       pendingId = id
-      armSettle(fallbackDelay)
+      timers.armSettle(fallbackDelay, settle)
     } else {
       pendingId = null
     }
 
-    const reduce = typeof win.matchMedia === 'function'
-      && win.matchMedia('(prefers-reduced-motion: reduce)').matches
-    el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' })
+    el.scrollIntoView({ behavior: prefersReducedMotion(win) ? 'auto' : 'smooth' })
     win.history.replaceState(null, '', `#${id}`)
   }
+
+  const handlers: WindowHandlers = { onScroll, settle, onUserInterrupt, onKeyDown }
 
   function start() {
     if (started) return
     started = true
     updateActive()
-    const win = getWin()
-    win.addEventListener('scroll', onScroll, { passive: true })
-    win.addEventListener('scrollend', settle)
-    win.addEventListener('resize', onScroll)
-    win.addEventListener('wheel', onUserInterrupt, { passive: true })
-    win.addEventListener('touchstart', onUserInterrupt, { passive: true })
-    win.addEventListener('keydown', onKeyDown)
+    attachListeners(getWin(), handlers)
   }
 
   function destroy() {
@@ -136,18 +175,9 @@ export function createScrollSpy(options: ScrollSpyOptions) {
     jumping.value = false
     if (!started) return
     started = false
-    const win = getWin()
-    win.removeEventListener('scroll', onScroll)
-    win.removeEventListener('scrollend', settle)
-    win.removeEventListener('resize', onScroll)
-    win.removeEventListener('wheel', onUserInterrupt)
-    win.removeEventListener('touchstart', onUserInterrupt)
-    win.removeEventListener('keydown', onKeyDown)
-    clearSettle()
-    if (frame) {
-      win.cancelAnimationFrame(frame)
-      frame = 0
-    }
+    detachListeners(getWin(), handlers)
+    timers.clearSettle()
+    timers.cancelFrame()
   }
 
   return { active, jumping, go, updateActive, settle, start, destroy }

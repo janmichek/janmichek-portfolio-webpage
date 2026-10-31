@@ -2,6 +2,12 @@ import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
 import TheSidebar from '~/components/TheSidebar.vue'
 
+function at<T>(items: T[], index: number): T {
+  const item = items[index]
+  if (item === undefined) throw new Error(`No item at index ${index}`)
+  return item
+}
+
 const contact = [
   {
     label: 'GitHub',
@@ -77,28 +83,29 @@ describe('TheSidebar', () => {
     const wrapper = mountSidebar()
     const links = wrapper.findAll('nav[aria-label="Sections"] a')
     expect(links).toHaveLength(2)
-    expect(links[0].classes()).toContain('sidebar__link--active')
-    expect(links[0].attributes('aria-current')).toBe('location')
-    expect(links[1].classes()).toContain('sidebar__link--active')
-    expect(links[1].attributes('aria-current')).toBe('page')
+    const [first, second] = [at(links, 0), at(links, 1)]
+    expect(first.classes()).toContain('sidebar__link--active')
+    expect(first.attributes('aria-current')).toBe('location')
+    expect(second.classes()).toContain('sidebar__link--active')
+    expect(second.attributes('aria-current')).toBe('page')
   })
 
   it('omits active markers when nothing is active', () => {
     const wrapper = mountSidebar({ activeId: undefined, activeTo: '/elsewhere' })
     const links = wrapper.findAll('nav[aria-label="Sections"] a')
-    expect(links[0].classes()).not.toContain('sidebar__link--active')
-    expect(links[0].attributes('aria-current')).toBeUndefined()
-    expect(links[1].attributes('aria-current')).toBeUndefined()
+    expect(at(links, 0).classes()).not.toContain('sidebar__link--active')
+    expect(at(links, 0).attributes('aria-current')).toBeUndefined()
+    expect(at(links, 1).attributes('aria-current')).toBeUndefined()
   })
 
   it('emits select for in-page links only', async () => {
     const wrapper = mountSidebar()
     const links = wrapper.findAll('nav[aria-label="Sections"] a')
-    await links[0].trigger('click')
-    await links[1].trigger('click')
-    const emitted = wrapper.emitted('select')
+    await at(links, 0).trigger('click')
+    await at(links, 1).trigger('click')
+    const emitted = wrapper.emitted('select') ?? []
     expect(emitted).toHaveLength(1)
-    expect(emitted![0][1]).toBe('about')
+    expect(at(at(emitted, 0), 1)).toBe('about')
   })
 
   it('ignores in-page items without an id', async () => {

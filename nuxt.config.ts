@@ -16,8 +16,6 @@ Sitemap: ${siteUrl}/sitemap.xml
 
 export default defineNuxtConfig({
   modules: [
-    '@nuxt/eslint',
-    '@nuxtjs/stylelint-module',
     'nuxt-aos',
     '@nuxtjs/sitemap',
   ],
@@ -102,17 +100,6 @@ export default defineNuxtConfig({
     offset: 10,
     once: true,
   },
-  eslint: {
-    config: {
-      stylistic: {
-        indent: 2,
-        quotes: 'single',
-        semi: false,
-        commaDangle: 'always-multiline',
-        braceStyle: '1tbs',
-      },
-    },
-  },
   sitemap: {
     zeroRuntime: true,
     exclude: ['/preview/**'],
@@ -129,46 +116,5 @@ export default defineNuxtConfig({
         changefreq: 'monthly',
       },
     ],
-  },
-  stylelint: {
-    lintOnStart: false,
-    include: ['**/*.{css,scss,sass,html,vue}'],
-    exclude: ['node_modules/**', '.nuxt/**', 'dist/**'],
-    config: {
-      defaultSeverity: 'warning',
-      extends: [
-        'stylelint-config-standard',
-        'stylelint-config-recommended',
-        'stylelint-config-html/vue',
-        'stylelint-config-recommended-vue',
-      ],
-      rules: {
-        'declaration-block-no-duplicate-properties': true,
-        'selector-pseudo-element-colon-notation': 'single',
-        'comment-whitespace-inside': null,
-        'comment-empty-line-before': null,
-        'rule-empty-line-before': null,
-        'selector-class-pattern': null,
-        'declaration-block-no-redundant-longhand-properties': null,
-        'declaration-empty-line-before': [
-          'never',
-          {
-            ignore: [
-              'after-comment',
-              'after-declaration',
-            ],
-          },
-        ],
-        'max-nesting-depth': [
-          3,
-          {
-            ignore: [
-              'pseudo-classes',
-              'blockless-at-rules',
-            ],
-          },
-        ],
-      },
-    },
   },
 })

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ChatLink } from '~/data/contentTypes'
 
-export interface SidebarNavItem {
+interface SidebarNavItem {
   id?: string
   label: string
   to?: string

@@ -8,6 +8,9 @@ const { chatContact, chatProfile, chatSummary } = useSiteContent()
       id="about"
       class="the-content__section"
       data-wf="about">
+      <h2 class="the-content__heading the-content__heading--about">
+        About
+      </h2>
       <div class="the-content__prose">
         <p
           v-for="paragraph in chatSummary"
@@ -65,6 +68,10 @@ const { chatContact, chatProfile, chatSummary } = useSiteContent()
     margin-bottom: 36px;
     font-size: clamp(38px, 4.6vw, 60px);
     letter-spacing: -0.035em;
+
+    &--about {
+      display: none;
+    }
   }
 
   &__section--contact &__heading {
@@ -156,6 +163,10 @@ const { chatContact, chatProfile, chatSummary } = useSiteContent()
 
   .the-content__section--contact {
     padding: 48px 24px;
+  }
+
+  .the-content__heading--about {
+    display: block;
   }
 }
 </style>

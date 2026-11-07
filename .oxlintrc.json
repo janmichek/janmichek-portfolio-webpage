@@ -1,7 +1,14 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "plugins": ["eslint", "oxc", "typescript", "unicorn", "import", "vue"],
-  "ignorePatterns": ["**/dist", "**/.nuxt", "**/.output", "**/coverage"],
+  "ignorePatterns": [
+    "**/dist",
+    "**/.nuxt",
+    "**/.output",
+    "**/coverage",
+    "stylelint.config.mjs",
+    "stylelint-bem-plugin.mjs"
+  ],
   "options": {
     "typeAware": true,
     "typeCheck": true,

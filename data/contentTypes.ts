@@ -1,4 +1,4 @@
-export interface ChatLink {
+export interface ContentLink {
   label: string
   url: string
   title?: string
@@ -7,17 +7,17 @@ export interface ChatLink {
   iconOnly?: boolean
 }
 
-export interface ChatProject {
+export interface ContentProject {
   id: string
   title: string
   tag: string
   url: string
   image: string
   lead: string
-  links: ChatLink[]
+  links: ContentLink[]
 }
 
-export interface ChatGoodie {
+export interface ContentGoodie {
   title: string
   image: string
   text: string

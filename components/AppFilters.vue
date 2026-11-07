@@ -37,15 +37,15 @@ const emit = defineEmits<{
   </div>
 </template>
 
-<style>
-.karabiner-page .app-filters {
+<style scoped>
+.app-filters {
   display: flex;
   flex-wrap: wrap;
   gap: 4px 24px;
   margin-top: 28px;
 }
 
-.karabiner-page .app-filters__button {
+.app-filters__button {
   padding: 0 0 2px;
   border: 0;
   border-bottom: 1px solid transparent;
@@ -57,11 +57,11 @@ const emit = defineEmits<{
   transition: color var(--duration-fast) ease, border-color var(--duration-fast) ease;
 }
 
-.karabiner-page .app-filters__button:hover {
+.app-filters__button:hover {
   color: var(--ink);
 }
 
-.karabiner-page .app-filters__button--active {
+.app-filters__button--active {
   border-bottom-color: currentcolor;
   color: var(--ink);
 }

@@ -1,14 +1,13 @@
 # Jan Michek - Personal Portfolio
 
 A modern portfolio website built with Nuxt 4, showcasing skills, projects, and professional experience. The site
-features a clean, responsive design with custom CSS architecture and Firebase integration for dynamic content
-management.
+features a clean, responsive design with a custom CSS architecture.
 
 ## Features
 
 - **Modern Tech Stack**: Built with Nuxt 4 in SPA mode for optimal performance
 - **Responsive Design**: Custom CSS using ITCSS methodology with PostCSS
-- **Firebase Integration**: Real-time database and hosting via Firebase
+- **Static Deployment**: Pre-rendered site hosted on Vercel
 - **Visual Testing**: Automated visual regression testing with Percy
 - **Multi-language Ready**: Configured for Czech locale (cs-CZ)
 - **SEO Optimized**: Complete meta tags and social media integration
@@ -47,6 +46,23 @@ bun lint:js       # oxlint only
 bun lint:style    # Biome (CSS) only
 ```
 
+### Tests
+
+Unit tests run with Vitest, end-to-end tests with Playwright. The Playwright
+config starts the dev server automatically, so no separate process is needed:
+
+```bash
+bun test                 # Vitest
+bun test:e2e             # Playwright (Chromium)
+bun test:e2e:ui          # Playwright interactive UI
+```
+
+Install the browser once on a new machine:
+
+```bash
+bunx playwright install chromium
+```
+
 ### Utilities
 
 Utility scripts for development:
@@ -76,18 +92,11 @@ bun preview
 
 ### Deployment
 
-Deploy to Firebase Hosting on janmichek.cz domain:
+The site is deployed to Vercel on the janmichek.cz domain. Vercel builds and deploys the project automatically from
+the connected repository. To produce the same static output locally:
 
 ```bash
-bun deploy
-```
-
-### Firebase Emulators
-
-Run Firebase emulators locally for development:
-
-```bash
-bun emulators
+bun generate
 ```
 
 ## Architecture
@@ -96,13 +105,13 @@ The application follows modern Vue.js patterns with:
 
 - **Component Architecture**: Organized into App, Section, and utility components
 - **CSS Methodology**: ITCSS structure with custom properties and PostCSS
-- **State Management**: Firebase real-time database integration
+- **State Management**: Reactive composables backed by local content modules
 
 ## Technologies
 
 - **Framework**: Nuxt 4 (Vue 3)
 - **Styling**: Custom CSS with PostCSS
-- **Backend**: Firebase (Database, Hosting)
+- **Hosting**: Vercel (static pre-rendered output)
 - **Tooling**: oxlint, Biome, bun
 
 ## License

@@ -16,13 +16,15 @@
     "reset": "bun reinstall && bun dev",
     "lint:js": "oxlint .",
     "lint:style": "biome lint .",
-    "lint": "bun lint:js && bun lint:style",
-    "lint:fix": "bun lint:js --fix && biome lint --write .",
+    "lint:css": "stylelint \"assets/styles/**/*.css\" \"app.vue\" \"components/**/*.vue\" \"layouts/**/*.vue\" \"pages/**/*.vue\"",
+    "lint": "bun lint:js && bun lint:style && bun lint:css",
+    "lint:fix": "bun lint:js --fix && biome lint --write . && stylelint --fix \"assets/styles/**/*.css\" \"app.vue\" \"components/**/*.vue\" \"layouts/**/*.vue\" \"pages/**/*.vue\"",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
     "deploy": "bun generate",
-    "emulators": "bun generate",
     "check": "bun run lint && bun run test && fallow"
   },
   "dependencies": {
@@ -36,6 +38,7 @@
     "@biomejs/biome": "^2.6.4",
     "@csstools/postcss-global-data": "4.0.0",
     "@nuxtjs/sitemap": "^8.5.0",
+    "@playwright/test": "^1.65.0",
     "@vitejs/plugin-vue": "6.0.8",
     "@vitest/coverage-v8": "5.0.5",
     "@vue/test-utils": "2.5.1",
@@ -45,7 +48,11 @@
     "oxlint-tsgolint": "^7.0.2005",
     "postcss": "8.5.25",
     "postcss-custom-media": "12.0.1",
+    "postcss-html": "1.8.0",
     "postcss-nested": "8.0.1",
+    "postcss-resolve-nested-selector": "0.1.6",
+    "stylelint": "17.14.1",
+    "stylelint-config-recommended": "18.0.0",
     "vitest": "5.0.5"
   },
   "simple-git-hooks": {

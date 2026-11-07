@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { chatProfile, siteMeta } = useSiteContent()
+const { profile, siteMeta } = useSiteContent()
 </script>
 
 <template>
@@ -15,7 +15,7 @@ const { chatProfile, siteMeta } = useSiteContent()
       </div>
       <div>
         <h1 class="header__heading">
-          {{ chatProfile.name }}
+          {{ profile.name }}
         </h1>
         <div class="header__subheading h2">
           {{ siteMeta.role }}

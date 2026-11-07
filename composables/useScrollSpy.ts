@@ -50,6 +50,17 @@ function prefersReducedMotion(win: Window) {
     && win.matchMedia('(prefers-reduced-motion: reduce)').matches
 }
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null
+}
+
+// Merge with the router's state instead of replacing it, otherwise
+// vue-router warns that its history.state was clobbered.
+function updateHash(win: Window, id: string) {
+  const state: unknown = win.history.state
+  win.history.replaceState(isRecord(state) ? { ...state } : null, '', `#${id}`)
+}
+
 function attachListeners(win: Window, handlers: WindowHandlers) {
   win.addEventListener('scroll', handlers.onScroll, { passive: true })
   win.addEventListener('scrollend', handlers.settle)
@@ -160,6 +171,13 @@ export function createScrollSpy(options: ScrollSpyOptions) {
     if (pendingId && SETTLE_KEYS.includes(event.key)) settle()
   }
 
+  function armJump(id: string, to: number, from: number, willMove: boolean) {
+    active.value = id
+    jumping.value = willMove && Math.abs(to - from) > 1
+    pendingId = willMove ? id : null
+    if (willMove) timers.armSettle(fallbackDelay, settle)
+  }
+
   function go(event: MouseEvent, id: string) {
     const doc = getDoc()
     const el = getTarget(event, id, itemIds, doc)
@@ -167,23 +185,12 @@ export function createScrollSpy(options: ScrollSpyOptions) {
 
     event.preventDefault()
     const win = getWin()
-    const to = itemIds.indexOf(id)
-    const from = itemIds.indexOf(active.value)
     const targetY = el.getBoundingClientRect().top + win.scrollY
     const willMove = Math.abs(targetY - win.scrollY) > 2
 
-    active.value = id
-    jumping.value = willMove && Math.abs(to - from) > 1
-
-    if (willMove) {
-      pendingId = id
-      timers.armSettle(fallbackDelay, settle)
-    } else {
-      pendingId = null
-    }
-
+    armJump(id, itemIds.indexOf(id), itemIds.indexOf(active.value), willMove)
     el.scrollIntoView({ behavior: scrollBehavior(win) })
-    win.history.replaceState(null, '', `#${id}`)
+    updateHash(win, id)
   }
 
   const handlers: WindowHandlers = { onScroll, settle, onUserInterrupt, onKeyDown }

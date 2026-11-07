@@ -1,4 +1,4 @@
-import type { ChatGoodie, ChatLink, ChatProject } from './contentTypes'
+import type { ContentGoodie, ContentLink, ContentProject } from './contentTypes'
 
 export const baseProfile = {
   name: 'Jan Michek',
@@ -6,7 +6,7 @@ export const baseProfile = {
   avatar: '/profile-pic.webp',
 }
 
-export const chatProjects: ChatProject[] = [
+export const projects: ContentProject[] = [
   {
     id: 'agent-chat',
     title: 'Agent chat',
@@ -56,7 +56,7 @@ export const chatProjects: ChatProject[] = [
   },
 ]
 
-export const chatGoodies: ChatGoodie[] = [
+export const goodies: ContentGoodie[] = [
   {
     title: 'EngineBox',
     image: '/enginebox.webp',
@@ -101,7 +101,7 @@ export const chatGoodies: ChatGoodie[] = [
   },
 ]
 
-export function createChatContact(role: string): ChatLink[] {
+export function createContact(role: string): ContentLink[] {
   return [
     {
       label: 'LinkedIn',

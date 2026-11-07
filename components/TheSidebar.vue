@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { ChatLink } from '~/data/contentTypes'
+import type { ContentLink } from '~/data/contentTypes'
 
 interface SidebarNavItem {
   id?: string
@@ -12,7 +12,7 @@ const props = defineProps<{
   name: string
   role: string
   avatar: string
-  contact: ChatLink[]
+  contact: ContentLink[]
   items: SidebarNavItem[]
   navLabel: string
   lead?: string[]

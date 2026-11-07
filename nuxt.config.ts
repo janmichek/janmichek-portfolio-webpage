@@ -96,7 +96,7 @@ export default defineNuxtConfig({
     },
   },
   aos: {
-    duration: 300,
+    duration: 200,
     offset: 10,
     once: true,
   },

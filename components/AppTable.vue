@@ -49,64 +49,64 @@ defineProps<{
   </section>
 </template>
 
-<style>
-.karabiner-page .app-table {
+<style scoped>
+.app-table {
   padding: 64px var(--sec-pad);
 }
 
-.karabiner-page .app-table__head {
+.app-table__head {
   margin-bottom: 20px;
 }
 
-.karabiner-page .app-table__head h2 {
+.app-table__head h2 {
   margin-bottom: 0;
 }
 
-.karabiner-page .app-table__table {
+.app-table__table {
   width: 100%;
   border-collapse: collapse;
   font-size: 15px;
 }
 
-.karabiner-page .app-table__table th,
-.karabiner-page .app-table__table td {
+.app-table__table th,
+.app-table__table td {
   border: 0;
 }
 
-.karabiner-page .app-table__table tbody td {
+.app-table__table tbody td {
   padding: 8px 0;
   vertical-align: middle;
   border-bottom: 1px solid color-mix(in srgb, var(--g3) 22%, transparent);
 }
 
-.karabiner-page .app-table__table tbody tr:last-child td {
+.app-table__table tbody tr:last-child td {
   border-bottom: 0;
 }
 
-.karabiner-page .app-table__table tbody td + td {
+.app-table__table tbody td + td {
   padding-left: 32px;
 }
 
-.karabiner-page .app-table__keys {
+.app-table__keys {
   white-space: nowrap;
 }
 
-.karabiner-page .app-table__key {
+.app-table__key {
   display: inline-flex;
   align-items: center;
 }
 
-.karabiner-page .app-table__plus {
+.app-table__plus {
   margin: 0 6px;
   color: var(--mute);
   font-size: 12px;
 }
 
-.karabiner-page .app-table__action {
+.app-table__action {
   color: var(--lead);
 }
 
-.karabiner-page .app-table__kbd {
+.app-table__kbd {
   display: inline-block;
   min-width: 1.9em;
   padding: 2px 6px;
@@ -119,7 +119,7 @@ defineProps<{
   color: var(--ink);
 }
 
-.karabiner-page .app-table__hint {
+.app-table__hint {
   display: inline-block;
   margin-left: 10px;
   font-size: 12px;
@@ -127,21 +127,21 @@ defineProps<{
 }
 
 @media (width <= 900px) {
-  .karabiner-page .app-table {
+  .app-table {
     padding: 48px var(--sec-pad);
   }
 }
 
 @media (width <= 560px) {
-  .karabiner-page .app-table__table,
-  .karabiner-page .app-table__table tbody,
-  .karabiner-page .app-table__table tr,
-  .karabiner-page .app-table__table td {
+  .app-table__table,
+  .app-table__table tbody,
+  .app-table__table tr,
+  .app-table__table td {
     display: block;
     width: 100%;
   }
 
-  .karabiner-page .app-table__table tbody tr {
+  .app-table__table tbody tr {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
     gap: 4px 12px;
@@ -149,17 +149,17 @@ defineProps<{
     border-bottom: 1px solid color-mix(in srgb, var(--g3) 35%, transparent);
   }
 
-  .karabiner-page .app-table__table tbody tr:last-child {
+  .app-table__table tbody tr:last-child {
     border-bottom: 0;
   }
 
-  .karabiner-page .app-table__table tbody td,
-  .karabiner-page .app-table__table tbody td + td {
+  .app-table__table tbody td,
+  .app-table__table tbody td + td {
     padding: 0;
     border: 0;
   }
 
-  .karabiner-page .app-table__keys {
+  .app-table__keys {
     white-space: normal;
   }
 }

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { chatContact, chatProfile, siteMeta } = useSiteContent()
+const { contact, profile, siteMeta } = useSiteContent()
 
 const navItems = [
   { id: 'about', label: 'About' },
@@ -15,10 +15,10 @@ const { active, jumping, go } = useScrollSpy(navItems.map(item => item.id))
   <div class="home-page site-theme">
     <div class="page">
       <the-sidebar
-        :name="chatProfile.name"
+        :name="profile.name"
         :role="siteMeta.role"
-        :avatar="chatProfile.avatar"
-        :contact="chatContact"
+        :avatar="profile.avatar"
+        :contact="contact"
         :lead="siteMeta.lead"
         :items="navItems"
         nav-label="Sections"

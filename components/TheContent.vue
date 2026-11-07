@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { chatContact, chatProfile, chatSummary } = useSiteContent()
+const { contact, profile, summary } = useSiteContent()
 </script>
 
 <template>
@@ -8,12 +8,16 @@ const { chatContact, chatProfile, chatSummary } = useSiteContent()
       id="about"
       class="the-content__section"
       data-wf="about">
-      <h2 class="the-content__heading the-content__heading--about">
+      <h2
+        class="the-content__heading the-content__heading--about"
+        data-aos="fade-up">
         About
       </h2>
-      <div class="the-content__prose">
+      <div
+        class="the-content__prose"
+        data-aos="fade-up">
         <p
-          v-for="paragraph in chatSummary"
+          v-for="paragraph in summary"
           :key="paragraph">
           {{ paragraph }}
         </p>
@@ -27,15 +31,22 @@ const { chatContact, chatProfile, chatSummary } = useSiteContent()
       id="contact"
       class="the-content__section the-content__section--contact"
       data-wf="contact">
-      <h2 class="the-content__heading">
+      <h2
+        class="the-content__heading"
+        data-aos="fade-up">
         Say hello
       </h2>
       <a
         class="the-content__mail"
-        :href="`mailto:${chatProfile.email}`">{{ chatProfile.email }}</a>
-      <div class="the-content__contacts">
+        data-aos="fade-up"
+        :data-aos-delay="50"
+        :href="`mailto:${profile.email}`">{{ profile.email }}</a>
+      <div
+        class="the-content__contacts"
+        data-aos="fade-up"
+        :data-aos-delay="100">
         <a
-          v-for="link in chatContact.filter(l => !l.iconOnly)"
+          v-for="link in contact.filter(l => !l.iconOnly)"
           :key="link.url"
           class="the-content__button the-content__button--small"
           :href="link.url"

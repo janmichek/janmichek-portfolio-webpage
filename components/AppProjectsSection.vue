@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { chatProjects } = useSiteContent()
+const { projects } = useSiteContent()
 </script>
 
 <template>
@@ -7,14 +7,18 @@ const { chatProjects } = useSiteContent()
     id="projects"
     class="app-projects-section"
     data-wf="projects">
-    <h2 class="app-projects-section__heading">
+    <h2
+      class="app-projects-section__heading"
+      data-aos="fade-up">
       Projects
     </h2>
     <div class="app-projects-section__grid">
       <article
-        v-for="project in chatProjects"
+        v-for="(project, index) in projects"
         :key="project.id"
-        class="app-projects-section__card">
+        class="app-projects-section__card"
+        data-aos="fade-up"
+        :data-aos-delay="index * 50">
         <a
           class="app-projects-section__card-media"
           :href="project.url"
@@ -130,10 +134,10 @@ const { chatProjects } = useSiteContent()
 
     &:hover {
       color: var(--deep);
+    }
 
-      svg {
-        color: var(--deep);
-      }
+    &:hover svg {
+      color: var(--deep);
     }
 
     &:focus-visible {

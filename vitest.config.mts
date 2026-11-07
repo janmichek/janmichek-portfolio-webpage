@@ -13,15 +13,18 @@ export default defineConfig({
   test: {
     environment: 'happy-dom',
     include: ['tests/**/*.spec.ts'],
+    setupFiles: ['./tests/setup.ts'],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'html', 'json-summary'],
       include: [
-        'composables/useScrollSpy.ts',
-        'composables/useSiteContent.ts',
+        'app.vue',
+        'components/**/*.vue',
+        'composables/**/*.ts',
         'data/**/*.ts',
-        'components/AppSwiper.vue',
-        'components/TheSidebar.vue',
+        'layouts/**/*.vue',
+        'pages/**/*.vue',
+        'server/**/*.ts',
       ],
       exclude: ['data/contentTypes.ts'],
       thresholds: {

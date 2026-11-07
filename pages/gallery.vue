@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { chatContact, chatProfile, siteMeta } = useSiteContent()
+const { contact, profile, siteMeta } = useSiteContent()
 
 const images = [
   { medium: 'k1.webp', description: 'Galanthus nivalis - Žižkov' },
@@ -26,10 +26,10 @@ const navItems = [
   <div class="gallery-page site-theme">
     <div class="page">
       <the-sidebar
-        :name="chatProfile.name"
+        :name="profile.name"
         :role="siteMeta.role"
-        :avatar="chatProfile.avatar"
-        :contact="chatContact"
+        :avatar="profile.avatar"
+        :contact="contact"
         :items="navItems"
         nav-label="Pages"
         active-to="/gallery"/>
@@ -51,7 +51,7 @@ const navItems = [
   </div>
 </template>
 
-<style>
+<style scoped>
 .gallery-page {
   --sec-pad: 48px;
 }

@@ -1,7 +1,16 @@
 {
   "$schema": "https://fallow.tools/schema.json",
-  "ignorePatterns": ["tests/**", "**/*.spec.ts"],
-  "ignoreDependencies": ["@vue/test-utils"],
+  "ignorePatterns": [
+    "tests/**",
+    "**/*.spec.ts",
+    "stylelint.config.mjs",
+    "stylelint-bem-plugin.mjs"
+  ],
+  "ignoreDependencies": [
+    "@vue/test-utils",
+    "postcss-html",
+    "postcss-resolve-nested-selector"
+  ],
   "health": {
     "maxCyclomatic": 10,
     "maxUnitSize": 90,

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-const { chatGoodies } = useSiteContent()
+const { goodies } = useSiteContent()
 
 function isHttp(url: string) {
   return url.startsWith('http://') || url.startsWith('https://')
 }
 
-type Goodie = (typeof chatGoodies)[number]
+type Goodie = (typeof goodies)[number]
 
 function externalGoodie(goodie: Goodie) {
   return {
@@ -31,7 +31,7 @@ function toGoodie(goodie: Goodie) {
   return isHttp(goodie.url) ? externalGoodie(goodie) : internalGoodie(goodie)
 }
 
-const goodies = chatGoodies.map(toGoodie)
+const goodieItems = goodies.map(toGoodie)
 </script>
 
 <template>
@@ -39,14 +39,20 @@ const goodies = chatGoodies.map(toGoodie)
     id="goods"
     class="app-goodies-section"
     data-wf="goodies">
-    <h2 class="app-goodies-section__heading">
+    <h2
+      class="app-goodies-section__heading"
+      data-aos="fade-up">
       Goodies
     </h2>
-    <div class="app-goodies-section__list">
+    <div
+      class="app-goodies-section__list"
+      data-aos="fade-up">
       <app-link
-        v-for="goodie in goodies"
+        v-for="(goodie, index) in goodieItems"
         :key="goodie.url"
         class="app-goodies-section__goodie"
+        data-aos="zoom-in"
+        :data-aos-delay="index * 50"
         :to="goodie.to ?? goodie.href"
         :target="goodie.target">
         <span

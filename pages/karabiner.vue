@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { groups, type Group } from '~/data/karabiner'
 
-const { chatContact, chatProfile, siteMeta } = useSiteContent()
+const { contact, profile, siteMeta } = useSiteContent()
 
 const SETTINGS_URL = 'https://github.com/janmichek/karabiner-elements-settings/blob/main/karabiner.json'
 
@@ -21,10 +21,10 @@ const visibleGroups = computed<Group[]>(() =>
   <div class="karabiner-page site-theme">
     <div class="page">
       <the-sidebar
-        :name="chatProfile.name"
+        :name="profile.name"
         :role="siteMeta.role"
-        :avatar="chatProfile.avatar"
-        :contact="chatContact"
+        :avatar="profile.avatar"
+        :contact="contact"
         :items="navItems"
         nav-label="Pages"
         active-to="/karabiner"/>
@@ -62,7 +62,7 @@ const visibleGroups = computed<Group[]>(() =>
   </div>
 </template>
 
-<style>
+<style scoped>
 .karabiner-page {
   --sec-pad: 48px;
 }

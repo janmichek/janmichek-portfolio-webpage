@@ -1,5 +1,5 @@
 import * as portfolioContent from '~/data/portfolioContent'
-import * as web3Content from '~/data/chatContent'
+import * as web3Content from '~/data/web3Content'
 import { siteMeta } from '~/data/siteMeta'
 import { resolveSiteVariant } from '~/data/siteVariant'
 

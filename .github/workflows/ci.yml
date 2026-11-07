@@ -25,8 +25,17 @@ jobs:
       - name: Lint (biome)
         run: bun run lint:style
 
+      - name: Lint (stylelint / BEM)
+        run: bun run lint:css
+
       - name: Test
         run: bun run test
+
+      - name: Install Playwright browser
+        run: bunx playwright install --with-deps chromium
+
+      - name: E2E (Playwright)
+        run: bun run test:e2e
 
       - name: Dead code and health (fallow)
         run: bunx fallow

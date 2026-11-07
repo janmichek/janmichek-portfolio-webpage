@@ -2,6 +2,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import * as portfolio from '~/data/portfolioContent'
 import * as web3 from '~/data/web3Content'
 import { siteMeta } from '~/data/siteMeta'
+import { cvUrls } from '~/data/sharedContent'
 import { resolveSiteVariant } from '~/data/siteVariant'
 
 const allowedIcons = ['github', 'linkedin', 'x', 'spotify', 'cv', 'link']
@@ -48,6 +49,11 @@ describe('shared content', () => {
     for (const link of web3.contact) {
       expect(allowedIcons).toContain(link.icon)
     }
+  })
+
+  it.each(variants)('links the %s variant to its CV', (variant, content) => {
+    const cv = content.contact.find(link => link.label === 'CV')
+    expect(cv?.url).toBe(cvUrls[variant])
   })
 
   it.each(variants)('derives the %s contact copy from the profile role', (_, content) => {

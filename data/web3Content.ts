@@ -1,5 +1,5 @@
 // fallow-ignore-file duplicate-export -- intentional: site variants, consumed via namespace imports in composables/useSiteContent.ts
-import { baseProfile, goodies, projects, createContact } from './sharedContent'
+import { baseProfile, cvUrls, goodies, projects, createContact } from './sharedContent'
 
 export { goodies, projects }
 
@@ -14,4 +14,4 @@ export const summary = [
   'My background includes leading the development of blockchain explorer aescan.io, crafting smooth Web3 UX flows for an NFT lending platform at PWN. I am proud of winning an award at the Polkadot Hackathon.',
 ]
 
-export const contact = createContact(profile.role)
+export const contact = createContact(profile.role, cvUrls.web3)

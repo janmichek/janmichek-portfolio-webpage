@@ -1,8 +1,10 @@
 import { mount } from '@vue/test-utils'
-import { describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 import AppLink from '~/components/AppLink.vue'
 import TheFooter from '~/components/TheFooter.vue'
 import TitleSection from '~/components/TitleSection.vue'
+import * as portfolioContent from '~/data/portfolioContent'
+import { cvUrls } from '~/data/sharedContent'
 
 const NuxtLink = {
   props: ['to'],
@@ -20,6 +22,10 @@ function mountFooter(props: Record<string, unknown> = {}) {
 }
 
 describe('TheFooter', () => {
+  afterEach(() => {
+    vi.unstubAllGlobals()
+  })
+
   it('defaults to the secondary variant', () => {
     const wrapper = mountFooter()
     const footer = wrapper.find('footer')
@@ -50,7 +56,15 @@ describe('TheFooter', () => {
       'mailto:jan@janmichek.cz',
       'https://www.linkedin.com/in/jan-michek-web3/',
       'https://github.com/janmichek/',
-      'https://drive.google.com/file/d/1JKoO3XYsx_8BGriNa9rMlt0nwgQajE3v/view?usp=drive_link',
+      cvUrls.web3,
     ])
+  })
+
+  it('uses the portfolio CV link for the portfolio variant', () => {
+    vi.stubGlobal('useSiteContent', () => portfolioContent)
+    const wrapper = mountFooter()
+    const cvLink = wrapper.findAll('a').at(-1)
+    expect(cvLink?.text()).toBe('CV')
+    expect(cvLink?.attributes('href')).toBe(cvUrls.portfolio)
   })
 })

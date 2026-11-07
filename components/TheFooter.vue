@@ -6,6 +6,9 @@ defineProps({
     validator: value => ['primary', 'secondary'].includes(value),
   },
 })
+
+const { contact } = useSiteContent()
+const cvUrl = contact.find(link => link.icon === 'cv')?.url
 </script>
 
 <template>
@@ -54,7 +57,7 @@ defineProps({
         <div class="footer__container">
           <app-link
             class="footer__link"
-            to="https://drive.google.com/file/d/1JKoO3XYsx_8BGriNa9rMlt0nwgQajE3v/view?usp=drive_link">
+            :to="cvUrl">
             CV
           </app-link>
         </div>

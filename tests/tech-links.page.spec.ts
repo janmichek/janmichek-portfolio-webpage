@@ -27,7 +27,7 @@ describe('tech-links page', () => {
 
     expect(definePageMeta).toHaveBeenCalledWith({ layout: 'slug' })
     expect(wrapper.find('h2').text()).toBe('Tech links')
-    expect(wrapper.findAll('li')).toHaveLength(10)
+    expect(wrapper.findAll('.tech-links__item')).toHaveLength(10)
 
     const links = wrapper.findAll('a')
     expect(links).toHaveLength(10)

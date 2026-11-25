@@ -101,12 +101,7 @@ export const goodies: ContentGoodie[] = [
   },
 ]
 
-export const cvUrls = {
-  web3: 'https://drive.google.com/file/d/1JKoO3XYsx_8BGriNa9rMlt0nwgQajE3v/view?usp=drive_link',
-  portfolio: 'https://drive.google.com/file/d/16wVZLxkYhwvtNNNk2HFCAdghfxCNSLI5/view?usp=sharing',
-}
-
-export function createContact(role: string, cvUrl: string): ContentLink[] {
+export function createContact(role: string): ContentLink[] {
   return [
     {
       label: 'LinkedIn',
@@ -139,7 +134,7 @@ export function createContact(role: string, cvUrl: string): ContentLink[] {
     },
     {
       label: 'CV',
-      url: cvUrl,
+      url: 'https://drive.google.com/file/d/15UYhwj5YLYYs_Ax_uGOeV0DPhn_EsvDq/view?usp=sharing',
       title: 'CV.pdf',
       text: 'PDF · Download',
       icon: 'cv',

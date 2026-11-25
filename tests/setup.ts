@@ -36,7 +36,7 @@ function define(name: string, value: unknown) {
 for (const [name, value] of Object.entries(vueApi)) define(name, value)
 
 const nuxtApi: Record<string, unknown> = {
-  useRuntimeConfig: () => ({ public: { siteVariant: 'web3' } }),
+  useRuntimeConfig: () => ({ public: {} }),
   useSiteContent,
   useHead: () => {},
   useSeoMeta: () => {},

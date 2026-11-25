@@ -1,10 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { writeFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { resolveSiteVariant } from './data/siteVariant'
 
-const siteVariant = resolveSiteVariant(process.env.NUXT_PUBLIC_SITE_VARIANT)
-const siteUrl = siteVariant === 'portfolio' ? 'https://portfolio.janmichek.cz' : 'https://janmichek.cz'
+const siteUrl = 'https://janmichek.cz'
 
 const robots = `User-agent: *
 Allow: /
@@ -53,12 +51,6 @@ export default defineNuxtConfig({
   site: {
     url: siteUrl,
     name: 'Jan Michek',
-  },
-  runtimeConfig: {
-    public: {
-      siteVariant,
-      siteUrl,
-    },
   },
   routeRules: {
     '/': { prerender: true, headers: { Vary: 'Accept' } },

@@ -13,8 +13,6 @@ function createEvent(pathname: string, accept?: string): FakeEvent {
   return { headers, url: `https://janmichek.cz${pathname}` }
 }
 
-const config: { variant: string } = { variant: 'web3' }
-
 function stubRuntime() {
   vi.stubGlobal('getHeader', (event: FakeEvent, name: string) => event.headers.get(name.toLowerCase()))
   vi.stubGlobal('setHeader', (event: FakeEvent, name: string, value: string) => {
@@ -24,7 +22,6 @@ function stubRuntime() {
   vi.stubGlobal('setResponseStatus', (event: FakeEvent, status: number) => {
     event.status = status
   })
-  vi.stubGlobal('useRuntimeConfig', () => ({ public: { siteVariant: config.variant } }))
 }
 
 async function run(event: FakeEvent): Promise<unknown> {
@@ -36,7 +33,6 @@ async function run(event: FakeEvent): Promise<unknown> {
 
 describe('markdown middleware', () => {
   beforeEach(() => {
-    config.variant = 'web3'
     stubRuntime()
   })
 
@@ -86,8 +82,8 @@ describe('markdown middleware', () => {
 
     expect(typeof body).toBe('string')
     expect(body).toContain('# Jan Michek')
-    expect(body).toContain('Personal portfolio of Jan Michek - Web3')
-    expect(body).toContain(`${siteMeta.web3.url}/gallery`)
+    expect(body).toContain('Personal portfolio of Jan Michek - senior fullstack engineer')
+    expect(body).toContain(`${siteMeta.url}/gallery`)
     expect(event.headers.get('content-type')).toBe('text/markdown; charset=utf-8')
     expect(event.headers.get('cache-control')).toBe('public, max-age=0, must-revalidate')
     expect(event.headers.get('vary')).toBe('Accept')
@@ -128,19 +124,12 @@ describe('markdown middleware', () => {
     const event = createEvent(pathname, 'text/markdown')
     const body = await run(event)
     expect(body).toContain(heading)
-    expect(body).toContain(`${siteMeta.web3.url}${pathname}`)
+    expect(body).toContain(`${siteMeta.url}${pathname}`)
   })
 
   it('normalises trailing slashes', async () => {
     const body = await run(createEvent('/gallery///', 'text/markdown'))
     expect(body).toContain('# Gallery')
-  })
-
-  it('serves the portfolio copy for the portfolio variant', async () => {
-    config.variant = 'portfolio'
-    const body = await run(createEvent('/', 'text/markdown'))
-    expect(body).toContain('Personal portfolio of Jan Michek - senior frontend engineer')
-    expect(body).toContain(siteMeta.portfolio.url)
   })
 
   it('returns a markdown 404 for unknown pages', async () => {

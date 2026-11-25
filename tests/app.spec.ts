@@ -46,7 +46,7 @@ describe('app shell', () => {
 
     mountApp()
 
-    const meta = siteMeta.web3
+    const meta = siteMeta
     expect(at(headCalls, 0)).toMatchObject({
       htmlAttrs: { lang: 'en' },
       link: [{ rel: 'canonical', href: `${meta.url}/` }],

@@ -1,6 +1,5 @@
 import type { H3Event } from 'h3'
-import { siteMeta, type SiteMeta } from '~/data/siteMeta'
-import { resolveSiteVariant } from '~/data/siteVariant'
+import { type SiteMeta, siteMeta } from '~/data/siteMeta'
 
 const ASSET_PREFIXES = ['/_nuxt/', '/api/', '/.well-known/', '/docs/']
 
@@ -43,9 +42,7 @@ type MarkdownPage = (meta: SiteMeta) => string
 const markdownPages: Record<string, MarkdownPage> = {
   '/': meta => `# Jan Michek
 
-${meta.variant === 'portfolio'
-  ? 'Personal portfolio of Jan Michek - senior frontend engineer focused on UI, UX and product.'
-  : 'Personal portfolio of Jan Michek - Web3, Solidity, frontend & fullstack engineer.'}
+Personal portfolio of Jan Michek - senior fullstack engineer focused on UI, UX and product.
 
 ## Pages
 
@@ -117,8 +114,7 @@ export default defineEventHandler(event => {
     return undefined
   }
 
-  const config = useRuntimeConfig()
-  const markdown = renderMarkdown(pathname, siteMeta[resolveSiteVariant(config.public.siteVariant)])
+  const markdown = renderMarkdown(pathname, siteMeta)
 
   addVary(event)
   setHeader(event, 'Content-Type', 'text/markdown; charset=utf-8')
